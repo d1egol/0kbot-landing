@@ -1,70 +1,340 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="0kBot - Automatiza tu negocio con WhatsApp, Instagram y más">
-  <title>0kBot | Automatiza tu Negocio</title>
-  <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f2f6fa; color: #333; }
-    header { background: #0e63f5; color: white; padding: 2rem 1rem; text-align: center; position: relative; }
-    header img.logo { position: absolute; top: 20px; left: 20px; height: 50px; }
-    h1 { margin: 0 0 0.5rem; font-size: 2.5rem; }
-    p.sub { font-size: 1.2rem; margin-bottom: 1rem; }
-    section { padding: 2rem 1rem; max-width: 960px; margin: auto; }
-    .card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 2rem; }
-    h2 { color: #0e63f5; }
-    ul li { margin-bottom: 0.5rem; }
-    footer { text-align: center; padding: 1rem; background: #0e63f5; color: white; font-size: 0.9rem; }
-    a.button { display: inline-block; padding: 0.75rem 1.5rem; background: white; color: #0e63f5; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 1rem; border: 2px solid white; }
-    .highlight { color: #fff200; font-weight: bold; }
-    form input, form textarea { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 8px; border: 1px solid #ccc; }
-    form button { background: #0e63f5; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 1rem; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0KBot | Automatiza tu negocio con bots para WhatsApp y Meta</title>
+    <meta name="description" content="0KBot automatiza agendamientos, ventas y atención al cliente en WhatsApp, Instagram y más. La solución ideal para PYMES que quieren crecer sin complicaciones.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0062ff;
+            --secondary: #0bb876;
+            --bg: #f9fafc;
+            --text: #212529;
+            --accent: #f1f4f9;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Roboto', 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(90deg, var(--primary) 60%, var(--secondary) 100%);
+            color: #fff;
+            padding: 2.5rem 0 2rem 0;
+            text-align: center;
+        }
+        header img {
+            max-width: 90px;
+            margin-bottom: 1rem;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin-bottom: .5em;
+        }
+        h1 { font-size: 2.4rem; margin-top: 0; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.3rem; }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.4em;
+        }
+        .main-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--secondary);
+            color: #fff;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background .2s;
+            box-shadow: 0 4px 14px 0 rgba(0,0,0,0.09);
+        }
+        .main-btn:hover {
+            background: #00895e;
+        }
+        .section {
+            padding: 2.5rem 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            margin-top: 2.5rem;
+            box-shadow: 0 6px 40px 0 rgba(0,0,0,0.07);
+        }
+        .section:nth-child(even) {
+            background: var(--accent);
+        }
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            margin: 2em 0 0 0;
+        }
+        .feature {
+            flex: 1 1 220px;
+            background: #fff;
+            padding: 1.2em 1em;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,98,255,0.08);
+            margin-bottom: 10px;
+            min-width: 210px;
+        }
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.3em;
+        }
+        .how-it-works {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .plans-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5em;
+        }
+        .plans-table th, .plans-table td {
+            padding: 13px 9px;
+            text-align: center;
+            border-bottom: 1px solid #e0e5ed;
+        }
+        .plans-table th {
+            background: var(--accent);
+        }
+        .faq {
+            margin: 2em 0 0 0;
+        }
+        .faq-q {
+            font-weight: bold;
+            margin-bottom: .2em;
+        }
+        .contact-form {
+            max-width: 400px;
+            margin: 1.5em auto 0 auto;
+            background: #fff;
+            padding: 2em 1em;
+            border-radius: 16px;
+            box-shadow: 0 4px 14px 0 rgba(0,0,0,0.05);
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.4em;
+            font-weight: 500;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1.1em;
+            border-radius: 8px;
+            border: 1px solid #d2d6dc;
+            font-size: 1em;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 13px 0;
+            background: var(--primary);
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1.08em;
+            transition: background .2s;
+        }
+        .contact-form button:hover {
+            background: #0942a6;
+        }
+        .main-image {
+            width: 100%;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 14px 0 rgba(0,0,0,0.10);
+        }
+        footer {
+            background: var(--accent);
+            color: #4a525f;
+            text-align: center;
+            padding: 1.3em 0 .9em 0;
+            font-size: .98em;
+            margin-top: 2.5rem;
+        }
+        @media (max-width: 650px) {
+            .section { padding: 1.2rem 0.6rem; }
+            h1 { font-size: 1.5rem; }
+            .feature-list { flex-direction: column; gap: 13px; }
+            .plans-table th, .plans-table td { padding: 7px 3px; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="0kBot logo" class="logo">
-    <h1>0kBot</h1>
-    <p class="sub">Tu asistente automatizado 24/7 para <span class="highlight">vender, agendar y atender</span> por WhatsApp e Instagram.</p>
-    <a class="button" href="#contacto">Quiero Automatizar</a>
-  </header>
-
-  <section>
-    <div class="card">
-      <h2>¿Qué es 0kBot?</h2>
-      <p>0kBot es un sistema de automatización inteligente que ayuda a pequeños negocios a mejorar su eficiencia usando herramientas simples como <strong>Google Sheets, WhatsApp, Instagram y correos automáticos</strong>.</p>
-      <p><strong>Ejemplo:</strong> Pedro, dueño de una barbería en Ñuñoa, automatizó sus reservas en 10 minutos y aumentó un 30% sus ingresos semanales. ¡Sin escribir una línea de código!</p>
-    </div>
-
-    <div class="card">
-      <h2>Funcionalidades por Rubro</h2>
-      <ul>
-        <li><strong>🦷 Clínicas:</strong> Confirmación de citas, recordatorios automáticos, agendamiento desde redes.</li>
-        <li><strong>🍔 Restaurantes:</strong> Pedidos automatizados, gestión de stock, promociones personalizadas.</li>
-        <li><strong>💈 Barberías:</strong> Agenda sin conflicto, mensajes de bienvenida, clientes frecuentes y más.</li>
-        <li><strong>🛒 Tiendas:</strong> Consulta de precios, catálogos dinámicos, rutas de entrega optimizadas.</li>
-      </ul>
-    </div>
-
-    <div class="card" id="contacto">
-      <h2>¡Solicita tu demo gratis!</h2>
-      <form action="mailto:dilopezd@0kbot.com" method="POST" enctype="text/plain">
-        <label>Nombre:</label>
-        <input type="text" name="nombre" required>
-        <label>Email:</label>
-        <input type="email" name="email" required>
-        <label>Rubro de tu negocio:</label>
-        <input type="text" name="rubro" required>
-        <label>¿Qué te gustaría automatizar?</label>
-        <textarea name="mensaje" rows="4"></textarea>
-        <button type="submit">Enviar solicitud</button>
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 0kBot - Potenciado por automatización e inteligencia artificial · <a href="mailto:dilopezd@0kbot.com" style="color: #fff; text-decoration: underline;">Contacto</a>
-  </footer>
+    <header>
+        <img src="https://img.icons8.com/clouds/100/000000/bot.png" alt="0KBot logo">
+        <h1>0KBot – Automatiza tu negocio, conquista tu tiempo</h1>
+        <div class="hero-subtitle">Bots inteligentes para PYMES: agenda, vende y responde por WhatsApp y Meta sin esfuerzo</div>
+        <a class="main-btn" href="#contacto">Solicita tu demo</a>
+    </header>
+    
+    <section class="section">
+        <img src="https://hubify.com.br/wp-content/uploads/2023/05/chatbot.jpg" alt="Ejemplo bot WhatsApp" class="main-image">
+        <h2>¿Por qué elegir 0KBot?</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <strong>WhatsApp & Meta Integrado</strong>
+                <div>Atiende, agenda y vende 24/7 donde tus clientes realmente están.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <strong>Automatización Real</strong>
+                <div>Deja que el bot gestione consultas, reservas y recordatorios. Libera tu tiempo.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🧩</div>
+                <strong>Personalización Total</strong>
+                <div>Flujos adaptados a tu negocio. Configuración rápida y simple.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💬</div>
+                <strong>Soporte Humano Real</strong>
+                <div>Te acompañamos de verdad. Nos importa tu éxito.</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <img src="https://remm.org.mx/wp-content/uploads/2024/11/Inteligencia-Artificial-en-tu-Whatsapp-Business-1024x585-1.png" alt="WhatsApp bot mockup" class="main-image">
+        <h2>¿Qué hacemos?</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <div class="feature-icon">📅</div>
+                <strong>Agendamiento automático</strong>
+                <div>Citas y reservas gestionadas automáticamente por WhatsApp, Instagram o web.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💡</div>
+                <strong>Respuestas instantáneas</strong>
+                <div>El bot responde dudas frecuentes, precios, productos y más en segundos.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛒</div>
+                <strong>Pedidos & compras</strong>
+                <div>Toma pedidos, consulta stock y confirma entregas automáticamente.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔔</div>
+                <strong>Recordatorios & notificaciones</strong>
+                <div>Evita ausencias y errores: envía avisos automáticos a tus clientes.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔗</div>
+                <strong>Integración fácil</strong>
+                <div>Google Sheets, CRM, calendarios y más. Tus datos, siempre a mano.</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <!-- Imagen subida por el usuario (cambia el src si subes a tu repo, ej: img/chatbot1.png) -->
+        <img src="2690faff-91c8-4f3e-8f4c-73e5aff0fb64.png" alt="Chatbot WhatsApp Personalizado" class="main-image">
+        <h2>Misión & Valores</h2>
+        <ul>
+            <li><b>Misión:</b> Liberar el tiempo de las pymes, digitalizando y automatizando la atención para que cada negocio crezca sin límites.</li>
+            <li><b>Valores:</b> Innovación práctica, cercanía real, simplicidad, adaptabilidad.</li>
+        </ul>
+    </section>
+    
+    <section class="section">
+        <!-- Imagen subida por el usuario (cambia el src si subes a tu repo, ej: img/chatbot2.png) -->
+        <img src="5d38f046-74e5-4cbb-b159-7a3ceff87a32.png" alt="Bot en celular con usuario" class="main-image">
+        <h2>¿Cómo funciona?</h2>
+        <ol class="how-it-works">
+            <li>Nos cuentas tu dolor y tu objetivo.</li>
+            <li>Creamos y personalizamos tu bot.</li>
+            <li>Conectamos tus canales (WhatsApp, Instagram, web...)</li>
+            <li>¡Tu negocio empieza a escalar y automatizar desde el día 1!</li>
+        </ol>
+        <a class="main-btn" href="#contacto">Quiero mi bot ahora</a>
+    </section>
+    
+    <section class="section">
+        <h2>Preguntas frecuentes</h2>
+        <div class="faq">
+            <div class="faq-q">¿Funciona para mi tipo de negocio?</div>
+            <div class="faq-a">Sí, nos adaptamos a cualquier pyme que reciba consultas, agendamientos o pedidos.</div>
+            <div class="faq-q">¿Es difícil implementarlo?</div>
+            <div class="faq-a">No. Solo cuéntanos tu necesidad, nos encargamos de todo.</div>
+            <div class="faq-q">¿Qué pasa si tengo dudas o cambios?</div>
+            <div class="faq-a">Siempre tendrás soporte humano real, porque nos importa tu éxito.</div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Planes para todos</h2>
+        <table class="plans-table">
+            <thead>
+                <tr>
+                    <th>Plan</th>
+                    <th>Ideal para</th>
+                    <th>Características principales</th>
+                    <th>Desde</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Starter</td>
+                    <td>Micro pymes</td>
+                    <td>1 canal, 200 chats/mes, soporte inicial</td>
+                    <td>$19.990 CLP</td>
+                </tr>
+                <tr>
+                    <td>Pro</td>
+                    <td>Pymes y comercios</td>
+                    <td>3 canales, 1000 chats/mes, integración avanzada</td>
+                    <td>$29.990 CLP</td>
+                </tr>
+                <tr>
+                    <td>Empresa</td>
+                    <td>Expansión/cadena</td>
+                    <td>Ilimitado, personalizado, soporte dedicado</td>
+                    <td>Consultar</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <section class="section" id="contacto">
+        <h2>¿Listo para automatizar tu negocio?</h2>
+        <p>Déjanos tus datos y un especialista te contactará para personalizar tu demo.</p>
+        <form class="contact-form" action="mailto:dilopezd@0kbot.com" method="POST" enctype="text/plain">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" required>
+            
+            <label for="negocio">Nombre del negocio</label>
+            <input type="text" name="negocio" id="negocio" required>
+            
+            <label for="contacto">WhatsApp o Email</label>
+            <input type="text" name="contacto" id="contacto" required>
+            
+            <label for="detalle">¿Qué quieres automatizar?</label>
+            <textarea name="detalle" id="detalle" rows="3" required></textarea>
+            
+            <button type="submit">Solicitar demo</button>
+        </form>
+        <p style="text-align:center; margin-top:1em;">
+            <a href="https://wa.me/56973783020" class="main-btn" target="_blank">Hablar por WhatsApp</a>
+        </p>
+    </section>
+    
+    <footer>
+        &copy; 2025 0KBot. Hecho con <span style="color:var(--secondary);font-weight:bold;">IA & 💡</span> | Todos los derechos reservados.<br>
+        <a href="#">Aviso legal</a> | <a href="#">Privacidad</a>
+    </footer>
 </body>
 </html>
