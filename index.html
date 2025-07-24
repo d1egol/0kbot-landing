@@ -61,6 +61,61 @@
             overflow-x: hidden;
         }
 
+        /* WhatsApp Floating Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            cursor: pointer;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+        }
+        
+        .whatsapp-text {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        
+        .whatsapp-button:hover .whatsapp-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
         /* Typography */
         h1, h2, h3, h4 {
             font-family: 'Poppins', sans-serif;
@@ -885,10 +940,28 @@
                 max-width: 500px;
                 margin: 0 auto;
             }
+            
+            .whatsapp-button {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+            }
+            
+            .whatsapp-text {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-button" id="whatsappBtn">
+        <i class="fab fa-whatsapp"></i>
+        <div class="whatsapp-text">¡Chatea con nosotros!</div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -921,8 +994,8 @@
                     <a href="#contacto" class="btn btn-primary">
                         <i class="fas fa-calendar-check"></i> Solicitar demo
                     </a>
-                    <a href="#features" class="btn btn-outline">
-                        <i class="fas fa-play-circle"></i> Ver video
+                    <a href="https://wa.me/56973783020" class="btn btn-outline" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>
                 <div class="hero-stats">
@@ -1266,6 +1339,12 @@
     </footer>
 
     <script>
+        // WhatsApp Button Functionality
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        whatsappBtn.addEventListener('click', () => {
+            window.open('https://wa.me/56973783020', '_blank');
+        });
+        
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
