@@ -10,7 +10,7 @@
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="0KBot | Automatiza tu negocio con bots para WhatsApp y Meta">
     <meta property="og:description" content="Automatiza agendamientos, ventas y atención al cliente en WhatsApp, Instagram y más. La solución ideal para PYMES.">
-    <meta property="og:image" content="https://img.icons8.com/clouds/100/000000/bot.png">
+    <meta property="og:image" content="https://0kbot.com/logo.png">
     <meta property="og:url" content="https://0kbot.com">
     <meta property="og:type" content="website">
     
@@ -75,362 +75,220 @@
             margin-bottom: 2rem;
         }
 
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--secondary);
-            border-radius: 2px;
-        }
-
-        h3 {
-            font-size: clamp(1.3rem, 3vw, 1.6rem);
-            margin-bottom: 0.8rem;
-        }
-
         p {
-            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
             color: var(--light-text);
         }
 
-        a {
-            text-decoration: none;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--primary-dark);
-        }
-
-        /* Layout Components */
+        /* Container */
         .container {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background: var(--secondary);
-            color: var(--white);
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: var(--transition);
-            box-shadow: 0 4px 14px 0 rgba(0,0,0,0.09);
-            cursor: pointer;
-            border: none;
-            text-align: center;
-        }
-
-        .btn:hover {
-            background: var(--secondary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .btn-primary {
-            background: var(--primary);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-        }
-
-        .btn-outline:hover {
-            background: var(--secondary);
-            color: var(--white);
-        }
-
-        .section {
-            padding: 5rem 0;
-        }
-
-        .section:nth-child(even) {
-            background: var(--white);
-        }
-
-        .section-alt {
-            background: var(--accent);
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-
-        .section-header h2:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--white);
-            padding: 2rem 0 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header:before {
-            content: '';
-            position: absolute;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='2'/%3E%3C/svg%3E");
-            opacity: 0.3;
+            z-index: 1000;
+            padding: 1rem 0;
         }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .logo {
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            backdrop-filter: blur(5px);
-        }
-
-        .logo img {
-            max-width: 60px;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            font-weight: 400;
-            margin: 1rem auto 2rem;
-            max-width: 600px;
-            opacity: 0.9;
-        }
-
-        /* Features */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .feature {
-            background: var(--white);
-            padding: 2rem 1.5rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .feature-icon {
-            font-size: 2.8rem;
-            margin-bottom: 1.2rem;
-            color: var(--primary);
-        }
-
-        /* How it Works */
-        .process-steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .step {
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            text-align: center;
-            position: relative;
-            padding: 2rem;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .step-number {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        /* Pricing */
-        .pricing-plans {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .plan {
-            background: var(--white);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .plan:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .plan-header {
-            background: var(--primary);
-            color: var(--white);
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .plan-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .plan-price {
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-
-        .plan-period {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .plan-features {
-            padding: 1.5rem;
-        }
-
-        .plan-features ul {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .plan-features li {
-            padding: 0.7rem 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-        }
-
-        .plan-features li:before {
-            content: "✓";
-            color: var(--secondary);
-            margin-right: 0.8rem;
-            font-weight: bold;
-        }
-
-        .plan-popular {
-            position: absolute;
-            top: 15px;
-            right: -30px;
-            background: var(--secondary);
-            color: var(--white);
-            padding: 0.3rem 2.5rem;
-            transform: rotate(45deg);
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        /* FAQ */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            margin-bottom: 1.5rem;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .faq-question {
-            background: var(--white);
-            padding: 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
+        header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .faq-question:after {
-            content: "+";
-            font-size: 1.5rem;
+        .logo img {
+            height: 50px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
             transition: var(--transition);
         }
 
-        .faq-item.active .faq-question:after {
-            transform: rotate(45deg);
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary-dark);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--accent), var(--bg));
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-content p {
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 4rem 0;
+            background: var(--accent);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .pricing-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card ul li {
+            margin-bottom: 0.8rem;
+            color: var(--light-text);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 4rem 0;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: var(--accent);
         }
 
         .faq-answer {
-            background: var(--accent);
-            padding: 0 1.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: var(--transition);
+            padding: 0 1.5rem 1.5rem;
+            display: none;
+            color: var(--light-text);
         }
 
         .faq-item.active .faq-answer {
-            padding: 1.5rem;
-            max-height: 500px;
+            display: block;
         }
 
-        /* Contact Form */
-        .contact-form {
+        /* Contact Section */
+        .contacto {
+            padding: 4rem 0;
+            background: var(--accent);
+        }
+
+        .contacto form {
             max-width: 600px;
-            margin: 0 auto;
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            margin: 2rem auto;
         }
 
         .form-group {
@@ -445,7 +303,7 @@
 
         .form-control {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 0.8rem;
             border: 1px solid var(--border);
             border-radius: 8px;
             font-size: 1rem;
@@ -455,7 +313,7 @@
         .form-control:focus {
             border-color: var(--primary);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.1);
+            box-shadow: 0 0 5px rgba(0, 98, 255, 0.3);
         }
 
         textarea.form-control {
@@ -465,50 +323,39 @@
 
         /* Footer */
         footer {
-            background: var(--text);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 3rem 0 2rem;
-            text-align: center;
+            background: var(--white);
+            padding: 4rem 0 2rem;
+            box-shadow: 0 -6px 40px rgba(0,0,0,0.07);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
-            text-align: left;
-            max-width: 1200px;
-            margin: 0 auto 2rem;
-            padding: 0 1.5rem;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--white);
+            margin-bottom: 2rem;
         }
 
         .footer-links h4 {
-            color: var(--white);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
 
         .footer-links ul {
             list-style: none;
         }
 
-        .footer-links li {
-            margin-bottom: 0.7rem;
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
         }
 
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+        .footer-links ul li a {
+            color: var(--light-text);
+            text-decoration: none;
             transition: var(--transition);
         }
 
-        .footer-links a:hover {
-            color: var(--white);
-            padding-left: 5px;
+        .footer-links ul li a:hover {
+            color: var(--primary);
         }
 
         .social-links {
@@ -518,370 +365,201 @@
         }
 
         .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--primary);
+            color: var(--white);
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
             transition: var(--transition);
         }
 
         .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-hover);
         }
 
         .copyright {
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--light-text);
             font-size: 0.9rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
         }
 
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .section {
-                padding: 3rem 0;
-            }
-            
-            .features, .pricing-plans {
-                grid-template-columns: 1fr;
-            }
-            
-            .process-steps {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .footer-content {
+            .hero .container {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            
-            .footer-links ul {
-                padding: 0;
+
+            .hero-image {
+                margin-top: 2rem;
             }
-            
-            .social-links {
-                justify-content: center;
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
             }
         }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-        .delay-5 { animation-delay: 0.5s; }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="header-content fade-in">
+        <div class="container">
             <div class="logo">
-                <img src="https://img.icons8.com/clouds/100/000000/bot.png" alt="0KBot logo">
+                <img src="https://0kbot.com/logo.png" alt="0KBot Logo">
             </div>
-            <h1>0KBot – Automatiza tu negocio, conquista tu tiempo</h1>
-            <p class="hero-subtitle">Bots inteligentes para PYMES: agenda, vende y responde por WhatsApp y Meta sin esfuerzo</p>
-            <a href="#contacto" class="btn">Solicita tu demo</a>
+            <nav>
+                <ul>
+                    <li><a href="#features">Características</a></li>
+                    <li><a href="#pricing">Planes</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61578199291899" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/0k.bot/" target="_blank">Instagram</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Why Choose Us -->
-    <section class="section">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2>¿Por qué elegir 0KBot?</h2>
-                <p>La solución todo en uno para automatizar tu negocio y mejorar la experiencia de tus clientes</p>
+            <div class="hero-content">
+                <h1>Automatiza tu negocio y hazlo crecer con 0KBot</h1>
+                <p>Ahorra tiempo y aumenta tus ventas con bots inteligentes para WhatsApp, Instagram y más. La solución perfecta para PYMES que quieren escalar sin complicaciones.</p>
+                <a href="#contacto" class="btn btn-primary">Solicitar demo gratuita</a>
             </div>
-            
-            <div class="features">
-                <div class="feature fade-in delay-1">
-                    <div class="feature-icon">🤖</div>
-                    <h3>WhatsApp & Meta Integrado</h3>
-                    <p>Atiende, agenda y vende 24/7 donde tus clientes realmente están con integración completa en todas las plataformas de Meta.</p>
+            <div class="hero-image">
+                <img src="https://0kbot.com/hero-image.png" alt="0KBot en acción">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>¿Por qué elegir 0KBot?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Automatización de WhatsApp</h3>
+                    <p>Responde a tus clientes al instante, programa mensajes y gestiona conversaciones sin esfuerzo.</p>
                 </div>
-                
-                <div class="feature fade-in delay-2">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Automatización Real</h3>
-                    <p>Deja que el bot gestione consultas, reservas y recordatorios. Libera tu tiempo para enfocarte en lo que realmente importa.</p>
+                <div class="feature-card">
+                    <h3>Integración con Meta</h3>
+                    <p>Conecta automáticamente con tus seguidores en Instagram y Facebook para ventas y soporte.</p>
                 </div>
-                
-                <div class="feature fade-in delay-3">
-                    <div class="feature-icon">🧩</div>
-                    <h3>Personalización Total</h3>
-                    <p>Flujos adaptados a tu negocio. Configuración rápida y simple sin necesidad de conocimientos técnicos avanzados.</p>
+                <div class="feature-card">
+                    <h3>Agendamiento fácil</h3>
+                    <p>Tus clientes pueden reservar citas 24/7 sin que tengas que intervenir.</p>
                 </div>
-                
-                <div class="feature fade-in delay-4">
-                    <div class="feature-icon">💬</div>
-                    <h3>Soporte Humano Real</h3>
-                    <p>Te acompañamos de verdad con soporte personalizado. Nos importa tu éxito y crecimiento continuo.</p>
+                <div class="feature-card">
+                    <h3>Soporte 24/7</h3>
+                    <p>Ofrece atención al cliente todo el día, todos los días, sin aumentar tu carga de trabajo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- What We Do -->
-    <section class="section section-alt">
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2>¿Qué hacemos?</h2>
-                <p>Automatizamos tus procesos clave para que puedas escalar tu negocio sin complicaciones</p>
-            </div>
-            
-            <div class="features">
-                <div class="feature fade-in delay-1">
-                    <div class="feature-icon">📅</div>
-                    <h3>Agendamiento automático</h3>
-                    <p>Citas y reservas gestionadas automáticamente por WhatsApp, Instagram o web, reduciendo ausencias en un 80%.</p>
+            <h2>Elige el plan perfecto para tu negocio</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Básico</h3>
+                    <p class="price">$29.990/mes</p>
+                    <ul>
+                        <li>Automatización básica de WhatsApp</li>
+                        <li>Integración con Instagram</li>
+                        <li>Soporte porრ:email por correo</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-secondary">Empezar ahora</a>
                 </div>
-                
-                <div class="feature fade-in delay-2">
-                    <div class="feature-icon">💡</div>
-                    <h3>Respuestas instantáneas</h3>
-                    <p>El bot responde dudas frecuentes, precios, productos y más en segundos, 24/7.</p>
+                <div class="pricing-card">
+                    <h3>Pro</h3>
+                    <p class="price">$49.990/mes</p>
+                    <ul>
+                        <li>Automatización avanzada de WhatsApp</li>
+                        <li>Integración completa con Meta</li>
+                        <li>Agendamiento automático</li>
+                        <li>Soporte prioritario</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-primary">Empezar ahora</a>
                 </div>
-                
-                <div class="feature fade-in delay-3">
-                    <div class="feature-icon">🛒</div>
-                    <h3>Pedidos & compras</h3>
-                    <p>Toma pedidos, consulta stock y confirma entregas automáticamente en tus canales preferidos.</p>
-                </div>
-                
-                <div class="feature fade-in delay-4">
-                    <div class="feature-icon">🔔</div>
-                    <h3>Recordatorios & notificaciones</h3>
-                    <p>Evita ausencias y errores: envía avisos automáticos a tus clientes, mejorando la asistencia.</p>
-                </div>
-                
-                <div class="feature fade-in delay-1">
-                    <div class="feature-icon">📊</div>
-                    <h3>Reportes & análisis</h3>
-                    <p>Accede a métricas clave sobre conversiones, satisfacción de clientes y eficiencia de tu bot.</p>
-                </div>
-                
-                <div class="feature fade-in delay-2">
-                    <div class="feature-icon">🔗</div>
-                    <h3>Integración fácil</h3>
-                    <p>Conecta con Google Sheets, CRM, calendarios y más. Tus datos, siempre a mano y actualizados.</p>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <p class="price">Personalizado</p>
+                    <ul>
+                        <li>Todas las funciones Pro</li>
+                        <li>Automatización a medida</li>
+                        <li>Integración con CRM</li>
+                        <li>Soporte dedicado 24/7</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-secondary">Contactar</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="section">
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2>¿Cómo funciona?</h2>
-                <p>Implementa tu bot en 4 sencillos pasos</p>
+            <h2>Preguntas frecuentes</h2>
+            <div class="faq-item">
+                <div class="faq-question">¿Qué es 0KBot?</div>
+                <div class="faq-answer">0KBot es una herramienta que automatiza la atención al cliente, ventas y agendamientos en WhatsApp, Instagram y otras plataformas de Meta para PYMES.</div>
             </div>
-            
-            <div class="process-steps">
-                <div class="step fade-in delay-1">
-                    <div class="step-number">1</div>
-                    <h3>Consulta</h3>
-                    <p>Nos cuentas tu dolor y tu objetivo en una breve llamada de 15 minutos.</p>
-                </div>
-                
-                <div class="step fade-in delay-2">
-                    <div class="step-number">2</div>
-                    <h3>Personalización</h3>
-                    <p>Creamos y personalizamos tu bot según tus necesidades específicas.</p>
-                </div>
-                
-                <div class="step fade-in delay-3">
-                    <div class="step-number">3</div>
-                    <h3>Integración</h3>
-                    <p>Conectamos tus canales (WhatsApp, Instagram, web) en menos de 24 horas.</p>
-                </div>
-                
-                <div class="step fade-in delay-4">
-                    <div class="step-number">4</div>
-                    <h3>Resultados</h3>
-                    <p>¡Tu negocio empieza a escalar y automatizar desde el día 1!</p>
-                </div>
+            <div class="faq-item">
+                <div class="faq-question">¿Es fácil de configurar?</div>
+                <div class="faq-answer">Sí, nuestro equipo te guiará paso a paso para que esté listo en poco tiempo, sin necesidad de conocimientos técnicos.</div>
             </div>
-            
-            <div class="text-center" style="margin-top: 3rem;">
-                <a href="#contacto" class="btn btn-primary">Quiero mi bot ahora</a>
+            <div class="faq-item">
+                <div class="faq-question">¿Es seguro usar 0KBot?</div>
+                <div class="faq-answer">Absolutamente, cumplimos con las normativas de privacidad y tus datos están protegidos.</div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="section section-alt">
+    <!-- Contact Section -->
+    <section id="contacto" class="contacto">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2>Planes para todos</h2>
-                <p>Elige el plan que mejor se adapte a las necesidades de tu negocio</p>
-            </div>
-            
-            <div class="pricing-plans">
-                <div class="plan fade-in delay-1">
-                    <div class="plan-header">
-                        <h3 class="plan-name">Starter</h3>
-                        <div class="plan-price">$19.990</div>
-                        <div class="plan-period">CLP / mes</div>
-                    </div>
-                    <div class="plan-features">
-                        <ul>
-                            <li>1 canal de comunicación</li>
-                            <li>200 chats/mes</li>
-                            <li>Agendamiento automático</li>
-                            <li>Soporte inicial</li>
-                            <li>Respuestas básicas</li>
-                        </ul>
-                        <a href="#contacto" class="btn btn-outline">Empezar</a>
-                    </div>
+            <h2>Comienza hoy con una demo gratuita</h2>
+            <p>Déjanos tus datos y un especialista te mostrará cómo 0KBot puede transformar tu negocio.</p>
+            <form id="demoForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" class="form-control" required>
                 </div>
-                
-                <div class="plan fade-in delay-2">
-                    <div class="plan-popular">POPULAR</div>
-                    <div class="plan-header" style="background: var(--secondary);">
-                        <h3 class="plan-name">Pro</h3>
-                        <div class="plan-price">$29.990</div>
-                        <div class="plan-period">CLP / mes</div>
-                    </div>
-                    <div class="plan-features">
-                        <ul>
-                            <li>3 canales de comunicación</li>
-                            <li>1000 chats/mes</li>
-                            <li>Integración avanzada</li>
-                            <li>Soporte prioritario</li>
-                            <li>Tomador de pedidos</li>
-                            <li>Reportes mensuales</li>
-                        </ul>
-                        <a href="#contacto" class="btn">Empezar</a>
-                    </div>
+                <div class="form-group">
+                    <label for="negocio">Nombre del negocio</label>
+                    <input type="text" id="negocio" class="form-control" required>
                 </div>
-                
-                <div class="plan fade-in delay-3">
-                    <div class="plan-header">
-                        <h3 class="plan-name">Empresa</h3>
-                        <div class="plan-price">Personalizado</div>
-                        <div class="plan-period">Solución a medida</div>
-                    </div>
-                    <div class="plan-features">
-                        <ul>
-                            <li>Canales ilimitados</li>
-                            <li>Chats ilimitados</li>
-                            <li>Personalización total</li>
-                            <li>Soporte dedicado 24/7</li>
-                            <li>Integración API</li>
-                            <li>Reportes avanzados</li>
-                        </ul>
-                        <a href="#contacto" class="btn btn-outline">Consultar</a>
-                    </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Preguntas frecuentes</h2>
-                <p>Aquí respondemos a las dudas más comunes sobre 0KBot</p>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item fade-in delay-1">
-                    <div class="faq-question">¿Funciona para mi tipo de negocio?</div>
-                    <div class="faq-answer">
-                        <p>Sí, nos adaptamos a cualquier pyme que reciba consultas, agendamientos o pedidos. Hemos trabajado con restaurantes, clínicas, tiendas online, servicios profesionales y más. Nuestro sistema es flexible y se personaliza según tus necesidades específicas.</p>
-                    </div>
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp (opcional)</label>
+                    <input type="tel" id="whatsapp" class="form-control">
                 </div>
-                
-                <div class="faq-item fade-in delay-2">
-                    <div class="faq-question">¿Es difícil implementarlo?</div>
-                    <div class="faq-answer">
-                        <p>Para nada. Solo cuéntanos tu necesidad, nos encargamos de todo el proceso. Normalmente implementamos soluciones completas en menos de 72 horas. No necesitas conocimientos técnicos ni cambiar tus sistemas actuales.</p>
-                    </div>
+                <div class="form-group">
+                    <label for="necesidad">¿Qué quieres automatizar?</label>
+                    <textarea id="necesidad" class="form-control" required></textarea>
                 </div>
-                
-                <div class="faq-item fade-in delay-3">
-                    <div class="faq-question">¿Qué pasa si tengo dudas o cambios?</div>
-                    <div class="faq-answer">
-                        <p>Siempre tendrás soporte humano real. Ofrecemos soporte prioritario en todos nuestros planes, porque nos importa tu éxito. Además, puedes solicitar cambios en tu bot en cualquier momento sin costos adicionales.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in delay-4">
-                    <div class="faq-question">¿Puedo probar antes de comprar?</div>
-                    <div class="faq-answer">
-                        <p>¡Claro que sí! Ofrecemos una demo gratuita de 14 días para que veas cómo funciona el sistema con tu negocio. Sin compromisos ni requerimientos de tarjeta de crédito.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in delay-5">
-                    <div class="faq-question">¿Qué pasa si supero el límite de mensajes?</div>
-                    <div class="faq-answer">
-                        <p>Nuestro sistema te notificará cuando te acerques al límite y podrás actualizar tu plan en cualquier momento. Los mensajes adicionales tienen un costo muy accesible por mensaje.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contacto" class="section section-alt">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>¿Listo para automatizar tu negocio?</h2>
-                <p>Déjanos tus datos y un especialista te contactará para personalizar tu demo</p>
-            </div>
-            
-            <div class="contact-form fade-in">
-                <form id="demoForm">
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="negocio">Nombre del negocio</label>
-                        <input type="text" id="negocio" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="whatsapp">WhatsApp (opcional)</label>
-                        <input type="tel" id="whatsapp" class="form-control">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="necesidad">¿Qué quieres automatizar?</label>
-                        <textarea id="necesidad" class="form-control" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Solicitar demo</button>
-                </form>
-                
-                <div class="text-center" style="margin-top: 1.5rem;">
-                    <p>O contáctanos directamente:</p>
-                    <a href="https://wa.me/56973783020" class="btn" target="_blank" style="margin-top: 1rem;">
-                        <span>WhatsApp</span>
-                    </a>
-                </div>
+                <button type="submit" class="btn btn-primary">Solicitar demo</button>
+            </form>
+            <div class="text-center" style="margin-top: 1.5rem;">
+                <p>O contáctanos directamente:</p>
+                <a href="https://wa.me/56973783020" class="btn btn-secondary" target="_blank">Chatea por WhatsApp</a>
             </div>
         </div>
     </section>
@@ -890,26 +568,26 @@
     <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <div class="footer-logo">0KBot</div>
-                <p>Automatizamos tu negocio para que puedas enfocarte en lo que realmente importa: crecer y servir mejor a tus clientes.</p>
+                <div class="footer-logo">
+                    <img src="https://0kbot.com/logo.png" alt="0KBot Logo">
+                </div>
+                <p>Automatizamos tu negocio para que crezcas sin límites.</p>
                 <div class="social-links">
-                    <a href="#" aria-label="Facebook"><span>f</span></a>
-                    <a href="#" aria-label="Instagram"><span>ig</span></a>
-                    <a href="#" aria-label="LinkedIn"><span>in</span></a>
+                    <a href="https://www.facebook.com/profile.php?id=61578199291899" target="_blank" aria-label="Facebook">f</a>
+                    <a href="https://www.instagram.com/0k.bot/" target="_blank" aria-label="Instagram">ig</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
                 </div>
             </div>
-            
             <div class="footer-links">
                 <h4>Enlaces rápidos</h4>
                 <ul>
                     <li><a href="#">Inicio</a></li>
                     <li><a href="#features">Características</a></li>
                     <li><a href="#pricing">Planes</a></li>
-                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </div>
-            
             <div class="footer-links">
                 <h4>Legal</h4>
                 <ul>
@@ -918,7 +596,6 @@
                     <li><a href="#">Política de cookies</a></li>
                 </ul>
             </div>
-            
             <div class="footer-links">
                 <h4>Contacto</h4>
                 <ul>
@@ -928,9 +605,8 @@
                 </ul>
             </div>
         </div>
-        
         <div class="copyright container">
-            &copy; 2025 0KBot. Hecho con IA & 💡 | Todos los derechos reservados.
+            © 2025 0KBot. Hecho con IA & 💡 | Todos los derechos reservados.
         </div>
     </footer>
 
@@ -946,42 +622,18 @@
         // Form submission
         document.getElementById('demoForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Form validation
             const nombre = document.getElementById('nombre').value;
             const negocio = document.getElementById('negocio').value;
             const email = document.getElementById('email').value;
-            
-            if(nombre && negocio && email) {
-                // In a real implementation, you would send the data to your server
-                alert('¡Gracias por tu interés! Un especialista de 0KBot te contactará en las próximas horas.');
+            if (nombre && negocio && email) {
+                alert('¡Gracias! Te contactaremos pronto para tu demo gratuita.');
                 this.reset();
             } else {
-                alert('Por favor completa los campos requeridos');
+                alert('Por favor, completa todos los campos requeridos.');
             }
         });
         
-        // Animation on scroll
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-        
-        // Smooth scrolling for anchor links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
