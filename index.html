@@ -4,648 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>0KBot | Automatiza tu negocio con bots para WhatsApp y Meta</title>
-    <meta name="description" content="0KBot automatiza agendamientos, ventas y atención al cliente en WhatsApp, Instagram y más. La solución ideal para PYMES que quieren crecer sin complicaciones.">
-    <meta name="facebook-domain-verification" content="d9kao7p0vi3qpxwthyyji7omshztby" />
-    
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="0KBot | Automatiza tu negocio con bots para WhatsApp y Meta">
-    <meta property="og:description" content="Automatiza agendamientos, ventas y atención al cliente en WhatsApp, Instagram y más. La solución ideal para PYMES.">
+    <meta name="description" content="0KBot automatiza agendamientos, ventas y atención al cliente en WhatsApp, Instagram y más. La solución ideal para PYMES que buscan crecer rápidamente.">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="0KBot | Automatiza tu negocio">
+    <meta property="og:description" content="Automatiza fácilmente agendamientos, ventas y atención al cliente en WhatsApp e Instagram.">
     <meta property="og:image" content="https://0kbot.com/logo.png">
     <meta property="og:url" content="https://0kbot.com">
     <meta property="og:type" content="website">
-    
-    <!-- Preconnect for Google Fonts -->
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto&display=swap" rel="stylesheet">
+
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
-    
-    <style>
-        :root {
-            --primary: #0062ff;
-            --primary-dark: #0048c7;
-            --secondary: #0bb876;
-            --secondary-dark: #089762;
-            --accent: #f1f4f9;
-            --bg: #f9fafc;
-            --text: #212529;
-            --light-text: #5a626e;
-            --white: #ffffff;
-            --border: #e0e5ed;
-            --shadow: 0 6px 40px 0 rgba(0,0,0,0.07);
-            --shadow-hover: 0 8px 20px rgba(0, 98, 255, 0.15);
-            --radius: 20px;
-            --transition: all 0.3s ease;
-        }
+    <link rel="icon" href="https://0kbot.com/favicon.ico">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Roboto', 'Montserrat', Arial, sans-serif;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Typography */
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        h1 {
-            font-size: clamp(1.8rem, 5vw, 2.6rem);
-            margin-top: 0;
-        }
-
-        h2 {
-            font-size: clamp(1.6rem, 4vw, 2.2rem);
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        p {
-            font-size: 1.1rem;
-            color: var(--light-text);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Header */
-        header {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 50px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        nav ul li a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .btn-secondary {
-            background: var(--secondary);
-            color: var(--white);
-        }
-
-        .btn-secondary:hover {
-            background: var(--secondary-dark);
-            box-shadow: var(--shadow-hover);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, var(--accent), var(--bg));
-        }
-
-        .hero .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .hero-content p {
-            margin-bottom: 2rem;
-            max-width: 500px;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 4rem 0;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        /* Pricing Section */
-        .pricing {
-            padding: 4rem 0;
-            background: var(--accent);
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .pricing-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .pricing-card .price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-card ul {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-card ul li {
-            margin-bottom: 0.8rem;
-            color: var(--light-text);
-        }
-
-        /* FAQ Section */
-        .faq {
-            padding: 4rem 0;
-        }
-
-        .faq-item {
-            background: var(--white);
-            border-radius: var(--radius);
-            margin-bottom: 1rem;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .faq-question:hover {
-            background: var(--accent);
-        }
-
-        .faq-answer {
-            padding: 0 1.5rem 1.5rem;
-            display: none;
-            color: var(--light-text);
-        }
-
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        /* Contact Section */
-        .contacto {
-            padding: 4rem 0;
-            background: var(--accent);
-        }
-
-        .contacto form {
-            max-width: 600px;
-            margin: 2rem auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 98, 255, 0.3);
-        }
-
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--white);
-            padding: 4rem 0 2rem;
-            box-shadow: 0 -6px 40px rgba(0,0,0,0.07);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-links h4 {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links ul li a {
-            color: var(--light-text);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links ul li a:hover {
-            color: var(--primary);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--primary-dark);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .copyright {
-            text-align: center;
-            color: var(--light-text);
-            font-size: 0.9rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero .container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-image {
-                margin-top: 2rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-        }
-    </style>
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="https://0kbot.com/style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="https://0kbot.com/logo.png" alt="0KBot Logo">
+
+<header>
+    <div class="container">
+        <img src="https://0kbot.com/logo.png" alt="0KBot Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#features">Características</a></li>
+                <li><a href="#pricing">Planes</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=61578199291899" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/0k.bot/" target="_blank">Instagram</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-text">
+            <h1>Automatiza tu negocio y gana tiempo con 0KBot</h1>
+            <p>Convierte tus conversaciones en ventas, agiliza agendamientos y mejora la atención al cliente automáticamente.</p>
+            <a href="#contacto" class="btn-primary">Contáctanos ahora</a>
+        </div>
+        <div class="hero-img">
+            <img src="https://0kbot.com/hero-image.png" alt="Bot en acción">
+        </div>
+    </div>
+</section>
+
+<section id="features" class="features">
+    <div class="container">
+        <h2>¿Por qué elegirnos?</h2>
+        <div class="feature-cards">
+            <div class="card">
+                <h3>WhatsApp Automático</h3>
+                <p>Respuestas rápidas y automatizadas para potenciar tus ventas.</p>
             </div>
-            <nav>
+            <div class="card">
+                <h3>Integración Meta</h3>
+                <p>Conecta con Instagram y Facebook sin esfuerzo adicional.</p>
+            </div>
+            <div class="card">
+                <h3>Agendamiento 24/7</h3>
+                <p>Reserva de citas automáticas a cualquier hora.</p>
+            </div>
+            <div class="card">
+                <h3>Soporte Constante</h3>
+                <p>Atención ininterrumpida a tus clientes, siempre activa.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="pricing" class="pricing">
+    <div class="container">
+        <h2>Planes Adaptados a tu Crecimiento</h2>
+        <div class="pricing-cards">
+            <div class="card">
+                <h3>Básico</h3>
+                <p class="price">$29.990/mes</p>
                 <ul>
-                    <li><a href="#features">Características</a></li>
-                    <li><a href="#pricing">Planes</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                    <li><a href="https://www.facebook.com/profile.php?id=61578199291899" target="_blank">Facebook</a></li>
-                    <li><a href="https://www.instagram.com/0k.bot/" target="_blank">Instagram</a></li>
+                    <li>Automatización WhatsApp básica</li>
+                    <li>Integración Instagram</li>
+                    <li>Soporte vía correo</li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Automatiza tu negocio y hazlo crecer con 0KBot</h1>
-                <p>Ahorra tiempo y aumenta tus ventas con bots inteligentes para WhatsApp, Instagram y más. La solución perfecta para PYMES que quieren escalar sin complicaciones.</p>
-                <a href="#contacto" class="btn btn-primary">Solicitar demo gratuita</a>
+                <a href="#contacto" class="btn-secondary">Seleccionar</a>
             </div>
-            <div class="hero-image">
-                <img src="https://0kbot.com/hero-image.png" alt="0KBot en acción">
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2>¿Por qué elegir 0KBot?</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>Automatización de WhatsApp</h3>
-                    <p>Responde a tus clientes al instante, programa mensajes y gestiona conversaciones sin esfuerzo.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Integración con Meta</h3>
-                    <p>Conecta automáticamente con tus seguidores en Instagram y Facebook para ventas y soporte.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Agendamiento fácil</h3>
-                    <p>Tus clientes pueden reservar citas 24/7 sin que tengas que intervenir.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Soporte 24/7</h3>
-                    <p>Ofrece atención al cliente todo el día, todos los días, sin aumentar tu carga de trabajo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <h2>Elige el plan perfecto para tu negocio</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Básico</h3>
-                    <p class="price">$29.990/mes</p>
-                    <ul>
-                        <li>Automatización básica de WhatsApp</li>
-                        <li>Integración con Instagram</li>
-                        <li>Soporte porრ:email por correo</li>
-                    </ul>
-                    <a href="#contacto" class="btn btn-secondary">Empezar ahora</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Pro</h3>
-                    <p class="price">$49.990/mes</p>
-                    <ul>
-                        <li>Automatización avanzada de WhatsApp</li>
-                        <li>Integración completa con Meta</li>
-                        <li>Agendamiento automático</li>
-                        <li>Soporte prioritario</li>
-                    </ul>
-                    <a href="#contacto" class="btn btn-primary">Empezar ahora</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Enterprise</h3>
-                    <p class="price">Personalizado</p>
-                    <ul>
-                        <li>Todas las funciones Pro</li>
-                        <li>Automatización a medida</li>
-                        <li>Integración con CRM</li>
-                        <li>Soporte dedicado 24/7</li>
-                    </ul>
-                    <a href="#contacto" class="btn btn-secondary">Contactar</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="faq">
-        <div class="container">
-            <h2>Preguntas frecuentes</h2>
-            <div class="faq-item">
-                <div class="faq-question">¿Qué es 0KBot?</div>
-                <div class="faq-answer">0KBot es una herramienta que automatiza la atención al cliente, ventas y agendamientos en WhatsApp, Instagram y otras plataformas de Meta para PYMES.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">¿Es fácil de configurar?</div>
-                <div class="faq-answer">Sí, nuestro equipo te guiará paso a paso para que esté listo en poco tiempo, sin necesidad de conocimientos técnicos.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">¿Es seguro usar 0KBot?</div>
-                <div class="faq-answer">Absolutamente, cumplimos con las normativas de privacidad y tus datos están protegidos.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto" class="contacto">
-        <div class="container">
-            <h2>Comienza hoy con una demo gratuita</h2>
-            <p>Déjanos tus datos y un especialista te mostrará cómo 0KBot puede transformar tu negocio.</p>
-            <form id="demoForm">
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="negocio">Nombre del negocio</label>
-                    <input type="text" id="negocio" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="whatsapp">WhatsApp (opcional)</label>
-                    <input type="tel" id="whatsapp" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="necesidad">¿Qué quieres automatizar?</label>
-                    <textarea id="necesidad" class="form-control" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Solicitar demo</button>
-            </form>
-            <div class="text-center" style="margin-top: 1.5rem;">
-                <p>O contáctanos directamente:</p>
-                <a href="https://wa.me/56973783020" class="btn btn-secondary" target="_blank">Chatea por WhatsApp</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <div class="footer-logo">
-                    <img src="https://0kbot.com/logo.png" alt="0KBot Logo">
-                </div>
-                <p>Automatizamos tu negocio para que crezcas sin límites.</p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/profile.php?id=61578199291899" target="_blank" aria-label="Facebook">f</a>
-                    <a href="https://www.instagram.com/0k.bot/" target="_blank" aria-label="Instagram">ig</a>
-                    <a href="#" aria-label="LinkedIn">in</a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h4>Enlaces rápidos</h4>
+            <div class="card destacado">
+                <h3>Pro</h3>
+                <p class="price">$49.990/mes</p>
                 <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#features">Características</a></li>
-                    <li><a href="#pricing">Planes</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li>Automatización avanzada WhatsApp</li>
+                    <li>Integración completa Meta</li>
+                    <li>Agendamiento Automático</li>
+                    <li>Soporte Prioritario</li>
                 </ul>
+                <a href="#contacto" class="btn-primary">Seleccionar</a>
             </div>
-            <div class="footer-links">
-                <h4>Legal</h4>
+            <div class="card">
+                <h3>Enterprise</h3>
+                <p class="price">A medida</p>
                 <ul>
-                    <li><a href="#">Términos de servicio</a></li>
-                    <li><a href="#">Política de privacidad</a></li>
-                    <li><a href="#">Política de cookies</a></li>
+                    <li>Todas las características Pro</li>
+                    <li>Automatización personalizada</li>
+                    <li>Integración con CRM</li>
+                    <li>Soporte dedicado 24/7</li>
                 </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Contacto</h4>
-                <ul>
-                    <li>✉️ hola@0kbot.com</li>
-                    <li>📱 +56 9 7378 3020</li>
-                    <li>📍 Santiago, Chile</li>
-                </ul>
+                <a href="#contacto" class="btn-secondary">Contactar</a>
             </div>
         </div>
-        <div class="copyright container">
-            © 2025 0KBot. Hecho con IA & 💡 | Todos los derechos reservados.
-        </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                faqItem.classList.toggle('active');
-            });
-        });
-        
-        // Form submission
-        document.getElementById('demoForm').addEventListener('submit', function(e) {
+<footer>
+    <div class="container footer-content">
+        <p>📍 Santiago, Chile | 📱 +56 9 7378 3020 | ✉️ hola@0kbot.com</p>
+        <div class="social">
+            <a href="https://www.facebook.com/profile.php?id=61578199291899">Facebook</a>
+            <a href="https://www.instagram.com/0k.bot/">Instagram</a>
+        </div>
+    </div>
+    <p class="copy">© 2025 0KBot | Automatiza tu crecimiento.</p>
+</footer>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
             e.preventDefault();
-            const nombre = document.getElementById('nombre').value;
-            const negocio = document.getElementById('negocio').value;
-            const email = document.getElementById('email').value;
-            if (nombre && negocio && email) {
-                alert('¡Gracias! Te contactaremos pronto para tu demo gratuita.');
-                this.reset();
-            } else {
-                alert('Por favor, completa todos los campos requeridos.');
-            }
-        });
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+            document.querySelector(anchor.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
