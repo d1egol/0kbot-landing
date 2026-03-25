@@ -8,6 +8,10 @@ export default function Hero() {
         <div className="grid lg:grid-cols-5 gap-6 lg:gap-16 items-center">
           {/* Texto — 3 columnas */}
           <div className="lg:col-span-3 space-y-6">
+            <div className="font-display font-bold text-foreground" style={{ fontSize: "22px" }}>
+              0kbot
+            </div>
+
             <div className="inline-flex items-center gap-2 text-xs font-medium text-primary bg-primary/8 px-3 py-1.5 rounded-full font-sans border border-primary/15">
               <span
                 className="inline-block w-1.5 h-1.5 rounded-full bg-primary animate-scan"
