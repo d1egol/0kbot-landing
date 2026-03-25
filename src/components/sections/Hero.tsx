@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="bg-background pt-20 pb-16 lg:pt-32 lg:pb-24">
       <div className="container-content">
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-5 gap-6 lg:gap-16 items-center">
           {/* Texto — 3 columnas */}
           <div className="lg:col-span-3 space-y-6">
             <div className="inline-flex items-center gap-2 text-xs font-medium text-primary bg-primary/8 px-3 py-1.5 rounded-full font-sans border border-primary/15">
