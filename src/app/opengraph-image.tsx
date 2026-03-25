@@ -28,7 +28,7 @@ export default function OgImage() {
             top: 0,
             bottom: 0,
             width: "8px",
-            background: "#1B4332",
+            background: "#1B5FA6",
           }}
         />
 
@@ -37,7 +37,7 @@ export default function OgImage() {
           style={{
             fontSize: "28px",
             fontWeight: "700",
-            color: "#1B4332",
+            color: "#1B5FA6",
             letterSpacing: "-0.5px",
             marginBottom: "32px",
           }}
@@ -83,7 +83,7 @@ export default function OgImage() {
         >
           <div
             style={{
-              background: "#1B4332",
+              background: "#1B5FA6",
               color: "#F7F5F0",
               fontSize: "18px",
               fontWeight: "600",

@@ -15,7 +15,7 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 text-xs font-medium text-primary bg-primary/8 px-3 py-1.5 rounded-full font-sans border border-primary/15">
               <span
                 className="inline-block w-1.5 h-1.5 rounded-full bg-primary animate-scan"
-                style={{ backgroundColor: "#1B4332" }}
+                style={{ backgroundColor: "#1B5FA6" }}
               />
               Consultora de procesos · Santiago, Chile
             </div>

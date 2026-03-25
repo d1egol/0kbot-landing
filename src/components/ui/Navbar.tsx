@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import OpenModalButton from "./OpenModalButton";
 
 const NAV_LINKS = [
@@ -40,11 +41,15 @@ export default function Navbar() {
       <div className="container-content">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a
-            href="#"
-            className="font-display font-bold text-xl text-foreground hover:text-primary transition-colors"
-          >
-            0kbot
+          <a href="#" aria-label="0kbot — inicio">
+            <Image
+              src="/logo.png"
+              alt="0kbot"
+              height={36}
+              width={36}
+              className="rounded-md"
+              priority
+            />
           </a>
 
           {/* Links — desktop */}

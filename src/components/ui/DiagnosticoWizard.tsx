@@ -232,7 +232,7 @@ export default function DiagnosticoWizard() {
       <div className="max-w-lg mx-auto text-center py-12 px-8 bg-card border border-muted rounded-lg shadow-card">
         <div
           className="inline-flex items-center justify-center w-12 h-12 rounded-full mb-5"
-          style={{ backgroundColor: "#1B4332" }}
+          style={{ backgroundColor: "#1B5FA6" }}
         >
           <svg
             width="20"

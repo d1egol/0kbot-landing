@@ -34,7 +34,7 @@ export async function sendConfirmationEmail(lead: LeadInput): Promise<void> {
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
 <body style="font-family: system-ui, -apple-system, sans-serif; background: #F7F5F0; margin: 0; padding: 40px 20px;">
   <div style="max-width: 520px; margin: 0 auto; background: #FFFFFF; border-radius: 8px; overflow: hidden; border: 1px solid #E5E2DB;">
-    <div style="background: #1B4332; padding: 32px; text-align: center;">
+    <div style="background: #1B5FA6; padding: 32px; text-align: center;">
       <h1 style="color: #FFFFFF; font-size: 24px; font-weight: 700; margin: 0;">0kbot</h1>
     </div>
     <div style="padding: 32px;">
@@ -51,7 +51,7 @@ export async function sendConfirmationEmail(lead: LeadInput): Promise<void> {
         </p>
       </div>
       <p style="color: #4A4A4A; font-size: 14px; line-height: 1.6; margin: 0 0 8px;">
-        Cualquier consulta: <a href="mailto:hola@0kbot.com" style="color: #1B4332;">hola@0kbot.com</a>
+        Cualquier consulta: <a href="mailto:hola@0kbot.com" style="color: #1B5FA6;">hola@0kbot.com</a>
       </p>
     </div>
     <div style="border-top: 1px solid #E5E2DB; padding: 20px 32px; text-align: center;">
@@ -77,7 +77,7 @@ export async function sendDiagnosticoConfirmationEmail(
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
 <body style="font-family: system-ui, -apple-system, sans-serif; background: #F7F5F0; margin: 0; padding: 40px 20px;">
   <div style="max-width: 520px; margin: 0 auto; background: #FFFFFF; border-radius: 8px; overflow: hidden; border: 1px solid #E5E2DB;">
-    <div style="background: #1B4332; padding: 32px; text-align: center;">
+    <div style="background: #1B5FA6; padding: 32px; text-align: center;">
       <h1 style="color: #FFFFFF; font-size: 24px; font-weight: 700; margin: 0;">0kbot</h1>
     </div>
     <div style="padding: 32px;">
@@ -107,7 +107,7 @@ export async function sendDiagnosticoConfirmationEmail(
         </table>
       </div>
       <p style="color: #4A4A4A; font-size: 14px; line-height: 1.6; margin: 0 0 8px;">
-        Cualquier consulta: <a href="mailto:hola@0kbot.com" style="color: #1B4332;">hola@0kbot.com</a>
+        Cualquier consulta: <a href="mailto:hola@0kbot.com" style="color: #1B5FA6;">hola@0kbot.com</a>
       </p>
     </div>
     <div style="border-top: 1px solid #E5E2DB; padding: 20px 32px; text-align: center;">
@@ -139,7 +139,7 @@ export async function sendDiagnosticoNotificationEmail(
 <head><meta charset="UTF-8"></head>
 <body style="font-family: system-ui, sans-serif; background: #F7F5F0; margin: 0; padding: 40px 20px;">
   <div style="max-width: 520px; margin: 0 auto; background: #FFFFFF; border-radius: 8px; border: 1px solid #E5E2DB; overflow: hidden;">
-    <div style="background: #1B4332; padding: 20px 28px;">
+    <div style="background: #1B5FA6; padding: 20px 28px;">
       <p style="color: #D4A853; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 4px;">Nuevo diagnóstico · ${timelineLabel}</p>
       <h1 style="color: #FFFFFF; font-size: 20px; font-weight: 700; margin: 0;">${d.nombre}</h1>
     </div>
@@ -148,7 +148,7 @@ export async function sendDiagnosticoNotificationEmail(
         <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #4A4A4A; font-size: 13px; width: 35%;">Email</td>
           <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; font-size: 13px; font-weight: 500;">
-            <a href="mailto:${d.email}" style="color: #1B4332;">${d.email}</a>
+            <a href="mailto:${d.email}" style="color: #1B5FA6;">${d.email}</a>
           </td>
         </tr>
         ${d.telefono ? `
@@ -207,7 +207,7 @@ export async function sendNotificationEmail(lead: LeadInput): Promise<void> {
 <head><meta charset="UTF-8"></head>
 <body style="font-family: system-ui, sans-serif; background: #F7F5F0; margin: 0; padding: 40px 20px;">
   <div style="max-width: 520px; margin: 0 auto; background: #FFFFFF; border-radius: 8px; border: 1px solid #E5E2DB; overflow: hidden;">
-    <div style="background: #1B4332; padding: 20px 28px;">
+    <div style="background: #1B5FA6; padding: 20px 28px;">
       <p style="color: #D4A853; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 4px;">Nuevo lead — landing_diagnostico</p>
       <h1 style="color: #FFFFFF; font-size: 20px; font-weight: 700; margin: 0;">${lead.nombre}</h1>
     </div>
@@ -216,7 +216,7 @@ export async function sendNotificationEmail(lead: LeadInput): Promise<void> {
         <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #4A4A4A; font-size: 13px; width: 35%;">Email</td>
           <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #1A1A1A; font-size: 13px; font-weight: 500;">
-            <a href="mailto:${lead.email}" style="color: #1B4332;">${lead.email}</a>
+            <a href="mailto:${lead.email}" style="color: #1B5FA6;">${lead.email}</a>
           </td>
         </tr>
         <tr>

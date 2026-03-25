@@ -8,7 +8,7 @@
     --foreground: #1A1A1A;
     --card: #FFFFFF;
     --card-foreground: #1A1A1A;
-    --primary: #1B4332;
+    --primary: #1B5FA6;
     --primary-foreground: #FFFFFF;
     --accent: #D4A853;
     --accent-foreground: #1A1A1A;
@@ -16,7 +16,7 @@
     --muted-foreground: #4A4A4A;
     --border: #E5E2DB;
     --input: #E5E2DB;
-    --ring: #1B4332;
+    --ring: #1B5FA6;
     --radius: 0.5rem;
   }
 }
@@ -75,7 +75,7 @@
 
   /* Sección con fondo primary */
   .section-primary {
-    background-color: #1B4332;
+    background-color: #1B5FA6;
     color: #FFFFFF;
   }
 

@@ -44,7 +44,7 @@ export default function Credenciales() {
               />
               <div
                 className="absolute -bottom-3 -right-3 w-8 h-8 rounded-md"
-                style={{ backgroundColor: "#1B4332", opacity: 0.15 }}
+                style={{ backgroundColor: "#1B5FA6", opacity: 0.15 }}
               />
             </div>
           </AnimatedSection>
