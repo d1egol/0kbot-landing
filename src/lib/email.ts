@@ -20,7 +20,7 @@ export async function sendConfirmationEmail(lead: LeadInput): Promise<void> {
   await getResend().emails.send({
     from: `0kbot <${FROM()}>`,
     to: lead.email,
-    subject: "Recibimos tu solicitud de diagnóstico — 0kbot",
+    subject: "Tu diagnóstico está agendado — 0kbot",
     html: `
 <!DOCTYPE html>
 <html lang="es">
@@ -33,23 +33,22 @@ export async function sendConfirmationEmail(lead: LeadInput): Promise<void> {
     <div style="padding: 32px;">
       <p style="color: #1A1A1A; font-size: 16px; margin: 0 0 16px;">Hola ${lead.nombre},</p>
       <p style="color: #4A4A4A; font-size: 15px; line-height: 1.6; margin: 0 0 20px;">
-        Recibimos tu solicitud de diagnóstico. Te contactaremos en <strong>menos de 24 horas hábiles</strong> para agendar una conversación.
+        Recibimos tu solicitud. Te contactamos en <strong>menos de 24 horas</strong> para coordinar el diagnóstico gratuito.
       </p>
       <div style="background: #F7F5F0; border-radius: 6px; padding: 20px; margin: 24px 0; border-left: 4px solid #D4A853;">
-        <p style="color: #1A1A1A; font-size: 13px; font-weight: 600; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Lo que vamos a hacer</p>
-        <ul style="color: #4A4A4A; font-size: 14px; line-height: 1.7; margin: 0; padding-left: 20px;">
-          <li>Revisar el formulario que enviaste</li>
-          <li>Preparar preguntas específicas para tu industria</li>
-          <li>Contactarte para agendar 30 minutos de conversación</li>
-        </ul>
+        <p style="color: #1A1A1A; font-size: 13px; font-weight: 600; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Lo que pasa ahora</p>
+        <p style="color: #4A4A4A; font-size: 14px; line-height: 1.8; margin: 0;">
+          → Revisamos la información de ${lead.empresa}<br>
+          → Te llamamos o escribimos para confirmar horario<br>
+          → En 30 minutos identificamos dónde están tus pérdidas
+        </p>
       </div>
       <p style="color: #4A4A4A; font-size: 14px; line-height: 1.6; margin: 0 0 8px;">
-        Si tienes alguna pregunta antes, responde este correo o escríbenos a
-        <a href="mailto:hola@0kbot.com" style="color: #1B4332;">hola@0kbot.com</a>
+        Cualquier consulta: <a href="mailto:hola@0kbot.com" style="color: #1B4332;">hola@0kbot.com</a>
       </p>
     </div>
     <div style="border-top: 1px solid #E5E2DB; padding: 20px 32px; text-align: center;">
-      <p style="color: #4A4A4A; font-size: 12px; margin: 0;">Santiago, Chile · 0kbot</p>
+      <p style="color: #4A4A4A; font-size: 12px; margin: 0;">Diego · 0kbot · Santiago, Chile</p>
     </div>
   </div>
 </body>
@@ -66,7 +65,7 @@ export async function sendNotificationEmail(lead: LeadInput): Promise<void> {
   await getResend().emails.send({
     from: `0kbot Leads <${FROM()}>`,
     to: NOTIFICATION_TO(),
-    subject: `Nuevo lead: ${lead.nombre} — ${lead.empresa}`,
+    subject: `Nuevo lead: ${lead.nombre} de ${lead.empresa}`,
     html: `
 <!DOCTYPE html>
 <html lang="es">
@@ -98,8 +97,12 @@ export async function sendNotificationEmail(lead: LeadInput): Promise<void> {
           <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #1A1A1A; font-size: 13px;">${tamanoLabel}</td>
         </tr>
         <tr>
-          <td style="padding: 10px 0; color: #4A4A4A; font-size: 13px; vertical-align: top;">Problema</td>
-          <td style="padding: 10px 0; color: #1A1A1A; font-size: 13px; line-height: 1.5;">${problema}</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #4A4A4A; font-size: 13px; vertical-align: top;">Mensaje</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #1A1A1A; font-size: 13px; line-height: 1.5;">${problema}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #4A4A4A; font-size: 13px;">Fuente</td>
+          <td style="padding: 10px 0; color: #1A1A1A; font-size: 13px;">${lead.fuente}</td>
         </tr>
       </table>
     </div>

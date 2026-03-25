@@ -28,6 +28,7 @@ export async function POST(request: NextRequest) {
   }
 
   const lead = result.data;
+  console.log("[Leads API] Guardando lead:", lead.email);
 
   // 1. Guardar en Supabase (crítico — si falla, retornamos 500)
   try {
@@ -43,8 +44,9 @@ export async function POST(request: NextRequest) {
       estado: lead.estado,
     });
     if (error) throw error;
+    console.log("[Leads API] Lead guardado en Supabase:", lead.email);
   } catch (err) {
-    console.error("[leads] Error guardando en Supabase:", err);
+    console.error("[Leads API] Error guardando en Supabase:", err);
     return NextResponse.json(
       { error: "Error interno al guardar el lead" },
       { status: 500 }
@@ -52,15 +54,24 @@ export async function POST(request: NextRequest) {
   }
 
   // 2. Enviar emails (no crítico — si falla, igual retornamos 200)
-  try {
-    await Promise.all([
-      sendConfirmationEmail(lead),
-      sendNotificationEmail(lead),
-    ]);
-  } catch (err) {
-    console.error("[leads] Error enviando emails:", err);
-    // No bloqueamos al usuario por esto
+  let emailSent = false;
+  console.log("[Leads API] Enviando emails a:", lead.email);
+
+  const [confirmResult, notifResult] = await Promise.allSettled([
+    sendConfirmationEmail(lead),
+    sendNotificationEmail(lead),
+  ]);
+
+  if (confirmResult.status === "rejected") {
+    console.error("[Leads API] Error email confirmación:", confirmResult.reason);
+  }
+  if (notifResult.status === "rejected") {
+    console.error("[Leads API] Error email notificación:", notifResult.reason);
+  }
+  if (confirmResult.status === "fulfilled" && notifResult.status === "fulfilled") {
+    emailSent = true;
+    console.log("[Leads API] Ambos emails enviados correctamente");
   }
 
-  return NextResponse.json({ ok: true }, { status: 200 });
+  return NextResponse.json({ success: true, leadSaved: true, emailSent }, { status: 200 });
 }

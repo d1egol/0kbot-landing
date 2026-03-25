@@ -19,7 +19,7 @@ function useCountUp(target: number, duration: number, start: boolean) {
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
       // ease-out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
+      const eased = 1 - Math.pow(1 - progress, 4);
       setValue(Math.round(startValue + (target - startValue) * eased));
       if (progress < 1) requestAnimationFrame(step);
     };
@@ -45,15 +45,15 @@ export default function MetricCard({ className = "" }: MetricCardProps) {
           observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.6 }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
-  const horas = useCountUp(12, 1400, visible);
-  const costo = useCountUp(380, 1600, visible);
+  const horas = useCountUp(12, 1800, visible);
+  const costo = useCountUp(380, 1800, visible);
 
   return (
     <div
@@ -88,7 +88,10 @@ export default function MetricCard({ className = "" }: MetricCardProps) {
           <p className="text-xs text-muted-foreground font-sans mb-1">
             Tiempo perdido
           </p>
-          <p className="font-mono-metric text-2xl font-medium text-foreground">
+          <p
+            className="font-mono-metric text-2xl font-medium text-foreground transition-opacity duration-300"
+            style={{ opacity: visible ? 1 : 0 }}
+          >
             <span className="text-3xl font-bold">{horas}</span>
             <span className="text-base ml-1 text-muted-foreground">
               hrs/semana
@@ -100,7 +103,10 @@ export default function MetricCard({ className = "" }: MetricCardProps) {
           <p className="text-xs text-muted-foreground font-sans mb-1">
             Costo estimado
           </p>
-          <p className="font-mono-metric text-foreground">
+          <p
+            className="font-mono-metric text-foreground transition-opacity duration-300"
+            style={{ opacity: visible ? 1 : 0 }}
+          >
             <span className="text-xl font-bold text-primary">
               ${costo.toLocaleString("es-CL")}.000
             </span>
