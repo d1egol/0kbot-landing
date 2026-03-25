@@ -23,7 +23,7 @@ export default function Footer() {
           {/* LinkedIn + copyright */}
           <div className="flex items-center gap-4">
             <a
-              href="https://linkedin.com/company/0kbot"
+              href="https://www.linkedin.com/company/0kbot"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
