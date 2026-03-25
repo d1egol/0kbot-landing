@@ -43,7 +43,7 @@ export default function Footer() {
               </svg>
             </a>
             <p className="text-xs text-muted-foreground font-sans">
-              © 2025 0kbot
+              © 2026 0kbot
             </p>
           </div>
         </div>

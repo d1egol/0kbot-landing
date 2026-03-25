@@ -50,6 +50,58 @@ export const metadata: Metadata = {
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://0kbot.com/#business",
+      name: "0kbot",
+      description:
+        "Consultora de mejora de procesos para pymes chilenas. Metodología Lean, implementación práctica, resultados medibles en 12 semanas.",
+      url: "https://0kbot.com",
+      email: "contacto@0kbot.com",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Santiago",
+        addressCountry: "CL",
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "Chile",
+      },
+      serviceType: "Consultoría de mejora de procesos",
+      knowsAbout: [
+        "Lean Manufacturing",
+        "Six Sigma",
+        "Mejora de procesos",
+        "Automatización de procesos",
+        "Eficiencia operacional",
+      ],
+    },
+    {
+      "@type": "Person",
+      "@id": "https://0kbot.com/#founder",
+      name: "Diego",
+      jobTitle: "Founder",
+      worksFor: { "@id": "https://0kbot.com/#business" },
+      hasCredential: [
+        "Ingeniero Civil Industrial PUC",
+        "MSc Data Science",
+        "Lean Six Sigma Green Belt",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://0kbot.com/#website",
+      url: "https://0kbot.com",
+      name: "0kbot",
+      publisher: { "@id": "https://0kbot.com/#business" },
+      inLanguage: "es-CL",
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -72,6 +124,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${dmSans.variable} font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
 
