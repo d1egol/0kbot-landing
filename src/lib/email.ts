@@ -1,9 +1,12 @@
 import { Resend } from "resend";
 import type { LeadInput } from "@/lib/validations";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const FROM = process.env.RESEND_FROM_EMAIL ?? "hola@0kbot.com";
-const NOTIFICATION_TO = process.env.NOTIFICATION_EMAIL ?? "hola@0kbot.com";
+// Lazy init — no instanciar en el módulo para evitar error en build de Vercel
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
+const FROM = () => process.env.RESEND_FROM_EMAIL ?? "hola@0kbot.com";
+const NOTIFICATION_TO = () => process.env.NOTIFICATION_EMAIL ?? "hola@0kbot.com";
 
 const TAMANO_LABELS: Record<string, string> = {
   "<20": "Menos de 20 personas",
@@ -14,8 +17,8 @@ const TAMANO_LABELS: Record<string, string> = {
 };
 
 export async function sendConfirmationEmail(lead: LeadInput): Promise<void> {
-  await resend.emails.send({
-    from: `0kbot <${FROM}>`,
+  await getResend().emails.send({
+    from: `0kbot <${FROM()}>`,
     to: lead.email,
     subject: "Recibimos tu solicitud de diagnóstico — 0kbot",
     html: `
@@ -60,9 +63,9 @@ export async function sendNotificationEmail(lead: LeadInput): Promise<void> {
   const problema = lead.problema?.trim() || "(no especificado)";
   const cargo = lead.cargo?.trim() || "(no especificado)";
 
-  await resend.emails.send({
-    from: `0kbot Leads <${FROM}>`,
-    to: NOTIFICATION_TO,
+  await getResend().emails.send({
+    from: `0kbot Leads <${FROM()}>`,
+    to: NOTIFICATION_TO(),
     subject: `Nuevo lead: ${lead.nombre} — ${lead.empresa}`,
     html: `
 <!DOCTYPE html>
