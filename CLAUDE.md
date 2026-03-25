@@ -178,21 +178,28 @@
 |------|-------------|--------|-------|
 | **Fase 0** | Fundación: repositorio, stack base, Supabase conectado | ✅ Completada | 2026-03-24 |
 | **Fase 1** | Landing que convierte: 9 secciones, lead capture, emails, GA4 | ✅ Completada | 2026-03-25 |
-| **Fase 2** | Credibilidad: casos reales, metodología documentada, SEO profundo | ⏳ Pendiente | — |
+| **Fase 2** | Credibilidad: casos reales, metodología documentada, SEO profundo | ✅ Completada | 2026-03-25 |
 | **Fase 3** | Herramientas internas: calculadora ROI, diagnóstico guiado | ⏳ Pendiente | — |
+| **Fase 4** | Contenido y blog | ⏳ Pendiente | — |
 
 ---
 
-## Próximos pasos — Fase 2
+## Completado en Fase 2
 
-1. **Migración DB 002** — aplicar en Supabase Dashboard antes del primer lead real
-2. **Casos reales** — reemplazar los 3 casos ficticios en `Casos.tsx` con casos reales (anonimizados)
-3. **Foto real** — reemplazar el placeholder "D" en `Credenciales.tsx` con foto de Diego
-4. **LinkedIn URL** — actualizar URL real en `Footer.tsx`
-5. **Google Analytics** — configurar `NEXT_PUBLIC_GA_ID` en Vercel con el ID real
-6. **Resend** — verificar dominio `0kbot.com` en Resend para envíos desde `contacto@0kbot.com`
-7. **SEO profundo** — structured data (JSON-LD), Open Graph image, sitemap.xml
-8. **Meta Pixel** — agregar si se usa publicidad en Meta
+1. ✅ **Migración DB 002** — aplicada en Supabase Dashboard
+2. ✅ **LinkedIn URL** — `https://www.linkedin.com/company/0kbot`
+3. ✅ **Google Analytics** — `NEXT_PUBLIC_GA_ID=G-C1DXZ8P1XJ` configurado en Vercel
+4. ✅ **Resend** — dominio `0kbot.com` verificado (DNS configurado en Vercel)
+5. ✅ **SEO profundo** — JSON-LD (LocalBusiness/Person/WebSite), Open Graph image dinámica (`opengraph-image.tsx`), `sitemap.ts`, `robots.ts`
+6. ✅ **6 casos ilustrativos** en `Casos.tsx` (reemplazar por casos reales cuando estén disponibles)
+
+## Próximos pasos — Fase 3
+
+1. **Casos reales** — reemplazar los 6 casos ilustrativos en `Casos.tsx` con casos reales (anonimizados)
+2. **Foto real** — reemplazar el placeholder "D" en `Credenciales.tsx` con foto de Diego
+3. **Meta Pixel** — agregar si se usa publicidad en Meta
+4. **Calculadora ROI** — herramienta interactiva para estimar el costo de los problemas de proceso
+5. **Diagnóstico guiado** — flujo de preguntas que cualifica al lead antes de la llamada
 
 ---
 
