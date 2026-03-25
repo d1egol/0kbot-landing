@@ -79,6 +79,15 @@
     color: #FFFFFF;
   }
 
+  /* Ocultar scrollbar en carrusel horizontal */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Max-width contenido centrado */
   .container-content {
     max-width: 1100px;

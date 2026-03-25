@@ -1,4 +1,5 @@
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import CasosCarousel from "@/components/ui/CasosCarousel";
 
 const casos = [
   {
@@ -82,60 +83,7 @@ export default function Casos() {
           </p>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {casos.map((caso, i) => (
-            <AnimatedSection key={caso.industria} delay={((i % 3) * 100) as 0 | 100 | 200}>
-              <div className="bg-card border border-muted rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-shadow h-full flex flex-col">
-                {/* Header */}
-                <div className="p-6 pb-4 border-b border-muted">
-                  <p className="text-xs font-sans font-medium text-muted-foreground uppercase tracking-wide mb-1">
-                    {caso.industria}
-                  </p>
-                  <p className="text-sm font-sans text-muted-foreground">
-                    {caso.tamano}
-                  </p>
-                </div>
-
-                {/* Body */}
-                <div className="p-6 flex-1 space-y-4">
-                  <div>
-                    <p className="text-xs font-sans font-semibold text-foreground uppercase tracking-wide mb-1.5">
-                      El problema
-                    </p>
-                    <p className="text-sm text-muted-foreground font-sans leading-relaxed">
-                      {caso.problema}
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="text-xs font-sans font-semibold text-foreground uppercase tracking-wide mb-1.5">
-                      La solución
-                    </p>
-                    <p className="text-sm text-muted-foreground font-sans leading-relaxed">
-                      {caso.solucion}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Resultado */}
-                <div
-                  className="p-6 pt-4 border-t-2"
-                  style={{ borderTopColor: "#D4A853" }}
-                >
-                  <p className="font-mono-metric text-xl font-bold text-primary">
-                    {caso.metrica}
-                  </p>
-                  <p className="text-xs text-muted-foreground font-sans mt-0.5">
-                    {caso.metricaLabel}
-                  </p>
-                  <p className="text-xs text-muted-foreground font-sans mt-2 italic">
-                    {caso.resultado}
-                  </p>
-                </div>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
+        <CasosCarousel casos={casos} />
       </div>
     </section>
   );
