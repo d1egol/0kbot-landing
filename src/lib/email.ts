@@ -3,7 +3,7 @@ import type { LeadInput } from "@/lib/validations";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM = process.env.RESEND_FROM_EMAIL ?? "hola@0kbot.com";
-const NOTIFICATION_TO = process.env.NOTIFICATION_EMAIL ?? "contacto@0kbot.com";
+const NOTIFICATION_TO = process.env.NOTIFICATION_EMAIL ?? "hola@0kbot.com";
 
 const TAMANO_LABELS: Record<string, string> = {
   "<20": "Menos de 20 personas",
@@ -42,7 +42,7 @@ export async function sendConfirmationEmail(lead: LeadInput): Promise<void> {
       </div>
       <p style="color: #4A4A4A; font-size: 14px; line-height: 1.6; margin: 0 0 8px;">
         Si tienes alguna pregunta antes, responde este correo o escríbenos a
-        <a href="mailto:contacto@0kbot.com" style="color: #1B4332;">contacto@0kbot.com</a>
+        <a href="mailto:hola@0kbot.com" style="color: #1B4332;">hola@0kbot.com</a>
       </p>
     </div>
     <div style="border-top: 1px solid #E5E2DB; padding: 20px 32px; text-align: center;">

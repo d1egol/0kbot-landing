@@ -13,10 +13,10 @@ export default function Footer() {
             <span>Santiago, Chile</span>
             <span className="hidden sm:inline text-muted">·</span>
             <a
-              href="mailto:contacto@0kbot.com"
+              href="mailto:hola@0kbot.com"
               className="hover:text-primary transition-colors"
             >
-              contacto@0kbot.com
+              hola@0kbot.com
             </a>
           </div>
 

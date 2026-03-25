@@ -312,10 +312,10 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
                   <p className="text-sm text-destructive font-sans">
                     Hubo un error. Intenta de nuevo o escríbenos a{" "}
                     <a
-                      href="mailto:contacto@0kbot.com"
+                      href="mailto:hola@0kbot.com"
                       className="underline"
                     >
-                      contacto@0kbot.com
+                      hola@0kbot.com
                     </a>
                   </p>
                 </div>
