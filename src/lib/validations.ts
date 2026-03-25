@@ -1,9 +1,5 @@
 import { z } from "zod";
 
-/**
- * Schema de validación para el formulario de contacto / captura de leads.
- * Usado tanto en el cliente (validación en tiempo real) como en el servidor (API route).
- */
 export const leadSchema = z.object({
   nombre: z
     .string()
@@ -22,16 +18,20 @@ export const leadSchema = z.object({
     .max(100, "El cargo no puede superar los 100 caracteres")
     .optional(),
 
-  empleados: z
-    .enum(["50-100", "100-200", "200+"], {
-      message: "Selecciona un rango válido de empleados",
-    })
-    .optional(),
+  tamano_empresa: z.enum(["<20", "20-50", "50-100", "100-200", ">200"] as const, {
+    message: "Selecciona el tamaño de tu empresa",
+  }),
 
-  mensaje: z
+  problema: z
     .string()
     .max(2000, "El mensaje no puede superar los 2000 caracteres")
     .optional(),
+
+  fuente: z.literal("landing_diagnostico").default("landing_diagnostico"),
+
+  estado: z
+    .enum(["nuevo", "contactado", "calificado", "descartado"] as const)
+    .default("nuevo"),
 });
 
 export type LeadInput = z.infer<typeof leadSchema>;
