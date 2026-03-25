@@ -79,6 +79,11 @@
     color: #FFFFFF;
   }
 
+  /* Compensar navbar fijo en scroll por ancla (#section) */
+  [id] {
+    scroll-margin-top: 4rem;
+  }
+
   /* Ocultar scrollbar en carrusel horizontal */
   .scrollbar-none {
     scrollbar-width: none;

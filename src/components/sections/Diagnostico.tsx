@@ -3,7 +3,7 @@ import DiagnosticoWizard from "@/components/ui/DiagnosticoWizard";
 
 export default function Diagnostico() {
   return (
-    <section className="bg-muted/20 py-20 lg:py-32 border-t border-muted">
+    <section id="diagnostico" className="bg-muted/20 py-20 lg:py-32 border-t border-muted">
       <div className="container-content">
         <AnimatedSection className="mb-12 text-center">
           <div className="inline-flex items-center gap-2 text-xs font-medium text-primary bg-primary/8 px-3 py-1.5 rounded-full font-sans border border-primary/15 mb-4">

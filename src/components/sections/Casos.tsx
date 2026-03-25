@@ -72,7 +72,7 @@ const casos = [
 
 export default function Casos() {
   return (
-    <section className="bg-muted/30 py-20 lg:py-32">
+    <section id="casos" className="bg-muted/30 py-20 lg:py-32">
       <div className="container-content">
         <AnimatedSection className="mb-14">
           <h2 className="font-display text-display-lg font-bold text-foreground">

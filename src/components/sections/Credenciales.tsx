@@ -9,41 +9,31 @@ const badges = [
 
 export default function Credenciales() {
   return (
-    <section className="bg-background py-20 lg:py-32">
+    <section id="credenciales" className="bg-background py-20 lg:py-32">
       <div className="container-content">
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           {/* Visual izquierda */}
           <AnimatedSection>
             <div className="relative">
-              <div
-                className="w-full aspect-square max-w-sm mx-auto rounded-lg bg-primary/6 border border-primary/15 flex items-center justify-center"
-              >
-                <div className="text-center space-y-4 p-8">
-                  <div
-                    className="w-20 h-20 rounded-full bg-primary/10 border-2 border-primary/20 mx-auto flex items-center justify-center"
-                  >
-                    <span className="font-display text-3xl font-bold text-primary">
-                      D
+              <div className="w-full max-w-sm mx-auto rounded-lg bg-primary/6 border border-primary/15 p-8 space-y-6">
+                <div>
+                  <p className="font-display font-bold text-2xl text-foreground">
+                    Diego
+                  </p>
+                  <p className="text-sm text-muted-foreground font-sans mt-1">
+                    Founder · 0kbot
+                  </p>
+                </div>
+                <div className="h-px bg-primary/10" />
+                <div className="flex flex-wrap gap-2">
+                  {badges.map((badge) => (
+                    <span
+                      key={badge}
+                      className="text-xs px-2.5 py-1.5 rounded-full bg-muted text-foreground font-sans"
+                    >
+                      {badge}
                     </span>
-                  </div>
-                  <div>
-                    <p className="font-display font-semibold text-lg text-foreground">
-                      Diego
-                    </p>
-                    <p className="text-sm text-muted-foreground font-sans">
-                      Founder · 0kbot
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {badges.map((badge) => (
-                      <span
-                        key={badge}
-                        className="text-xs px-2.5 py-1 rounded-full bg-muted text-foreground font-sans"
-                      >
-                        {badge}
-                      </span>
-                    ))}
-                  </div>
+                  ))}
                 </div>
               </div>
 

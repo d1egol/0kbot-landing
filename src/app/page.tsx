@@ -9,21 +9,25 @@ import CTAFinal from "@/components/sections/CTAFinal";
 import Diagnostico from "@/components/sections/Diagnostico";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
+import Navbar from "@/components/ui/Navbar";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <PainPoints />
-      <Solucion />
-      <ComoFunciona />
-      <Casos />
-      <Credenciales />
-      <FAQ />
-      <Diagnostico />
-      <CTAFinal />
-      <Footer />
-      <FloatingCTA />
-    </main>
+    <>
+      <Navbar />
+      <main className="pt-16">
+        <Hero />
+        <PainPoints />
+        <Solucion />
+        <ComoFunciona />
+        <Casos />
+        <Credenciales />
+        <FAQ />
+        <Diagnostico />
+        <CTAFinal />
+        <Footer />
+        <FloatingCTA />
+      </main>
+    </>
   );
 }
