@@ -2,37 +2,70 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 
 const casos = [
   {
-    industria: "Distribuidora de repuestos",
-    tamano: "45 personas",
+    industria: "Distribuidora de alimentos",
+    tamano: "55 personas",
     problema:
-      "Un supervisor dedicaba 3 horas diarias a \"arreglar\" órdenes mal ingresadas. Llevaba 2 años. Pensaban que era \"normal\".",
+      "El 18% de los pedidos salían con al menos un error. Reenvíos, notas de crédito y clientes molestos eran el pan de cada día.",
     solucion:
-      "Automatización de validación en el ingreso. El supervisor ahora atiende proveedores.",
-    resultado: "$4.200.000 anuales en horas recuperadas. 5 semanas de implementación.",
-    metrica: "$4.2M",
-    metricaLabel: "recuperados al año",
+      "Estandarización del proceso de picking con checklist digital en tablet. Sin sistema nuevo, sin inversión en software.",
+    resultado: "$5.8M anuales en reenvíos y notas de crédito eliminados. 6 semanas de implementación.",
+    metrica: "-88%",
+    metricaLabel: "errores de despacho",
   },
   {
-    industria: "Consultora de servicios",
-    tamano: "32 personas",
+    industria: "Empresa de mantención eléctrica",
+    tamano: "42 personas",
     problema:
-      "La gerenta comercial era la única que sabía el estado de todos los proyectos. Estaba quemada. Clientes insatisfechos porque \"nadie les responde\".",
+      "1 de cada 3 visitas técnicas requería una segunda visita porque el técnico llegaba sin el repuesto correcto. El cliente esperaba, el técnico viajaba de vuelta.",
     solucion:
-      "Dashboard visible para clientes + automatización de reportes. Ella delegó 70% del seguimiento.",
-    resultado: "0 proyectos perdidos por \"falta de seguimiento\" en 6 meses.",
-    metrica: "0",
-    metricaLabel: "proyectos perdidos en 6 meses",
+      "Diagnóstico estandarizado previo a la visita + lista de materiales automatizada según historial.",
+    resultado: "Segundas visitas bajaron de 31% a 7%. La misma dotación atiende 26% más órdenes al mes.",
+    metrica: "+26%",
+    metricaLabel: "capacidad sin contratar",
   },
   {
-    industria: "Empresa de logística",
-    tamano: "78 personas",
+    industria: "Clínica dental",
+    tamano: "19 personas",
     problema:
-      "Reportes de producción del fin de semana llegaban el martes. Decisiones de inventario con 48 horas de retraso.",
+      "El 27% de las horas agendadas no se presentaban. La recepcionista pasaba 2 horas diarias llamando para confirmar.",
     solucion:
-      "Sensores + dashboard en tiempo real. Alertas automáticas por WhatsApp.",
-    resultado: "23% reducción en inventario de seguridad. $12M anuales en capital liberado.",
-    metrica: "$12M",
-    metricaLabel: "en capital liberado al año",
+      "Confirmación automática por WhatsApp 48 y 24 horas antes. Lista de espera activa para llenar cancelaciones.",
+    resultado: "Inasistencias bajaron al 8%. $2.1M mensuales en horas recuperadas sin agregar sillones.",
+    metrica: "-70%",
+    metricaLabel: "inasistencias",
+  },
+  {
+    industria: "Empresa constructora",
+    tamano: "67 personas",
+    problema:
+      "Los informes de avance de obra llegaban cada viernes, a mano, con datos del martes. Las decisiones de compra se hacían sobre información vieja.",
+    solucion:
+      "Reporte diario estandarizado de 5 minutos por jefe de obra + consolidación automática para gerencia.",
+    resultado: "Tiempo de detección de desviaciones bajó de 5 días a 1. 2 compras de emergencia eliminadas al mes.",
+    metrica: "5×",
+    metricaLabel: "más rápido detectar desviaciones",
+  },
+  {
+    industria: "Importadora de insumos",
+    tamano: "34 personas",
+    problema:
+      "Cada fin de mes, 3 personas pasaban 2 días haciendo \"cuadre de inventario\". Las diferencias aparecían pero nadie sabía de dónde venían.",
+    solucion:
+      "Registro en el momento del movimiento + responsable asignado por zona. El cuadre mensual desapareció.",
+    resultado: "Diferencias de inventario bajaron 94%. El equipo recuperó 48 horas mensuales para trabajo productivo.",
+    metrica: "-94%",
+    metricaLabel: "diferencias de inventario",
+  },
+  {
+    industria: "Empresa de aseo y facilities",
+    tamano: "110 personas",
+    problema:
+      "Los supervisores hacían rondas de 3 horas para verificar cobertura. No había trazabilidad de qué punto estaba atendido y cuál no.",
+    solucion:
+      "Check-in digital por QR en cada punto de servicio + dashboard de cobertura en tiempo real.",
+    resultado: "Tiempo de supervisión bajó de 3 horas a 40 minutos. Incidentes por punto no atendido: 0 en el último trimestre.",
+    metrica: "-78%",
+    metricaLabel: "tiempo de supervisión",
   },
 ];
 
@@ -49,9 +82,9 @@ export default function Casos() {
           </p>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {casos.map((caso, i) => (
-            <AnimatedSection key={caso.industria} delay={(i * 100) as 0 | 100 | 200}>
+            <AnimatedSection key={caso.industria} delay={((i % 3) * 100) as 0 | 100 | 200}>
               <div className="bg-card border border-muted rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-shadow h-full flex flex-col">
                 {/* Header */}
                 <div className="p-6 pb-4 border-b border-muted">
