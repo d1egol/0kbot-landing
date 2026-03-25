@@ -6,6 +6,7 @@ import Casos from "@/components/sections/Casos";
 import Credenciales from "@/components/sections/Credenciales";
 import FAQ from "@/components/sections/FAQ";
 import CTAFinal from "@/components/sections/CTAFinal";
+import Diagnostico from "@/components/sections/Diagnostico";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 
@@ -19,6 +20,7 @@ export default function Home() {
       <Casos />
       <Credenciales />
       <FAQ />
+      <Diagnostico />
       <CTAFinal />
       <Footer />
       <FloatingCTA />

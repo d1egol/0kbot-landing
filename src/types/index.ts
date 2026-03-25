@@ -35,3 +35,14 @@ export interface FaqItem {
 }
 
 export type SubmitStatus = "idle" | "submitting" | "success" | "error";
+
+export interface DiagnosticoData {
+  tamano: "<20" | "20-50" | "50-100" | "100-200" | ">200";
+  industria: string;
+  dolor: string;
+  intentadoAntes: boolean;
+  intentadoDetalle: string;
+  timeline: string;
+  telefono: string;
+  empresa: string;
+}

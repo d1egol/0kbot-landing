@@ -35,3 +35,23 @@ export const leadSchema = z.object({
 });
 
 export type LeadInput = z.infer<typeof leadSchema>;
+
+export const diagnosticoSchema = z.object({
+  nombre: z
+    .string()
+    .min(2, "El nombre debe tener al menos 2 caracteres")
+    .max(100),
+  email: z.string().email("Ingresa un email válido"),
+  telefono: z.string().max(50).optional(),
+  empresa: z.string().max(200).optional(),
+  tamano: z.enum(["<20", "20-50", "50-100", "100-200", ">200"] as const, {
+    message: "Selecciona el tamaño de tu empresa",
+  }),
+  industria: z.string().min(1).max(200),
+  dolor: z.string().min(1).max(1000),
+  intentadoAntes: z.boolean(),
+  intentadoDetalle: z.string().max(2000).optional(),
+  timeline: z.string().min(1).max(200),
+});
+
+export type DiagnosticoInput = z.infer<typeof diagnosticoSchema>;
