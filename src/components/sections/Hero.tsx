@@ -39,7 +39,7 @@ export default function Hero() {
 
               <a
                 href="#como-funciona"
-                className="inline-flex items-center justify-center px-6 py-3.5 border border-muted text-foreground rounded-md font-medium font-sans text-sm hover:border-primary/40 hover:text-primary transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3.5 border-2 border-primary/40 text-primary rounded-md font-medium font-sans text-sm hover:border-primary hover:bg-primary/5 transition-colors"
               >
                 Ver cómo lo hacemos ↓
               </a>
