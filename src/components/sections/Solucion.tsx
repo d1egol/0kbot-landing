@@ -1,22 +1,20 @@
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import OpenModalButton from "@/components/ui/OpenModalButton";
 
-const columnas = [
-  {
-    titulo: "Lo que hacemos",
-    texto:
-      "Entramos, observamos, cronometramos. En 2 semanas te decimos exactamente dónde se va tu plata y tu tiempo. Con números, no con \"se ve mal\".",
-  },
-  {
-    titulo: "Cómo lo resolvemos",
-    texto:
-      "La mitad de las veces no necesitas software nuevo. Necesitas que alguien que ha visto 40 empresas como la tuya te diga: \"esto se arregla cambiando este paso, no comprando ese sistema\".",
-  },
-  {
-    titulo: "Por qué nosotros",
-    texto:
-      "No somos desarrolladores que quieren codear. Somos ingenieros que odiamos el desperdicio. Si la solución es un Excel bien hecho, te damos un Excel. Si es automatización, la implementamos.",
-  },
+const pasos = [
+  "Observamos lo que realmente pasa",
+  "Medimos tiempos, errores y puntos de fricción",
+  "Priorizamos qué corregir primero",
+  "Estandarizamos y automatizamos donde tiene sentido",
+  "Medimos impacto en eficiencia operacional",
+];
+
+const resultados = [
+  "Menos errores",
+  "Menos dependencia de personas clave",
+  "Más velocidad operativa",
+  "Más control",
+  "Decisiones con datos reales",
 ];
 
 export default function Solucion() {
@@ -25,33 +23,68 @@ export default function Solucion() {
       <div className="container-content">
         <AnimatedSection className="text-center mb-14">
           <h2 className="font-display text-display-lg font-bold text-white">
-            No vendemos IA.
+            Consultoría de procesos para pymes,
             <br />
-            Vendemos lunes tranquilos.
+            enfocada en corregir lo que hoy te frena.
           </h2>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-14">
-          {columnas.map((col, i) => (
-            <AnimatedSection key={col.titulo} delay={(i * 100) as 0 | 100 | 200}>
-              <div className="space-y-3">
-                <h3 className="font-display font-semibold text-lg text-accent">
-                  {col.titulo}
-                </h3>
-                <p className="text-white/80 font-sans text-sm leading-relaxed">
-                  {col.texto}
-                </p>
-              </div>
-            </AnimatedSection>
-          ))}
+        <div className="grid lg:grid-cols-3 gap-8 mb-14">
+          <AnimatedSection>
+            <div className="space-y-3">
+              <h3 className="font-display font-semibold text-lg text-accent">
+                Qué hacemos
+              </h3>
+              <p className="text-white/85 font-sans text-sm leading-relaxed">
+                Analizamos tus procesos operativos para detectar pérdidas de
+                tiempo, errores, retrabajo y cuellos de botella. Esa es la base
+                de cualquier optimización de procesos en pymes que valga la
+                pena.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={100}>
+            <div className="space-y-3">
+              <h3 className="font-display font-semibold text-lg text-accent">
+                Cómo lo hacemos
+              </h3>
+              <ol className="space-y-2.5">
+                {pasos.map((paso, idx) => (
+                  <li key={paso} className="flex items-start gap-2.5 text-white/85 font-sans text-sm leading-relaxed">
+                    <span className="text-accent font-mono-metric text-xs mt-0.5">
+                      {idx + 1}.
+                    </span>
+                    <span>{paso}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={200}>
+            <div className="space-y-3">
+              <h3 className="font-display font-semibold text-lg text-accent">
+                Qué obtienes
+              </h3>
+              <ul className="space-y-2.5">
+                {resultados.map((resultado) => (
+                  <li key={resultado} className="flex items-start gap-2.5 text-white/85 font-sans text-sm leading-relaxed">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent" />
+                    <span>{resultado}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </AnimatedSection>
         </div>
 
         <AnimatedSection className="text-center">
           <OpenModalButton className="inline-flex items-center justify-center px-8 py-4 bg-accent text-accent-foreground rounded-md font-semibold font-sans text-sm hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary transition-colors">
-            Quiero saber cuánto estoy perdiendo →
+            Detectar mis cuellos de botella →
           </OpenModalButton>
           <p className="mt-3 text-white/50 text-xs font-sans">
-            Diagnóstico gratuito · Sin compromiso
+            Sin teoría. Sin software por moda.
           </p>
         </AnimatedSection>
       </div>

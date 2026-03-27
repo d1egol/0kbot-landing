@@ -17,11 +17,11 @@ export default function Home() {
       <Navbar />
       <main className="pt-16">
         <Hero />
+        <Credenciales />
+        <Casos />
         <PainPoints />
         <Solucion />
         <ComoFunciona />
-        <Casos />
-        <Credenciales />
         <FAQ />
         <Diagnostico />
         <CTAFinal />
