@@ -20,7 +20,7 @@ export default function CTAFinal() {
             id="cta-final-btn"
             className="inline-flex items-center justify-center px-8 py-4 bg-accent text-accent-foreground rounded-md font-semibold font-sans text-base hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary transition-colors"
           >
-            Saber cuánto estoy perdiendo →
+            Descubrir pérdidas ocultas →
           </OpenModalButton>
 
           <p className="text-sm text-white/40 font-sans">

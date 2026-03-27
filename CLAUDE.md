@@ -193,6 +193,10 @@
 5. ✅ **SEO profundo** — JSON-LD (LocalBusiness/Person/WebSite), Open Graph image dinámica (`opengraph-image.tsx`), `sitemap.ts`, `robots.ts`
 6. ✅ **6 casos ilustrativos** en `Casos.tsx` (reemplazar por casos reales cuando estén disponibles)
 
+## Actualización de contenido (2026-03-27)
+
+- ✅ Rediseño editorial Fase 1.1: hero más claro, FAQs expandidas con schema, microcopy de conversión y metadata SEO on-page ajustada.
+
 ## Próximos pasos — Fase 3
 
 1. **Casos reales** — reemplazar los 6 casos ilustrativos en `Casos.tsx` con casos reales (anonimizados)

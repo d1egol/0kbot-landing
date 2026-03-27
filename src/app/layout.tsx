@@ -13,24 +13,24 @@ const dmSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "0kbot — Mejora de procesos para pymes chilenas",
+  title: "Automatización y mejora de procesos para pymes en Chile | 0kbot",
   description:
-    "Consultora de mejora de procesos para empresas con 10 a 200 personas. Metodología Lean, implementación práctica, resultados medibles en 12 semanas.",
+    "Consultoría de procesos para pymes en Chile: automatización de procesos, mejora de procesos operativos y eficiencia operacional con implementación práctica y resultados medibles.",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL ?? "https://0kbot.com"
   ),
   keywords: [
-    "consultoría procesos Chile",
-    "mejora procesos pymes",
-    "automatización procesos",
-    "Lean Six Sigma Chile",
+    "automatización de procesos",
+    "mejora de procesos operativos",
     "eficiencia operacional",
-    "optimización empresas medianas",
+    "optimización de procesos en pymes",
+    "consultoría de procesos",
+    "transformación digital para pymes",
   ],
   openGraph: {
-    title: "0kbot — Mejora de procesos para pymes chilenas",
+    title: "Automatización y mejora de procesos para pymes en Chile | 0kbot",
     description:
-      "En 2 semanas te decimos exactamente dónde se va tu plata y tu tiempo. En 12 semanas lo arreglamos y medimos la diferencia.",
+      "Detectamos cuellos de botella con números reales y mejoramos tu operación con automatización, estandarización y cambios concretos.",
     url: "https://0kbot.com",
     siteName: "0kbot",
     locale: "es_CL",
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "0kbot — Mejora de procesos para pymes chilenas",
+    title: "Automatización y mejora de procesos para pymes en Chile | 0kbot",
     description:
-      "En 2 semanas te decimos exactamente dónde se va tu plata y tu tiempo.",
+      "Consultoría de procesos con foco en eficiencia operacional y resultados medibles para pymes.",
   },
   robots: {
     index: true,
@@ -75,9 +75,11 @@ const jsonLd = {
       knowsAbout: [
         "Lean Manufacturing",
         "Six Sigma",
-        "Mejora de procesos",
+        "Mejora de procesos operativos",
         "Automatización de procesos",
         "Eficiencia operacional",
+        "Optimización de procesos en pymes",
+        "Transformación digital para pymes",
       ],
     },
     {

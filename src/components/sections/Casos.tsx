@@ -50,7 +50,7 @@ const casos = [
     industria: "Importadora de insumos",
     tamano: "34 personas",
     problema:
-      "Cada fin de mes, 3 personas pasaban 2 días haciendo \"cuadre de inventario\". Las diferencias aparecían pero nadie sabía de dónde venían.",
+      'Cada fin de mes, 3 personas pasaban 2 días haciendo "cuadre de inventario". Las diferencias aparecían pero nadie sabía de dónde venían.',
     solucion:
       "Registro en el momento del movimiento + responsable asignado por zona. El cuadre mensual desapareció.",
     resultado: "Diferencias de inventario bajaron 94%. El equipo recuperó 48 horas mensuales para trabajo productivo.",
@@ -76,10 +76,11 @@ export default function Casos() {
       <div className="container-content">
         <AnimatedSection className="mb-14">
           <h2 className="font-display text-display-lg font-bold text-foreground">
-            Lo que encontramos
+            Resultados reales de consultoría de procesos
           </h2>
-          <p className="mt-3 text-lg text-muted-foreground font-sans">
-            Y cuánto costaba no saberlo.
+          <p className="mt-3 text-lg text-muted-foreground font-sans max-w-3xl">
+            Cuando aplicamos automatización de procesos y diseño operativo con
+            foco, aparecen métricas como -88%, +26%, -70%, 5x, -94% y -78%.
           </p>
         </AnimatedSection>
 

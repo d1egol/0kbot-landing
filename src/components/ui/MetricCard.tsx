@@ -124,7 +124,7 @@ export default function MetricCard({ className = "" }: MetricCardProps) {
         }}
         className="mt-5 w-full text-sm font-medium text-primary hover:text-primary/80 transition-colors text-left font-sans"
       >
-        Resolver ahora →
+        Quiero números, no suposiciones →
       </button>
     </div>
   );

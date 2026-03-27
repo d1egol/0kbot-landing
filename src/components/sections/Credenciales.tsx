@@ -55,6 +55,9 @@ export default function Credenciales() {
               <h2 className="font-display text-display-md font-bold text-foreground">
                 He estado del otro lado
               </h2>
+              <p className="text-sm font-sans text-primary">
+                Ingeniero Civil Industrial PUC · MSc Data Science · Lean Six Sigma Green Belt · 8+ años en operaciones
+              </p>
 
               <div className="space-y-4 text-muted-foreground font-sans text-base leading-relaxed">
                 <p>

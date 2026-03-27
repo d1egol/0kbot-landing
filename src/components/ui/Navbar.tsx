@@ -68,7 +68,7 @@ export default function Navbar() {
           {/* CTA — desktop */}
           <div className="hidden md:block">
             <OpenModalButton className="inline-flex items-center justify-center px-4 py-2 bg-primary text-primary-foreground rounded-md font-medium font-sans text-sm hover:bg-primary/90 transition-colors">
-              Agendar diagnóstico →
+              Ver cuánto estoy perdiendo →
             </OpenModalButton>
           </div>
 
@@ -114,7 +114,7 @@ export default function Navbar() {
                 onBeforeOpen={() => setMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center px-4 py-3 bg-primary text-primary-foreground rounded-md font-medium font-sans text-sm hover:bg-primary/90 transition-colors"
               >
-                Agendar diagnóstico →
+                Ver cuánto estoy perdiendo →
               </OpenModalButton>
             </div>
           </nav>

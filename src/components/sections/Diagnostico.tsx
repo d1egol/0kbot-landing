@@ -7,14 +7,15 @@ export default function Diagnostico() {
       <div className="container-content">
         <AnimatedSection className="mb-12 text-center">
           <div className="inline-flex items-center gap-2 text-xs font-medium text-primary bg-primary/8 px-3 py-1.5 rounded-full font-sans border border-primary/15 mb-4">
-            Diagnóstico gratuito · 2 minutos · Sin compromiso
+            Diagnóstico inicial · 2 minutos · Sin compromiso
           </div>
           <h2 className="font-display text-display-lg font-bold text-foreground">
             ¿Cuánto le está costando a tu empresa?
           </h2>
           <p className="mt-3 text-lg text-muted-foreground font-sans max-w-xl mx-auto">
             Responde 5 preguntas y te llamamos para mostrarte dónde están las
-            pérdidas — con números, no con suposiciones.
+            pérdidas y oportunidades de mejora de procesos operativos — con
+            números, no con suposiciones.
           </p>
         </AnimatedSection>
 
