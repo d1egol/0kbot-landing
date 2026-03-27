@@ -1,80 +1,77 @@
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import MotionSection from "@/components/ui/MotionSection";
+import CasosCarousel from "@/components/ui/CasosCarousel";
 
 const casos = [
   {
-    sector: "Empresa de servicios",
-    problema: "Seguimiento de proyectos en planillas separadas, sin visibilidad del estado real.",
-    solucion: "Se centralizó el registro de proyectos, se automatizaron alertas de plazos y se creó un tablero de estado.",
-    resultado: "60% menos tiempo en reportes semanales. Visibilidad completa del pipeline.",
+    industria: "Distribuidora de alimentos",
+    tamano: "55 personas",
+    problema: "El 18% de los pedidos salían con al menos un error. Reenvíos, notas de crédito y clientes molestos eran el pan de cada día.",
+    solucion: "Estandarización del proceso de picking con checklist digital en tablet. Sin sistema nuevo, sin inversión en software.",
+    resultado: "$5.8M anuales en reenvíos y notas de crédito eliminados. 6 semanas de implementación.",
+    metrica: "-88%",
+    metricaLabel: "errores de despacho",
   },
   {
-    sector: "Comercio mayorista",
-    problema: "Pedidos por WhatsApp sin registro, errores frecuentes y reclamos de clientes.",
-    solucion: "Se estandarizó el flujo de pedidos con formularios y confirmaciones automáticas.",
-    resultado: "Reducción de errores en 80%. Mejor experiencia de cliente y seguimiento claro.",
+    industria: "Empresa de mantención eléctrica",
+    tamano: "42 personas",
+    problema: "1 de cada 3 visitas técnicas requería una segunda visita porque el técnico llegaba sin el repuesto correcto.",
+    solucion: "Diagnóstico estandarizado previo a la visita + lista de materiales automatizada según historial.",
+    resultado: "Segundas visitas bajaron de 31% a 7%. La misma dotación atiende 26% más órdenes al mes.",
+    metrica: "+26%",
+    metricaLabel: "capacidad sin contratar",
   },
   {
-    sector: "Clínica de salud",
-    problema: "Agenda manual, fichas en papel y reportes mensuales que tomaban dos días.",
-    solucion: "Se digitalizó la gestión de pacientes y se automatizaron reportes de atención.",
-    resultado: "Reportes automáticos en minutos. Mejor control de agendamiento y asistencia.",
+    industria: "Clínica dental",
+    tamano: "19 personas",
+    problema: "El 27% de las horas agendadas no se presentaban. La recepcionista pasaba 2 horas diarias llamando para confirmar.",
+    solucion: "Confirmación automática por WhatsApp 48 y 24 horas antes. Lista de espera activa para llenar cancelaciones.",
+    resultado: "Inasistencias bajaron al 8%. $2.1M mensuales en horas recuperadas sin agregar sillones.",
+    metrica: "-70%",
+    metricaLabel: "inasistencias",
+  },
+  {
+    industria: "Empresa constructora",
+    tamano: "67 personas",
+    problema: "Los informes de avance llegaban cada viernes, a mano, con datos del martes.",
+    solucion: "Reporte diario estandarizado de 5 minutos por jefe de obra + consolidación automática para gerencia.",
+    resultado: "Tiempo de detección de desviaciones bajó de 5 días a 1. 2 compras de emergencia eliminadas al mes.",
+    metrica: "5×",
+    metricaLabel: "más rápido detectar desviaciones",
+  },
+  {
+    industria: "Importadora de insumos",
+    tamano: "34 personas",
+    problema: "Cada fin de mes, 3 personas pasaban 2 días haciendo cuadre de inventario.",
+    solucion: "Registro en el momento del movimiento + responsable asignado por zona.",
+    resultado: "Diferencias de inventario bajaron 94%. El equipo recuperó 48 horas mensuales.",
+    metrica: "-94%",
+    metricaLabel: "diferencias de inventario",
+  },
+  {
+    industria: "Empresa de aseo y facilities",
+    tamano: "110 personas",
+    problema: "Los supervisores hacían rondas de 3 horas para verificar cobertura.",
+    solucion: "Check-in digital por QR + dashboard de cobertura en tiempo real.",
+    resultado: "Tiempo de supervisión bajó de 3 horas a 40 minutos. Incidentes: 0 en el último trimestre.",
+    metrica: "-78%",
+    metricaLabel: "tiempo de supervisión",
   },
 ];
 
-const CasosSection = () => {
+export default function CasosSection() {
   return (
-    <section className="section-padding surface-cool">
-      <div className="container-wide">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
-          <span className="text-sm font-medium text-accent uppercase tracking-wider">Casos típicos</span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mt-3 mb-4">
-            Escenarios reales, resultados concretos
+    <section id="casos" className="surface-warm py-20 lg:py-32">
+      <div className="container-content">
+        <MotionSection className="mb-14">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+            Lo que encontramos
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Situaciones que hemos resuelto junto a pymes como la tuya.
+          <p className="mt-3 text-lg text-muted-foreground font-body">
+            Y cuánto costaba no saberlo.
           </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {casos.map((caso, i) => (
-            <motion.div
-              key={caso.sector}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-card border border-border rounded-xl overflow-hidden"
-            >
-              <div className="bg-primary px-6 py-4">
-                <span className="text-sm font-medium text-primary-foreground/70">{caso.sector}</span>
-              </div>
-              <div className="p-6 space-y-4">
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Problema</span>
-                  <p className="text-sm text-foreground mt-1">{caso.problema}</p>
-                </div>
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-accent">Solución</span>
-                  <p className="text-sm text-foreground mt-1">{caso.solucion}</p>
-                </div>
-                <div className="pt-3 border-t border-border">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Resultado</span>
-                  <p className="text-sm font-medium text-foreground mt-1">{caso.resultado}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        </MotionSection>
+        <CasosCarousel casos={casos} />
       </div>
     </section>
   );
-};
-
-export default CasosSection;
+}

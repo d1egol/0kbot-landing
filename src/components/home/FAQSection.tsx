@@ -1,81 +1,41 @@
-import { motion } from "framer-motion";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import FAQAccordion from "@/components/ui/FAQAccordion";
 
-const faqs = [
+const preguntas = [
   {
-    q: "¿0kbot es una empresa de software o de bots?",
-    a: "No. Somos una consultora de digitalización de procesos. Ayudamos a pymes a ordenar su operación, estandarizar registros, automatizar tareas y tener visibilidad de sus datos. Usamos la tecnología como herramienta, no como producto final.",
+    pregunta: "¿Me van a querer vender un software caro?",
+    respuesta: "Si tu problema se resuelve con un Excel bien hecho, te damos un Excel. Solo el 40% de nuestros proyectos incluye desarrollo. El otro 60% es procesos, flujos y capacitación.",
   },
   {
-    q: "¿Con qué tipo de empresas trabajan?",
-    a: "Trabajamos principalmente con pymes en Chile de distintos sectores: servicios, comercio, salud, educación, logística y otros negocios intensivos en operación interna. Si tienes procesos desordenados y quieres mejorar, probablemente podamos ayudarte.",
+    pregunta: "¿Cuánto cuesta esto?",
+    respuesta: "El diagnóstico es gratis. La implementación depende de qué encontremos. Te damos presupuesto fijo antes de empezar, no horas abiertas. Y sí: si no ves resultado, no pagas el último tramo.",
   },
   {
-    q: "¿Cuánto tiempo toma ver resultados?",
-    a: "Depende de la complejidad, pero en general las primeras mejoras se implementan en semanas, no en meses. Priorizamos lo que tiene más impacto y menor fricción para empezar a generar valor rápido.",
+    pregunta: "¿Tengo que parar mi operación para esto?",
+    respuesta: "No. El mapeo lo hacemos observando, no interrumpiendo. La implementación la hacemos en paralelo. Tu equipo sigue trabajando.",
   },
   {
-    q: "¿Necesito comprar algún software especial?",
-    a: "No necesariamente. Trabajamos con herramientas que ya existen en el mercado y las configuramos según tus necesidades. No te vendemos licencias innecesarias; usamos lo que realmente necesitas.",
+    pregunta: "¿Y si el problema es mi gente, no los procesos?",
+    respuesta: "Te lo decimos en el diagnóstico. Si el problema es estructural de personas, te lo decimos y no cobramos implementación. Prefiero una recomendación honesta que un proyecto forzado.",
   },
   {
-    q: "¿Qué incluye el diagnóstico inicial?",
-    a: "El diagnóstico incluye un levantamiento de tus procesos actuales, identificación de cuellos de botella, mapeo de oportunidades de mejora y una propuesta priorizada de acciones concretas.",
+    pregunta: "¿En qué industrias trabajan?",
+    respuesta: "Distribución, logística, construcción, manufactura, servicios profesionales, clínicas y comercio. En general, cualquier empresa de 10 a 200 personas donde hay procesos repetitivos con personas coordinándose.",
   },
   {
-    q: "¿Trabajan de forma remota o presencial?",
-    a: "Ambas. El diagnóstico inicial puede ser presencial o remoto, y la implementación se adapta a tu realidad. Lo importante es que funcione para tu equipo.",
+    pregunta: "¿Cuánto demora ver resultados?",
+    respuesta: "Las mejoras rápidas se notan en 4-6 semanas. Los indicadores formales los medimos en las semanas 11-12. Si no hay resultado medible, no cobramos el último tramo.",
   },
 ];
 
-const FAQSection = () => {
+export default function FAQSection() {
   return (
-    <section className="section-padding surface-warm">
-      <div className="container-narrow">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
-          <span className="text-sm font-medium text-accent uppercase tracking-wider">FAQ</span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mt-3 mb-4">
-            Preguntas frecuentes
-          </h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="bg-card border border-border rounded-xl px-6 data-[state=open]:border-accent/30"
-              >
-                <AccordionTrigger className="text-left font-heading font-semibold text-foreground hover:no-underline py-5">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
+    <section className="bg-card py-20 lg:py-32 border-y border-muted">
+      <div className="container-content max-w-2xl">
+        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
+          Preguntas frecuentes
+        </h2>
+        <FAQAccordion items={preguntas} />
       </div>
     </section>
   );
-};
-
-export default FAQSection;
+}

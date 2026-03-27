@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Paleta brand 0kbot — cálida y profesional */
+    --background: 40 25% 96%;        /* #F7F5F0 */
+    --foreground: 0 0% 10%;          /* #1A1A1A */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 213 73% 37%;          /* #1B5FA6 azul 0kbot */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 20% 90%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 40 15% 88%;             /* #E5E2DB */
+    --muted-foreground: 0 0% 29%;    /* #4A4A4A */
+
+    --accent: 39 56% 57%;            /* #D4A853 dorado */
+    --accent-foreground: 0 0% 100%;
+    --accent-glow: 39 56% 64%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 213 73% 37%;
+
+    --radius: 0.5rem;
+
+    /* Tokens custom */
+    --hero-gradient: linear-gradient(135deg, hsl(220 45% 18%) 0%, hsl(220 35% 28%) 50%, hsl(200 40% 22%) 100%);
+    --surface-warm: 35 30% 97%;
+    --surface-cool: 210 25% 96%;
+    --text-subtle: 0 0% 45%;
+
+    /* Shadow tokens */
+    --shadow-card: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.06);
+    --shadow-card-hover: 0 4px 16px rgba(0,0,0,.12), 0 8px 24px rgba(0,0,0,.08);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  /* Scroll margin para navegación fija */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@layer utilities {
+  /* Hero gradient para headers de página */
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  /* Texto con gradiente acento */
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-glow)) 100%);
+  }
+
+  /* Fondos alternativos de sección */
+  .surface-warm {
+    background-color: hsl(var(--surface-warm));
+  }
+
+  .surface-cool {
+    background-color: hsl(var(--surface-cool));
+  }
+
+  /* Padding consistente de sección */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Contenedores */
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-content {
+    @apply max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Sombras custom */
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-card-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Animaciones CSS legacy (fade-up para SSR) */
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out forwards;
+  }
+
+  .animate-scan {
+    animation: scan 2s ease-in-out infinite;
+  }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scan {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
