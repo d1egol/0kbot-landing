@@ -1,0 +1,171 @@
+---
+title: "Las 3 herramientas gratuitas que toda pyme debería usar antes de gastar en software"
+excerpt: "Antes de pagar $500/mes en software, intenta esto. Tres herramientas gratis que combinadas hacen lo que cobran caro. Con ejemplos concretos de cómo usarlas en tu empresa."
+date: "2026-03-28"
+author: "Diego"
+category: "Tutoriales"
+tags: ["Google Sheets", "Apps Script", "Notion", "herramientas-gratuitas", "automatización"]
+featured: false
+---
+
+Recibo a un emprendedor. Dice: "Diego, necesito un software para gestionar mi operación".
+
+Antes de recomendar algo por $1.000 mensuales, le hago una pregunta: ¿Estás usando Google Sheets al máximo? ¿Sabes lo que hace Google Apps Script?
+
+Respuesta típica: "Eh... no, ¿eso qué es?"
+
+Aquí está el patrón: la mayoría de pymes gasta $500-1.000 mensuales en software cuando podrían hacer lo mismo con 3 herramientas gratuitas.
+
+No es porque sean idiotas. Es porque no sabían que existía.
+
+## Herramienta 1: Google Sheets + Google Apps Script
+
+Google Sheets es una hoja de cálculo. Google Apps Script es código JavaScript que corre sobre Sheets.
+
+Juntas, pueden hacer cosas que antes solo hacía software caro.
+
+### ¿Qué puedes hacer?
+
+- **Enviar emails automáticos** cuando algo cambia en la hoja (ej: "Hola cliente, tu pedido está listo")
+- **Generar reportes automáticos** que se envían cada lunes
+- **Conectar Sheets con otros servicios** (WhatsApp, tu sistema de inventario, etc.)
+- **Validar datos automáticamente** (si alguien mete un número en un campo de texto, el sistema lo rechaza)
+- **Hacer cálculos complejos** que se actualizan en tiempo real
+
+### Ejemplo práctico real
+
+Una pyme de servicios: cuando el técnico termina un trabajo, marca "completado" en Sheets.
+
+Apps Script automáticamente:
+1. Detecta que cambió a "completado"
+2. Calcula el costo total del servicio
+3. Genera una factura en PDF
+4. Envía mail al cliente con la factura
+5. Registra la venta en el sistema contable
+
+Manualmente, eso toma 10 minutos por servicio. Con Apps Script: 0 segundos.
+
+**Costo de configurar esto:** 2 horas de un junior que entienda un poco de programación. Paga una sola vez.
+
+### ¿Dónde aprendes?
+
+YouTube. Hay tutoriales gratuitos. O contrata a un developer junior por $300-500 para que te arme el flujo inicial.
+
+## Herramienta 2: Google Data Studio (Looker Studio)
+
+Software gratuito de Google que toma datos de Sheets, bases de datos, o cualquier fuente, y hace dashboards que se actualizan automáticamente.
+
+### ¿Qué puedes ver?
+
+- Ventas por semana (gráfico que se actualiza solo)
+- Clientes nuevos vs. repetidos
+- Costo promedio por servicio
+- Errores en el proceso
+- Quién en el equipo está produciendo más
+
+### Ejemplo práctico real
+
+Una distribuidora: todos los viernes, el jefe de operaciones pasaba 3 horas armando el reporte. Copiaba datos de 5 hojas de Sheets diferentes, pegaba en PowerPoint, escribía números manualmente.
+
+Con Data Studio:
+1. Los datos viven en Sheets (actualizados automáticamente via Apps Script)
+2. Data Studio los toma y hace gráficos en tiempo real
+3. El jefe entra a un dashboard y ve TODO
+
+**Tiempo antes: 3 horas. Tiempo ahora: 5 minutos.**
+
+### ¿Dónde aprendes?
+
+Data Studio tiene tutoriales dentro. Es muy visual. En 1 día aprendes a armar dashboards básicos.
+
+## Herramienta 3: Notion
+
+Herramienta de "todo en uno": base de datos, notas, documentación, proyectos.
+
+La versión gratuita es suficiente para pymes pequeñas-medianas.
+
+### ¿Qué puedes hacer?
+
+- Documentar procesos (una página por proceso, con fotos, pasos, responsables)
+- Crear una base de datos de clientes con historial
+- Rastrear proyectos (estado, responsable, deadline)
+- Registrar decisiones importantes con contexto
+- Crear un "playbook" de la empresa
+
+### Ejemplo práctico real
+
+Una constructora: cada proyecto requería los mismos documentos. El jefe de proyecto pasaba 4 horas por proyecto armando carpetas y documentos desde cero.
+
+Con Notion:
+1. Hay una plantilla de proyecto
+2. Cuando empieza un proyecto nuevo, duplica la plantilla
+3. Todo está ahí: checklist de documentos, presupuesto, equipo, timeline, riesgos
+
+**Tiempo: 5 minutos duplicar. Tiene todo.**
+
+## Cómo combinarlas para que funcionen juntas
+
+Lo interesante es que estas 3 se pueden conectar:
+
+1. Cliente llena un formulario (Google Forms o Notion)
+2. Los datos van automáticamente a Google Sheets via Apps Script
+3. Apps Script hace cálculos y genera un documento en Notion
+4. Data Studio toma los datos de Sheets y hace un dashboard del progreso
+5. Todo el equipo ve en Notion qué hay que hacer y en el dashboard cómo va
+
+**Costo total: $0** si usas versión gratuita de Notion. O $12 USD/mes para Notion profesional.
+
+Vs. software específico para tu industria: $500-2.000/mes.
+
+## Proyecto de 2 horas: arma tu primer workflow
+
+Ejemplo que puedes copiar — **servicio a cliente:**
+
+1. **Hora 1:** Arma una hoja en Google Sheets con columnas: Cliente | Servicio | Costo | Estado | Fecha completado
+2. **Hora 1.5:** Crea un Google Form que alimenta la hoja automáticamente
+3. **Hora 2:** Agrega un Apps Script simple: cuando cambias "Estado" a "completado", envía un email al cliente diciendo "Tu servicio está listo"
+4. **Extra (+1h):** Arma un dashboard en Data Studio que te muestre cuántos servicios completaste esta semana
+
+Resultado: un flujo completo con automatización de emails y dashboard, sin pagar nada.
+
+## ¿Cuándo necesitas software pagado?
+
+Hay situaciones donde estas herramientas no alcanzan:
+
+- App móvil compleja con sync en tiempo real
+- Seguridad enterprise (encriptación, auditoría avanzada)
+- Integración con sistemas muy específicos de tu industria
+- Más de 200 usuarios activos diarios
+- Reportes financieros que requieren certificación contable
+
+**Entonces sí, necesitas software profesional.**
+
+Pero el 70% de pymes no está en ese escalón. Están pagando 10x más de lo que deberían.
+
+## Mi recomendación para empezar
+
+- **Semana 1-2:** Arma tu estructura en Google Sheets
+- **Semana 3-4:** Conecta un Apps Script para una tarea repetitiva
+- **Semana 5:** Arma un dashboard en Data Studio
+- **Semana 6:** Documenta procesos en Notion
+
+Después mide: ¿Ahorré horas? ¿Está más claro? ¿Tengo mejor información?
+
+Si la respuesta es sí, probablemente nunca vas a necesitar software caro.
+
+## La verdad incómoda
+
+Software no soluciona un proceso caótico. Si tu operación es un desastre, agregar Sheets tampoco va a arreglarlo.
+
+Estas herramientas funcionan cuando:
+- Tienes claro qué necesitas medir
+- Tienes un proceso definido (aunque sea simple)
+- Tienes disciplina de mantener los datos actualizados
+
+Sino, es "garbage in, garbage out".
+
+Por eso en 0kbot la fórmula es: primero diagnosticamos, luego documentamos procesos, **luego** elegimos herramientas. En ese orden.
+
+---
+
+¿Necesitas ayuda para saber con qué herramienta empezar según tu operación? Haz nuestro **diagnóstico gratuito** y te damos una recomendación concreta.
