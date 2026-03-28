@@ -3,21 +3,19 @@
 import { useRef, useState } from "react";
 import MotionSection from "./MotionSection";
 
-interface CasoData {
+interface EscenarioData {
   industria: string;
   tamano: string;
   problema: string;
-  solucion: string;
-  resultado: string;
-  metrica: string;
-  metricaLabel: string;
+  enfoque: string;
+  impactoEsperado: string;
 }
 
 interface CasosCarouselProps {
-  casos: CasoData[];
+  casos: EscenarioData[];
 }
 
-function CasoCard({ caso }: { caso: CasoData }) {
+function EscenarioCard({ caso }: { caso: EscenarioData }) {
   return (
     <div className="bg-card border border-muted rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-shadow h-full flex flex-col">
       {/* Header */}
@@ -40,27 +38,24 @@ function CasoCard({ caso }: { caso: CasoData }) {
         </div>
         <div>
           <p className="text-xs font-sans font-semibold text-foreground uppercase tracking-wide mb-1.5">
-            La solución
+            Nuestro enfoque
           </p>
           <p className="text-sm text-muted-foreground font-sans leading-relaxed">
-            {caso.solucion}
+            {caso.enfoque}
           </p>
         </div>
       </div>
 
-      {/* Resultado */}
+      {/* Impacto esperado */}
       <div
         className="p-6 pt-4 border-t-2"
         style={{ borderTopColor: "#D4A853" }}
       >
-        <p className="font-mono-metric text-xl font-bold text-primary">
-          {caso.metrica}
+        <p className="text-xs font-sans font-semibold text-foreground uppercase tracking-wide mb-1.5">
+          Impacto esperado
         </p>
-        <p className="text-xs text-muted-foreground font-sans mt-0.5">
-          {caso.metricaLabel}
-        </p>
-        <p className="text-xs text-muted-foreground font-sans mt-2 italic">
-          {caso.resultado}
+        <p className="text-xs text-muted-foreground font-sans leading-relaxed italic">
+          {caso.impactoEsperado}
         </p>
       </div>
     </div>
@@ -99,7 +94,7 @@ export default function CasosCarousel({ casos }: CasosCarouselProps) {
               className="flex-shrink-0 w-full"
               style={{ scrollSnapAlign: "start" }}
             >
-              <CasoCard caso={caso} />
+              <EscenarioCard caso={caso} />
             </div>
           ))}
         </div>
@@ -111,7 +106,7 @@ export default function CasosCarousel({ casos }: CasosCarouselProps) {
               key={caso.industria}
               role="tab"
               aria-selected={i === activeIndex}
-              aria-label={`Ver caso ${i + 1}: ${caso.industria}`}
+              aria-label={`Ver escenario ${i + 1}: ${caso.industria}`}
               onClick={() => goTo(i)}
               className={`w-2 h-2 rounded-full transition-colors ${
                 i === activeIndex ? "bg-primary" : "bg-muted"
@@ -121,14 +116,14 @@ export default function CasosCarousel({ casos }: CasosCarouselProps) {
         </div>
       </div>
 
-      {/* Desktop: grid de 3 columnas con animación (igual al original) */}
+      {/* Desktop: grid de 3 columnas */}
       <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {casos.map((caso, i) => (
           <MotionSection
             key={caso.industria}
             delay={(i % 3) * 0.1}
           >
-            <CasoCard caso={caso} />
+            <EscenarioCard caso={caso} />
           </MotionSection>
         ))}
       </div>

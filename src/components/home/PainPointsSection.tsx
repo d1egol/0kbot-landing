@@ -32,7 +32,7 @@ const cards = [
     ),
     titulo: "El WhatsApp empresarial",
     texto:
-      "El 60% de la coordinación pasa por WhatsApp. Si se borra el celular de tu supervisor clave, se borra medio año de historial. El conocimiento vive en cabezas, no en sistemas.",
+      "Gran parte de la coordinación de tu empresa pasa por WhatsApp. Si se borra el celular de tu supervisor clave, se borra medio año de historial. El conocimiento vive en cabezas, no en sistemas.",
     accent: "border-emerald-200 hover:border-emerald-300",
     iconBg: "bg-emerald-50",
   },

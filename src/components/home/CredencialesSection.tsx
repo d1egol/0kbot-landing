@@ -1,17 +1,12 @@
+import Link from "next/link";
 import MotionSection from "@/components/ui/MotionSection";
-import { GraduationCap, BarChart3, Wrench, Briefcase, CheckCircle } from "lucide-react";
+import { GraduationCap, BarChart3, Wrench, Briefcase, CheckCircle, Linkedin } from "lucide-react";
 
 const badges = [
   { icon: GraduationCap, label: "Ing. Civil Industrial PUC", sub: "Pontificia Universidad Católica", color: "text-blue-600", bg: "bg-blue-50 border-blue-100" },
   { icon: BarChart3, label: "MSc Data Science", sub: "Especialización en analítica de datos", color: "text-purple-600", bg: "bg-purple-50 border-purple-100" },
   { icon: Wrench, label: "Lean Six Sigma Green Belt", sub: "Mejora continua de procesos", color: "text-emerald-600", bg: "bg-emerald-50 border-emerald-100" },
   { icon: Briefcase, label: "8+ años en operaciones", sub: "Plantas, puertos, distribución", color: "text-amber-600", bg: "bg-amber-50 border-amber-100" },
-];
-
-const impactMetrics = [
-  { value: "40+", label: "empresas ayudadas" },
-  { value: "200+", label: "procesos optimizados" },
-  { value: "$2M+", label: "ahorros identificados" },
 ];
 
 export default function CredencialesSection() {
@@ -27,29 +22,31 @@ export default function CredencialesSection() {
                 <div className="h-20 bg-gradient-to-r from-[#1B5FA6] to-[#0d3d6e] relative">
                   <div className="absolute bottom-0 right-6 translate-y-1/2">
                     <div className="w-16 h-16 rounded-2xl bg-[#D4A853] flex items-center justify-center font-heading font-bold text-2xl text-white shadow-lg border-4 border-white">
-                      D
+                      DL
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-10 pb-6 px-6">
-                  <div className="mb-1">
-                    <p className="font-heading font-bold text-xl text-[#1A1A1A]">Diego</p>
-                    <p className="text-sm text-[#666] flex items-center gap-1.5">
-                      <span>Founder &amp; CEO</span>
-                      <span className="text-[#E5E2DB]">·</span>
-                      <span className="text-[#1B5FA6] font-medium">0kbot</span>
-                    </p>
-                  </div>
-
-                  {/* Impact metrics */}
-                  <div className="grid grid-cols-3 gap-3 my-5 py-4 border-y border-[#F0EDE8]">
-                    {impactMetrics.map((m) => (
-                      <div key={m.label} className="text-center">
-                        <div className="font-heading font-bold text-lg text-[#1B5FA6]">{m.value}</div>
-                        <div className="text-xs text-[#999] leading-tight">{m.label}</div>
-                      </div>
-                    ))}
+                  <div className="mb-4 flex items-start justify-between">
+                    <div>
+                      <p className="font-heading font-bold text-xl text-[#1A1A1A]">Diego López</p>
+                      <p className="text-sm text-[#666] flex items-center gap-1.5">
+                        <span>Founder &amp; CEO</span>
+                        <span className="text-[#E5E2DB]">·</span>
+                        <span className="text-[#1B5FA6] font-medium">0kbot</span>
+                      </p>
+                      <p className="text-xs text-[#999] mt-0.5">Consultor de procesos · Santiago, Chile</p>
+                    </div>
+                    <Link
+                      href="https://www.linkedin.com/in/diego-lopez-dinamarca/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn Diego López"
+                      className="text-[#0077b5] hover:text-[#005e8e] transition-colors mt-1"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </Link>
                   </div>
 
                   {/* Credential badges */}

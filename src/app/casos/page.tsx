@@ -1,97 +1,109 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import MotionSection from "@/components/ui/MotionSection";
-import { ArrowRight } from "lucide-react";
+import OpenModalButton from "@/components/ui/OpenModalButton";
 
 export const metadata: Metadata = {
-  title: "Casos de éxito",
+  title: "Escenarios y soluciones · 0kbot",
   description:
-    "Casos reales de mejora de procesos en pymes chilenas. Resultados medibles: -88% errores, +26% capacidad, -70% inasistencias y más.",
+    "Problemas operativos comunes en pymes chilenas y cómo los abordamos: coordinación por WhatsApp, errores de despacho, inasistencias, inventario descontrolado y más.",
   keywords: [
-    "casos de éxito consultoría procesos",
-    "resultados mejora de procesos Chile",
-    "pymes chilenas eficiencia",
+    "problemas operativos pymes Chile",
+    "mejora de procesos distribuidoras",
+    "automatización servicios técnicos Chile",
+    "estandarización procesos pymes Santiago",
   ],
 };
 
-const casosMetrica = [
+const escenarios = [
   {
-    industria: "Distribuidora de alimentos",
-    tamano: "55 personas",
-    problema: "El 18% de los pedidos salían con al menos un error. Reenvíos, notas de crédito y clientes molestos eran el pan de cada día.",
-    solucion: "Estandarización del proceso de picking con checklist digital en tablet. Sin sistema nuevo, sin inversión en software.",
-    resultado: "$5.8M anuales en reenvíos y notas de crédito eliminados. 6 semanas de implementación.",
-    metrica: "-88%",
-    metricaLabel: "errores de despacho",
+    industria: "Distribuidora o empresa de despacho",
+    tamano: "40–60 personas",
+    problema:
+      "Los pedidos se coordinan por WhatsApp y planilla Excel. El picking se hace de memoria, sin checklist, y los errores llegan con el cliente. Reenvíos, notas de crédito y clientes molestos son la norma.",
+    raizDelProblema: "Falta de estandarización del proceso de picking. Sin un protocolo claro, cada operario hace las cosas a su manera.",
+    enfoque: [
+      "Mapeo del flujo de pedidos desde la recepción hasta el despacho",
+      "Diseño de checklist digital de picking por línea de producto",
+      "Centralización del registro de pedidos en un formulario único",
+      "Tablero de seguimiento de pedidos y estado de despacho",
+    ],
+    impactoEsperado:
+      "La estandarización del picking reduce errores en 50–80% según benchmarks de industria logística (Lean Institute). El tiempo de coordinación baja al eliminar la doble entrada de datos.",
   },
   {
-    industria: "Empresa de mantención eléctrica",
-    tamano: "42 personas",
-    problema: "1 de cada 3 visitas técnicas requería una segunda visita porque el técnico llegaba sin el repuesto correcto.",
-    solucion: "Diagnóstico estandarizado previo a la visita + lista de materiales automatizada según historial.",
-    resultado: "Segundas visitas bajaron de 31% a 7%. La misma dotación atiende 26% más órdenes al mes.",
-    metrica: "+26%",
-    metricaLabel: "capacidad sin contratar",
+    industria: "Empresa de servicios técnicos o mantención",
+    tamano: "30–50 personas",
+    problema:
+      "Los técnicos llegan a terreno sin el repuesto correcto porque no hay diagnóstico previo estandarizado. 1 de cada 3 visitas requiere una segunda. Los clientes esperan más, la empresa gasta más en traslados.",
+    raizDelProblema: "Ausencia de protocolo de diagnóstico previo. La información del trabajo no se recopila antes de despachar al técnico.",
+    enfoque: [
+      "Protocolo de diagnóstico telefónico previo a cada visita",
+      "Lista de materiales recomendada según tipo de trabajo e historial del equipo",
+      "Registro digital del trabajo realizado para alimentar el historial",
+      "Dashboard de órdenes activas y segundas visitas por tipo de falla",
+    ],
+    impactoEsperado:
+      "Reducir las segundas visitas libera capacidad para atender más órdenes con la misma dotación, sin necesidad de contratar.",
   },
   {
-    industria: "Clínica dental",
-    tamano: "19 personas",
-    problema: "El 27% de las horas agendadas no se presentaban. La recepcionista pasaba 2 horas diarias llamando para confirmar.",
-    solucion: "Confirmación automática por WhatsApp 48 y 24 horas antes. Lista de espera activa para llenar cancelaciones.",
-    resultado: "Inasistencias bajaron al 8%. $2.1M mensuales en horas recuperadas sin agregar sillones.",
-    metrica: "-70%",
-    metricaLabel: "inasistencias",
+    industria: "Centro de salud, clínica o empresa con agenda",
+    tamano: "10–30 personas",
+    problema:
+      "El 20–30% de las horas agendadas resultan en inasistencias. El personal llama manualmente para confirmar, quitando horas que deberían estar en la operación. La agenda queda con huecos que no se llenan.",
+    raizDelProblema: "Proceso de confirmación manual e ineficiente. Sin una lista de espera activa, los cupos cancelados se pierden.",
+    enfoque: [
+      "Configuración de recordatorios automáticos por WhatsApp a 48 y 24 horas antes",
+      "Lista de espera activa para llenar cupos cancelados automáticamente",
+      "Registro de motivos de inasistencia para identificar patrones",
+      "Tablero de ocupación y tasa de presentación por tipo de servicio",
+    ],
+    impactoEsperado:
+      "Estudios del sector salud muestran reducciones del 30–50% en inasistencias con recordatorios automatizados (NEJM Catalyst). El personal recupera tiempo para la atención.",
   },
   {
-    industria: "Empresa constructora",
-    tamano: "67 personas",
-    problema: "Los informes de avance llegaban cada viernes, a mano, con datos del martes.",
-    solucion: "Reporte diario estandarizado de 5 minutos por jefe de obra + consolidación automática para gerencia.",
-    resultado: "Tiempo de detección de desviaciones bajó de 5 días a 1. 2 compras de emergencia eliminadas al mes.",
-    metrica: "5×",
-    metricaLabel: "más rápido detectar desviaciones",
+    industria: "Empresa constructora o de proyectos",
+    tamano: "50–100 personas",
+    problema:
+      "Los informes de avance de obra llegan tarde, en formatos distintos según quien los haga, con datos de días atrás. La gerencia toma decisiones reactivas porque no tiene visibilidad actualizada.",
+    raizDelProblema: "Sin un formato estándar de reporte y sin un canal de consolidación, la información queda fragmentada en cada obra.",
+    enfoque: [
+      "Diseño de reporte diario estandarizado de 5 minutos por jefe de obra",
+      "Consolidación automática de todos los reportes en un tablero central",
+      "Alerta automática cuando una variable clave sale del rango definido",
+      "Histórico de avance por proyecto para proyecciones más precisas",
+    ],
+    impactoEsperado:
+      "Información actualizada diariamente reduce el tiempo de detección de desviaciones. Las compras de emergencia reactivas disminuyen al anticipar los requerimientos con más tiempo.",
   },
   {
-    industria: "Importadora de insumos",
-    tamano: "34 personas",
-    problema: "Cada fin de mes, 3 personas pasaban 2 días haciendo cuadre de inventario.",
-    solucion: "Registro en el momento del movimiento + responsable asignado por zona. El cuadre mensual desapareció.",
-    resultado: "Diferencias de inventario bajaron 94%. El equipo recuperó 48 horas mensuales para trabajo productivo.",
-    metrica: "-94%",
-    metricaLabel: "diferencias de inventario",
+    industria: "Empresa de distribución o bodega",
+    tamano: "30–60 personas",
+    problema:
+      "El inventario no cuadra. El cierre mensual toma 2–3 días de tres personas, y siempre aparecen diferencias que nadie puede explicar. El equipo pasa tiempo valioso buscando errores en vez de operar.",
+    raizDelProblema: "El registro de movimientos se hace al final del día o al cierre del mes, no en el momento que ocurre. Los errores se acumulan.",
+    enfoque: [
+      "Registro de movimiento en el momento que ocurre, desde el celular o tablet",
+      "Responsable asignado por zona con visibilidad de su stock en tiempo real",
+      "Conciliación automática al final de cada jornada",
+      "Alerta de diferencias por encima de umbral definido",
+    ],
+    impactoEsperado:
+      "El registro inmediato elimina la acumulación de errores. El cuadre mensual de días se convierte en una verificación de minutos.",
   },
   {
-    industria: "Empresa de aseo y facilities",
-    tamano: "110 personas",
-    problema: "Los supervisores hacían rondas de 3 horas para verificar cobertura.",
-    solucion: "Check-in digital por QR en cada punto + dashboard de cobertura en tiempo real.",
-    resultado: "Tiempo de supervisión bajó de 3 horas a 40 minutos. Incidentes: 0 en el último trimestre.",
-    metrica: "-78%",
-    metricaLabel: "tiempo de supervisión",
-  },
-];
-
-const casosNarrativos = [
-  {
-    sector: "Empresa de servicios profesionales",
-    contexto: "Empresa de 25 personas que gestionaba proyectos con planillas separadas por área. El gerente no tenía visibilidad sin reuniones semanales.",
-    problema: "Información fragmentada, reportes manuales de dos días y decisiones basadas en percepciones.",
-    acciones: ["Mapeo de procesos de gestión de proyectos", "Centralización en plataforma única", "Automatización de reportes de estado", "Tablero de indicadores clave"],
-    resultado: "60% menos tiempo en reportes. Visibilidad en tiempo real del pipeline. Mejor asignación de recursos.",
-  },
-  {
-    sector: "Comercio mayorista",
-    contexto: "Distribuidor con 15 vendedores que recibían pedidos por WhatsApp. Los errores eran frecuentes y los reclamos iban en aumento.",
-    problema: "Sin registro formal de pedidos, errores de despacho y clientes insatisfechos.",
-    acciones: ["Estandarización del flujo de pedidos", "Formularios digitales de captura", "Confirmaciones automáticas a clientes", "Tablero de seguimiento"],
-    resultado: "80% menos errores en pedidos. Trazabilidad completa. Clientes más satisfechos.",
-  },
-  {
-    sector: "Centro de salud",
-    contexto: "Clínica con agenda manual, fichas en papel y reportes mensuales que requerían dos días de trabajo administrativo.",
-    problema: "Pérdida de fichas, doble agenda y falta de indicadores de gestión.",
-    acciones: ["Digitalización de fichas y agendamiento", "Recordatorios automáticos a pacientes", "Reportes automáticos de atención", "Dashboard de ocupación"],
-    resultado: "Reportes en minutos. Mejor control de agendamiento. Reducción de inasistencias.",
+    industria: "Empresa de servicios masivos o facilities",
+    tamano: "80+ personas",
+    problema:
+      "Los supervisores invierten 2–3 horas diarias en verificar que el personal esté en su puesto, desplazándose físicamente entre ubicaciones. El tiempo no alcanza para hacer supervisión real.",
+    raizDelProblema: "La verificación de presencia es manual y presencial. No hay forma de saber sin ir a ver.",
+    enfoque: [
+      "Check-in digital por código QR en cada punto de trabajo",
+      "Dashboard de cobertura en tiempo real para el supervisor",
+      "Alerta automática si un punto queda sin cobertura",
+      "Registro histórico de asistencia por punto y turno",
+    ],
+    impactoEsperado:
+      "La digitalización del control de presencia libera tiempo de supervisión para actividades de mayor valor: capacitación, resolución de incidentes y mejora continua.",
   },
 ];
 
@@ -102,54 +114,86 @@ export default function CasosPage() {
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">
         <div className="container-wide">
           <span className="text-sm font-medium text-primary-foreground/60 uppercase tracking-wider">
-            Casos y resultados
+            Escenarios y soluciones
           </span>
           <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-4 max-w-3xl">
-            Lo que encontramos. Y cuánto costaba no saberlo.
+            Los mismos problemas aparecen una y otra vez.
           </h1>
           <p className="text-lg text-primary-foreground/75 max-w-2xl font-body">
-            Resultados medibles de pymes reales. Con números, no con
-            &ldquo;se mejoró&rdquo;.
+            Distribuidoras, constructoras, clínicas, empresas de servicios: los dolores operativos son más comunes de lo que parece. Así es como los abordamos.
           </p>
         </div>
       </section>
 
-      {/* Casos con métrica */}
+      {/* Aviso de honestidad */}
+      <section className="bg-amber-50 border-b border-amber-100 py-4">
+        <div className="container-wide">
+          <p className="text-sm text-amber-800 font-body text-center">
+            <strong>Nota:</strong> Estos son escenarios basados en problemas comunes de la industria. Las métricas de referencia provienen de estudios del sector. Estamos en fase de lanzamiento y documentando nuestros primeros proyectos.
+          </p>
+        </div>
+      </section>
+
+      {/* Escenarios */}
       <section className="section-padding bg-background">
         <div className="container-wide">
-          <MotionSection className="mb-12">
-            <h2 className="font-heading text-2xl font-bold text-foreground">
-              Resultados con métricas específicas
-            </h2>
-          </MotionSection>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {casosMetrica.map((caso, i) => (
-              <MotionSection key={caso.industria} delay={i * 0.06}>
-                <div className="bg-card border border-muted rounded-lg p-6 shadow-card hover:shadow-card-hover transition-shadow h-full flex flex-col">
-                  <div className="mb-4">
-                    <span className="text-xs font-medium text-muted-foreground font-body">
-                      {caso.industria} · {caso.tamano}
-                    </span>
+          <div className="space-y-12">
+            {escenarios.map((e, i) => (
+              <MotionSection key={e.industria} delay={i * 0.04}>
+                <div className="bg-card border border-muted rounded-xl overflow-hidden shadow-card">
+                  <div className="bg-primary px-6 py-4 flex items-center justify-between">
+                    <div>
+                      <h2 className="font-heading font-bold text-primary-foreground text-lg">
+                        {e.industria}
+                      </h2>
+                      <p className="text-primary-foreground/60 text-sm">{e.tamano}</p>
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground font-body leading-relaxed mb-3 flex-1">
-                    {caso.problema}
-                  </p>
-                  <p className="text-xs text-foreground font-body mb-4 italic">
-                    {caso.solucion}
-                  </p>
-                  <div
-                    className="pt-4 border-t-2"
-                    style={{ borderTopColor: "#D4A853" }}
-                  >
-                    <p
-                      className="font-mono text-3xl font-bold"
-                      style={{ color: "#1B5FA6" }}
-                    >
-                      {caso.metrica}
-                    </p>
-                    <p className="text-xs text-muted-foreground font-body mt-1">
-                      {caso.metricaLabel}
-                    </p>
+                  <div className="p-6 md:p-8 grid md:grid-cols-2 gap-8">
+                    <div className="space-y-5">
+                      <div>
+                        <h3 className="text-xs font-semibold uppercase tracking-wider text-red-500/80 mb-2">
+                          El problema
+                        </h3>
+                        <p className="text-sm text-foreground font-body leading-relaxed">
+                          {e.problema}
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                          Raíz del problema
+                        </h3>
+                        <p className="text-sm text-muted-foreground font-body leading-relaxed italic">
+                          {e.raizDelProblema}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="space-y-5">
+                      <div>
+                        <h3 className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+                          Nuestro enfoque
+                        </h3>
+                        <ul className="space-y-2">
+                          {e.enfoque.map((a) => (
+                            <li key={a} className="flex items-start gap-3 text-sm text-foreground font-body">
+                              <span
+                                className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                                style={{ backgroundColor: "#D4A853" }}
+                              />
+                              {a}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="pt-4 border-t border-border">
+                        <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                          Impacto esperado (referencia de industria)
+                        </h3>
+                        <p className="text-sm text-foreground font-body leading-relaxed">
+                          {e.impactoEsperado}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </MotionSection>
@@ -158,72 +202,22 @@ export default function CasosPage() {
         </div>
       </section>
 
-      {/* Casos narrativos */}
+      {/* Sección Dos Huertos — caso real pendiente */}
       <section className="section-padding surface-warm">
         <div className="container-narrow">
-          <MotionSection className="mb-12">
-            <h2 className="font-heading text-2xl font-bold text-foreground">
-              Historias completas
-            </h2>
+          <MotionSection>
+            <div className="bg-card border-2 border-dashed border-accent/40 rounded-xl p-8 text-center">
+              <span className="inline-block text-xs font-semibold text-accent uppercase tracking-wider bg-accent/10 px-3 py-1 rounded-full mb-4">
+                Proyecto real · En documentación
+              </span>
+              <h2 className="font-heading text-xl font-bold text-foreground mb-3">
+                Dos Huertos — Empresa de frutas y verduras
+              </h2>
+              <p className="text-muted-foreground font-body text-sm max-w-md mx-auto">
+                Automatización de registro de información y procesos internos en empresa de venta y distribución de frutas y verduras. Métricas en proceso de validación con el cliente.
+              </p>
+            </div>
           </MotionSection>
-          <div className="space-y-10">
-            {casosNarrativos.map((caso) => (
-              <MotionSection key={caso.sector}>
-                <div className="bg-card border border-border rounded-xl overflow-hidden shadow-card">
-                  <div className="bg-primary px-6 py-4">
-                    <h3 className="font-heading font-bold text-primary-foreground text-lg">
-                      {caso.sector}
-                    </h3>
-                  </div>
-                  <div className="p-6 md:p-8 space-y-5">
-                    <div>
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-                        Contexto
-                      </h4>
-                      <p className="text-sm text-foreground font-body leading-relaxed">
-                        {caso.contexto}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-destructive/70 mb-2">
-                        Problema
-                      </h4>
-                      <p className="text-sm text-foreground font-body leading-relaxed">
-                        {caso.problema}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-accent mb-2">
-                        Acciones implementadas
-                      </h4>
-                      <ul className="space-y-2">
-                        {caso.acciones.map((a) => (
-                          <li
-                            key={a}
-                            className="flex items-start gap-3 text-sm text-foreground font-body"
-                          >
-                            <span
-                              className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
-                              style={{ backgroundColor: "#D4A853" }}
-                            />
-                            {a}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="pt-4 border-t border-border">
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-                        Resultado
-                      </h4>
-                      <p className="text-sm font-medium text-foreground font-body leading-relaxed">
-                        {caso.resultado}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </MotionSection>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -231,17 +225,14 @@ export default function CasosPage() {
       <section className="bg-primary py-16 md:py-20 text-center">
         <div className="container-narrow">
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-white mb-4">
-            ¿Tu pyme enfrenta desafíos similares?
+            ¿Reconoces alguno de estos problemas?
           </h2>
           <p className="text-white/75 font-body mb-8">
-            Conversemos para entender cómo podemos ayudarte.
+            Agendemos 30 minutos para revisar tu operación. Sin compromiso.
           </p>
-          <Link
-            href="/contacto"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white rounded-md font-semibold font-body text-sm hover:bg-accent/90 transition-colors"
-          >
-            Solicitar diagnóstico <ArrowRight size={16} />
-          </Link>
+          <OpenModalButton className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-[#1A1A1A] rounded-md font-semibold font-body text-sm hover:bg-accent/90 transition-colors">
+            Ver cuánto estoy perdiendo →
+          </OpenModalButton>
         </div>
       </section>
     </>

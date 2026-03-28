@@ -1,7 +1,6 @@
 import HeroSection from "@/components/home/HeroSection";
 import PainPointsSection from "@/components/home/PainPointsSection";
 import SolucionSection from "@/components/home/SolucionSection";
-import StatsSection from "@/components/home/StatsSection";
 import ComoFuncionaSection from "@/components/home/ComoFuncionaSection";
 import CasosSection from "@/components/home/CasosSection";
 import TestimoniosSection from "@/components/home/TestimoniosSection";
@@ -17,7 +16,6 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <StatsSection />
       <PainPointsSection />
       <SolucionSection />
       <ComoFuncionaSection />

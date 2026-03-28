@@ -17,7 +17,7 @@ const footerLinks = [
     links: [
       { label: "Sobre nosotros", href: "/nosotros" },
       { label: "Cómo trabajamos", href: "/como-trabajamos" },
-      { label: "Casos y resultados", href: "/casos" },
+      { label: "Escenarios y soluciones", href: "/casos" },
       { label: "Recursos", href: "/recursos" },
     ],
   },
@@ -25,7 +25,7 @@ const footerLinks = [
     title: "Blog",
     links: [
       { label: "Automatización de WhatsApp", href: "/blog/automatizacion-whatsapp-pymes" },
-      { label: "IA para Pymes en 2025", href: "/blog/ia-para-pymes-2025" },
+      { label: "IA para Pymes en 2026", href: "/blog/ia-para-pymes-2025" },
       { label: "5 procesos a automatizar", href: "/blog/reducir-horas-extras-automatizacion" },
       { label: "Ver todos los artículos", href: "/blog" },
     ],
@@ -109,15 +109,23 @@ export default function Footer() {
           <p className="text-xs text-primary-foreground/50">
             © {new Date().getFullYear()} 0kbot. Todos los derechos reservados.
           </p>
-          <a
-            href="https://www.linkedin.com/company/0kbot"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn 0kbot"
-            className="text-primary-foreground/50 hover:text-primary-foreground transition-colors"
-          >
-            <Linkedin size={18} />
-          </a>
+          <div className="flex items-center gap-4">
+            <Link href="/privacidad" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors">
+              Política de Privacidad
+            </Link>
+            <Link href="/terminos" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors">
+              Términos de Servicio
+            </Link>
+            <a
+              href="https://www.linkedin.com/in/diego-lopez-dinamarca/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn Diego López — 0kbot"
+              className="text-primary-foreground/50 hover:text-primary-foreground transition-colors"
+            >
+              <Linkedin size={18} />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

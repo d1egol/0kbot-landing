@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import MotionSection from "@/components/ui/MotionSection";
-import { ArrowRight, Target, Lightbulb, Users } from "lucide-react";
+import { ArrowRight, Target, Lightbulb, Users, Linkedin } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Nosotros · 0kbot",
   description:
-    "Somos una consultora de mejora de procesos para pymes chilenas. Fundada por Diego, Ingeniero Industrial PUC con 8+ años en operaciones reales. Sin teorías — con resultados.",
+    "Somos una consultora de mejora de procesos para pymes chilenas. Fundada por Diego López, Ingeniero Industrial PUC con 8+ años en operaciones reales. Sin teorías — con resultados.",
   keywords: [
     "consultora procesos Chile",
     "quiénes somos 0kbot",
@@ -39,29 +39,6 @@ const badges = [
   "8+ años en operaciones",
 ];
 
-const roadmap = [
-  {
-    fase: "Fase 1",
-    title: "Claridad de propuesta y foco comercial",
-    desc: "Definir con precisión qué problema resolvemos, para quién y cómo lo comunicamos. Alinear el mensaje con el valor real que entregamos.",
-  },
-  {
-    fase: "Fase 2",
-    title: "Servicios y casos por necesidad",
-    desc: "Estructurar los servicios en función de las necesidades reales de las pymes. Documentar casos y resultados para generar credibilidad.",
-  },
-  {
-    fase: "Fase 3",
-    title: "Confianza, contenidos y SEO",
-    desc: "Crear contenido útil (artículos, guías, FAQs) que posicione a 0kbot como referente. Optimizar para buscadores con keywords relevantes.",
-  },
-  {
-    fase: "Fase 4",
-    title: "Medición, optimización y escalamiento",
-    desc: "Medir resultados del sitio y canales. Optimizar conversiones. Escalar con campañas, partnerships o nuevos sectores.",
-  },
-];
-
 export default function NosotrosPage() {
   return (
     <>
@@ -72,11 +49,10 @@ export default function NosotrosPage() {
             Sobre nosotros
           </span>
           <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-4 max-w-3xl">
-            Socios estratégicos en digitalización práctica
+            Experiencia operacional real, no teoría de consultoría
           </h1>
           <p className="text-lg text-primary-foreground/75 max-w-2xl font-body">
-            Somos una consultora que ayuda a pymes en Chile a transformar
-            operaciones desordenadas en procesos claros, medibles y eficientes.
+            0kbot es una consultora nueva, fundada por un ingeniero con más de 8 años operando en el mundo real. Sin clientes ficticios, sin promesas vacías.
           </p>
         </div>
       </section>
@@ -86,7 +62,7 @@ export default function NosotrosPage() {
         <div className="container-narrow">
           <MotionSection>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Nuestra historia
+              Por qué existe 0kbot
             </h2>
             <div className="space-y-4 text-muted-foreground font-body leading-relaxed">
               <p>
@@ -102,11 +78,11 @@ export default function NosotrosPage() {
                 la realidad de cada negocio.
               </p>
               <p>
-                Hoy acompañamos a pymes de distintos sectores a ordenar sus
-                procesos, estandarizar su información, automatizar lo repetitivo
-                y tener visibilidad real de su operación. No como un proyecto de
-                un año, sino con implementaciones prácticas que generan valor
-                rápido.
+                Hoy lanzamos 0kbot para llevar esa experiencia directamente a
+                pymes que necesitan orden operativo, no teoría. Somos una
+                consultora en fase inicial: no tenemos 40 clientes ni $2M en
+                ahorros acumulados — pero sí tenemos 8 años de haber estado del
+                otro lado del problema.
               </p>
             </div>
           </MotionSection>
@@ -121,12 +97,25 @@ export default function NosotrosPage() {
               <div className="relative">
                 <div className="w-full max-w-sm mx-auto rounded-lg bg-primary/5 border border-primary/15 p-8 space-y-6">
                   <div>
-                    <p className="font-heading font-bold text-2xl text-foreground">
-                      Diego
-                    </p>
-                    <p className="text-sm text-muted-foreground font-body mt-1">
-                      Founder · 0kbot
-                    </p>
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="font-heading font-bold text-2xl text-foreground">
+                          Diego López
+                        </p>
+                        <p className="text-sm text-muted-foreground font-body mt-1">
+                          Founder · 0kbot
+                        </p>
+                      </div>
+                      <Link
+                        href="https://www.linkedin.com/in/diego-lopez-dinamarca/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn Diego López"
+                        className="text-[#0077b5] hover:text-[#005e8e] transition-colors mt-1"
+                      >
+                        <Linkedin className="w-5 h-5" />
+                      </Link>
+                    </div>
                   </div>
                   <div className="h-px bg-primary/10" />
                   <div className="flex flex-wrap gap-2">
@@ -218,44 +207,6 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Roadmap */}
-      <section className="section-padding bg-background">
-        <div className="container-narrow">
-          <MotionSection className="text-center mb-14">
-            <span className="text-sm font-medium text-accent uppercase tracking-wider">
-              Plan maestro
-            </span>
-            <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mt-3 mb-4">
-              Roadmap recomendado
-            </h2>
-            <p className="text-muted-foreground font-body max-w-xl mx-auto">
-              Las 4 fases para evolucionar tu operación de manera sostenible.
-            </p>
-          </MotionSection>
-          <div className="space-y-8">
-            {roadmap.map((f, i) => (
-              <MotionSection key={f.fase} delay={i * 0.1} direction="left">
-                <div className="flex gap-6 items-start">
-                  <div className="flex-shrink-0 w-20 pt-1">
-                    <span className="text-xs font-bold uppercase tracking-wider text-accent">
-                      {f.fase}
-                    </span>
-                  </div>
-                  <div className="border-l-2 border-accent/30 pl-6 pb-2">
-                    <h3 className="font-heading font-bold text-foreground mb-2">
-                      {f.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground font-body leading-relaxed">
-                      {f.desc}
-                    </p>
-                  </div>
-                </div>
-              </MotionSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="bg-primary py-16 md:py-20 text-center">
         <div className="container-narrow">
@@ -266,10 +217,12 @@ export default function NosotrosPage() {
             Agendemos una reunión para conversar sobre tu pyme.
           </p>
           <Link
-            href="/contacto"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white rounded-md font-semibold font-body text-sm hover:bg-accent/90 transition-colors"
+            href="https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-[#1A1A1A] rounded-md font-semibold font-body text-sm hover:bg-accent/90 transition-colors"
           >
-            Agendar reunión <ArrowRight size={16} />
+            Agendar diagnóstico gratis <ArrowRight size={16} />
           </Link>
         </div>
       </section>

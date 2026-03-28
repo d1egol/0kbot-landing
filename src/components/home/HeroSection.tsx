@@ -118,9 +118,9 @@ export default function HeroSection() {
               className="flex items-center gap-6 pt-2 border-t border-muted"
             >
               {[
-                { value: "40+", label: "empresas" },
-                { value: "12 sem", label: "implementación" },
-                { value: "73%", label: "reducción de errores" },
+                { value: "8+", label: "años en operaciones" },
+                { value: "PUC", label: "Ing. Civil Industrial" },
+                { value: "Lean", label: "Six Sigma Green Belt" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
                   <div className="font-heading font-bold text-xl text-foreground">{stat.value}</div>

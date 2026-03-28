@@ -77,8 +77,9 @@ const jsonLd = {
     {
       "@type": "Person",
       "@id": "https://0kbot.com/#founder",
-      name: "Diego",
+      name: "Diego López",
       jobTitle: "Founder",
+      sameAs: "https://www.linkedin.com/in/diego-lopez-dinamarca/",
       worksFor: { "@id": "https://0kbot.com/#business" },
       hasCredential: [
         "Ingeniero Civil Industrial PUC",

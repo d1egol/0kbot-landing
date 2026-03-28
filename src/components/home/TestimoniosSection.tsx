@@ -1,35 +1,32 @@
 "use client";
 
-import { Star, Quote } from "lucide-react";
+import { Shield, Wrench, Users } from "lucide-react";
 import MotionSection from "@/components/ui/MotionSection";
 
-const testimonios = [
+const principios = [
   {
-    text: "Antes no teníamos idea del estado real de nuestros proyectos. Hoy vemos todo en un solo lugar y tomamos mejores decisiones.",
-    author: "Roberto M.",
-    cargo: "Gerente de operaciones",
-    company: "Empresa de servicios profesionales",
-    initials: "RM",
-    color: "bg-blue-100 text-blue-700",
-    rating: 5,
+    icon: Shield,
+    titulo: "Diagnóstico antes de propuesta",
+    texto:
+      "No proponemos soluciones sin antes entender tu realidad. Cada proyecto empieza con medición, no con supuestos.",
+    color: "text-blue-600",
+    bg: "bg-blue-50 border-blue-100",
   },
   {
-    text: "Lo que más valoramos es que no nos vendieron tecnología por vender. Entendieron nuestro problema y nos dieron una solución práctica.",
-    author: "Carolina V.",
-    cargo: "Directora",
-    company: "Centro de salud",
-    initials: "CV",
-    color: "bg-purple-100 text-purple-700",
-    rating: 5,
+    icon: Wrench,
+    titulo: "Sin tecnología innecesaria",
+    texto:
+      "Si una planilla bien hecha resuelve el problema, no necesitas un sistema de $20M. Priorizamos lo práctico sobre lo llamativo.",
+    color: "text-amber-600",
+    bg: "bg-amber-50 border-amber-100",
   },
   {
-    text: "Los reportes que antes me tomaban dos días ahora se generan solos. Eso cambió completamente mi trabajo.",
-    author: "Andrés P.",
-    cargo: "Jefe administrativo",
-    company: "Comercio mayorista",
-    initials: "AP",
-    color: "bg-emerald-100 text-emerald-700",
-    rating: 5,
+    icon: Users,
+    titulo: "Transferencia real",
+    texto:
+      "Cuando terminamos, tu equipo sabe cómo funciona todo. No creamos dependencia. El objetivo es que nos necesites cada vez menos.",
+    color: "text-emerald-600",
+    bg: "bg-emerald-50 border-emerald-100",
   },
 ];
 
@@ -39,57 +36,35 @@ export default function TestimoniosSection() {
       <div className="container-wide">
         <MotionSection className="text-center mb-14">
           <span className="text-sm font-semibold text-accent uppercase tracking-wider">
-            Confianza
+            Cómo trabajamos
           </span>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mt-3 mb-4">
-            Lo que dicen quienes ya trabajaron con nosotros
+            Principios de trabajo
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto">
-            Empresas reales, resultados medibles, equipos más tranquilos.
+            No tecnología por moda. No soluciones genéricas. No dependencia creada.
           </p>
         </MotionSection>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {testimonios.map((t, i) => (
-            <MotionSection key={i} delay={i * 0.1}>
-              <div className="bg-card border border-border rounded-2xl p-7 relative h-full flex flex-col hover:shadow-card-hover transition-shadow">
-                {/* Quote decoration */}
-                <Quote className="w-10 h-10 text-accent/15 absolute top-5 right-5" />
-
-                {/* Stars */}
-                <div className="flex items-center gap-0.5 mb-5">
-                  {Array.from({ length: t.rating }).map((_, si) => (
-                    <Star
-                      key={si}
-                      className="w-4 h-4 fill-[#D4A853] text-[#D4A853]"
-                    />
-                  ))}
-                </div>
-
-                {/* Text */}
-                <p className="text-foreground leading-relaxed mb-6 flex-1 italic">
-                  &ldquo;{t.text}&rdquo;
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center gap-3 pt-4 border-t border-border">
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shrink-0 ${t.color}`}
-                  >
-                    {t.initials}
+          {principios.map((p, i) => {
+            const Icon = p.icon;
+            return (
+              <MotionSection key={p.titulo} delay={i * 0.1}>
+                <div className="bg-card border border-border rounded-2xl p-7 h-full flex flex-col hover:shadow-card-hover transition-shadow">
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl border mb-5 ${p.bg}`}>
+                    <Icon className={`w-5 h-5 ${p.color}`} />
                   </div>
-                  <div>
-                    <p className="font-semibold text-sm text-foreground">
-                      {t.author}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {t.cargo} · {t.company}
-                    </p>
-                  </div>
+                  <h3 className="font-heading font-bold text-lg text-foreground mb-3">
+                    {p.titulo}
+                  </h3>
+                  <p className="text-muted-foreground font-body leading-relaxed text-sm flex-1">
+                    {p.texto}
+                  </p>
                 </div>
-              </div>
-            </MotionSection>
-          ))}
+              </MotionSection>
+            );
+          })}
         </div>
       </div>
     </section>
