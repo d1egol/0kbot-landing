@@ -47,8 +47,8 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1]"
             >
-              Tu equipo trabaja los fines de semana{" "}
-              <span className="text-gradient-accent">sin darse cuenta</span>
+              Ordenamos y automatizamos{" "}
+              <span className="text-gradient-accent">la operación de tu empresa</span>
             </motion.h1>
 
             <motion.p
@@ -57,9 +57,9 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-muted-foreground font-body leading-relaxed max-w-xl"
             >
-              Las tareas que deberían tomar 20 minutos les roban 3 horas
-              diarias. No es que sean lentos. Es que tus procesos están rotos y
-              nadie te lo ha dicho con números.
+              Mapeamos cómo opera tu negocio hoy, eliminamos los cuellos de
+              botella y automatizamos las tareas repetitivas. En 12 semanas,
+              con resultados medibles. Sin código. Sin inversión en software.
             </motion.p>
 
             <motion.div

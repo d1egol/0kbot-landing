@@ -1,127 +1,107 @@
-import { Check, X, Minus } from "lucide-react";
+import Link from "next/link";
+import { Shuffle, Clock, EyeOff, FileText, BarChart3, UserX, ArrowRight } from "lucide-react";
 import MotionSection from "@/components/ui/MotionSection";
 
-const features = [
-  { label: "Implementación en semanas", okbot: true, empleado: false, agencia: false },
-  { label: "Diagnóstico incluido", okbot: true, empleado: false, agencia: "partial" },
-  { label: "Pago por resultado", okbot: true, empleado: false, agencia: false },
-  { label: "Conocimiento del sector industrial", okbot: true, empleado: "partial", agencia: false },
-  { label: "Sin costo de contratación/onboarding", okbot: true, empleado: false, agencia: true },
-  { label: "Disponible 24/7 post-implementación", okbot: true, empleado: false, agencia: false },
-  { label: "Metodología estandarizada", okbot: true, empleado: false, agencia: "partial" },
-  { label: "Transferencia de conocimiento al equipo", okbot: true, empleado: true, agencia: false },
+const soluciones = [
+  {
+    icon: Shuffle,
+    title: "Desorden operativo",
+    problema: "Cada persona trabaja distinto, no hay un flujo claro y las cosas se pierden.",
+    solucion: "Levantamos los procesos clave, definimos un flujo estándar y lo implementamos con herramientas que lo sostengan.",
+  },
+  {
+    icon: Clock,
+    title: "Pérdida de tiempo en tareas manuales",
+    problema: "Horas invertidas en copiar datos, armar informes y coordinar por WhatsApp.",
+    solucion: "Automatizamos tareas repetitivas, centralizamos la comunicación y eliminamos el doble registro.",
+  },
+  {
+    icon: EyeOff,
+    title: "Falta de visibilidad",
+    problema: "No sabes el estado real de tu operación sin preguntar uno por uno.",
+    solucion: "Creamos tableros con indicadores clave que se actualizan automáticamente.",
+  },
+  {
+    icon: FileText,
+    title: "Registro manual disperso",
+    problema: "Información en planillas, correos, cuadernos y la cabeza de cada uno.",
+    solucion: "Estandarizamos los registros con formularios y bases de datos centralizadas.",
+  },
+  {
+    icon: BarChart3,
+    title: "Reportes lentos y poco confiables",
+    problema: "Armar un informe toma días y siempre hay datos que no cuadran.",
+    solucion: "Automatizamos reportes que se generan solos con datos consistentes y actualizados.",
+  },
+  {
+    icon: UserX,
+    title: "Seguimiento comercial débil",
+    problema: "Clientes que se pierden, cotizaciones sin seguimiento y oportunidades olvidadas.",
+    solucion: "Organizamos el pipeline de ventas con seguimiento estructurado y alertas automáticas.",
+  },
 ];
-
-type FeatureValue = boolean | "partial";
-
-function FeatureIcon({ value }: { value: FeatureValue }) {
-  if (value === true)
-    return (
-      <div className="flex items-center justify-center">
-        <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center">
-          <Check className="w-3.5 h-3.5 text-emerald-600 stroke-[2.5]" />
-        </div>
-      </div>
-    );
-  if (value === "partial")
-    return (
-      <div className="flex items-center justify-center">
-        <div className="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center">
-          <Minus className="w-3.5 h-3.5 text-amber-600 stroke-[2.5]" />
-        </div>
-      </div>
-    );
-  return (
-    <div className="flex items-center justify-center">
-      <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center">
-        <X className="w-3.5 h-3.5 text-red-500 stroke-[2.5]" />
-      </div>
-    </div>
-  );
-}
 
 export default function ComparacionSection() {
   return (
     <section className="section-padding surface-cool">
       <div className="container-content">
-        <MotionSection className="text-center mb-12">
+        <MotionSection className="mb-12">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">
-            Comparación
+            Soluciones concretas
           </span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-3">
-            ¿Por qué 0kbot y no otra opción?
+            ¿Cuál es tu principal desafío operativo?
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-lg mx-auto">
-            No somos la única forma de mejorar tus procesos. Pero hay razones
-            concretas por las que más de 40 empresas nos eligieron.
+          <p className="text-muted-foreground mt-3 max-w-xl font-body">
+            Identifica tu problema y conoce cómo lo resolvemos con implementaciones prácticas.
           </p>
         </MotionSection>
 
-        <MotionSection delay={0.1}>
-          <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-card">
-            {/* Header */}
-            <div className="grid grid-cols-4 bg-muted/50">
-              <div className="p-4 md:p-6" />
-              <div className="p-4 md:p-6 text-center border-l border-border">
-                <div className="inline-block bg-primary text-white text-xs font-bold px-3 py-1 rounded-full mb-2">
-                  RECOMENDADO
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {soluciones.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <MotionSection key={s.title} delay={i * 0.07}>
+                <div className="bg-card border border-border rounded-xl p-6 hover:border-accent/30 transition-colors h-full flex flex-col">
+                  <div className="flex items-start gap-4 flex-1">
+                    <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 text-accent" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-heading font-bold text-base text-foreground mb-3">
+                        {s.title}
+                      </h3>
+                      <div className="mb-3">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-destructive/70">
+                          El problema
+                        </span>
+                        <p className="text-sm text-muted-foreground font-body mt-1 leading-relaxed">
+                          {s.problema}
+                        </p>
+                      </div>
+                      <div>
+                        <span className="text-xs font-semibold uppercase tracking-wider text-accent">
+                          Cómo lo resolvemos
+                        </span>
+                        <p className="text-sm text-foreground font-body mt-1 leading-relaxed">
+                          {s.solucion}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="font-heading font-bold text-foreground text-lg">0kbot</div>
-                <div className="text-xs text-muted-foreground">Consultora especializada</div>
-              </div>
-              <div className="p-4 md:p-6 text-center border-l border-border">
-                <div className="font-heading font-bold text-foreground text-base md:text-lg">Empleado</div>
-                <div className="text-xs text-muted-foreground">Contratación interna</div>
-              </div>
-              <div className="p-4 md:p-6 text-center border-l border-border">
-                <div className="font-heading font-bold text-foreground text-base md:text-lg">Agencia</div>
-                <div className="text-xs text-muted-foreground">Tecnológica genérica</div>
-              </div>
-            </div>
+              </MotionSection>
+            );
+          })}
+        </div>
 
-            {/* Rows */}
-            {features.map((f, i) => (
-              <div
-                key={f.label}
-                className={`grid grid-cols-4 border-t border-border ${i % 2 === 0 ? "bg-card" : "bg-muted/20"}`}
-              >
-                <div className="p-3 md:p-4 flex items-center">
-                  <span className="text-sm text-foreground font-body">{f.label}</span>
-                </div>
-                <div className="p-3 md:p-4 border-l border-border bg-primary/3">
-                  <FeatureIcon value={f.okbot as FeatureValue} />
-                </div>
-                <div className="p-3 md:p-4 border-l border-border">
-                  <FeatureIcon value={f.empleado as FeatureValue} />
-                </div>
-                <div className="p-3 md:p-4 border-l border-border">
-                  <FeatureIcon value={f.agencia as FeatureValue} />
-                </div>
-              </div>
-            ))}
-
-            {/* Footer legend */}
-            <div className="p-4 bg-muted/30 border-t border-border flex items-center gap-6 flex-wrap text-xs text-muted-foreground">
-              <div className="flex items-center gap-1.5">
-                <div className="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center">
-                  <Check className="w-2.5 h-2.5 text-emerald-600 stroke-[3]" />
-                </div>
-                Incluido
-              </div>
-              <div className="flex items-center gap-1.5">
-                <div className="w-4 h-4 rounded-full bg-amber-100 flex items-center justify-center">
-                  <Minus className="w-2.5 h-2.5 text-amber-600 stroke-[3]" />
-                </div>
-                Parcial o varía
-              </div>
-              <div className="flex items-center gap-1.5">
-                <div className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">
-                  <X className="w-2.5 h-2.5 text-red-500 stroke-[3]" />
-                </div>
-                No incluido
-              </div>
-            </div>
-          </div>
+        <MotionSection delay={0.2} className="mt-10 text-center">
+          <Link
+            href="/soluciones"
+            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary/30 text-primary rounded-md font-medium font-body text-sm hover:border-primary hover:bg-primary/5 transition-colors"
+          >
+            Ver todas las soluciones <ArrowRight size={15} />
+          </Link>
         </MotionSection>
       </div>
     </section>

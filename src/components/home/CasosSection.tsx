@@ -3,15 +3,6 @@ import CasosCarousel from "@/components/ui/CasosCarousel";
 
 const casos = [
   {
-    industria: "Empresa de frutas y verduras",
-    tamano: "Pyme familiar",
-    problema: "Los pedidos llegaban por WhatsApp y nadie los registraba en un solo lugar. El stock se contaba a mano al cierre del día y siempre había diferencias.",
-    solucion: "Automatización del registro de pedidos y movimientos de inventario. Un solo sistema donde toda la operación queda registrada en tiempo real.",
-    resultado: "Stock en tiempo real sin conteo manual. Pedidos centralizados sin pérdidas ni duplicados. Implementado en 8 semanas.",
-    metrica: "✓",
-    metricaLabel: "primer cliente 0kbot",
-  },
-  {
     industria: "Distribuidora de alimentos",
     tamano: "55 personas",
     problema: "El 18% de los pedidos salían con al menos un error. Reenvíos, notas de crédito y clientes molestos eran el pan de cada día.",
@@ -73,10 +64,10 @@ export default function CasosSection() {
       <div className="container-content">
         <MotionSection className="mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-            Lo que encontramos
+            Casos reales
           </h2>
           <p className="mt-3 text-lg text-muted-foreground font-body">
-            Y cuánto costaba no saberlo.
+            Problemas concretos. Resultados medibles.
           </p>
         </MotionSection>
         <CasosCarousel casos={casos} />
