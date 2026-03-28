@@ -222,7 +222,9 @@ content: ["./src/content/**/*.mdx"]
 ## Navegación
 
 - **Navbar:** `{ label: "Blog", href: "/blog" }` — configurado en `src/components/layout/Navbar.tsx`
+- **Navbar CTA:** "Agendar diagnóstico gratis" abre ContactModal (no es un link a /contacto)
 - **Footer:** sección "Blog" con links a 3 artículos + "Ver todos" — configurado en `src/components/layout/Footer.tsx`
+- **Footer CTA:** "Agendar diagnóstico gratis" es link directo a Calendly (Footer es server component)
 - **Home:** `BlogPreviewSection` insertada en `src/app/page.tsx` entre `CredencialesSection` y `FAQSection`
 
 ---

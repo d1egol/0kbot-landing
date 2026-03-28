@@ -22,7 +22,7 @@ Templates de cold email para prospectar empresas por rubro. Cada template incluy
 - `[Empresa]` → nombre de la empresa
 - `[Ciudad]` → ciudad donde opera (Santiago, Concepción, etc.)
 - `[Rubro]` → solo en el template de servicios profesionales
-- `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` → reemplazar con el link real de Calendly
+- El link de Calendly ya es el correcto: `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot`
 
 ### 2. Elige el asunto según el canal
 - **Variante A** → más directa, funciona bien si ya tuviste algún contacto previo (LinkedIn, referido)

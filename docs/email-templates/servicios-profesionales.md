@@ -1,7 +1,7 @@
 # Template: Servicios Profesionales
 
 > **Uso:** Contabilidad, estudio jurídico, consultoría, clínicas/médicos, centros educativos, seguros, RRHH.
-> Reemplaza `[Nombre]`, `[Empresa]`, `[Rubro]`, `[Ciudad]` y `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` antes de enviar.
+> Reemplaza `[Nombre]`, `[Empresa]`, `[Rubro]`, `[Ciudad]` antes de enviar. El link de Calendly ya está correcto.
 
 ---
 

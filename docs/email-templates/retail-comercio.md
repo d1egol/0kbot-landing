@@ -1,7 +1,7 @@
 # Template: Retail / Comercio
 
 > **Uso:** Empresas del retail, tiendas, distribuidoras, comercio al por mayor y menor.
-> Reemplaza `[Nombre]`, `[Empresa]`, `[Ciudad]` y `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` antes de enviar.
+> Reemplaza `[Nombre]`, `[Empresa]`, `[Ciudad]` antes de enviar. El link de Calendly ya está correcto.
 
 ---
 

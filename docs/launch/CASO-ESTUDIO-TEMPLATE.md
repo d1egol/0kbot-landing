@@ -1,6 +1,7 @@
 # Caso de Estudio — Dos Huertos
 
-**Estado:** Base generada con información disponible. Completar métricas con el cliente.
+**Estado:** Base generada con información disponible. Pendiente: completar métricas reales con el cliente vía WhatsApp.
+**Última actualización:** Marzo 2026
 
 ---
 
