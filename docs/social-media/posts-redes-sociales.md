@@ -4,7 +4,7 @@
 ---
 
 ## ARTÍCULO 1: "IA para pymes: lo que realmente sirve (y lo que es puro humo)"
-**URL:** https://0kbot.com/recursos/ia-para-pymes-lo-que-realmente-sirve  
+**URL:** https://0kbot.com/blog/ia-para-pymes-lo-que-realmente-sirve  
 **Publicado:** 24 de marzo, 2026
 
 ### LinkedIn Post
@@ -64,7 +64,7 @@ Link en bio 🔗
 ---
 
 ## ARTÍCULO 2: "5 señales de que tu operación está sangrando plata (y no lo sabes)"
-**URL:** https://0kbot.com/recursos/5-senales-operacion-sangrando-plata  
+**URL:** https://0kbot.com/blog/5-senales-operacion-sangrando-plata  
 **Publicado:** 25 de marzo, 2026
 
 ### LinkedIn Post
@@ -133,7 +133,7 @@ Link en bio 🔗
 ---
 
 ## ARTÍCULO 3: "Caso real: cómo una distribuidora ahorró $5.8M en 6 semanas"
-**URL:** https://0kbot.com/recursos/caso-real-distribuidora-ahorro-5-8m  
+**URL:** https://0kbot.com/blog/caso-real-distribuidora-ahorro-5-8-millones  
 **Publicado:** 26 de marzo, 2026
 
 ### LinkedIn Post
@@ -213,7 +213,7 @@ Link en bio 🔗
 ---
 
 ## ARTÍCULO 4: "Por qué tu empresa vive en WhatsApp (y cómo salir de ahí)"
-**URL:** https://0kbot.com/recursos/por-que-tu-empresa-vive-en-whatsapp  
+**URL:** https://0kbot.com/blog/por-que-tu-empresa-vive-en-whatsapp  
 **Publicado:** 27 de marzo, 2026
 
 ### LinkedIn Post
@@ -297,7 +297,7 @@ Link en bio 🔗
 ---
 
 ## ARTÍCULO 5: "Las 3 herramientas gratuitas que toda pyme debería usar antes de gastar en software"
-**URL:** https://0kbot.com/recursos/3-herramientas-gratuitas-toda-pyme  
+**URL:** https://0kbot.com/blog/3-herramientas-gratuitas-pyme  
 **Publicado:** 28 de marzo, 2026
 
 ### LinkedIn Post
