@@ -1,25 +1,31 @@
 import HeroSection from "@/components/home/HeroSection";
 import PainPointsSection from "@/components/home/PainPointsSection";
 import SolucionSection from "@/components/home/SolucionSection";
+import StatsSection from "@/components/home/StatsSection";
 import ComoFuncionaSection from "@/components/home/ComoFuncionaSection";
 import CasosSection from "@/components/home/CasosSection";
 import TestimoniosSection from "@/components/home/TestimoniosSection";
+import ComparacionSection from "@/components/home/ComparacionSection";
 import CredencialesSection from "@/components/home/CredencialesSection";
 import FAQSection from "@/components/home/FAQSection";
 import DiagnosticoSection from "@/components/home/DiagnosticoSection";
 import CTAFinalSection from "@/components/home/CTAFinalSection";
+import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <StatsSection />
       <PainPointsSection />
       <SolucionSection />
       <ComoFuncionaSection />
       <CasosSection />
       <TestimoniosSection />
+      <ComparacionSection />
       <CredencialesSection />
+      <BlogPreviewSection />
       <FAQSection />
       <DiagnosticoSection />
       <CTAFinalSection />

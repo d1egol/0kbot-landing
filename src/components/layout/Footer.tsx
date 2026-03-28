@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Linkedin, Mail, MapPin } from "lucide-react";
+import { Linkedin, Mail, MapPin, Rss } from "lucide-react";
 
 const footerLinks = [
   {
@@ -19,6 +19,15 @@ const footerLinks = [
       { label: "Cómo trabajamos", href: "/como-trabajamos" },
       { label: "Casos y resultados", href: "/casos" },
       { label: "Recursos", href: "/recursos" },
+    ],
+  },
+  {
+    title: "Blog",
+    links: [
+      { label: "Automatización de WhatsApp", href: "/blog/automatizacion-whatsapp-pymes" },
+      { label: "IA para Pymes en 2025", href: "/blog/ia-para-pymes-2025" },
+      { label: "5 procesos a automatizar", href: "/blog/reducir-horas-extras-automatizacion" },
+      { label: "Ver todos los artículos", href: "/blog" },
     ],
   },
   {
@@ -79,7 +88,24 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+        {/* Newsletter strip */}
+        <div className="mt-12 p-6 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 flex flex-col sm:flex-row items-center gap-4 justify-between">
+          <div className="flex items-center gap-3">
+            <Rss className="w-5 h-5 text-accent shrink-0" />
+            <div>
+              <p className="font-semibold text-sm text-primary-foreground">Newsletter de IA para Pymes</p>
+              <p className="text-xs text-primary-foreground/60">Novedades de automatización, casos reales y recursos gratis.</p>
+            </div>
+          </div>
+          <Link
+            href="/contacto"
+            className="shrink-0 px-5 py-2.5 bg-accent text-[#1A1A1A] text-sm font-bold rounded-lg hover:bg-accent/90 transition-colors whitespace-nowrap"
+          >
+            Suscribirme
+          </Link>
+        </div>
+
+        <div className="mt-8 pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-primary-foreground/50">
             © {new Date().getFullYear()} 0kbot. Todos los derechos reservados.
           </p>
