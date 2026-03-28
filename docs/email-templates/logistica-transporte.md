@@ -1,7 +1,7 @@
 # Template: Logística / Transporte
 
 > **Uso:** Empresas de transporte, distribución, delivery, courier, bodegaje, operadores logísticos.
-> Reemplaza `[Nombre]`, `[Empresa]`, `[Ciudad]` y `[LINK-CALENDLY]` antes de enviar.
+> Reemplaza `[Nombre]`, `[Empresa]`, `[Ciudad]` y `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` antes de enviar.
 
 ---
 
@@ -26,7 +26,7 @@ Con una distribuidora de [Ciudad] logramos reducir en 70% las consultas de estad
 
 ¿Tienes 20 minutos esta semana para ver si tiene sentido para [Empresa]?
 
-[LINK-CALENDLY]
+https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 
 Saludos,
 Diego Leiva

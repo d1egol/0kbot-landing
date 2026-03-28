@@ -1,7 +1,7 @@
 # Template: Servicios Profesionales
 
 > **Uso:** Contabilidad, estudio jurídico, consultoría, clínicas/médicos, centros educativos, seguros, RRHH.
-> Reemplaza `[Nombre]`, `[Empresa]`, `[Rubro]`, `[Ciudad]` y `[LINK-CALENDLY]` antes de enviar.
+> Reemplaza `[Nombre]`, `[Empresa]`, `[Rubro]`, `[Ciudad]` y `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` antes de enviar.
 
 ---
 
@@ -24,7 +24,7 @@ El resultado habitual es recuperar entre 8 y 15 horas semanales que hoy se van e
 
 ¿Tienes 20 minutos esta semana para ver si tiene sentido para [Empresa]?
 
-[LINK-CALENDLY]
+https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 
 Saludos,
 Diego Leiva

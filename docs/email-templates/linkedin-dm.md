@@ -1,7 +1,7 @@
 # LinkedIn DM Templates — Prospección
 
 Mensajes cortos para prospección directa por LinkedIn. Más informales y breves que el cold email.
-Reemplaza `[Nombre]`, `[Empresa]`, `[Rubro/Detalle]` y `[LINK-CALENDLY]` antes de enviar.
+Reemplaza `[Nombre]`, `[Empresa]`, `[Rubro/Detalle]` y `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` antes de enviar.
 
 > **Regla de oro para LinkedIn DM:** Máximo 3-4 líneas. Sin presentaciones largas. Directo al punto.
 > El objetivo es iniciar conversación, no cerrar una venta.
@@ -17,7 +17,7 @@ Hola [Nombre], vi que [Empresa] gestiona pedidos por WhatsApp y me surgió una p
 
 **Mensaje con contexto (si viste su perfil o publicó algo):**
 ```
-Hola [Nombre], vi tu publicación sobre [tema]. Trabajo con distribuidoras y retailers en Chile automatizando los flujos de WhatsApp y gestión de pedidos. ¿Tienes 20 minutos para contarte qué resultados hemos visto? [LINK-CALENDLY]
+Hola [Nombre], vi tu publicación sobre [tema]. Trabajo con distribuidoras y retailers en Chile automatizando los flujos de WhatsApp y gestión de pedidos. ¿Tienes 20 minutos para contarte qué resultados hemos visto? https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 ```
 
 ---
@@ -31,7 +31,7 @@ Hola [Nombre], trabajo con [rubros: estudios contables / clínicas / consultoras
 
 **Mensaje con contexto:**
 ```
-Hola [Nombre], en 0kbot ayudamos a [rubro] a eliminar el trabajo administrativo repetitivo: confirmaciones, recordatorios, seguimiento. ¿Le podría ser útil a [Empresa]? Si quieres, agendamos 20 minutos: [LINK-CALENDLY]
+Hola [Nombre], en 0kbot ayudamos a [rubro] a eliminar el trabajo administrativo repetitivo: confirmaciones, recordatorios, seguimiento. ¿Le podría ser útil a [Empresa]? Si quieres, agendamos 20 minutos: https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 ```
 
 ---
@@ -45,7 +45,7 @@ Hola [Nombre], trabajamos con constructoras en Chile automatizando el seguimient
 
 **Mensaje con contexto:**
 ```
-Hola [Nombre], vi que [Empresa] tiene varios proyectos activos. En 0kbot automatizamos reportes de avance, alertas de retraso y coordinación de materiales. ¿Tendrías 20 minutos esta semana? [LINK-CALENDLY]
+Hola [Nombre], vi que [Empresa] tiene varios proyectos activos. En 0kbot automatizamos reportes de avance, alertas de retraso y coordinación de materiales. ¿Tendrías 20 minutos esta semana? https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 ```
 
 ---
@@ -59,7 +59,7 @@ Hola [Nombre], en 0kbot automatizamos el seguimiento de envíos y las notificaci
 
 **Mensaje con contexto:**
 ```
-Hola [Nombre], trabajo con empresas de distribución y transporte en Chile reduciendo el tiempo que el equipo gasta respondiendo consultas de estado. En un caso bajamos un 70% esas consultas. ¿Te cuento cómo? [LINK-CALENDLY]
+Hola [Nombre], trabajo con empresas de distribución y transporte en Chile reduciendo el tiempo que el equipo gasta respondiendo consultas de estado. En un caso bajamos un 70% esas consultas. ¿Te cuento cómo? https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 ```
 
 ---
@@ -81,7 +81,7 @@ Espera a que acepte, luego envía el DM.
 Si te preguntan qué hace 0kbot:
 
 ```
-Ayudamos a pymes a automatizar sus procesos operativos más repetitivos: respuestas de WhatsApp, seguimiento de clientes, reportes, coordinación interna. Lo hacemos en 12 semanas, con resultados medibles desde las primeras semanas. ¿Te cuento más? [LINK-CALENDLY]
+Ayudamos a pymes a automatizar sus procesos operativos más repetitivos: respuestas de WhatsApp, seguimiento de clientes, reportes, coordinación interna. Lo hacemos en 12 semanas, con resultados medibles desde las primeras semanas. ¿Te cuento más? https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 ```
 
 ---

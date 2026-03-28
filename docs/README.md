@@ -35,7 +35,7 @@ docs/
 
 ### Quiero enviar un email a prospectos
 → Elige el template en `email-templates/` según el rubro
-→ Reemplaza `[Nombre]`, `[Empresa]`, `[Ciudad]`, `[LINK-CALENDLY]`
+→ Reemplaza `[Nombre]`, `[Empresa]`, `[Ciudad]`, `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot`
 → Lee `email-templates/README.md` para horarios y consejos de personalización
 
 ### Quiero hacer seguimiento a prospectos que no respondieron

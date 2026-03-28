@@ -22,7 +22,7 @@ Templates de cold email para prospectar empresas por rubro. Cada template incluy
 - `[Empresa]` → nombre de la empresa
 - `[Ciudad]` → ciudad donde opera (Santiago, Concepción, etc.)
 - `[Rubro]` → solo en el template de servicios profesionales
-- `[LINK-CALENDLY]` → reemplazar con el link real de Calendly
+- `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` → reemplazar con el link real de Calendly
 
 ### 2. Elige el asunto según el canal
 - **Variante A** → más directa, funciona bien si ya tuviste algún contacto previo (LinkedIn, referido)
@@ -34,7 +34,7 @@ Estos templates están pensados para:
 - **LinkedIn InMail** (ajusta el tono levemente, es más informal)
 - **Secuencia de follow-up** → si no hay respuesta en 3-4 días, envía un segundo mensaje corto:
 
-  > *"Hola [Nombre], solo quería saber si te llegó mi mensaje anterior. Si no es buen momento, sin problema — puedes agendar cuando quieras aquí: [LINK-CALENDLY]"*
+  > *"Hola [Nombre], solo quería saber si te llegó mi mensaje anterior. Si no es buen momento, sin problema — puedes agendar cuando quieras aquí: https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot"*
 
 ---
 

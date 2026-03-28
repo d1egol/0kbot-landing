@@ -1,7 +1,7 @@
 # Secuencia de Follow-up — Prospección 0kbot
 
 Emails de seguimiento para cuando el prospecto no respondió al email inicial.
-Reemplaza `[Nombre]`, `[Empresa]`, `[LINK-CALENDLY]` antes de enviar.
+Reemplaza `[Nombre]`, `[Empresa]`, `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` antes de enviar.
 
 > **Regla:** Máximo 3 intentos (email inicial + 2 follow-ups). Si después del 3er mensaje no hay respuesta, se cierra el ciclo.
 
@@ -30,7 +30,7 @@ Solo quería ver si te llegó mi mensaje anterior. A veces se pierde en la bande
 
 En caso de que no, en resumen: ayudamos a empresas como [Empresa] a automatizar sus procesos más repetitivos — WhatsApp, cotizaciones, seguimiento de clientes, reportes. El resultado habitual es recuperar entre 10 y 20 horas semanales sin contratar a nadie nuevo.
 
-¿Tendría sentido hablar? [LINK-CALENDLY]
+¿Tendría sentido hablar? https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 
 Saludos,
 Diego Leiva
@@ -52,7 +52,7 @@ Intenté contactarte un par de veces. No quiero insistir más si no es el moment
 
 Solo te dejo esto por si cambia en el futuro: si en algún momento [Empresa] necesita reducir trabajo manual repetitivo, o quiere mejorar el tiempo de respuesta a clientes sin contratar más personas, estamos acá.
 
-Puedes agendar cuando quieras: [LINK-CALENDLY]
+Puedes agendar cuando quieras: https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 
 Y si hay un mejor momento para hablar (próximo trimestre, después de temporada, etc.), con gusto me avisas.
 
@@ -113,7 +113,7 @@ Con gusto. Te resumo cómo funciona:
 2. **Propuesta:** Te presentamos un plan concreto con el proceso a automatizar, el tiempo estimado y el resultado esperado.
 3. **Implementación:** Si avanzamos, el proceso completo toma entre 8 y 12 semanas.
 
-Sin compromiso hasta el paso 3. Puedes agendar el diagnóstico aquí: [LINK-CALENDLY]
+Sin compromiso hasta el paso 3. Puedes agendar el diagnóstico aquí: https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 
 ¿Alguna pregunta antes de agendar?
 

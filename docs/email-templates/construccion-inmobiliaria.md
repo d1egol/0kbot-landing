@@ -1,7 +1,7 @@
 # Template: Construcción / Inmobiliaria
 
 > **Uso:** Constructoras, inmobiliarias, empresas de arquitectura, contratistas generales, administradoras de propiedades.
-> Reemplaza `[Nombre]`, `[Empresa]`, `[Ciudad]` y `[LINK-CALENDLY]` antes de enviar.
+> Reemplaza `[Nombre]`, `[Empresa]`, `[Ciudad]` y `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` antes de enviar.
 
 ---
 
@@ -24,7 +24,7 @@ En 0kbot automatizamos el flujo de información: reportes de avance que llegan s
 
 ¿Tienes 20 minutos esta semana para mostrarte cómo lo hemos implementado en otras constructoras?
 
-[LINK-CALENDLY]
+https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 
 Saludos,
 Diego Leiva
