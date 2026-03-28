@@ -8,6 +8,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { BookOpen, HelpCircle, ArrowRight } from "lucide-react";
+import { getAllPosts } from "@/lib/blog";
+import { BlogCard } from "@/components/blog/BlogCard";
 
 export const metadata: Metadata = {
   title: "Recursos y guías para pymes",
@@ -20,29 +22,6 @@ export const metadata: Metadata = {
     "mejora procesos artículos",
   ],
 };
-
-const articulos = [
-  {
-    title: "5 señales de que tu pyme necesita digitalizar sus procesos",
-    desc: "Cómo identificar si el desorden operativo ya está afectando tu crecimiento.",
-    tag: "Guía práctica",
-  },
-  {
-    title: "Automatización para pymes: por dónde empezar",
-    desc: "No necesitas un sistema complejo. Estas son las automatizaciones que generan impacto rápido.",
-    tag: "Artículo",
-  },
-  {
-    title: "Cómo pasar de planillas a un sistema de gestión sin morir en el intento",
-    desc: "La transición no tiene que ser traumática. Consejos prácticos para migrar tu información.",
-    tag: "Guía práctica",
-  },
-  {
-    title: "KPIs para pymes: qué medir y por qué",
-    desc: "No todo se mide. Estos son los indicadores que realmente importan para tu negocio.",
-    tag: "Artículo",
-  },
-];
 
 const faqs = [
   {
@@ -64,6 +43,8 @@ const faqs = [
 ];
 
 export default function RecursosPage() {
+  const posts = getAllPosts();
+
   return (
     <>
       {/* Hero */}
@@ -82,7 +63,7 @@ export default function RecursosPage() {
         </div>
       </section>
 
-      {/* Artículos */}
+      {/* Artículos desde el blog */}
       <section className="section-padding bg-background">
         <div className="container-wide">
           <MotionSection className="flex items-center gap-3 mb-10">
@@ -91,26 +72,20 @@ export default function RecursosPage() {
               Artículos y guías
             </h2>
           </MotionSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {articulos.map((a, i) => (
-              <MotionSection key={a.title} delay={i * 0.08}>
-                <div className="bg-card border border-border rounded-xl p-6 hover:border-accent/30 transition-colors h-full">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-accent font-body">
-                    {a.tag}
-                  </span>
-                  <h3 className="font-heading font-bold text-foreground text-lg mt-2 mb-2">
-                    {a.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground font-body">
-                    {a.desc}
-                  </p>
-                </div>
-              </MotionSection>
-            ))}
-          </div>
-          <p className="text-center text-sm text-muted-foreground font-body mt-8">
-            Próximamente más contenido. ¡Estamos trabajando en ello!
-          </p>
+
+          {posts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {posts.map((post, i) => (
+                <MotionSection key={post.slug} delay={i * 0.06}>
+                  <BlogCard post={post} />
+                </MotionSection>
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-sm text-muted-foreground font-body py-12">
+              Próximamente más contenido.
+            </p>
+          )}
         </div>
       </section>
 
