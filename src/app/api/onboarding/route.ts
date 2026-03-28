@@ -6,6 +6,14 @@ import {
   sendOnboardingNotificationEmail,
 } from "@/lib/email";
 
+const TAMANO_MAP: Record<string, string> = {
+  "1-5": "<20",
+  "6-20": "<20",
+  "21-50": "20-50",
+  "51-100": "50-100",
+  "100+": ">200",
+};
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -20,7 +28,7 @@ export async function POST(request: NextRequest) {
       nombre: data.nombre,
       email: data.email,
       empresa: data.empresa,
-      tamano_empresa: data.tamano,
+      tamano_empresa: TAMANO_MAP[data.tamano] ?? "<20",
       fuente: "onboarding_form",
       estado: "nuevo",
       diagnostico_data: {

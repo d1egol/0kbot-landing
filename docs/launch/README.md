@@ -12,8 +12,8 @@ Actualiza el estado de cada ítem a medida que los completes.
 | 1 | Constituir SpA en Chile (Empresa en un Día) | ⬜ Pendiente | `FORMALIZACION-LEGAL.md` |
 | 2 | Inicio de actividades en SII (Primera categoría) | ⬜ Pendiente | `FORMALIZACION-LEGAL.md` |
 | 3 | Abrir cuenta bancaria empresa | ⬜ Pendiente | `FORMALIZACION-LEGAL.md` |
-| 4 | Configurar Calendly (evento "Diagnóstico 30 min") | ⬜ Pendiente | `GUIA-METRICOOL.md` |
-| 5 | Reemplazar `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` en todos los email templates | ⬜ Pendiente | `docs/email-templates/` |
+| 4 | Configurar Calendly (evento "Diagnóstico 30 min") | ✅ Listo | `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` |
+| 5 | Link de Calendly actualizado en todos los email templates | ✅ Listo | `docs/email-templates/` |
 | 6 | Definir precio del programa de 12 semanas | ⬜ Pendiente | `PRICING.md` |
 | 7 | Configurar método de cobro | ⬜ Pendiente | `COBRO.md` |
 
