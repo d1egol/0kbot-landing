@@ -51,3 +51,37 @@ export const diagnosticoSchema = z.object({
 });
 
 export type DiagnosticoInput = z.infer<typeof diagnosticoSchema>;
+
+export const onboardingSchema = z.object({
+  nombre: z.string().min(2).max(100),
+  email: z.string().email("Ingresa un email válido"),
+  empresa: z.string().min(2).max(200),
+  telefono: z.string().max(50).optional(),
+  rubro: z.enum([
+    "Retail / Comercio",
+    "Servicios profesionales",
+    "Construcción / Inmobiliaria",
+    "Logística / Transporte",
+    "Manufactura",
+    "Otro",
+  ] as const),
+  tamano: z.enum(["1-5", "6-20", "21-50", "51-100", "100+"] as const),
+  proceso_principal: z.string().min(10).max(1000),
+  intentado_antes: z.enum([
+    "Nada todavía",
+    "Excel / hojas de cálculo",
+    "Software específico",
+    "Contratamos más personas",
+    "Otra cosa",
+  ] as const),
+  resultado_ideal: z.string().min(10).max(1000),
+  plazo: z.enum(["1-3 meses", "3-6 meses", "Más de 6 meses"] as const),
+  presupuesto: z.enum([
+    "Menos de $500.000 CLP",
+    "$500.000 – $1.500.000 CLP",
+    "$1.500.000 – $3.000.000 CLP",
+    "Abierto / a definir",
+  ] as const),
+});
+
+export type OnboardingInput = z.infer<typeof onboardingSchema>;

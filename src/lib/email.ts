@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import type { LeadInput, DiagnosticoInput } from "@/lib/validations";
+import type { LeadInput, DiagnosticoInput, OnboardingInput } from "@/lib/validations";
 
 // Lazy init — no instanciar en el módulo para evitar error en build de Vercel
 function getResend() {
@@ -184,6 +184,114 @@ export async function sendDiagnosticoNotificationEmail(
     </div>
     <div style="background: #F7F5F0; padding: 16px 28px; border-top: 1px solid #E5E2DB;">
       <p style="font-size: 11px; color: #4A4A4A; margin: 0;">Diagnóstico wizard · ${new Date().toLocaleString("es-CL", { timeZone: "America/Santiago" })}</p>
+    </div>
+  </div>
+</body>
+</html>
+    `.trim(),
+  });
+}
+
+export async function sendOnboardingConfirmationEmail(
+  d: OnboardingInput
+): Promise<void> {
+  await getResend().emails.send({
+    from: `0kbot <${FROM()}>`,
+    to: d.email,
+    subject: "Todo listo para nuestra reunión — 0kbot",
+    html: `
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="font-family: system-ui, -apple-system, sans-serif; background: #F7F5F0; margin: 0; padding: 40px 20px;">
+  <div style="max-width: 520px; margin: 0 auto; background: #FFFFFF; border-radius: 8px; overflow: hidden; border: 1px solid #E5E2DB;">
+    <div style="background: #1B5FA6; padding: 32px; text-align: center;">
+      <h1 style="color: #FFFFFF; font-size: 24px; font-weight: 700; margin: 0;">0kbot</h1>
+    </div>
+    <div style="padding: 32px;">
+      <p style="color: #1A1A1A; font-size: 16px; margin: 0 0 16px;">Hola ${d.nombre.split(" ")[0]},</p>
+      <p style="color: #4A4A4A; font-size: 15px; line-height: 1.6; margin: 0 0 20px;">
+        Recibí tu formulario. Ya tengo todo lo que necesito para que nuestra reunión sea productiva desde el primer minuto.
+      </p>
+      <div style="background: #F7F5F0; border-radius: 6px; padding: 20px; margin: 24px 0; border-left: 4px solid #D4A853;">
+        <p style="color: #1A1A1A; font-size: 13px; font-weight: 600; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Lo que revisaré antes de vernos</p>
+        <p style="color: #4A4A4A; font-size: 14px; line-height: 1.8; margin: 0;">
+          → El proceso que mencionas en ${d.empresa}<br>
+          → Casos similares en el rubro ${d.rubro}<br>
+          → Una propuesta preliminar de solución
+        </p>
+      </div>
+      <p style="color: #4A4A4A; font-size: 14px; line-height: 1.6; margin: 0 0 8px;">
+        Si necesitas cambiar el horario de la reunión o tienes preguntas previas:<br>
+        <a href="mailto:hola@0kbot.com" style="color: #1B5FA6;">hola@0kbot.com</a>
+      </p>
+    </div>
+    <div style="border-top: 1px solid #E5E2DB; padding: 20px 32px; text-align: center;">
+      <p style="color: #4A4A4A; font-size: 12px; margin: 0;">Diego · 0kbot · Santiago, Chile</p>
+    </div>
+  </div>
+</body>
+</html>
+    `.trim(),
+  });
+}
+
+export async function sendOnboardingNotificationEmail(
+  d: OnboardingInput
+): Promise<void> {
+  await getResend().emails.send({
+    from: `0kbot Leads <${FROM()}>`,
+    to: NOTIFICATION_TO(),
+    subject: `[Onboarding] ${d.nombre} · ${d.empresa} · ${d.rubro}`,
+    html: `
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"></head>
+<body style="font-family: system-ui, sans-serif; background: #F7F5F0; margin: 0; padding: 40px 20px;">
+  <div style="max-width: 560px; margin: 0 auto; background: #FFFFFF; border-radius: 8px; border: 1px solid #E5E2DB; overflow: hidden;">
+    <div style="background: #1B5FA6; padding: 20px 28px;">
+      <p style="color: #D4A853; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 4px;">Pre-reunión · ${d.rubro}</p>
+      <h1 style="color: #FFFFFF; font-size: 20px; font-weight: 700; margin: 0;">${d.nombre} — ${d.empresa}</h1>
+    </div>
+    <div style="padding: 28px;">
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #4A4A4A; font-size: 13px; width: 35%;">Email</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; font-size: 13px;"><a href="mailto:${d.email}" style="color: #1B5FA6;">${d.email}</a></td>
+        </tr>
+        ${d.telefono ? `<tr><td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #4A4A4A; font-size: 13px;">Teléfono</td><td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; font-size: 13px; font-weight: 500;">${d.telefono}</td></tr>` : ""}
+        <tr>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #4A4A4A; font-size: 13px;">Rubro</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; font-size: 13px; font-weight: 500;">${d.rubro}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #4A4A4A; font-size: 13px;">Tamaño</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; font-size: 13px;">${d.tamano} personas</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #4A4A4A; font-size: 13px; vertical-align: top;">Proceso principal</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; font-size: 13px; line-height: 1.5;">${d.proceso_principal}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #4A4A4A; font-size: 13px;">Intentado antes</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; font-size: 13px;">${d.intentado_antes}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #4A4A4A; font-size: 13px; vertical-align: top;">Resultado ideal</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; font-size: 13px; line-height: 1.5;">${d.resultado_ideal}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; color: #4A4A4A; font-size: 13px;">Plazo</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #E5E2DB; font-size: 13px; font-weight: 600;">${d.plazo}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #4A4A4A; font-size: 13px;">Presupuesto</td>
+          <td style="padding: 10px 0; font-size: 13px; font-weight: 600; color: #1B5FA6;">${d.presupuesto}</td>
+        </tr>
+      </table>
+    </div>
+    <div style="background: #F7F5F0; padding: 16px 28px; border-top: 1px solid #E5E2DB;">
+      <p style="font-size: 11px; color: #4A4A4A; margin: 0;">Onboarding form · ${new Date().toLocaleString("es-CL", { timeZone: "America/Santiago" })}</p>
     </div>
   </div>
 </body>
