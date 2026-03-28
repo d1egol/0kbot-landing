@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import OpenModalButton from "@/components/ui/OpenModalButton";
+import OkbotLogo from "@/components/ui/OkbotLogo";
 
 const navItems = [
   { label: "Inicio", href: "/" },
@@ -42,9 +43,10 @@ export default function Navbar() {
       <div className="container-wide flex items-center justify-between h-16">
         <Link
           href="/"
-          className="font-heading font-bold text-xl tracking-tight text-foreground hover:text-primary transition-colors"
+          className="text-primary hover:text-primary/80 transition-colors"
+          aria-label="0kbot — inicio"
         >
-          0kbot
+          <OkbotLogo height={36} />
         </Link>
 
         {/* Desktop nav */}
