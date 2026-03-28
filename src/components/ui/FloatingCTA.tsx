@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ContactModal from "./ContactModal";
+import { trackCTAClick } from "@/lib/analytics";
 
 export default function FloatingCTA() {
   const [visible, setVisible] = useState(false);
@@ -47,7 +48,7 @@ export default function FloatingCTA() {
         style={{ width: "90%" }}
       >
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={() => { trackCTAClick("floating_cta", "floating"); setIsOpen(true); }}
           className="w-full px-6 py-4 bg-primary text-primary-foreground rounded-md font-semibold font-sans text-sm shadow-lg hover:bg-primary/90 transition-colors"
         >
           Ver cuánto estoy perdiendo →

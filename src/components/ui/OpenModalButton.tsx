@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ContactModal from "./ContactModal";
+import { trackCTAClick } from "@/lib/analytics";
 
 interface OpenModalButtonProps {
   children: React.ReactNode;
@@ -20,7 +21,7 @@ export default function OpenModalButton({
 
   return (
     <>
-      <button id={id} className={className} onClick={() => { onBeforeOpen?.(); setIsOpen(true); }}>
+      <button id={id} className={className} onClick={() => { trackCTAClick(typeof children === "string" ? children : "modal_open", "button"); onBeforeOpen?.(); setIsOpen(true); }}>
         {children}
       </button>
       <ContactModal isOpen={isOpen} onClose={() => setIsOpen(false)} />

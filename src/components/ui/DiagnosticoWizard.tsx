@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { trackDiagnosticoCompleted } from "@/lib/analytics";
 
 type TamanoOption = "<20" | "20-50" | "50-100" | "100-200" | ">200";
 
@@ -217,6 +218,7 @@ export default function DiagnosticoWizard() {
         }),
       });
       if (!res.ok) throw new Error("Error");
+      trackDiagnosticoCompleted();
       setSuccess(true);
     } catch {
       setSubmitState("error");

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
+import { trackLeadCapture } from "@/lib/analytics";
 
 const CALENDLY_URL = "https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot";
 
@@ -79,6 +80,8 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
         fuente: "cta_calendly",
       }),
     }).catch(() => {});
+
+    trackLeadCapture("modal");
 
     // Redirect to Calendly with prefilled data
     const params = new URLSearchParams({
