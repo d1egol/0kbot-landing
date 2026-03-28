@@ -48,7 +48,7 @@ export default function ContactoPage() {
           empresa: form.empresa || undefined,
           email: form.email,
           telefono: form.telefono || undefined,
-          mensaje: form.mensaje,
+          problema: form.mensaje,
           fuente: "contacto_page",
         }),
       });
@@ -236,7 +236,7 @@ export default function ContactoPage() {
                       Email
                     </p>
                     <p className="text-sm font-medium text-foreground font-body">
-                      contacto@0kbot.com
+                      hola@0kbot.com
                     </p>
                   </div>
                 </div>

@@ -36,9 +36,9 @@ export async function POST(request: NextRequest) {
     const { error } = await supabase.from("leads").insert({
       nombre: lead.nombre,
       email: lead.email,
-      empresa: lead.empresa,
+      empresa: lead.empresa ?? "(sin especificar)",
       cargo: lead.cargo ?? null,
-      tamano_empresa: lead.tamano_empresa,
+      tamano_empresa: lead.tamano_empresa ?? "<20",
       problema: lead.problema ?? null,
       fuente: lead.fuente,
       estado: lead.estado,

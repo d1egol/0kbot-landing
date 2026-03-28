@@ -10,15 +10,18 @@ export const leadSchema = z.object({
 
   empresa: z
     .string()
-    .min(2, "El nombre de la empresa debe tener al menos 2 caracteres")
-    .max(200, "El nombre de la empresa no puede superar los 200 caracteres"),
+    .max(200, "El nombre de la empresa no puede superar los 200 caracteres")
+    .optional(),
 
   cargo: z
     .string()
     .max(100, "El cargo no puede superar los 100 caracteres")
     .optional(),
 
-  tamano_empresa: z.enum(["<20", "20-50", "50-100", "100-200", ">200"] as const),
+  tamano_empresa: z
+    .enum(["<20", "20-50", "50-100", "100-200", ">200"] as const)
+    .optional()
+    .default("<20"),
 
   problema: z
     .string()
