@@ -16,6 +16,12 @@ const chatMessages = [
   { time: "Sáb 2:48am", text: "Perfecto, muchas gracias 🙌", from: "client" },
 ];
 
+const bullets = [
+  "Detectamos cuellos de botella con números reales",
+  "Eliminamos trabajo manual innecesario",
+  "Implementamos soluciones simples que sí usa tu equipo",
+];
+
 export default function HeroSection() {
   return (
     <section className="bg-background pt-24 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
@@ -45,10 +51,11 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1]"
+              className="font-heading text-4xl md:text-5xl lg:text-[3.4rem] font-bold text-foreground leading-[1.1]"
             >
-              Ordenamos y automatizamos{" "}
-              <span className="text-gradient-accent">la operación de tu empresa</span>
+              Automatizamos procesos para pymes en Chile.
+              <br />
+              <span className="text-gradient-accent">No vendemos IA. Vendemos lunes tranquilos.</span>
             </motion.h1>
 
             <motion.p
@@ -57,10 +64,25 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-muted-foreground font-body leading-relaxed max-w-xl"
             >
-              Mapeamos cómo opera tu negocio hoy, eliminamos los cuellos de
-              botella y automatizamos las tareas repetitivas. En 12 semanas,
-              con resultados medibles. Sin código. Sin inversión en software.
+              Detectamos dónde se va tu tiempo y tu plata, y lo arreglamos con
+              cambios concretos: automatización, estandarización y mejora de
+              procesos. Sin teoría. Sin software innecesario.
             </motion.p>
+
+            {/* Bullets */}
+            <motion.ul
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="space-y-2"
+            >
+              {bullets.map((b) => (
+                <li key={b} className="flex items-center gap-2.5 text-sm text-foreground font-body">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                  {b}
+                </li>
+              ))}
+            </motion.ul>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -69,13 +91,13 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row gap-3 pt-2"
             >
               <OpenModalButton className="inline-flex items-center justify-center px-6 py-3.5 bg-primary text-primary-foreground rounded-md font-medium font-body text-sm hover:bg-primary/90 transition-colors">
-                Descubrir pérdidas ocultas →
+                Descubrir cuánto estoy perdiendo →
               </OpenModalButton>
               <a
                 href="#como-funciona"
                 className="inline-flex items-center justify-center px-6 py-3.5 border-2 border-primary/40 text-primary rounded-md font-medium font-body text-sm hover:border-primary hover:bg-primary/5 transition-colors"
               >
-                Ver cómo lo hacemos ↓
+                Ver cómo trabajamos ↓
               </a>
             </motion.div>
 
@@ -118,7 +140,6 @@ export default function HeroSection() {
             >
               {/* Dashboard mockup card */}
               <div className="rounded-2xl bg-white border border-[#E5E2DB] shadow-xl p-5 relative overflow-hidden">
-                {/* Card header */}
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#F0EDE8]">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -127,7 +148,6 @@ export default function HeroSection() {
                   <span className="text-xs text-[#999]">Operando 24/7</span>
                 </div>
 
-                {/* Chat simulation */}
                 <div className="space-y-3 mb-5">
                   {chatMessages.map((msg, i) => (
                     <motion.div
@@ -151,7 +171,6 @@ export default function HeroSection() {
                   ))}
                 </div>
 
-                {/* Metrics row */}
                 <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#F0EDE8]">
                   {floatingMetrics.map((m, i) => {
                     const Icon = m.icon;
@@ -172,7 +191,6 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Floating badge */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -186,7 +204,6 @@ export default function HeroSection() {
                 </div>
               </motion.div>
 
-              {/* Decorative blob */}
               <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-10 blur-2xl"
                 style={{ background: "radial-gradient(circle, #D4A853, transparent)" }}
               />

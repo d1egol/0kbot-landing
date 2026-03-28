@@ -33,7 +33,7 @@ const footerLinks = [
   {
     title: "Contacto",
     links: [
-      { label: "Solicitar diagnóstico", href: "/contacto" },
+      { label: "Agendar diagnóstico gratis", href: "https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot" },
       { label: "hola@0kbot.com", href: "mailto:hola@0kbot.com" },
     ],
   },

@@ -6,27 +6,28 @@ import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "0kbot — Mejora de procesos para pymes chilenas",
+    default: "0kbot — Automatización de procesos para pymes en Chile",
     template: "%s — 0kbot",
   },
   description:
-    "Consultora de mejora de procesos para pymes chilenas de 10 a 200 personas. Metodología Lean, implementación práctica, resultados medibles en 12 semanas.",
+    "Consultoría de procesos para pymes chilenas. Detectamos pérdidas de tiempo, estandarizamos y automatizamos tu operación. Resultados medibles en 12 semanas.",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL ?? "https://0kbot.com"
   ),
   keywords: [
+    "automatización de procesos",
+    "mejora de procesos operativos",
+    "eficiencia operacional",
+    "optimización de procesos en pymes",
+    "consultoría de procesos",
+    "transformación digital para pymes",
     "consultoría procesos Chile",
     "mejora procesos pymes",
-    "automatización procesos",
-    "Lean Six Sigma Chile",
-    "eficiencia operacional",
-    "optimización empresas medianas",
-    "digitalización pymes Chile",
   ],
   openGraph: {
-    title: "0kbot — Mejora de procesos para pymes chilenas",
+    title: "0kbot — Automatización de procesos para pymes en Chile",
     description:
-      "En 2 semanas te decimos exactamente dónde se va tu plata y tu tiempo. En 12 semanas lo arreglamos y medimos la diferencia.",
+      "Detectamos dónde se va tu tiempo y tu plata, y lo arreglamos con cambios concretos. Resultados medibles en 12 semanas.",
     url: "https://0kbot.com",
     siteName: "0kbot",
     locale: "es_CL",
@@ -34,9 +35,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "0kbot — Mejora de procesos para pymes chilenas",
+    title: "0kbot — Automatización de procesos para pymes en Chile",
     description:
-      "En 2 semanas te decimos exactamente dónde se va tu plata y tu tiempo.",
+      "Detectamos dónde se va tu tiempo y tu plata, y lo arreglamos con cambios concretos.",
   },
   robots: {
     index: true,
@@ -55,7 +56,7 @@ const jsonLd = {
       "@id": "https://0kbot.com/#business",
       name: "0kbot",
       description:
-        "Consultora de mejora de procesos para pymes chilenas. Metodología Lean, implementación práctica, resultados medibles en 12 semanas.",
+        "Consultoría de automatización de procesos para pymes chilenas. Detectamos pérdidas, estandarizamos y automatizamos tu operación con resultados medibles en 12 semanas.",
       url: "https://0kbot.com",
       email: "hola@0kbot.com",
       address: {
@@ -64,7 +65,7 @@ const jsonLd = {
         addressCountry: "CL",
       },
       areaServed: { "@type": "Country", name: "Chile" },
-      serviceType: "Consultoría de mejora de procesos",
+      serviceType: "Consultoría de procesos y automatización para pymes",
       knowsAbout: [
         "Lean Manufacturing",
         "Six Sigma",

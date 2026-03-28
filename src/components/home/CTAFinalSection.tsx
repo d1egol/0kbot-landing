@@ -15,7 +15,7 @@ export default function CTAFinalSection() {
             hoy es un dolor de cabeza será &ldquo;imposible de cambiar&rdquo;.
           </p>
           <OpenModalButton className="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-md font-semibold font-body text-base hover:bg-accent/90 transition-colors">
-            Saber cuánto estoy perdiendo →
+            Quiero números, no suposiciones →
           </OpenModalButton>
           <p className="text-sm text-white/40 font-body">
             Sin compromiso. Sin spam. Te llamamos, conversamos, y si no hay fit,

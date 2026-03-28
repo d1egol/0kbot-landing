@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Shuffle, Clock, EyeOff, FileText, BarChart3, UserX, ArrowRight } from "lucide-react";
+import { Shuffle, Clock, EyeOff, FileText, BarChart3, UserX } from "lucide-react";
 import MotionSection from "@/components/ui/MotionSection";
+import OpenModalButton from "@/components/ui/OpenModalButton";
 
 const soluciones = [
   {
@@ -53,7 +53,7 @@ export default function ComparacionSection() {
             ¿Cuál es tu principal desafío operativo?
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl font-body">
-            Identifica tu problema y conoce cómo lo resolvemos con implementaciones prácticas.
+            Identifica tu problema y conoce cómo lo resolvemos con optimización de procesos en pymes.
           </p>
         </MotionSection>
 
@@ -96,12 +96,9 @@ export default function ComparacionSection() {
         </div>
 
         <MotionSection delay={0.2} className="mt-10 text-center">
-          <Link
-            href="/soluciones"
-            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary/30 text-primary rounded-md font-medium font-body text-sm hover:border-primary hover:bg-primary/5 transition-colors"
-          >
-            Ver todas las soluciones <ArrowRight size={15} />
-          </Link>
+          <OpenModalButton className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium font-body text-sm hover:bg-primary/90 transition-colors">
+            Descubrir pérdidas ocultas →
+          </OpenModalButton>
         </MotionSection>
       </div>
     </section>

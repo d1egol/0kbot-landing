@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import OpenModalButton from "@/components/ui/OpenModalButton";
 
 const navItems = [
   { label: "Inicio", href: "/" },
@@ -64,12 +65,9 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
-          <Link
-            href="/contacto"
-            className="px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors"
-          >
-            Solicitar diagnóstico
-          </Link>
+          <OpenModalButton className="px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors">
+            Agendar diagnóstico gratis
+          </OpenModalButton>
         </div>
 
         {/* Mobile toggle */}
@@ -107,12 +105,9 @@ export default function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              <Link
-                href="/contacto"
-                className="mt-3 px-5 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors text-center"
-              >
-                Solicitar diagnóstico
-              </Link>
+              <OpenModalButton className="mt-3 px-5 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors text-center w-full">
+                Agendar diagnóstico gratis
+              </OpenModalButton>
             </div>
           </motion.div>
         )}

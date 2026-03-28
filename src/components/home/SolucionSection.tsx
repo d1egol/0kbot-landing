@@ -2,25 +2,20 @@ import MotionSection from "@/components/ui/MotionSection";
 import OpenModalButton from "@/components/ui/OpenModalButton";
 import { ScanSearch, Settings2, Award } from "lucide-react";
 
-const columnas = [
-  {
-    titulo: "Lo que hacemos",
-    texto:
-      "Entramos, observamos, cronometramos. En 2 semanas te decimos exactamente dónde se va tu plata y tu tiempo. Con números, no con \"se ve mal\".",
-    icono: ScanSearch,
-  },
-  {
-    titulo: "Cómo lo resolvemos",
-    texto:
-      "La mitad de las veces no necesitas software nuevo. Necesitas que alguien que ha visto 40 empresas como la tuya te diga: \"esto se arregla cambiando este paso, no comprando ese sistema\".",
-    icono: Settings2,
-  },
-  {
-    titulo: "Por qué nosotros",
-    texto:
-      "No somos desarrolladores que quieren codear. Somos ingenieros que odiamos el desperdicio. Si la solución es un Excel bien hecho, te damos un Excel. Si es automatización, la implementamos.",
-    icono: Award,
-  },
+const pasos = [
+  "Observamos lo que realmente pasa",
+  "Medimos tiempos, errores y puntos de fricción",
+  "Priorizamos qué corregir primero",
+  "Estandarizamos y automatizamos donde tiene sentido",
+  "Medimos el impacto",
+];
+
+const resultados = [
+  "Menos errores",
+  "Menos dependencia de personas clave",
+  "Más velocidad operativa",
+  "Más control",
+  "Decisiones con datos reales",
 ];
 
 export default function SolucionSection() {
@@ -29,36 +24,73 @@ export default function SolucionSection() {
       <div className="container-content">
         <MotionSection className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-white">
-            No vendemos IA.
-            <br />
-            Vendemos lunes tranquilos.
+            Análisis, estandarización y<br />automatización de procesos
           </h2>
         </MotionSection>
 
         <div className="grid md:grid-cols-3 gap-8 mb-14">
-          {columnas.map((col, i) => {
-            const Icono = col.icono;
-            return (
-              <MotionSection key={col.titulo} delay={i * 0.1}>
-                <div className="space-y-4">
-                  <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
-                    <Icono size={22} style={{ color: "#D4A853" }} />
-                  </div>
-                  <h3 className="font-heading font-semibold text-lg text-accent">
-                    {col.titulo}
-                  </h3>
-                  <p className="text-white/80 font-body text-sm leading-relaxed">
-                    {col.texto}
-                  </p>
-                </div>
-              </MotionSection>
-            );
-          })}
+          {/* Qué hacemos */}
+          <MotionSection delay={0}>
+            <div className="space-y-4">
+              <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
+                <ScanSearch size={22} style={{ color: "#D4A853" }} />
+              </div>
+              <h3 className="font-heading font-semibold text-lg text-accent">
+                Qué hacemos
+              </h3>
+              <p className="text-white/80 font-body text-sm leading-relaxed">
+                Analizamos tus procesos operativos para detectar pérdidas de
+                tiempo, errores, retrabajo y cuellos de botella.
+              </p>
+            </div>
+          </MotionSection>
+
+          {/* Cómo lo hacemos */}
+          <MotionSection delay={0.1}>
+            <div className="space-y-4">
+              <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
+                <Settings2 size={22} style={{ color: "#D4A853" }} />
+              </div>
+              <h3 className="font-heading font-semibold text-lg text-accent">
+                Cómo lo hacemos
+              </h3>
+              <ol className="space-y-2">
+                {pasos.map((paso, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-white/80 font-body text-sm leading-relaxed">
+                    <span className="text-accent font-mono text-xs font-bold mt-0.5 shrink-0">
+                      {i + 1}.
+                    </span>
+                    {paso}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </MotionSection>
+
+          {/* Qué obtienes */}
+          <MotionSection delay={0.2}>
+            <div className="space-y-4">
+              <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
+                <Award size={22} style={{ color: "#D4A853" }} />
+              </div>
+              <h3 className="font-heading font-semibold text-lg text-accent">
+                Qué obtienes
+              </h3>
+              <ul className="space-y-2">
+                {resultados.map((r) => (
+                  <li key={r} className="flex items-center gap-2.5 text-white/80 font-body text-sm leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    {r}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </MotionSection>
         </div>
 
         <MotionSection className="text-center">
           <OpenModalButton className="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-md font-semibold font-body text-sm hover:bg-accent/90 transition-colors">
-            Quiero saber cuánto estoy perdiendo →
+            Detectar mis cuellos de botella →
           </OpenModalButton>
           <p className="mt-3 text-white/50 text-xs font-body">
             Diagnóstico gratuito · Sin compromiso

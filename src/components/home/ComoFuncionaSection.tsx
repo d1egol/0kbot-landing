@@ -119,8 +119,8 @@ export default function ComoFuncionaSection() {
 
         <MotionSection className="mt-12 pt-8 border-t border-muted">
           <p className="text-sm text-muted-foreground font-body text-center italic max-w-lg mx-auto">
-            Usamos IA y automatización donde tiene sentido — no porque esté de
-            moda, sino porque resuelve el problema específico.
+            Usamos automatización de procesos e IA donde tiene sentido — no
+            porque esté de moda, sino porque mejora tu eficiencia operacional.
           </p>
         </MotionSection>
       </div>

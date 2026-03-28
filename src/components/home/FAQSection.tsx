@@ -3,27 +3,27 @@ import FAQAccordion from "@/components/ui/FAQAccordion";
 const preguntas = [
   {
     pregunta: "¿Me van a querer vender un software caro?",
-    respuesta: "Si tu problema se resuelve con un Excel bien hecho, te damos un Excel. Solo el 40% de nuestros proyectos incluye desarrollo. El otro 60% es procesos, flujos y capacitación.",
+    respuesta: "No. Muchas veces el problema no es el software, sino el proceso. Si se resuelve con orden, estandarización o una herramienta simple, esa será la recomendación.",
   },
   {
     pregunta: "¿Cuánto cuesta esto?",
-    respuesta: "El diagnóstico es gratis. La implementación depende de qué encontremos. Te damos presupuesto fijo antes de empezar, no horas abiertas. Y sí: si no ves resultado, no pagas el último tramo.",
+    respuesta: "Depende del tamaño y complejidad de la operación, pero siempre se priorizan mejoras con impacto claro en tiempo, errores o capacidad. Si no hay retorno visible, no tiene sentido avanzar.",
   },
   {
     pregunta: "¿Tengo que parar mi operación para esto?",
-    respuesta: "No. El mapeo lo hacemos observando, no interrumpiendo. La implementación la hacemos en paralelo. Tu equipo sigue trabajando.",
+    respuesta: "No. El análisis y la implementación se diseñan para convivir con la operación, no para frenarla.",
   },
   {
     pregunta: "¿Y si el problema es mi gente, no los procesos?",
-    respuesta: "Te lo decimos en el diagnóstico. Si el problema es estructural de personas, te lo decimos y no cobramos implementación. Prefiero una recomendación honesta que un proyecto forzado.",
+    respuesta: "En la mayoría de los casos, el problema no parte por las personas, sino por procesos mal diseñados, información dispersa y roles poco claros.",
   },
   {
-    pregunta: "¿En qué industrias trabajan?",
-    respuesta: "Distribución, logística, construcción, manufactura, servicios profesionales, clínicas y comercio. En general, cualquier empresa de 10 a 200 personas donde hay procesos repetitivos con personas coordinándose.",
+    pregunta: "¿Usan IA?",
+    respuesta: "Sí, pero solo cuando ayuda de verdad. No se implementa IA por moda, sino cuando reduce trabajo manual, errores o tiempos de respuesta.",
   },
   {
-    pregunta: "¿Cuánto demora ver resultados?",
-    respuesta: "Las mejoras rápidas se notan en 4-6 semanas. Los indicadores formales los medimos en las semanas 11-12. Si no hay resultado medible, no cobramos el último tramo.",
+    pregunta: "¿Cuánto se demoran en verse resultados?",
+    respuesta: "Muchas mejoras muestran impacto en las primeras semanas, sobre todo cuando el cuello de botella está claro.",
   },
 ];
 
