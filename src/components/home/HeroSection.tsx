@@ -152,26 +152,23 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Metrics grid */}
+                {/* Capabilities grid */}
                 <div className="px-4 pb-3 grid grid-cols-2 gap-2">
                   {[
-                    { label: "Tiempo ahorrado", value: "38%", trend: "↑" },
-                    { label: "Errores operac.", value: "−74%", trend: "↓" },
-                    { label: "Proc. digitalizados", value: "12", trend: "✓" },
-                    { label: "ROI promedio", value: "3.2×", trend: "↑" },
+                    { label: "Automatización", desc: "Procesos repetitivos eliminados" },
+                    { label: "Digitalización", desc: "Flujos sin papel ni Excel" },
+                    { label: "IA aplicada", desc: "Donde agrega valor real" },
+                    { label: "Mejora continua", desc: "Medición y ajuste constante" },
                   ].map((m, i) => (
                     <motion.div
                       key={m.label}
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.9 + i * 0.1 }}
-                      className="bg-white/5 border border-white/10 rounded-lg px-3 py-2"
+                      className="bg-white/5 border border-white/10 rounded-lg px-3 py-2.5"
                     >
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-[9px] text-white/50 font-mono uppercase tracking-wide leading-tight">{m.label}</span>
-                        <span className="text-[#06B6D4] text-[10px]">{m.trend}</span>
-                      </div>
-                      <div className="font-heading font-bold text-lg text-white leading-none">{m.value}</div>
+                      <div className="text-[#06B6D4] text-xs font-semibold font-mono mb-0.5">{m.label}</div>
+                      <div className="text-[10px] text-white/50 leading-tight">{m.desc}</div>
                     </motion.div>
                   ))}
                 </div>
