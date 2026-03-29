@@ -9,7 +9,7 @@
 
 El blog está completamente implementado y en producción en `https://0kbot.com/blog`.
 
-- **10 artículos** publicados en `src/content/blog/`
+- **9 artículos** publicados en `src/content/blog/`
 - **Ruta:** `/blog` (listado) y `/blog/[slug]` (artículo individual)
 - **Renderizado:** estático (SSG) con `generateStaticParams`
 - **Formato:** archivos `.mdx` con frontmatter
@@ -26,12 +26,11 @@ src/
 │       ├── ia-para-pymes-2025.mdx
 │       ├── reducir-horas-extras-automatizacion.mdx
 │       ├── herramientas-ia-chile.mdx
-│       ├── casos-exito-automatizacion.mdx
 │       ├── ia-para-pymes-lo-que-realmente-sirve.mdx
 │       ├── 5-senales-operacion-sangrando-plata.mdx
-│       ├── caso-real-distribuidora-ahorro-5-8-millones.mdx
 │       ├── por-que-tu-empresa-vive-en-whatsapp.mdx
-│       └── 3-herramientas-gratuitas-pyme.mdx
+│       ├── 3-herramientas-gratuitas-pyme.mdx
+│       └── mejora-de-procesos-pymes-chilenas.mdx
 ├── lib/
 │   └── blog.ts            ← Funciones utilitarias para leer posts
 ├── app/
@@ -39,7 +38,8 @@ src/
 │       ├── page.tsx        ← Listado del blog
 │       └── [slug]/
 │           ├── page.tsx    ← Artículo individual
-│           └── not-found.tsx
+│           ├── loading.tsx ← Skeleton de carga
+│           └── not-found.tsx ← 404 para slugs inválidos
 └── components/
     ├── blog/
     │   ├── BlogCard.tsx
@@ -76,6 +76,7 @@ export const CATEGORIES = [
   "Todos",
   "Automatización",
   "IA para Pymes",
+  "Mejora de Procesos",
   "Casos de Uso",
   "Noticias de IA",
   "Tutoriales",
@@ -104,7 +105,7 @@ formatDate(dateStr: string): string    // "15 de marzo de 2025" (locale es-CL)
 title: "Título del artículo"
 excerpt: "Descripción de 1-2 oraciones para SEO y cards. Máximo 160 caracteres."
 date: "2026-04-01"          # formato ISO, determina el orden en el listado
-author: "Diego"
+author: "Diego López"
 category: "Automatización"  # debe ser una de las 6 categorías válidas
 tags: ["tag1", "tag2"]      # 3-5 tags relevantes
 featured: false             # solo true en el artículo destacado principal
@@ -114,7 +115,7 @@ coverImage: "/blog/nombre-imagen.svg"  # opcional
 Contenido del artículo en MDX...
 ```
 
-**Categorías válidas:** `Automatización` · `IA para Pymes` · `Casos de Uso` · `Noticias de IA` · `Tutoriales`
+**Categorías válidas:** `Automatización` · `IA para Pymes` · `Mejora de Procesos` · `Casos de Uso` · `Noticias de IA` · `Tutoriales`
 
 > **Importante:** Solo el primer post con `featured: true` se muestra como card destacada en el listado. Si hay más de uno, solo el primero en orden cronológico se usa.
 
@@ -196,6 +197,7 @@ Cada artículo genera automáticamente:
 - `<meta keywords>`: el array `tags`
 - `openGraph.publishedTime`: el campo `date`
 - JSON-LD `Article` schema con `headline`, `description`, `datePublished`, `author`, `publisher`
+- `datePublished` / `dateModified`: se expande a `${date}T00:00:00-04:00` (Chile Continental, UTC-4)
 
 ---
 

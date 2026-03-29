@@ -38,6 +38,13 @@ src/
 │   ├── nosotros/           # Sobre 0kbot
 │   ├── onboarding/         # Formulario pre-reunión
 │   ├── recursos/           # Recursos
+│   ├── ia-para-pymes/          # Landing SEO: IA para pymes
+│   ├── mejora-de-procesos/     # Landing SEO: mejora de procesos
+│   ├── automatizacion-procesos-chile/  # Landing SEO: automatización
+│   ├── transformacion-digital-pymes/   # Landing SEO: transformación digital
+│   ├── privacidad/             # Política de privacidad
+│   ├── terminos/               # Términos y condiciones
+│   ├── feed.xml/               # RSS feed
 │   └── api/
 │       ├── leads/route.ts  # POST: guarda lead en Supabase + envía email
 │       └── onboarding/route.ts  # POST: guarda datos de onboarding
@@ -47,9 +54,11 @@ src/
 │   ├── ui/                 # ContactModal, OpenModalButton, FloatingCTA, FAQAccordion
 │   └── blog/               # BlogCard, CategoryBadge, ShareButtons, RelatedPosts
 ├── content/
-│   └── blog/               # Artículos .mdx (10 publicados)
+│   └── blog/               # Artículos .mdx (9 publicados)
 ├── lib/
 │   ├── blog.ts             # Utilidades para leer posts MDX
+│   ├── casos.ts            # Datos estáticos para 6 casos por industria
+│   ├── analytics.ts        # Eventos GA4 + Meta Pixel
 │   ├── supabase.ts         # Cliente Supabase
 │   ├── resend.ts           # Cliente Resend
 │   └── validations.ts      # Schemas Zod (leadSchema, diagnosticoSchema, onboardingSchema)
@@ -86,7 +95,7 @@ docs/                        # Documentación operacional (no es código del sit
 6. **CasosSection** — Casos con métricas reales
 7. **TestimoniosSection** — Testimonios de clientes
 8. **ComparacionSection** — 6 desafíos operativos con soluciones
-9. **CredencialesSection** — Perfil de Diego (Ing. Civil Industrial PUC, MSc Data Science)
+9. **CredencialesSection** — Perfil de Diego (Ing. Civil Industrial UDD, MSc Data Science PUC)
 10. **BlogPreviewSection** — 3 posts más recientes del blog
 11. **FAQSection** — 6 preguntas frecuentes
 12. **DiagnosticoSection** — CTA diagnóstico gratuito
@@ -101,7 +110,7 @@ docs/                        # Documentación operacional (no es código del sit
 |---|---|---|
 | Hero primario | "Descubrir cuánto estoy perdiendo →" | Abre ContactModal |
 | Hero secundario | "Ver cómo trabajamos ↓" | Scroll a #como-funciona |
-| SolucionSection | "Detectar mis cuellos de botella →" | Abre ContactModal |
+| SolucionSection | "Agendar diagnóstico gratis →" | Abre ContactModal |
 | ComparacionSection | "Descubrir pérdidas ocultas →" | Abre ContactModal |
 | DiagnosticoSection | "Ver cuánto estoy perdiendo →" | Abre ContactModal |
 | CTAFinalSection | "Quiero números, no suposiciones →" | Abre ContactModal |
@@ -141,6 +150,7 @@ SUPABASE_SERVICE_ROLE_KEY=
 RESEND_API_KEY=
 NEXT_PUBLIC_GA_ID=           # Google Analytics (opcional)
 NEXT_PUBLIC_META_PIXEL_ID=   # Meta Pixel (opcional)
+NEXT_PUBLIC_APP_URL=         # URL base del sitio (ej: https://0kbot.com)
 ```
 
 ---
