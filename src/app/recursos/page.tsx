@@ -12,14 +12,16 @@ import { getAllPosts } from "@/lib/blog";
 import { BlogCard } from "@/components/blog/BlogCard";
 
 export const metadata: Metadata = {
-  title: "Recursos y guías para pymes",
+  title: "Guías gratuitas de automatización y mejora de procesos para pymes",
   description:
-    "Artículos, guías prácticas y preguntas frecuentes sobre digitalización y mejora de procesos para pymes chilenas.",
+    "Artículos, guías prácticas y preguntas frecuentes sobre automatización de procesos, IA para pymes y transformación digital en Chile. Sin teoría, con ejemplos reales.",
   keywords: [
-    "guías digitalización pyme Chile",
-    "automatización pymes",
+    "guías automatización pymes Chile",
+    "mejora de procesos guías",
+    "IA para pymes artículos",
     "KPIs pymes Chile",
-    "mejora procesos artículos",
+    "transformación digital pymes recursos",
+    "consultoría procesos preguntas frecuentes",
   ],
 };
 
@@ -40,13 +42,54 @@ const faqs = [
     q: "¿Qué herramientas usan?",
     a: "Usamos las herramientas que mejor se adapten a cada caso. No estamos atados a ningún proveedor. Lo importante es que la solución funcione y sea sostenible.",
   },
+  {
+    q: "¿Cuánto tiempo toma ver resultados con la mejora de procesos?",
+    a: "Muchas mejoras muestran impacto en las primeras 2–4 semanas, especialmente cuando el cuello de botella está identificado. El programa completo de 12 semanas incluye implementación, capacitación y medición de resultados.",
+  },
+  {
+    q: "¿Trabajan solo en Santiago o en toda Chile?",
+    a: "Trabajamos en toda Chile. La mayoría del trabajo se hace de forma remota y con visitas presenciales cuando el proyecto lo requiere.",
+  },
+  {
+    q: "¿Qué empresas pueden contratar sus servicios?",
+    a: "Trabajamos principalmente con pymes chilenas de 10 a 200 empleados, en sectores como distribución, servicios técnicos, salud, construcción, logística y más. Si tienes dudas sobre si encajamos, escríbenos.",
+  },
+  {
+    q: "¿Qué pasa si no vemos resultados en 12 semanas?",
+    a: "Si no hay resultado medible al final del proceso, no cobramos el último tramo. Nuestro modelo está alineado con tu éxito.",
+  },
+  {
+    q: "¿Necesito un presupuesto grande para empezar?",
+    a: "No. Tenemos formatos de trabajo adaptados a distintos tamaños de empresa. Podemos empezar con un diagnóstico acotado y crecer desde ahí.",
+  },
+  {
+    q: "¿Cuál es la diferencia entre 0kbot y una consultoría tradicional?",
+    a: "No dejamos un informe de 80 páginas. Dejamos procesos funcionando, herramientas configuradas y un equipo que sabe usarlas. Cobramos por resultados, no por horas.",
+  },
 ];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
 
 export default function RecursosPage() {
   const posts = getAllPosts();
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">
         <div className="container-wide">

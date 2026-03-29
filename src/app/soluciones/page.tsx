@@ -12,14 +12,16 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Soluciones por desafío operativo",
+  title: "Soluciones para problemas operativos en pymes Chile",
   description:
-    "Identifica tu problema operativo y conoce cómo lo resolvemos. Desorden, pérdida de tiempo, falta de visibilidad, registros dispersos y más.",
+    "Identifica tu desafío operativo y conoce cómo lo resolvemos: desorden, pérdida de tiempo, falta de visibilidad de datos, registros dispersos y más. Consultoría de procesos para pymes en Chile.",
   keywords: [
-    "desorden operativo empresa",
-    "pérdida de tiempo procesos",
+    "problemas operativos pymes Chile",
+    "soluciones mejora de procesos",
+    "desorden operativo empresa Chile",
+    "pérdida de tiempo procesos pymes",
     "visibilidad operaciones pyme",
-    "automatización tareas manuales",
+    "automatización tareas manuales Chile",
   ],
 };
 
@@ -32,6 +34,8 @@ const soluciones = [
     solucion:
       "Levantamos los procesos clave, definimos un flujo estándar y lo implementamos con herramientas que lo sostengan.",
     dolor: "Errores y reprocesos frecuentes",
+    blogHref: "/blog/5-senales-operacion-sangrando-plata",
+    blogLabel: "Ver señales de ineficiencia",
   },
   {
     icon: Clock,
@@ -41,6 +45,8 @@ const soluciones = [
     solucion:
       "Automatizamos tareas repetitivas, centralizamos la comunicación y eliminamos el doble registro.",
     dolor: "Demasiado tiempo en tareas administrativas",
+    blogHref: "/blog/reducir-horas-extras-automatizacion",
+    blogLabel: "Cómo eliminar horas extras",
   },
   {
     icon: EyeOff,
@@ -50,6 +56,8 @@ const soluciones = [
     solucion:
       "Creamos tableros con indicadores clave que se actualizan automáticamente.",
     dolor: "Información desactualizada para tomar decisiones",
+    blogHref: "/blog/ia-para-pymes-lo-que-realmente-sirve",
+    blogLabel: "IA para visibilidad de datos",
   },
   {
     icon: FileText,
@@ -59,6 +67,8 @@ const soluciones = [
     solucion:
       "Estandarizamos los registros con formularios y bases de datos centralizadas.",
     dolor: "Dificultad para coordinar equipos o turnos",
+    blogHref: "/blog/por-que-tu-empresa-vive-en-whatsapp",
+    blogLabel: "Por qué tu empresa vive en WhatsApp",
   },
   {
     icon: BarChart3,
@@ -68,6 +78,8 @@ const soluciones = [
     solucion:
       "Automatizamos reportes que se generan solos con datos consistentes y actualizados.",
     dolor: "Costos que suben sin saber exactamente por qué",
+    blogHref: "/blog/ia-para-pymes-lo-que-realmente-sirve",
+    blogLabel: "IA que realmente funciona en pymes",
   },
   {
     icon: UserX,
@@ -77,6 +89,8 @@ const soluciones = [
     solucion:
       "Organizamos el pipeline de ventas con seguimiento estructurado y alertas automáticas.",
     dolor: "Clientes que reclaman por fallas en el servicio",
+    blogHref: "/blog/automatizacion-whatsapp-pymes",
+    blogLabel: "Automatizar seguimiento en WhatsApp",
   },
 ];
 
@@ -131,13 +145,21 @@ export default function SolucionesPage() {
                     </div>
                   </div>
                 </div>
-                {/* CTA pre-rellena el wizard con el dolor específico */}
-                <Link
-                  href={`/contacto?dolor=${encodeURIComponent(s.dolor)}`}
-                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors font-body"
-                >
-                  Resolver este problema <ArrowRight size={14} />
-                </Link>
+                {/* Links: blog + CTA */}
+                <div className="mt-5 flex items-center gap-4 flex-wrap">
+                  <Link
+                    href={`/contacto?dolor=${encodeURIComponent(s.dolor)}`}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors font-body"
+                  >
+                    Resolver este problema <ArrowRight size={14} />
+                  </Link>
+                  <Link
+                    href={s.blogHref}
+                    className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors font-body"
+                  >
+                    {s.blogLabel} →
+                  </Link>
+                </div>
               </div>
             </MotionSection>
           ))}

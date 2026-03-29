@@ -4,13 +4,15 @@ import MotionSection from "@/components/ui/MotionSection";
 import { ArrowRight, Target, Lightbulb, Users, Linkedin } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Nosotros · 0kbot",
+  title: "Consultora de procesos para pymes en Chile | Diego López — 0kbot",
   description:
-    "Somos una consultora de mejora de procesos para pymes chilenas. Fundada por Diego López, Ingeniero Industrial PUC con 8+ años en operaciones reales. Sin teorías — con resultados.",
+    "Somos una consultora de mejora de procesos y automatización para pymes chilenas. Fundada por Diego López, Ingeniero Industrial PUC, Lean Six Sigma Green Belt, con 8+ años en operaciones reales.",
   keywords: [
     "consultora procesos Chile",
-    "quiénes somos 0kbot",
-    "mejora operativa pymes Santiago",
+    "consultora automatización pymes Santiago",
+    "Diego López 0kbot",
+    "consultor mejora procesos Chile",
+    "Lean Six Sigma Chile pymes",
   ],
 };
 

@@ -5,21 +5,26 @@ import { BlogCard } from "@/components/blog/BlogCard";
 import { Rss } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blog | 0kbot — Noticias de IA y Automatización para Pymes",
+  title: "Blog | 0kbot — Automatización de Procesos e IA para Pymes Chile",
   description:
-    "Aprende sobre automatización, inteligencia artificial y transformación digital para pymes latinoamericanas. Casos reales, tutoriales y las últimas noticias de IA.",
+    "Artículos prácticos sobre automatización de procesos, IA para pymes y transformación digital en Chile. Sin teoría, con ejemplos reales.",
   keywords: [
-    "blog automatización",
-    "IA para pymes",
-    "inteligencia artificial Chile",
-    "transformación digital",
-    "automatización procesos",
+    "blog automatización procesos Chile",
+    "IA para pymes artículos",
+    "inteligencia artificial Chile pymes",
+    "transformación digital pymes Chile",
+    "mejora procesos blog",
   ],
   openGraph: {
-    title: "Blog 0kbot — IA y Automatización para Pymes",
+    title: "Blog 0kbot — Automatización e IA para Pymes Chile",
     description:
-      "Casos reales, tutoriales y noticias sobre IA y automatización para empresas latinoamericanas.",
+      "Artículos prácticos sobre automatización de procesos, IA y transformación digital para pymes chilenas.",
     type: "website",
+  },
+  alternates: {
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
   },
 };
 
@@ -36,7 +41,13 @@ export default function BlogPage() {
           <div className="flex items-start justify-between gap-6 flex-wrap">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <Rss className="w-5 h-5 text-[#1B5FA6]" />
+                <Link
+                  href="/feed.xml"
+                  title="RSS Feed"
+                  className="text-[#1B5FA6] hover:text-[#154d8a] transition-colors"
+                >
+                  <Rss className="w-5 h-5" />
+                </Link>
                 <span className="text-sm font-medium text-[#1B5FA6] uppercase tracking-wider">
                   Blog
                 </span>

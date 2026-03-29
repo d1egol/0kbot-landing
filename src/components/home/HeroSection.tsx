@@ -53,7 +53,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-heading text-4xl md:text-5xl lg:text-[3.4rem] font-bold text-foreground leading-[1.1]"
             >
-              Automatizamos procesos para pymes en Chile.
+              Mejora de procesos para pymes en Chile.
               <br />
               <span className="text-gradient-accent">No vendemos IA. Vendemos lunes tranquilos.</span>
             </motion.h1>

@@ -3,15 +3,55 @@ import Link from "next/link";
 import MotionSection from "@/components/ui/MotionSection";
 import { Search, ListChecks, Wrench, TrendingUp, ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Nuestra metodología",
+const howToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Cómo mejoramos los procesos de tu pyme en 12 semanas",
   description:
-    "Metodología práctica en 4 etapas: diagnóstico, priorización, implementación y medición. 12 semanas, resultados medibles, sin interrumpir tu operación.",
+    "Metodología práctica en 4 etapas para ordenar, estandarizar y automatizar la operación de pymes chilenas.",
+  totalTime: "P12W",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Diagnóstico operacional",
+      text: "Levantamos procesos, identificamos dónde se pierde tiempo, dónde falta información y qué duele más.",
+      url: "https://0kbot.com/como-trabajamos#diagnostico",
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Priorización de mejoras",
+      text: "Definimos qué atacar primero según el impacto que genera y la facilidad de implementación.",
+      url: "https://0kbot.com/como-trabajamos#priorizacion",
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Implementación práctica",
+      text: "Configuramos herramientas, flujos y automatizaciones. Capacitamos al equipo y acompañamos la adopción.",
+      url: "https://0kbot.com/como-trabajamos#implementacion",
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Medición y seguimiento",
+      text: "Verificamos que los cambios generen los resultados esperados. Ajustamos lo que haga falta.",
+      url: "https://0kbot.com/como-trabajamos#medicion",
+    },
+  ],
+};
+
+export const metadata: Metadata = {
+  title: "Metodología de mejora de procesos en 12 semanas para pymes",
+  description:
+    "Metodología práctica en 4 etapas para ordenar, estandarizar y automatizar la operación de pymes en Chile: diagnóstico, priorización, implementación y medición. Resultados medibles en 12 semanas.",
   keywords: [
-    "metodología mejora procesos",
-    "consultoría procesos pymes",
-    "Lean Chile pymes",
-    "implementación procesos 12 semanas",
+    "metodología mejora procesos pymes Chile",
+    "consultoría procesos pymes 12 semanas",
+    "Lean mejora continua Chile",
+    "implementación automatización procesos",
+    "diagnóstico operacional pymes",
   ],
 };
 
@@ -20,6 +60,7 @@ const pasos = [
     number: "01",
     semanas: "Semanas 1–2",
     icon: Search,
+    id: "diagnostico",
     title: "Diagnóstico",
     desc: "Conversamos contigo y tu equipo para entender cómo funciona tu operación hoy. Levantamos procesos, identificamos dónde se pierde tiempo, dónde falta información y qué duele más.",
     detail:
@@ -29,6 +70,7 @@ const pasos = [
     number: "02",
     semanas: "Semanas 3–4",
     icon: ListChecks,
+    id: "priorizacion",
     title: "Priorización de mejoras",
     desc: "No todo se puede resolver al mismo tiempo. Definimos juntos qué atacar primero según el impacto que genera y la facilidad de implementación.",
     detail:
@@ -38,6 +80,7 @@ const pasos = [
     number: "03",
     semanas: "Semanas 5–10",
     icon: Wrench,
+    id: "implementacion",
     title: "Implementación práctica",
     desc: "Configuramos herramientas, flujos y automatizaciones que funcionan desde el primer día. Capacitamos a tu equipo y acompañamos la adopción.",
     detail:
@@ -47,6 +90,7 @@ const pasos = [
     number: "04",
     semanas: "Semanas 11–12",
     icon: TrendingUp,
+    id: "medicion",
     title: "Medición y seguimiento",
     desc: "Verificamos que los cambios generen los resultados esperados. Ajustamos lo que haga falta. Mismo indicador, mismo período — la diferencia es tu ROI.",
     detail:
@@ -57,6 +101,10 @@ const pasos = [
 export default function ComoTrabajamosPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+      />
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">
         <div className="container-wide">
@@ -77,7 +125,8 @@ export default function ComoTrabajamosPage() {
       <section className="section-padding bg-background">
         <div className="container-narrow space-y-20">
           {pasos.map((paso) => (
-            <MotionSection key={paso.number}>
+            <div key={paso.number} id={paso.id}>
+            <MotionSection>
               <div className="flex items-start gap-6 md:gap-10">
                 <div className="flex-shrink-0">
                   <span
@@ -111,6 +160,7 @@ export default function ComoTrabajamosPage() {
                 </div>
               </div>
             </MotionSection>
+            </div>
           ))}
         </div>
       </section>

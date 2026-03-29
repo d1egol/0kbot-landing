@@ -16,13 +16,16 @@ export const metadata: Metadata = {
   ),
   keywords: [
     "automatización de procesos",
-    "mejora de procesos operativos",
+    "mejora de procesos pymes Chile",
     "eficiencia operacional",
     "optimización de procesos en pymes",
     "consultoría de procesos",
-    "transformación digital para pymes",
+    "transformación digital para pymes Chile",
     "consultoría procesos Chile",
     "mejora procesos pymes",
+    "IA para pymes Chile",
+    "digitalización pymes Santiago",
+    "automatización procesos Chile",
   ],
   openGraph: {
     title: "0kbot — Automatización de procesos para pymes en Chile",
@@ -72,7 +75,22 @@ const jsonLd = {
         "Mejora de procesos",
         "Automatización de procesos",
         "Eficiencia operacional",
+        "Transformación digital",
+        "Inteligencia Artificial para pymes",
       ],
+      sameAs: [
+        "https://www.linkedin.com/in/diego-lopez-dinamarca/",
+        "https://www.linkedin.com/company/0kbot",
+      ],
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+      priceRange: "$$",
+      knowsLanguage: "es-CL",
+      foundingDate: "2024",
     },
     {
       "@type": "Person",
@@ -102,7 +120,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es">
+    <html lang="es-CL">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -110,7 +128,7 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <Script id="gtm-head" strategy="beforeInteractive">{`
+        <Script id="gtm-head" strategy="afterInteractive">{`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=

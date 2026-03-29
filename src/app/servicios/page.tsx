@@ -4,14 +4,17 @@ import MotionSection from "@/components/ui/MotionSection";
 import { Workflow, Database, Zap, BarChart2, Users, Settings, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Servicios de mejora de procesos",
+  title: "Servicios de automatización y mejora de procesos para pymes Chile",
   description:
-    "Diagnóstico, estandarización, automatización, tableros de datos y gestión comercial para pymes chilenas. Soluciones prácticas con resultados medibles.",
+    "Diagnóstico, estandarización, automatización, tableros de datos y gestión comercial para pymes en Chile. Consultoría de procesos con resultados medibles en 12 semanas.",
   keywords: [
-    "diagnóstico de procesos Chile",
+    "servicios mejora de procesos Chile",
+    "consultoría automatización pymes Chile",
+    "diagnóstico procesos operativos Chile",
     "estandarización procesos pyme",
     "automatización pymes Chile",
     "tableros indicadores pyme",
+    "transformación digital pymes Chile",
   ],
 };
 

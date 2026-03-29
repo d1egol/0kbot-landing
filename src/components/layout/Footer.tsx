@@ -24,9 +24,12 @@ const footerLinks = [
   {
     title: "Blog",
     links: [
-      { label: "Automatización de WhatsApp", href: "/blog/automatizacion-whatsapp-pymes" },
-      { label: "IA para Pymes en 2026", href: "/blog/ia-para-pymes-2025" },
-      { label: "5 procesos a automatizar", href: "/blog/reducir-horas-extras-automatizacion" },
+      { label: "IA para pymes Chile 2026", href: "/blog/ia-para-pymes-2025" },
+      { label: "Señales de ineficiencia operativa", href: "/blog/5-senales-operacion-sangrando-plata" },
+      { label: "Automatizar WhatsApp en pymes", href: "/blog/automatizacion-whatsapp-pymes" },
+      { label: "Herramientas IA para empresas chilenas", href: "/blog/herramientas-ia-chile" },
+      { label: "Reducir horas extras con automatización", href: "/blog/reducir-horas-extras-automatizacion" },
+      { label: "Por qué tu empresa vive en WhatsApp", href: "/blog/por-que-tu-empresa-vive-en-whatsapp" },
       { label: "Ver todos los artículos", href: "/blog" },
     ],
   },

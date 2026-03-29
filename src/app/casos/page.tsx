@@ -1,111 +1,23 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import MotionSection from "@/components/ui/MotionSection";
 import OpenModalButton from "@/components/ui/OpenModalButton";
+import { escenarios } from "@/lib/casos";
 
 export const metadata: Metadata = {
-  title: "Escenarios y soluciones · 0kbot",
+  title: "Casos de automatización de procesos en pymes chilenas",
   description:
-    "Problemas operativos comunes en pymes chilenas y cómo los abordamos: coordinación por WhatsApp, errores de despacho, inasistencias, inventario descontrolado y más.",
+    "Problemas operativos comunes en pymes chilenas y cómo los resolvemos: distribuidoras, servicios técnicos, clínicas, constructoras, bodegas y más. Resultados reales con metodología probada.",
   keywords: [
-    "problemas operativos pymes Chile",
-    "mejora de procesos distribuidoras",
-    "automatización servicios técnicos Chile",
-    "estandarización procesos pymes Santiago",
+    "automatización procesos pymes Chile",
+    "casos mejora de procesos Chile",
+    "automatización distribuidora Chile",
+    "mejora procesos clínica Chile",
+    "automatización constructora Chile",
+    "optimización inventario pymes",
   ],
 };
 
-const escenarios = [
-  {
-    industria: "Distribuidora o empresa de despacho",
-    tamano: "40–60 personas",
-    problema:
-      "Los pedidos se coordinan por WhatsApp y planilla Excel. El picking se hace de memoria, sin checklist, y los errores llegan con el cliente. Reenvíos, notas de crédito y clientes molestos son la norma.",
-    raizDelProblema: "Falta de estandarización del proceso de picking. Sin un protocolo claro, cada operario hace las cosas a su manera.",
-    enfoque: [
-      "Mapeo del flujo de pedidos desde la recepción hasta el despacho",
-      "Diseño de checklist digital de picking por línea de producto",
-      "Centralización del registro de pedidos en un formulario único",
-      "Tablero de seguimiento de pedidos y estado de despacho",
-    ],
-    impactoEsperado:
-      "La estandarización del picking reduce errores en 50–80% según benchmarks de industria logística (Lean Institute). El tiempo de coordinación baja al eliminar la doble entrada de datos.",
-  },
-  {
-    industria: "Empresa de servicios técnicos o mantención",
-    tamano: "30–50 personas",
-    problema:
-      "Los técnicos llegan a terreno sin el repuesto correcto porque no hay diagnóstico previo estandarizado. 1 de cada 3 visitas requiere una segunda. Los clientes esperan más, la empresa gasta más en traslados.",
-    raizDelProblema: "Ausencia de protocolo de diagnóstico previo. La información del trabajo no se recopila antes de despachar al técnico.",
-    enfoque: [
-      "Protocolo de diagnóstico telefónico previo a cada visita",
-      "Lista de materiales recomendada según tipo de trabajo e historial del equipo",
-      "Registro digital del trabajo realizado para alimentar el historial",
-      "Dashboard de órdenes activas y segundas visitas por tipo de falla",
-    ],
-    impactoEsperado:
-      "Reducir las segundas visitas libera capacidad para atender más órdenes con la misma dotación, sin necesidad de contratar.",
-  },
-  {
-    industria: "Centro de salud, clínica o empresa con agenda",
-    tamano: "10–30 personas",
-    problema:
-      "El 20–30% de las horas agendadas resultan en inasistencias. El personal llama manualmente para confirmar, quitando horas que deberían estar en la operación. La agenda queda con huecos que no se llenan.",
-    raizDelProblema: "Proceso de confirmación manual e ineficiente. Sin una lista de espera activa, los cupos cancelados se pierden.",
-    enfoque: [
-      "Configuración de recordatorios automáticos por WhatsApp a 48 y 24 horas antes",
-      "Lista de espera activa para llenar cupos cancelados automáticamente",
-      "Registro de motivos de inasistencia para identificar patrones",
-      "Tablero de ocupación y tasa de presentación por tipo de servicio",
-    ],
-    impactoEsperado:
-      "Estudios del sector salud muestran reducciones del 30–50% en inasistencias con recordatorios automatizados (NEJM Catalyst). El personal recupera tiempo para la atención.",
-  },
-  {
-    industria: "Empresa constructora o de proyectos",
-    tamano: "50–100 personas",
-    problema:
-      "Los informes de avance de obra llegan tarde, en formatos distintos según quien los haga, con datos de días atrás. La gerencia toma decisiones reactivas porque no tiene visibilidad actualizada.",
-    raizDelProblema: "Sin un formato estándar de reporte y sin un canal de consolidación, la información queda fragmentada en cada obra.",
-    enfoque: [
-      "Diseño de reporte diario estandarizado de 5 minutos por jefe de obra",
-      "Consolidación automática de todos los reportes en un tablero central",
-      "Alerta automática cuando una variable clave sale del rango definido",
-      "Histórico de avance por proyecto para proyecciones más precisas",
-    ],
-    impactoEsperado:
-      "Información actualizada diariamente reduce el tiempo de detección de desviaciones. Las compras de emergencia reactivas disminuyen al anticipar los requerimientos con más tiempo.",
-  },
-  {
-    industria: "Empresa de distribución o bodega",
-    tamano: "30–60 personas",
-    problema:
-      "El inventario no cuadra. El cierre mensual toma 2–3 días de tres personas, y siempre aparecen diferencias que nadie puede explicar. El equipo pasa tiempo valioso buscando errores en vez de operar.",
-    raizDelProblema: "El registro de movimientos se hace al final del día o al cierre del mes, no en el momento que ocurre. Los errores se acumulan.",
-    enfoque: [
-      "Registro de movimiento en el momento que ocurre, desde el celular o tablet",
-      "Responsable asignado por zona con visibilidad de su stock en tiempo real",
-      "Conciliación automática al final de cada jornada",
-      "Alerta de diferencias por encima de umbral definido",
-    ],
-    impactoEsperado:
-      "El registro inmediato elimina la acumulación de errores. El cuadre mensual de días se convierte en una verificación de minutos.",
-  },
-  {
-    industria: "Empresa de servicios masivos o facilities",
-    tamano: "80+ personas",
-    problema:
-      "Los supervisores invierten 2–3 horas diarias en verificar que el personal esté en su puesto, desplazándose físicamente entre ubicaciones. El tiempo no alcanza para hacer supervisión real.",
-    raizDelProblema: "La verificación de presencia es manual y presencial. No hay forma de saber sin ir a ver.",
-    enfoque: [
-      "Check-in digital por código QR en cada punto de trabajo",
-      "Dashboard de cobertura en tiempo real para el supervisor",
-      "Alerta automática si un punto queda sin cobertura",
-      "Registro histórico de asistencia por punto y turno",
-    ],
-    impactoEsperado:
-      "La digitalización del control de presencia libera tiempo de supervisión para actividades de mayor valor: capacitación, resolución de incidentes y mejora continua.",
-  },
-];
 
 export default function CasosPage() {
   return (
@@ -194,6 +106,14 @@ export default function CasosPage() {
                         </p>
                       </div>
                     </div>
+                  </div>
+                  <div className="px-6 md:px-8 pb-5 border-t border-border pt-4 flex justify-end">
+                    <Link
+                      href={`/casos/${e.slug}`}
+                      className="text-sm text-primary font-medium font-body hover:underline inline-flex items-center gap-1.5"
+                    >
+                      Ver caso detallado →
+                    </Link>
                   </div>
                 </div>
               </MotionSection>

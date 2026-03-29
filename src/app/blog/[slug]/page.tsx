@@ -49,7 +49,8 @@ export default async function BlogPostPage({ params }: PageProps) {
   const related = getRelatedPosts(slug, post.category);
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://0kbot.com";
-  const jsonLd = {
+  const wordCount = post.content.split(/\s+/).length;
+  const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
@@ -57,6 +58,10 @@ export default async function BlogPostPage({ params }: PageProps) {
     url: `${baseUrl}/blog/${post.slug}`,
     datePublished: post.date,
     dateModified: post.date,
+    inLanguage: "es-CL",
+    wordCount,
+    keywords: post.tags.join(", "),
+    image: `${baseUrl}/opengraph-image`,
     author: {
       "@type": "Person",
       name: post.author,
@@ -66,6 +71,10 @@ export default async function BlogPostPage({ params }: PageProps) {
       "@type": "Organization",
       name: "0kbot",
       url: baseUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/favicon.ico`,
+      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -73,12 +82,27 @@ export default async function BlogPostPage({ params }: PageProps) {
     },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${baseUrl}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${baseUrl}/blog/${post.slug}` },
+    ],
+  };
+
+  const jsonLd = [articleJsonLd, breadcrumbJsonLd];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {jsonLd.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <main className="min-h-screen bg-[#F7F5F0]">
         {/* Article header */}
         <header className="bg-white border-b border-[#E5E2DB]">
