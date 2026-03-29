@@ -3,8 +3,8 @@ import MotionSection from "@/components/ui/MotionSection";
 import { GraduationCap, BarChart3, Wrench, Briefcase, CheckCircle, Linkedin } from "lucide-react";
 
 const badges = [
-  { icon: GraduationCap, label: "Ing. Civil Industrial PUC", sub: "Pontificia Universidad Católica", color: "text-blue-600", bg: "bg-blue-50 border-blue-100" },
-  { icon: BarChart3, label: "MSc Data Science", sub: "Especialización en analítica de datos", color: "text-purple-600", bg: "bg-purple-50 border-purple-100" },
+  { icon: GraduationCap, label: "Ing. Civil Industrial", sub: "Universidad del Desarrollo", color: "text-blue-600", bg: "bg-blue-50 border-blue-100" },
+  { icon: BarChart3, label: "MSc Data Science", sub: "Pontificia Universidad Católica", color: "text-purple-600", bg: "bg-purple-50 border-purple-100" },
   { icon: Wrench, label: "Lean Six Sigma Green Belt", sub: "Mejora continua de procesos", color: "text-emerald-600", bg: "bg-emerald-50 border-emerald-100" },
   { icon: Briefcase, label: "8+ años en operaciones", sub: "Plantas, puertos, distribución", color: "text-amber-600", bg: "bg-amber-50 border-amber-100" },
 ];

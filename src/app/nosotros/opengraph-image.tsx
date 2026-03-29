@@ -77,7 +77,7 @@ export default function OgImage() {
             lineHeight: 1.5,
           }}
         >
-          Ingeniería PUC · MSc Operations Research · 8 años mejorando procesos en empresas reales
+          Ing. Civil Industrial UDD · MSc Data Science PUC · 8 años mejorando procesos en empresas reales
         </div>
       </div>
     ),

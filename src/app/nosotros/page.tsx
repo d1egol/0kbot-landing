@@ -6,7 +6,7 @@ import { ArrowRight, Target, Lightbulb, Users, Linkedin } from "lucide-react";
 export const metadata: Metadata = {
   title: "Consultora de procesos para pymes en Chile | Diego López — 0kbot",
   description:
-    "Somos una consultora de mejora de procesos y automatización para pymes chilenas. Fundada por Diego López, Ingeniero Industrial PUC, Lean Six Sigma Green Belt, con 8+ años en operaciones reales.",
+    "Somos una consultora de mejora de procesos y automatización para pymes chilenas. Fundada por Diego López, Ingeniero Civil Industrial UDD, MSc Data Science PUC, Lean Six Sigma Green Belt, con 8+ años en operaciones reales.",
   keywords: [
     "consultora procesos Chile",
     "consultora automatización pymes Santiago",
@@ -35,8 +35,8 @@ const valores = [
 ];
 
 const badges = [
-  "Ingeniero Civil Industrial PUC",
-  "MSc Data Science",
+  "Ingeniero Civil Industrial, UDD",
+  "MSc Data Science, PUC",
   "Lean Six Sigma Green Belt",
   "8+ años en operaciones",
 ];

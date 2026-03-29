@@ -101,8 +101,8 @@ const jsonLd = {
       sameAs: "https://www.linkedin.com/in/diego-lopez-dinamarca/",
       worksFor: { "@id": "https://0kbot.com/#business" },
       hasCredential: [
-        "Ingeniero Civil Industrial PUC",
-        "MSc Data Science",
+        "Ingeniero Civil Industrial, Universidad del Desarrollo",
+        "MSc Data Science, Pontificia Universidad Católica",
         "Lean Six Sigma Green Belt",
       ],
     },

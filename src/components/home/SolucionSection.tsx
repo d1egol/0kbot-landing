@@ -33,7 +33,7 @@ export default function SolucionSection() {
           <MotionSection delay={0}>
             <div className="space-y-4">
               <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
-                <ScanSearch size={22} style={{ color: "#1B5FA6" }} />
+                <ScanSearch size={22} className="text-white" />
               </div>
               <h3 className="font-heading font-semibold text-lg text-accent">
                 Qué hacemos
@@ -49,7 +49,7 @@ export default function SolucionSection() {
           <MotionSection delay={0.1}>
             <div className="space-y-4">
               <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
-                <Settings2 size={22} style={{ color: "#1B5FA6" }} />
+                <Settings2 size={22} className="text-white" />
               </div>
               <h3 className="font-heading font-semibold text-lg text-accent">
                 Cómo lo hacemos
@@ -71,7 +71,7 @@ export default function SolucionSection() {
           <MotionSection delay={0.2}>
             <div className="space-y-4">
               <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
-                <Award size={22} style={{ color: "#1B5FA6" }} />
+                <Award size={22} className="text-white" />
               </div>
               <h3 className="font-heading font-semibold text-lg text-accent">
                 Qué obtienes
