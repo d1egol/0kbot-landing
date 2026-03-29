@@ -31,7 +31,7 @@ const stats = [
     suffix: "%",
     label: "reducción de errores",
     description: "En procesos operativos clave",
-    color: "text-[#D4A853]",
+    color: "text-[#06B6D4]",
     bg: "bg-amber-50",
     border: "border-amber-100",
   },

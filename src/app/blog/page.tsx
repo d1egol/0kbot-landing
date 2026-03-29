@@ -117,7 +117,7 @@ export default function BlogPage() {
           </p>
           <Link
             href="/contacto"
-            className="inline-flex items-center gap-2 bg-[#D4A853] text-[#1A1A1A] px-8 py-3 rounded-xl font-bold hover:bg-[#c49843] transition-colors"
+            className="inline-flex items-center gap-2 bg-[#06B6D4] text-[#1A1A1A] px-8 py-3 rounded-xl font-bold hover:bg-[#c49843] transition-colors"
           >
             Suscribirme al newsletter
           </Link>

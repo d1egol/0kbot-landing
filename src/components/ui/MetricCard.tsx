@@ -59,7 +59,7 @@ export default function MetricCard({ className = "" }: MetricCardProps) {
     <div
       ref={ref}
       className={`relative bg-white border-l-4 border-l-accent rounded-lg p-6 shadow-metric ${className}`}
-      style={{ borderLeftColor: "#D4A853" }}
+      style={{ borderLeftColor: "#06B6D4" }}
     >
       {/* Header */}
       <div className="flex items-center gap-2 mb-5">
@@ -69,7 +69,7 @@ export default function MetricCard({ className = "" }: MetricCardProps) {
         </span>
         <span
           className="ml-auto inline-block w-2 h-2 rounded-full bg-accent animate-scan"
-          style={{ backgroundColor: "#D4A853" }}
+          style={{ backgroundColor: "#06B6D4" }}
         />
       </div>
 

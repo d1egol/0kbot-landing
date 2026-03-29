@@ -21,7 +21,7 @@ export default function CredencialesSection() {
                 {/* Card top banner */}
                 <div className="h-20 bg-gradient-to-r from-[#1B5FA6] to-[#0d3d6e] relative">
                   <div className="absolute bottom-0 right-6 translate-y-1/2">
-                    <div className="w-16 h-16 rounded-2xl bg-[#D4A853] flex items-center justify-center font-heading font-bold text-2xl text-white shadow-lg border-4 border-white">
+                    <div className="w-16 h-16 rounded-2xl bg-[#06B6D4] flex items-center justify-center font-heading font-bold text-2xl text-white shadow-lg border-4 border-white">
                       DL
                     </div>
                   </div>
@@ -70,7 +70,7 @@ export default function CredencialesSection() {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute -top-3 -left-3 w-10 h-10 rounded-lg opacity-20" style={{ backgroundColor: "#D4A853" }} />
+              <div className="absolute -top-3 -left-3 w-10 h-10 rounded-lg opacity-20" style={{ backgroundColor: "#06B6D4" }} />
               <div className="absolute -bottom-3 -right-3 w-7 h-7 rounded-lg opacity-15" style={{ backgroundColor: "#1B5FA6" }} />
             </div>
           </MotionSection>
@@ -118,7 +118,7 @@ export default function CredencialesSection() {
 
               <p
                 className="text-sm text-muted-foreground font-body border-l-4 pl-4 italic"
-                style={{ borderLeftColor: "#D4A853" }}
+                style={{ borderLeftColor: "#06B6D4" }}
               >
                 Si llegaste hasta aquí, probablemente sospechas que algo está
                 más roto de lo que admites. Tienes razón. Agendemos 30 minutos

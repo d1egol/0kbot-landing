@@ -25,9 +25,9 @@
     --muted: 40 15% 88%;             /* #E5E2DB */
     --muted-foreground: 0 0% 29%;    /* #4A4A4A */
 
-    --accent: 39 56% 57%;            /* #D4A853 dorado */
+    --accent: 189 94% 43%;            /* #06B6D4 cyan tech */
     --accent-foreground: 0 0% 100%;
-    --accent-glow: 39 56% 64%;
+    --accent-glow: 189 94% 53%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;

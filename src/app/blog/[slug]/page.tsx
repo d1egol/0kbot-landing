@@ -183,7 +183,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </p>
                 <Link
                   href="/#diagnostico"
-                  className="inline-flex items-center gap-2 bg-[#D4A853] text-[#1A1A1A] px-6 py-3 rounded-xl font-bold hover:bg-[#c49843] transition-colors text-sm"
+                  className="inline-flex items-center gap-2 bg-[#06B6D4] text-[#1A1A1A] px-6 py-3 rounded-xl font-bold hover:bg-[#c49843] transition-colors text-sm"
                 >
                   Hacer diagnóstico gratuito →
                 </Link>

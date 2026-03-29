@@ -61,10 +61,10 @@ export default function ComoFuncionaSection() {
                       className="absolute top-0 flex items-center justify-center w-12 h-12 rounded-full bg-background border-2"
                       style={{
                         left: `calc(${(i / 4) * 100}% + ${i === 0 ? "0px" : i === 3 ? "-1.5rem" : "-0.75rem"})`,
-                        borderColor: "#D4A853",
+                        borderColor: "#06B6D4",
                       }}
                     >
-                      <Icono size={18} style={{ color: "#D4A853" }} />
+                      <Icono size={18} style={{ color: "#06B6D4" }} />
                     </div>
                     <p className="text-xs text-accent font-medium font-mono">
                       {etapa.semanas}
@@ -92,9 +92,9 @@ export default function ComoFuncionaSection() {
                   <div className="flex flex-col items-center">
                     <div
                       className="flex items-center justify-center w-10 h-10 rounded-full border-2 shrink-0"
-                      style={{ borderColor: "#D4A853" }}
+                      style={{ borderColor: "#06B6D4" }}
                     >
-                      <Icono size={16} style={{ color: "#D4A853" }} />
+                      <Icono size={16} style={{ color: "#06B6D4" }} />
                     </div>
                     {i < etapas.length - 1 && (
                       <div className="w-px flex-1 bg-muted mt-2 min-h-[2rem]" />

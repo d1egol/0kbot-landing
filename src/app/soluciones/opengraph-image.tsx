@@ -47,7 +47,7 @@ export default function OgImage() {
           style={{
             fontSize: "18px",
             fontWeight: "600",
-            color: "#D4A853",
+            color: "#06B6D4",
             textTransform: "uppercase",
             letterSpacing: "2px",
             marginBottom: "16px",
