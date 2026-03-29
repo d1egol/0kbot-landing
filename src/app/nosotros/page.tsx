@@ -41,9 +41,22 @@ const badges = [
   "8+ años en operaciones",
 ];
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://0kbot.com" },
+    { "@type": "ListItem", position: 2, name: "Nosotros", item: "https://0kbot.com/nosotros" },
+  ],
+};
+
 export default function NosotrosPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">
         <div className="container-wide">

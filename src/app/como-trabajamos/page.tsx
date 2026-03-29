@@ -10,6 +10,7 @@ const howToJsonLd = {
   description:
     "Metodología práctica en 4 etapas para ordenar, estandarizar y automatizar la operación de pymes chilenas.",
   totalTime: "P12W",
+  image: "https://0kbot.com/opengraph-image",
   step: [
     {
       "@type": "HowToStep",

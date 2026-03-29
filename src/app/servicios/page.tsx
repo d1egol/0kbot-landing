@@ -109,12 +109,25 @@ const jsonLd = {
   })),
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://0kbot.com" },
+    { "@type": "ListItem", position: 2, name: "Servicios", item: "https://0kbot.com/servicios" },
+  ],
+};
+
 export default function ServiciosPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">

@@ -56,8 +56,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     headline: post.title,
     description: post.excerpt,
     url: `${baseUrl}/blog/${post.slug}`,
-    datePublished: post.date,
-    dateModified: post.date,
+    datePublished: `${post.date}T00:00:00-04:00`,
+    dateModified: `${post.date}T00:00:00-04:00`,
     inLanguage: "es-CL",
     wordCount,
     keywords: post.tags.join(", "),
@@ -73,7 +73,9 @@ export default async function BlogPostPage({ params }: PageProps) {
       url: baseUrl,
       logo: {
         "@type": "ImageObject",
-        url: `${baseUrl}/favicon.ico`,
+        url: `${baseUrl}/opengraph-image`,
+        width: 1200,
+        height: 630,
       },
     },
     mainEntityOfPage: {

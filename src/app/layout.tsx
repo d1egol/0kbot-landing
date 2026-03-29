@@ -91,6 +91,7 @@ const jsonLd = {
       priceRange: "$$",
       knowsLanguage: "es-CL",
       foundingDate: "2024",
+      image: "https://0kbot.com/opengraph-image",
     },
     {
       "@type": "Person",
