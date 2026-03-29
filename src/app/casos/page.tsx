@@ -202,25 +202,6 @@ export default function CasosPage() {
         </div>
       </section>
 
-      {/* Sección Dos Huertos — caso real pendiente */}
-      <section className="section-padding surface-warm">
-        <div className="container-narrow">
-          <MotionSection>
-            <div className="bg-card border-2 border-dashed border-accent/40 rounded-xl p-8 text-center">
-              <span className="inline-block text-xs font-semibold text-accent uppercase tracking-wider bg-accent/10 px-3 py-1 rounded-full mb-4">
-                Proyecto real · En documentación
-              </span>
-              <h2 className="font-heading text-xl font-bold text-foreground mb-3">
-                Dos Huertos — Empresa de frutas y verduras
-              </h2>
-              <p className="text-muted-foreground font-body text-sm max-w-md mx-auto">
-                Automatización de registro de información y procesos internos en empresa de venta y distribución de frutas y verduras. Métricas en proceso de validación con el cliente.
-              </p>
-            </div>
-          </MotionSection>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="bg-primary py-16 md:py-20 text-center">
         <div className="container-narrow">
