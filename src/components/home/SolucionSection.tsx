@@ -90,7 +90,7 @@ export default function SolucionSection() {
 
         <MotionSection className="text-center">
           <OpenModalButton className="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-md font-semibold font-body text-sm hover:bg-accent/90 transition-colors">
-            Detectar mis cuellos de botella →
+            Agendar diagnóstico gratis →
           </OpenModalButton>
           <p className="mt-3 text-white/50 text-xs font-body">
             Diagnóstico gratuito · Sin compromiso

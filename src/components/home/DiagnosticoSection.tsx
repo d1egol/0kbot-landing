@@ -18,7 +18,7 @@ export default function DiagnosticoSection() {
           </p>
 
           <OpenModalButton className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-md font-semibold font-body text-sm hover:bg-primary/90 transition-colors">
-            Ver cuánto estoy perdiendo →
+            Agendar diagnóstico gratis →
           </OpenModalButton>
 
           <div className="flex items-center justify-center gap-6 mt-6 text-sm text-muted-foreground font-body">

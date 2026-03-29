@@ -91,7 +91,7 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row gap-3 pt-2"
             >
               <OpenModalButton className="inline-flex items-center justify-center px-6 py-3.5 bg-primary text-primary-foreground rounded-md font-medium font-body text-sm hover:bg-primary/90 transition-colors">
-                Descubrir cuánto estoy perdiendo →
+                Agendar diagnóstico gratis →
               </OpenModalButton>
               <a
                 href="#como-funciona"

@@ -231,7 +231,7 @@ export default function CasosPage() {
             Agendemos 30 minutos para revisar tu operación. Sin compromiso.
           </p>
           <OpenModalButton className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-[#1A1A1A] rounded-md font-semibold font-body text-sm hover:bg-accent/90 transition-colors">
-            Ver cuánto estoy perdiendo →
+            Agendar diagnóstico gratis →
           </OpenModalButton>
         </div>
       </section>

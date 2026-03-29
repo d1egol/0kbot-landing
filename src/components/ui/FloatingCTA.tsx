@@ -51,7 +51,7 @@ export default function FloatingCTA() {
           onClick={() => { trackCTAClick("floating_cta", "floating"); setIsOpen(true); }}
           className="w-full px-6 py-4 bg-primary text-primary-foreground rounded-md font-semibold font-sans text-sm shadow-lg hover:bg-primary/90 transition-colors"
         >
-          Ver cuánto estoy perdiendo →
+          Agendar diagnóstico gratis →
         </button>
       </div>
       <ContactModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
