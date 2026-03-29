@@ -18,12 +18,12 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
           {/* Background decoration */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-8 right-8 w-64 h-64 rounded-full bg-white/20 blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-[#06B6D4]/30 blur-2xl" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-[#1B5FA6]/30 blur-2xl" />
           </div>
 
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-4">
-              <span className="bg-[#06B6D4] text-[#1A1A1A] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+              <span className="bg-[#1B5FA6] text-[#1A1A1A] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                 Destacado
               </span>
               <CategoryBadge
@@ -32,7 +32,7 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
               />
             </div>
 
-            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 group-hover:text-[#06B6D4] transition-colors leading-tight">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 group-hover:text-[#1B5FA6] transition-colors leading-tight">
               {post.title}
             </h2>
 
@@ -51,7 +51,7 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
                   {post.readingTime}
                 </span>
               </div>
-              <span className="flex items-center gap-1 text-[#06B6D4] font-medium text-sm group-hover:gap-2 transition-all">
+              <span className="flex items-center gap-1 text-[#1B5FA6] font-medium text-sm group-hover:gap-2 transition-all">
                 Leer más <ArrowRight className="w-4 h-4" />
               </span>
             </div>
@@ -65,7 +65,7 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
     <Link href={`/blog/${post.slug}`} className={cn("group block h-full", className)}>
       <article className="h-full flex flex-col rounded-xl border border-[#E5E2DB] bg-white hover:border-[#1B5FA6]/30 hover:shadow-lg transition-all duration-300 overflow-hidden">
         {/* Color band top */}
-        <div className="h-1.5 bg-gradient-to-r from-[#1B5FA6] to-[#06B6D4]" />
+        <div className="h-1.5 bg-gradient-to-r from-[#1B5FA6] to-[#1B5FA6]" />
 
         <div className="flex flex-col flex-1 p-6">
           <div className="flex items-center gap-2 mb-4">

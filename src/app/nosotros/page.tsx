@@ -131,7 +131,7 @@ export default function NosotrosPage() {
                 </div>
                 <div
                   className="absolute -top-3 -left-3 w-12 h-12 rounded-md"
-                  style={{ backgroundColor: "#06B6D4", opacity: 0.2 }}
+                  style={{ backgroundColor: "#1B5FA6", opacity: 0.2 }}
                 />
                 <div
                   className="absolute -bottom-3 -right-3 w-8 h-8 rounded-md"
@@ -167,7 +167,7 @@ export default function NosotrosPage() {
                 </div>
                 <p
                   className="text-sm text-muted-foreground font-body border-l-4 pl-4 italic"
-                  style={{ borderLeftColor: "#06B6D4" }}
+                  style={{ borderLeftColor: "#1B5FA6" }}
                 >
                   Si llegaste hasta aquí, probablemente sospechas que algo está
                   más roto de lo que admites. Tienes razón. Agendemos 30 minutos

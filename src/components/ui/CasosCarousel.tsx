@@ -49,7 +49,7 @@ function EscenarioCard({ caso }: { caso: EscenarioData }) {
       {/* Impacto esperado */}
       <div
         className="p-6 pt-4 border-t-2"
-        style={{ borderTopColor: "#06B6D4" }}
+        style={{ borderTopColor: "#1B5FA6" }}
       >
         <p className="text-xs font-sans font-semibold text-foreground uppercase tracking-wide mb-1.5">
           Impacto esperado

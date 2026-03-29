@@ -1,8 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Clock, Zap } from "lucide-react";
 import OpenModalButton from "@/components/ui/OpenModalButton";
+
+const chatMessages = [
+  { time: "Sáb 2:47am", text: "¿Tienen disponibilidad para el lunes?", from: "client" },
+  { time: "Sáb 2:47am", text: "✅ ¡Hola! Sí tenemos. Te agendo para las 10am. Recibirás confirmación en tu email.", from: "bot" },
+  { time: "Sáb 2:48am", text: "Perfecto, muchas gracias 🙌", from: "client" },
+];
+
+const capabilities = [
+  { icon: Clock, label: "Atención 24/7", color: "text-emerald-600", bg: "bg-emerald-50", border: "border-emerald-200" },
+  { icon: Zap, label: "Sin código", color: "text-blue-600", bg: "bg-blue-50", border: "border-blue-200" },
+  { icon: CheckCircle2, label: "12 semanas", color: "text-purple-600", bg: "bg-purple-50", border: "border-purple-200" },
+];
 
 const bullets = [
   "Detectamos cuellos de botella con números reales",
@@ -97,7 +109,6 @@ export default function HeroSection() {
             >
               Diagnóstico gratuito · Sin compromiso · Respuesta en 24 hrs
             </motion.p>
-
           </div>
 
           {/* Visual — 2 cols */}
@@ -108,92 +119,73 @@ export default function HeroSection() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="relative"
             >
-              {/* Tech dashboard card */}
-              <div
-                className="rounded-2xl overflow-hidden border border-[#1e3a5f] shadow-2xl"
-                style={{ background: "linear-gradient(160deg, #0d1f3c 0%, #0a1628 100%)" }}
-              >
-                {/* Header bar */}
-                <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
+              {/* Chat mockup card */}
+              <div className="rounded-2xl bg-white border border-[#E5E2DB] shadow-xl p-5 relative overflow-hidden">
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#F0EDE8]">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-[#06B6D4] animate-pulse" />
-                    <span className="text-xs font-semibold text-white/80 font-mono">0kbot · Sistema activo</span>
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-xs font-semibold text-[#1A1A1A]">0kbot Assistant</span>
                   </div>
-                  <span className="text-[10px] text-white/40 font-mono">v2.4.1</span>
+                  <span className="text-xs text-[#999]">Operando 24/7</span>
                 </div>
 
-                {/* Process flow */}
-                <div className="px-4 pt-4 pb-3">
-                  <p className="text-[10px] text-white/40 uppercase tracking-wider mb-3 font-mono">Flujo de optimización</p>
-                  <div className="flex items-center gap-1">
-                    {[
-                      { label: "Diagnóstico", icon: "🔍", active: true },
-                      { label: "Análisis", icon: "📊", active: true },
-                      { label: "Implementación", icon: "⚡", active: true },
-                      { label: "Resultados", icon: "📈", active: false },
-                    ].map((step, i) => (
-                      <div key={step.label} className="flex items-center gap-1 flex-1">
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.6 + i * 0.15 }}
-                          className={`flex-1 rounded-lg p-2 text-center border ${
-                            step.active
-                              ? "bg-[#06B6D4]/10 border-[#06B6D4]/30 text-[#06B6D4]"
-                              : "bg-white/5 border-white/10 text-white/40"
-                          }`}
-                        >
-                          <div className="text-base leading-none mb-1">{step.icon}</div>
-                          <div className="text-[9px] font-medium leading-tight">{step.label}</div>
-                        </motion.div>
-                        {i < 3 && <div className="text-white/20 text-xs flex-shrink-0">›</div>}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Capabilities grid */}
-                <div className="px-4 pb-3 grid grid-cols-2 gap-2">
-                  {[
-                    { label: "Automatización", desc: "Procesos repetitivos eliminados" },
-                    { label: "Digitalización", desc: "Flujos sin papel ni Excel" },
-                    { label: "IA aplicada", desc: "Donde agrega valor real" },
-                    { label: "Mejora continua", desc: "Medición y ajuste constante" },
-                  ].map((m, i) => (
+                <div className="space-y-3 mb-5">
+                  {chatMessages.map((msg, i) => (
                     <motion.div
-                      key={m.label}
+                      key={i}
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.9 + i * 0.1 }}
-                      className="bg-white/5 border border-white/10 rounded-lg px-3 py-2.5"
+                      transition={{ delay: 0.6 + i * 0.2 }}
+                      className={`flex ${msg.from === "bot" ? "justify-start" : "justify-end"}`}
                     >
-                      <div className="text-[#06B6D4] text-xs font-semibold font-mono mb-0.5">{m.label}</div>
-                      <div className="text-[10px] text-white/50 leading-tight">{m.desc}</div>
+                      <div className={`max-w-[80%] rounded-xl px-3 py-2 text-xs ${
+                        msg.from === "bot"
+                          ? "bg-[#1B5FA6] text-white rounded-tl-none"
+                          : "bg-[#F7F5F0] text-[#1A1A1A] border border-[#E5E2DB] rounded-tr-none"
+                      }`}>
+                        <p>{msg.text}</p>
+                        <p className={`text-[10px] mt-0.5 ${msg.from === "bot" ? "text-white/60" : "text-[#999]"}`}>
+                          {msg.time}
+                        </p>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
 
-                {/* Coverage bar */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.4 }}
-                  className="px-4 py-3 border-t border-white/10 flex items-center justify-between"
-                >
-                  <span className="text-[10px] text-white/40 font-mono">Cobertura</span>
-                  <div className="flex items-center gap-2 text-[10px] font-mono">
-                    <span className="text-[#06B6D4] font-semibold">● Santiago</span>
-                    <span className="text-white/30">—</span>
-                    <span className="text-white/60">Chile</span>
-                    <span className="text-white/30">—</span>
-                    <span className="text-white/40">LATAM</span>
-                  </div>
-                </motion.div>
+                <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#F0EDE8]">
+                  {capabilities.map((m, i) => {
+                    const Icon = m.icon;
+                    return (
+                      <motion.div
+                        key={m.label}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 1 + i * 0.1 }}
+                        className={`rounded-lg p-2 text-center ${m.bg} border ${m.border}`}
+                      >
+                        <Icon className={`w-3.5 h-3.5 mx-auto mb-1 ${m.color}`} />
+                        <div className={`text-[10px] font-semibold leading-tight ${m.color}`}>{m.label}</div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
               </div>
 
-              <div
-                className="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-20 blur-2xl pointer-events-none"
-                style={{ background: "radial-gradient(circle, #06B6D4, transparent)" }}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 1.2, type: "spring" }}
+                className="absolute -bottom-4 -left-4 bg-white border border-[#E5E2DB] shadow-lg rounded-xl px-3 py-2 flex items-center gap-2"
+              >
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                <div>
+                  <div className="text-xs font-semibold text-[#1A1A1A]">Sin código</div>
+                  <div className="text-[10px] text-[#999]">Listo en 12 semanas</div>
+                </div>
+              </motion.div>
+
+              <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-10 blur-2xl"
+                style={{ background: "radial-gradient(circle, #1B5FA6, transparent)" }}
               />
             </motion.div>
           </div>
