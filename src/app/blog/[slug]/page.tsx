@@ -48,19 +48,28 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const related = getRelatedPosts(slug, post.category);
 
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://0kbot.com";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
+    url: `${baseUrl}/blog/${post.slug}`,
     datePublished: post.date,
+    dateModified: post.date,
     author: {
       "@type": "Person",
       name: post.author,
+      url: "https://www.linkedin.com/in/diego-lopez-dinamarca/",
     },
     publisher: {
       "@type": "Organization",
       name: "0kbot",
+      url: baseUrl,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseUrl}/blog/${post.slug}`,
     },
   };
 

@@ -84,9 +84,35 @@ const servicios = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Servicios de mejora de procesos — 0kbot",
+  itemListElement: servicios.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: s.title,
+      description: s.desc,
+      provider: {
+        "@type": "Organization",
+        name: "0kbot",
+        url: "https://0kbot.com",
+      },
+      areaServed: "Chile",
+      serviceType: "Consultoría de procesos",
+    },
+  })),
+};
+
 export default function ServiciosPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">
         <div className="container-wide">

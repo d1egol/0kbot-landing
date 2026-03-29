@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://0kbot.com";
@@ -21,10 +22,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/terminos", priority: 0.3, changeFrequency: "yearly" },
   ];
 
-  return routes.map(({ path, priority, changeFrequency }) => ({
+  const staticRoutes = routes.map(({ path, priority, changeFrequency }) => ({
     url: `${baseUrl}${path}`,
     lastModified: now,
     changeFrequency,
     priority,
   }));
+
+  const blogPosts = getAllPosts().map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...blogPosts];
 }
