@@ -51,30 +51,29 @@ export default function ComoFuncionaSection() {
         {/* Timeline desktop */}
         <div className="hidden lg:block relative">
           <div className="absolute top-6 left-0 right-0 h-px bg-muted" />
-          <div className="grid grid-cols-4 gap-6 relative">
+          <div className="grid grid-cols-4 gap-6">
             {etapas.map((etapa, i) => {
               const Icono = etapa.icono;
               return (
                 <MotionSection key={etapa.numero} delay={i * 0.1}>
-                  <div className="pt-16 space-y-3">
+                  <div className="flex flex-col items-start">
                     <div
-                      className="absolute top-0 flex items-center justify-center w-12 h-12 rounded-full bg-background border-2"
-                      style={{
-                        left: `calc(${(i / 4) * 100}% + ${i === 0 ? "0px" : i === 3 ? "-1.5rem" : "-0.75rem"})`,
-                        borderColor: "#1B5FA6",
-                      }}
+                      className="flex items-center justify-center w-12 h-12 rounded-full bg-background border-2 mb-4"
+                      style={{ borderColor: "#1B5FA6" }}
                     >
                       <Icono size={18} style={{ color: "#1B5FA6" }} />
                     </div>
-                    <p className="text-xs text-accent font-medium font-mono">
-                      {etapa.semanas}
-                    </p>
-                    <h3 className="font-heading font-semibold text-base text-foreground">
-                      {etapa.titulo}
-                    </h3>
-                    <p className="text-sm text-muted-foreground font-body leading-relaxed">
-                      {etapa.texto}
-                    </p>
+                    <div className="bg-card rounded-xl p-5 border border-muted/50 space-y-3 w-full">
+                      <p className="text-xs text-accent font-medium font-mono">
+                        {etapa.semanas}
+                      </p>
+                      <h3 className="font-heading font-semibold text-base text-foreground">
+                        {etapa.titulo}
+                      </h3>
+                      <p className="text-sm text-muted-foreground font-body leading-relaxed">
+                        {etapa.texto}
+                      </p>
+                    </div>
                   </div>
                 </MotionSection>
               );

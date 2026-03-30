@@ -11,6 +11,9 @@ const escenarios = [
       "Estandarizar el proceso de picking con checklist digital. Centralizar el registro de pedidos para eliminar la doble entrada de datos.",
     impactoEsperado:
       "La estandarización del picking reduce errores típicamente en un 50–80% según benchmarks de la industria logística (Lean Institute).",
+    iconName: "Truck" as const,
+    iconColor: "text-blue-600",
+    iconBg: "bg-blue-50",
   },
   {
     industria: "Empresa de servicios técnicos",
@@ -21,6 +24,9 @@ const escenarios = [
       "Protocolo de diagnóstico telefónico previo a la visita + lista de materiales recomendada según tipo de trabajo y historial.",
     impactoEsperado:
       "Reducir las segundas visitas libera capacidad para atender más órdenes con la misma dotación, sin contratar.",
+    iconName: "Wrench" as const,
+    iconColor: "text-amber-600",
+    iconBg: "bg-amber-50",
   },
   {
     industria: "Centro de salud o servicios con agenda",
@@ -31,6 +37,9 @@ const escenarios = [
       "Recordatorios automáticos por WhatsApp a 48 y 24 horas antes de la cita. Lista de espera activa para llenar cancelaciones.",
     impactoEsperado:
       "Estudios del sector salud muestran reducciones del 30–50% en inasistencias con recordatorios automatizados (NEJM Catalyst).",
+    iconName: "Heart" as const,
+    iconColor: "text-rose-600",
+    iconBg: "bg-rose-50",
   },
 ];
 

@@ -72,8 +72,8 @@ export default function HomePage() {
       />
       <HeroSection />
       <PainPointsSection />
-      <CredencialesSection />
       <ComoFuncionaSection />
+      <CredencialesSection />
       <CasosSection />
       <FAQSection />
       <DiagnosticoSection />

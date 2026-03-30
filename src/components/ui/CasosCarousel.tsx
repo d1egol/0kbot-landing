@@ -1,7 +1,11 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { Truck, Wrench, Heart } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import MotionSection from "./MotionSection";
+
+const iconMap: Record<string, LucideIcon> = { Truck, Wrench, Heart };
 
 interface EscenarioData {
   industria: string;
@@ -9,6 +13,9 @@ interface EscenarioData {
   problema: string;
   enfoque: string;
   impactoEsperado: string;
+  iconName?: string;
+  iconColor?: string;
+  iconBg?: string;
 }
 
 interface CasosCarouselProps {
@@ -16,14 +23,22 @@ interface CasosCarouselProps {
 }
 
 function EscenarioCard({ caso }: { caso: EscenarioData }) {
+  const Icon = caso.iconName ? iconMap[caso.iconName] : undefined;
   return (
     <div className="bg-card border border-muted rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-shadow h-full flex flex-col">
       {/* Header */}
-      <div className="p-6 pb-4 border-b border-muted">
-        <p className="text-xs font-sans font-medium text-muted-foreground uppercase tracking-wide mb-1">
-          {caso.industria}
-        </p>
-        <p className="text-sm font-sans text-muted-foreground">{caso.tamano}</p>
+      <div className="p-6 pb-4 border-b border-muted flex items-center gap-3">
+        {Icon && (
+          <div className={`flex items-center justify-center w-10 h-10 rounded-xl shrink-0 ${caso.iconBg || ""}`}>
+            <Icon className={`w-5 h-5 ${caso.iconColor || ""}`} />
+          </div>
+        )}
+        <div>
+          <p className="text-xs font-sans font-medium text-muted-foreground uppercase tracking-wide mb-1">
+            {caso.industria}
+          </p>
+          <p className="text-sm font-sans text-muted-foreground">{caso.tamano}</p>
+        </div>
       </div>
 
       {/* Body */}

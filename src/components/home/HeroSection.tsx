@@ -1,27 +1,30 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, TrendingDown, Clock, FileBarChart } from "lucide-react";
+import { CheckCircle2, Search, ClipboardList, BarChart2, ArrowRight } from "lucide-react";
 import OpenModalButton from "@/components/ui/OpenModalButton";
 
-const diagnosisRows = [
+const methodSteps = [
   {
-    process: "Coordinación de pedidos",
-    before: "12 hrs/semana manual",
-    after: "2 hrs/semana",
-    icon: Clock,
+    icon: Search,
+    title: "Diagnosticamos",
+    desc: "Encontramos dónde se va tu tiempo y tu plata",
+    color: "text-blue-600",
+    bg: "bg-blue-50",
   },
   {
-    process: "Visitas fallidas",
-    before: "33% requieren segunda",
-    after: "12%",
-    icon: TrendingDown,
+    icon: ClipboardList,
+    title: "Estandarizamos",
+    desc: "Procesos claros que cualquiera puede ejecutar",
+    color: "text-amber-600",
+    bg: "bg-amber-50",
   },
   {
-    process: "Reporte gerencial",
-    before: "4 hrs armarlo",
-    after: "Automático",
-    icon: FileBarChart,
+    icon: BarChart2,
+    title: "Medimos",
+    desc: "KPIs reales, no reportes de adorno",
+    color: "text-emerald-600",
+    bg: "bg-emerald-50",
   },
 ];
 
@@ -29,13 +32,6 @@ const bullets = [
   "Detectamos cuellos de botella con números reales",
   "Eliminamos trabajo manual innecesario",
   "Implementamos soluciones simples que sí usa tu equipo",
-];
-
-const credentials = [
-  "Ing. Industrial UDD",
-  "MSc Data Science PUC",
-  "Lean Six Sigma",
-  "8+ años en operaciones",
 ];
 
 export default function HeroSection() {
@@ -73,23 +69,6 @@ export default function HeroSection() {
               <br />
               <span className="text-gradient-accent">No vendemos IA. Vendemos lunes tranquilos.</span>
             </motion.h1>
-
-            {/* Credentials bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.18 }}
-              className="flex flex-wrap gap-2"
-            >
-              {credentials.map((cred) => (
-                <span
-                  key={cred}
-                  className="text-xs px-2.5 py-1 rounded-full bg-muted text-muted-foreground font-body border border-border"
-                >
-                  {cred}
-                </span>
-              ))}
-            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -144,7 +123,7 @@ export default function HeroSection() {
             </motion.p>
           </div>
 
-          {/* Visual — 2 cols */}
+          {/* Visual — 2 cols: Nuestro método */}
           <div className="lg:col-span-2 relative">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -152,68 +131,52 @@ export default function HeroSection() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="relative"
             >
-              {/* Diagnosis results card */}
-              <div className="rounded-2xl bg-white border border-[#E5E2DB] shadow-xl p-5 relative overflow-hidden">
-                <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#F0EDE8]">
-                  <span className="text-xs font-semibold text-[#1A1A1A]">Diagnóstico típico</span>
+              <div className="rounded-2xl bg-white border border-[#E5E2DB] shadow-xl p-6 relative overflow-hidden">
+                <div className="flex items-center justify-between mb-5 pb-3 border-b border-[#F0EDE8]">
+                  <span className="text-sm font-semibold text-[#1A1A1A]">Nuestro método</span>
                   <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
-                    Resultados en 12 semanas
+                    12 semanas
                   </span>
                 </div>
 
-                {/* Header row */}
-                <div className="grid grid-cols-3 gap-2 mb-2 px-1">
-                  <span className="text-[10px] font-semibold text-[#999] uppercase tracking-wider">Proceso</span>
-                  <span className="text-[10px] font-semibold text-[#999] uppercase tracking-wider">Hoy</span>
-                  <span className="text-[10px] font-semibold text-emerald-600 uppercase tracking-wider">Con 0kbot</span>
-                </div>
-
-                <div className="space-y-2.5">
-                  {diagnosisRows.map((row, i) => {
-                    const Icon = row.icon;
+                <div className="space-y-4">
+                  {methodSteps.map((step, i) => {
+                    const Icon = step.icon;
                     return (
                       <motion.div
-                        key={row.process}
+                        key={step.title}
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6 + i * 0.15 }}
-                        className="grid grid-cols-3 gap-2 items-center rounded-lg bg-[#F7F5F0] px-2.5 py-2"
+                        className="flex items-start gap-3.5"
                       >
-                        <div className="flex items-center gap-1.5 min-w-0">
-                          <Icon className="w-3 h-3 text-[#1B5FA6] shrink-0" />
-                          <span className="text-[10px] font-medium text-[#1A1A1A] leading-tight truncate">
-                            {row.process}
-                          </span>
+                        <div className={`flex items-center justify-center w-10 h-10 rounded-xl shrink-0 ${step.bg}`}>
+                          <Icon className={`w-5 h-5 ${step.color}`} />
                         </div>
-                        <span className="text-[10px] text-[#999] leading-tight">{row.before}</span>
-                        <span className="text-[10px] font-semibold text-emerald-600 leading-tight">{row.after}</span>
+                        <div className="min-w-0 pt-0.5">
+                          <p className="text-sm font-semibold text-[#1A1A1A]">{step.title}</p>
+                          <p className="text-xs text-[#666] leading-relaxed mt-0.5">{step.desc}</p>
+                        </div>
                       </motion.div>
                     );
                   })}
                 </div>
 
-                <motion.p
+                {/* Connecting line between steps */}
+                <div className="absolute left-[2.05rem] top-[4.5rem] bottom-[2.5rem] w-px bg-[#E5E2DB] -z-0 hidden lg:block" />
+
+                <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.1 }}
-                  className="mt-3 text-[9px] text-[#AAA] text-center leading-tight"
+                  className="mt-5 pt-4 border-t border-[#F0EDE8] flex items-center gap-2 justify-center"
                 >
-                  Resultados típicos basados en benchmarks de industria
-                </motion.p>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#1B5FA6]" />
+                  <span className="text-xs font-medium text-[#1B5FA6]">
+                    Sin código · Sin tecnología innecesaria
+                  </span>
+                </motion.div>
               </div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ delay: 1.2, type: "spring" }}
-                className="absolute -bottom-4 -left-4 bg-white border border-[#E5E2DB] shadow-lg rounded-xl px-3 py-2 flex items-center gap-2"
-              >
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <div>
-                  <div className="text-xs font-semibold text-[#1A1A1A]">Sin código</div>
-                  <div className="text-[10px] text-[#999]">Listo en 12 semanas</div>
-                </div>
-              </motion.div>
 
               <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-10 blur-2xl"
                 style={{ background: "radial-gradient(circle, #1B5FA6, transparent)" }}

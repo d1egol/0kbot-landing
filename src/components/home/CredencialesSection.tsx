@@ -1,12 +1,11 @@
-import Link from "next/link";
 import MotionSection from "@/components/ui/MotionSection";
-import { GraduationCap, BarChart3, Wrench, Briefcase, CheckCircle, Linkedin } from "lucide-react";
+import { Shield, BarChart3, Briefcase, Users, CheckCircle } from "lucide-react";
 
-const badges = [
-  { icon: GraduationCap, label: "Ing. Civil Industrial", sub: "Universidad del Desarrollo", color: "text-blue-600", bg: "bg-blue-50 border-blue-100" },
-  { icon: BarChart3, label: "MSc Data Science", sub: "Pontificia Universidad Católica", color: "text-purple-600", bg: "bg-purple-50 border-purple-100" },
-  { icon: Wrench, label: "Lean Six Sigma Green Belt", sub: "Mejora continua de procesos", color: "text-emerald-600", bg: "bg-emerald-50 border-emerald-100" },
+const capacidades = [
+  { icon: Shield, label: "Metodología Lean Six Sigma", sub: "Mejora continua comprobada", color: "text-blue-600", bg: "bg-blue-50 border-blue-100" },
+  { icon: BarChart3, label: "Decisiones con datos", sub: "Data science aplicada a operaciones", color: "text-purple-600", bg: "bg-purple-50 border-purple-100" },
   { icon: Briefcase, label: "8+ años en operaciones", sub: "Plantas, puertos, distribución", color: "text-amber-600", bg: "bg-amber-50 border-amber-100" },
+  { icon: Users, label: "Transferencia real", sub: "Tu equipo aprende, no dependes de nosotros", color: "text-emerald-600", bg: "bg-emerald-50 border-emerald-100" },
 ];
 
 export default function CredencialesSection() {
@@ -14,44 +13,26 @@ export default function CredencialesSection() {
     <section id="credenciales" className="bg-background py-20 lg:py-32">
       <div className="container-content">
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-          {/* Profile card — izquierda */}
+          {/* Methodology card — izquierda */}
           <MotionSection>
             <div className="relative max-w-sm mx-auto">
               <div className="rounded-2xl bg-white border border-[#E5E2DB] shadow-card overflow-hidden">
                 {/* Card top banner */}
-                <div className="h-20 bg-gradient-to-r from-[#1B5FA6] to-[#0d3d6e] relative">
-                  <div className="absolute bottom-0 right-6 translate-y-1/2">
-                    <div className="w-16 h-16 rounded-2xl bg-[#1B5FA6] flex items-center justify-center font-heading font-bold text-2xl text-white shadow-lg border-4 border-white">
-                      DL
-                    </div>
-                  </div>
+                <div className="h-20 bg-gradient-to-r from-[#1B5FA6] to-[#0d3d6e] relative flex items-center justify-center">
+                  <Shield className="w-10 h-10 text-white/90" />
                 </div>
 
-                <div className="pt-10 pb-6 px-6">
-                  <div className="mb-4 flex items-start justify-between">
-                    <div>
-                      <p className="font-heading font-bold text-xl text-[#1A1A1A]">Diego López</p>
-                      <p className="text-sm text-[#666] flex items-center gap-1.5">
-                        <span>Founder &amp; CEO</span>
-                        <span className="text-[#E5E2DB]">·</span>
-                        <span className="text-[#1B5FA6] font-medium">0kbot</span>
-                      </p>
-                      <p className="text-xs text-[#999] mt-0.5">Consultor de procesos · Santiago, Chile</p>
-                    </div>
-                    <Link
-                      href="https://www.linkedin.com/in/diego-lopez-dinamarca/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="LinkedIn Diego López"
-                      className="text-[#0077b5] hover:text-[#005e8e] transition-colors mt-1"
-                    >
-                      <Linkedin className="w-5 h-5" />
-                    </Link>
+                <div className="pt-6 pb-6 px-6">
+                  <div className="mb-4">
+                    <p className="font-heading font-bold text-xl text-[#1A1A1A]">Nuestra metodología</p>
+                    <p className="text-sm text-[#666] mt-0.5">
+                      Ingeniería industrial + datos + sentido común
+                    </p>
                   </div>
 
-                  {/* Credential badges */}
+                  {/* Capability badges */}
                   <div className="space-y-2.5">
-                    {badges.map((b) => {
+                    {capacidades.map((b) => {
                       const Icon = b.icon;
                       return (
                         <div key={b.label} className={`flex items-center gap-3 rounded-xl border p-2.5 ${b.bg}`}>
@@ -79,12 +60,12 @@ export default function CredencialesSection() {
           <MotionSection delay={0.1}>
             <div className="space-y-6">
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-                He estado del otro lado
+                Hemos estado del otro lado
               </h2>
               <div className="space-y-4 text-muted-foreground font-body text-base leading-relaxed">
                 <p>
-                  Antes de consultar, operé. 8 años en plantas de producción,
-                  puertos, centros de distribución. Sé cómo se siente cuando
+                  Antes de consultar, operamos. 8 años en plantas de producción,
+                  puertos, centros de distribución. Sabemos cómo se siente cuando
                   alguien de afuera llega con teorías que no funcionan en la
                   realidad.
                 </p>
@@ -93,8 +74,8 @@ export default function CredencialesSection() {
                   fácil.
                 </p>
                 <p>
-                  No soy el ingeniero que te vende IA porque está de moda. Soy
-                  el que te dice{" "}
+                  No somos la consultora que te vende IA porque está de moda. Somos
+                  los que te dicen{" "}
                   <em className="text-foreground">
                     &ldquo;esto no necesita código, necesita orden&rdquo;
                   </em>{" "}
@@ -107,7 +88,7 @@ export default function CredencialesSection() {
                 {[
                   "Diagnóstico honesto antes de cualquier propuesta",
                   "Sin vender tecnología que no necesitas",
-                  "Resultados medibles o te devuelvo el tiempo",
+                  "Resultados medibles o te devolvemos el tiempo",
                 ].map((point) => (
                   <div key={point} className="flex items-start gap-2.5">
                     <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
@@ -122,7 +103,7 @@ export default function CredencialesSection() {
               >
                 Si llegaste hasta aquí, probablemente sospechas que algo está
                 más roto de lo que admites. Tienes razón. Agendemos 30 minutos
-                y te confirmo dónde.
+                y te confirmamos dónde.
               </p>
             </div>
           </MotionSection>
