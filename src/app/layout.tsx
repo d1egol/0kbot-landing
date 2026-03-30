@@ -81,6 +81,7 @@ const jsonLd = {
       sameAs: [
         "https://www.linkedin.com/in/diego-lopez-dinamarca/",
         "https://www.linkedin.com/company/0kbot",
+        "https://share.google/O2Ax7yYq4m3cszu4W",
       ],
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
