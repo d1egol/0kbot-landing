@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { Calendar, Clock, CheckCircle2, ArrowRight } from "lucide-react";
 
 const CALENDLY_URL = "https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot";
@@ -12,6 +13,9 @@ const pasos = [
 ];
 
 export default function ContactoClient() {
+  const searchParams = useSearchParams();
+  const dolor = searchParams.get("dolor");
+
   return (
     <>
       {/* Hero */}
@@ -40,6 +44,11 @@ export default function ContactoClient() {
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
                   <Calendar className="w-8 h-8 text-primary" />
                 </div>
+                {dolor && (
+                  <p className="text-sm text-primary font-medium font-body bg-primary/5 border border-primary/20 rounded-lg px-4 py-2.5">
+                    Diagnóstico enfocado en: <strong>{dolor}</strong>
+                  </p>
+                )}
                 <h2 className="font-heading text-2xl font-bold text-foreground">
                   Elige el horario que te acomode
                 </h2>

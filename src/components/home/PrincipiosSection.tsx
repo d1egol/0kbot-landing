@@ -30,7 +30,7 @@ const principios = [
   },
 ];
 
-export default function TestimoniosSection() {
+export default function PrincipiosSection() {
   return (
     <section className="section-padding bg-background">
       <div className="container-wide">

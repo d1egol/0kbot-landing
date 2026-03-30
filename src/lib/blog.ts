@@ -26,7 +26,6 @@ export const CATEGORIES = [
   "Automatización",
   "IA para Pymes",
   "Mejora de Procesos",
-  "Casos de Uso",
   "Noticias de IA",
   "Tutoriales",
 ] as const;

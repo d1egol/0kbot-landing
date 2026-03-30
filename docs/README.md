@@ -10,7 +10,8 @@ Este directorio contiene documentación de referencia, templates y guías de ope
 docs/
 ├── README.md                          ← Este archivo
 ├── prompts/
-│   └── PROMPT-CLAUDE-CODE-BLOG.md    ← Guía técnica del sistema de blog
+│   ├── PROMPT-CLAUDE-CODE-BLOG.md    ← Guía técnica del sistema de blog
+│   └── PROMPT-HOMEPAGE-CRO.md       ← Arquitectura del homepage, decisiones CRO, jerarquía CTAs
 ├── email-templates/
 │   ├── README.md                      ← Cómo usar los templates + KPIs
 │   ├── retail-comercio.md
@@ -58,6 +59,9 @@ docs/
 
 ### Quiero entender cómo funciona el blog técnicamente
 → `prompts/PROMPT-CLAUDE-CODE-BLOG.md`
+
+### Quiero hacer cambios al homepage (secciones, CTAs, copy)
+→ `prompts/PROMPT-HOMEPAGE-CRO.md` — lee esto ANTES de tocar `src/app/page.tsx`
 
 ### Quiero ver qué falta para el lanzamiento
 → `launch/README.md` — Checklist con estados de cada tarea

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Linkedin, Mail, MapPin, Rss } from "lucide-react";
+import { Linkedin, Mail, MapPin } from "lucide-react";
 
 const footerLinks = [
   {
@@ -17,8 +17,17 @@ const footerLinks = [
     links: [
       { label: "Sobre nosotros", href: "/nosotros" },
       { label: "Cómo trabajamos", href: "/como-trabajamos" },
-      { label: "Escenarios y soluciones", href: "/casos" },
+      { label: "Casos y resultados", href: "/casos" },
       { label: "Recursos", href: "/recursos" },
+    ],
+  },
+  {
+    title: "Recursos SEO",
+    links: [
+      { label: "Mejora de procesos pymes", href: "/mejora-de-procesos" },
+      { label: "IA para pymes Chile", href: "/ia-para-pymes" },
+      { label: "Automatización de procesos", href: "/automatizacion-procesos-chile" },
+      { label: "Transformación digital pymes", href: "/transformacion-digital-pymes" },
     ],
   },
   {
@@ -46,7 +55,7 @@ export default function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container-wide py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand */}
           <div>
             <h3 className="font-heading font-bold text-xl mb-4">0kbot</h3>
@@ -91,20 +100,21 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Newsletter strip */}
-        <div className="mt-12 p-6 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 flex flex-col sm:flex-row items-center gap-4 justify-between">
-          <div className="flex items-center gap-3">
-            <Rss className="w-5 h-5 text-accent shrink-0" />
-            <div>
-              <p className="font-semibold text-sm text-primary-foreground">Newsletter de IA para Pymes</p>
-              <p className="text-xs text-primary-foreground/60">Novedades de automatización, casos reales y recursos gratis.</p>
-            </div>
-          </div>
+        <div className="mt-10 p-5 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 flex flex-col sm:flex-row items-center gap-3 justify-between">
+          <p className="text-sm text-primary-foreground/70">
+            ¿Tienes una pregunta?{" "}
+            <a href="mailto:hola@0kbot.com" className="text-primary-foreground hover:underline font-medium">
+              hola@0kbot.com
+            </a>{" "}
+            — Respondemos en 24 hrs
+          </p>
           <Link
-            href="/contacto"
+            href="https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot"
+            target="_blank"
+            rel="noopener noreferrer"
             className="shrink-0 px-5 py-2.5 bg-accent text-[#1A1A1A] text-sm font-bold rounded-lg hover:bg-accent/90 transition-colors whitespace-nowrap"
           >
-            Suscribirme
+            Agendar diagnóstico gratis
           </Link>
         </div>
 

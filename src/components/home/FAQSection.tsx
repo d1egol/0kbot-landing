@@ -7,7 +7,7 @@ const preguntas = [
   },
   {
     pregunta: "¿Cuánto cuesta esto?",
-    respuesta: "Depende del tamaño y complejidad de la operación, pero siempre se priorizan mejoras con impacto claro en tiempo, errores o capacidad. Si no hay retorno visible, no tiene sentido avanzar.",
+    respuesta: "Depende del tamaño y alcance, pero para orientarte: programas para pymes de 10–50 personas parten desde 30–50 UF, y para operaciones de 50–200 personas suelen estar entre 60–120 UF. El diagnóstico inicial es siempre gratuito. Si no hay retorno visible proyectado, no tiene sentido avanzar.",
   },
   {
     pregunta: "¿Tengo que parar mi operación para esto?",

@@ -32,36 +32,6 @@ const escenarios = [
     impactoEsperado:
       "Estudios del sector salud muestran reducciones del 30–50% en inasistencias con recordatorios automatizados (NEJM Catalyst).",
   },
-  {
-    industria: "Empresa constructora o de proyectos",
-    tamano: "50–100 personas",
-    problema:
-      "Los informes de avance de obra llegan tarde, en formatos distintos, y la gerencia toma decisiones con información de días atrás.",
-    enfoque:
-      "Reporte diario estandarizado de 5 minutos por jefe de obra + consolidación automática para gerencia en un tablero único.",
-    impactoEsperado:
-      "Información actualizada diariamente reduce el tiempo de detección de desviaciones y elimina compras de emergencia reactivas.",
-  },
-  {
-    industria: "Empresa de distribución o bodega",
-    tamano: "30–60 personas",
-    problema:
-      "El inventario no cuadra. El cierre mensual toma días y siempre aparecen diferencias que nadie puede explicar.",
-    enfoque:
-      "Registro del movimiento en el momento que ocurre, con responsable asignado por zona. El cuadre masivo de fin de mes desaparece.",
-    impactoEsperado:
-      "El registro inmediato de movimientos elimina la acumulación de errores que provoca los descuadres masivos al cierre.",
-  },
-  {
-    industria: "Empresa de servicios masivos o facilities",
-    tamano: "80+ personas",
-    problema:
-      "Los supervisores invierten horas diarias en verificar que el personal esté en su puesto, desplazándose físicamente entre ubicaciones.",
-    enfoque:
-      "Check-in digital por QR en cada punto de trabajo + dashboard de cobertura en tiempo real para el supervisor.",
-    impactoEsperado:
-      "La digitalización del control de asistencia libera tiempo de supervisión para tareas de mayor valor y respuesta a incidentes.",
-  },
 ];
 
 export default function CasosSection() {
@@ -70,16 +40,13 @@ export default function CasosSection() {
       <div className="container-content">
         <MotionSection className="mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-            Escenarios comunes
+            Cómo funciona en la práctica
           </h2>
           <p className="mt-3 text-lg text-muted-foreground font-body">
-            Problemas típicos de pymes y cómo los abordamos.
+            Problemas reales que resolvemos con el mismo método.
           </p>
         </MotionSection>
         <CasosCarousel casos={escenarios} />
-        <p className="mt-8 text-xs text-muted-foreground font-body text-center">
-          Escenarios basados en problemas comunes de la industria. Las métricas de referencia provienen de estudios del sector, no de proyectos propios.
-        </p>
       </div>
     </section>
   );

@@ -1,15 +1,11 @@
 import HeroSection from "@/components/home/HeroSection";
 import PainPointsSection from "@/components/home/PainPointsSection";
-import SolucionSection from "@/components/home/SolucionSection";
+import CredencialesSection from "@/components/home/CredencialesSection";
 import ComoFuncionaSection from "@/components/home/ComoFuncionaSection";
 import CasosSection from "@/components/home/CasosSection";
-import TestimoniosSection from "@/components/home/TestimoniosSection";
-import ComparacionSection from "@/components/home/ComparacionSection";
-import CredencialesSection from "@/components/home/CredencialesSection";
 import FAQSection from "@/components/home/FAQSection";
 import DiagnosticoSection from "@/components/home/DiagnosticoSection";
 import CTAFinalSection from "@/components/home/CTAFinalSection";
-import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 
 const faqJsonLd = {
@@ -29,7 +25,7 @@ const faqJsonLd = {
       name: "¿Cuánto cuesta un proyecto de mejora de procesos?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Depende del tamaño y complejidad de la operación, pero siempre se priorizan mejoras con impacto claro en tiempo, errores o capacidad. Si no hay retorno visible, no tiene sentido avanzar.",
+        text: "Depende del tamaño y alcance, pero para orientarte: programas para pymes de 10–50 personas parten desde 30–50 UF, y para operaciones de 50–200 personas suelen estar entre 60–120 UF. El diagnóstico inicial es siempre gratuito. Si no hay retorno visible proyectado, no tiene sentido avanzar.",
       },
     },
     {
@@ -76,13 +72,9 @@ export default function HomePage() {
       />
       <HeroSection />
       <PainPointsSection />
-      <SolucionSection />
+      <CredencialesSection />
       <ComoFuncionaSection />
       <CasosSection />
-      <TestimoniosSection />
-      <ComparacionSection />
-      <CredencialesSection />
-      <BlogPreviewSection />
       <FAQSection />
       <DiagnosticoSection />
       <CTAFinalSection />
