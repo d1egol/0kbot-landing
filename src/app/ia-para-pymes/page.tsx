@@ -128,7 +128,7 @@ export default function IaParaPymesPage() {
               Diagnóstico gratuito <ArrowRight size={16} />
             </Link>
             <Link
-              href="/blog/ia-para-pymes-2025"
+              href="/blog/ia-para-pymes-chile"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 text-white rounded-lg font-semibold font-body text-sm hover:bg-white/20 transition-colors"
             >
               Leer guía completa →
@@ -242,7 +242,7 @@ export default function IaParaPymesPage() {
           </h2>
           <div className="space-y-3">
             {[
-              { href: "/blog/ia-para-pymes-2025", label: "IA para Pymes en 2026: Lo que necesitas saber antes de empezar" },
+              { href: "/blog/ia-para-pymes-chile", label: "IA para Pymes en 2026: Lo que necesitas saber antes de empezar" },
               { href: "/blog/ia-para-pymes-lo-que-realmente-sirve", label: "IA para pymes: lo que realmente sirve (sin el hype)" },
               { href: "/blog/herramientas-ia-chile", label: "Las mejores herramientas de IA para empresas en Chile" },
               { href: "/blog/3-herramientas-gratuitas-pyme", label: "3 herramientas gratuitas para empezar con IA hoy" },

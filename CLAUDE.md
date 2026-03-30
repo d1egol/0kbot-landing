@@ -99,7 +99,7 @@ title: "..."        # max ~60 chars para SEO
 excerpt: "..."      # max ~155 chars (usado en og:description)
 date: YYYY-MM-DD
 author: "Diego López"
-category: "Automatización" | "IA para Pymes" | "Mejora de Procesos" | "Noticias de IA" | "Tutoriales"
+category: "Automatización" | "IA para Pymes" | "Mejora de Procesos" | "Tutoriales"
 tags: ["tag1", "tag2"]
 featured: true | false   # máximo 1 post con true a la vez
 # coverImage: "/images/..."  # opcional
