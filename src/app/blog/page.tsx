@@ -63,7 +63,7 @@ export default function BlogPage() {
             </div>
 
             <Link
-              href="/diagnostico"
+              href="/contacto"
               className="shrink-0 inline-flex items-center gap-2 bg-[#1B5FA6] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#154d8a] transition-colors text-sm"
             >
               Diagnóstico gratuito
