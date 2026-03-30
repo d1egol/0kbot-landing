@@ -21,6 +21,7 @@ export const metadata: Metadata = {
       "Digitalizamos la operación de pymes chilenas paso a paso, sin interrumpir el negocio. 12 semanas, resultados medibles.",
     type: "website",
   },
+  alternates: { canonical: "https://0kbot.com/transformacion-digital-pymes" },
 };
 
 const etapas = [

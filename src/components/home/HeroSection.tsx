@@ -1,30 +1,52 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Search, ClipboardList, BarChart2, ArrowRight } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import OpenModalButton from "@/components/ui/OpenModalButton";
 
-const methodSteps = [
+const diagnosisRows = [
   {
-    icon: Search,
-    title: "Diagnosticamos",
-    desc: "Encontramos dónde se va tu tiempo y tu plata",
-    color: "text-blue-600",
-    bg: "bg-blue-50",
+    process: "Coordinación de pedidos",
+    before: "12 h/sem",
+    after: "2 h/sem",
+    saving: 83,
+    beforeColor: "#EF4444",
+    afterColor: "#10B981",
+    icon: (
+      <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 shrink-0">
+        <rect x="1" y="4" width="14" height="9" rx="2" stroke="#1B5FA6" strokeWidth="1.4"/>
+        <path d="M5 4V3a3 3 0 016 0v1" stroke="#1B5FA6" strokeWidth="1.4" strokeLinecap="round"/>
+        <path d="M8 8v2M6 9h4" stroke="#1B5FA6" strokeWidth="1.4" strokeLinecap="round"/>
+      </svg>
+    ),
   },
   {
-    icon: ClipboardList,
-    title: "Estandarizamos",
-    desc: "Procesos claros que cualquiera puede ejecutar",
-    color: "text-amber-600",
-    bg: "bg-amber-50",
+    process: "Visitas fallidas",
+    before: "33%",
+    after: "12%",
+    saving: 64,
+    beforeColor: "#F59E0B",
+    afterColor: "#10B981",
+    icon: (
+      <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 shrink-0">
+        <circle cx="8" cy="8" r="6.5" stroke="#1B5FA6" strokeWidth="1.4"/>
+        <path d="M5.5 8.5l2 2 3-3" stroke="#1B5FA6" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
   },
   {
-    icon: BarChart2,
-    title: "Medimos",
-    desc: "KPIs reales, no reportes de adorno",
-    color: "text-emerald-600",
-    bg: "bg-emerald-50",
+    process: "Reporte gerencial",
+    before: "4 hrs",
+    after: "Automático",
+    saving: 100,
+    beforeColor: "#EF4444",
+    afterColor: "#10B981",
+    icon: (
+      <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 shrink-0">
+        <rect x="2" y="1.5" width="12" height="13" rx="1.5" stroke="#1B5FA6" strokeWidth="1.4"/>
+        <path d="M5 6h6M5 9h4M5 12h3" stroke="#1B5FA6" strokeWidth="1.4" strokeLinecap="round"/>
+      </svg>
+    ),
   },
 ];
 
@@ -131,52 +153,83 @@ export default function HeroSection() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="relative"
             >
-              <div className="rounded-2xl bg-white border border-[#E5E2DB] shadow-xl p-6 relative overflow-hidden">
-                <div className="flex items-center justify-between mb-5 pb-3 border-b border-[#F0EDE8]">
-                  <span className="text-sm font-semibold text-[#1A1A1A]">Nuestro método</span>
+              {/* Diagnosis results card */}
+              <div className="rounded-2xl bg-white border border-[#E5E2DB] shadow-xl p-5 relative overflow-hidden">
+
+                {/* Card header */}
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#F0EDE8]">
+                  <div className="flex items-center gap-2">
+                    {/* Scanner pulse dot */}
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                    </span>
+                    <span className="text-xs font-semibold text-[#1A1A1A]">Diagnóstico típico</span>
+                  </div>
                   <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
                     12 semanas
                   </span>
                 </div>
 
-                <div className="space-y-4">
-                  {methodSteps.map((step, i) => {
-                    const Icon = step.icon;
-                    return (
-                      <motion.div
-                        key={step.title}
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6 + i * 0.15 }}
-                        className="flex items-start gap-3.5"
-                      >
-                        <div className={`flex items-center justify-center w-10 h-10 rounded-xl shrink-0 ${step.bg}`}>
-                          <Icon className={`w-5 h-5 ${step.color}`} />
+                {/* Rows with progress bars */}
+                <div className="space-y-3">
+                  {diagnosisRows.map((row, i) => (
+                    <motion.div
+                      key={row.process}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 + i * 0.15 }}
+                      className="rounded-lg bg-[#F7F5F0] px-3 py-2.5 space-y-1.5"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1.5">
+                          {row.icon}
+                          <span className="text-[10px] font-medium text-[#1A1A1A]">{row.process}</span>
                         </div>
-                        <div className="min-w-0 pt-0.5">
-                          <p className="text-sm font-semibold text-[#1A1A1A]">{step.title}</p>
-                          <p className="text-xs text-[#666] leading-relaxed mt-0.5">{step.desc}</p>
+                        <div className="flex items-center gap-1.5 text-[10px]">
+                          <span className="text-[#999] line-through">{row.before}</span>
+                          <span className="text-emerald-600 font-semibold">{row.after}</span>
                         </div>
-                      </motion.div>
-                    );
-                  })}
+                      </div>
+                      {/* Progress bar showing improvement */}
+                      <div className="h-1 rounded-full bg-[#E5E2DB] overflow-hidden">
+                        <motion.div
+                          className="h-full rounded-full"
+                          style={{ background: "linear-gradient(to right, #EF4444, #10B981)" }}
+                          initial={{ width: "100%" }}
+                          animate={{ width: `${100 - row.saving}%` }}
+                          transition={{ delay: 0.9 + i * 0.15, duration: 0.8, ease: "easeOut" }}
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
 
-                {/* Connecting line between steps */}
-                <div className="absolute left-[2.05rem] top-[4.5rem] bottom-[2.5rem] w-px bg-[#E5E2DB] -z-0 hidden lg:block" />
-
+                {/* Footer: total saving */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 1.1 }}
-                  className="mt-5 pt-4 border-t border-[#F0EDE8] flex items-center gap-2 justify-center"
+                  transition={{ delay: 1.2 }}
+                  className="mt-3 pt-3 border-t border-[#F0EDE8] flex items-center justify-between"
                 >
-                  <ArrowRight className="w-3.5 h-3.5 text-[#1B5FA6]" />
-                  <span className="text-xs font-medium text-[#1B5FA6]">
-                    Sin código · Sin tecnología innecesaria
-                  </span>
+                  <span className="text-[10px] text-[#999]">Ahorro estimado</span>
+                  <span className="text-sm font-bold text-emerald-600">~14 hrs / semana</span>
                 </motion.div>
               </div>
+
+              {/* Floating badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 1.4, type: "spring" }}
+                className="absolute -bottom-4 -left-4 bg-white border border-[#E5E2DB] shadow-lg rounded-xl px-3 py-2 flex items-center gap-2"
+              >
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                <div>
+                  <div className="text-xs font-semibold text-[#1A1A1A]">Sin código</div>
+                  <div className="text-[10px] text-[#999]">Listo en 12 semanas</div>
+                </div>
+              </motion.div>
 
               <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-10 blur-2xl"
                 style={{ background: "radial-gradient(circle, #1B5FA6, transparent)" }}

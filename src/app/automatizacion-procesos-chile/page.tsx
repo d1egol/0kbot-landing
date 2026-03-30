@@ -21,6 +21,7 @@ export const metadata: Metadata = {
       "Eliminamos trabajo manual y automatizamos procesos en pymes chilenas. 12 semanas, resultados medibles.",
     type: "website",
   },
+  alternates: { canonical: "https://0kbot.com/automatizacion-procesos-chile" },
 };
 
 const procesos = [

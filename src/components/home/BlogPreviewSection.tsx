@@ -21,11 +21,11 @@ export function BlogPreviewSection() {
               </span>
             </div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1A1A1A]">
-              Últimas noticias de IA
+              Artículos recientes
             </h2>
             <p className="text-[#666] mt-2 max-w-lg">
-              Casos reales, tutoriales y noticias sobre automatización para
-              empresas latinoamericanas.
+              Casos reales, tutoriales y guías sobre mejora de procesos y
+              automatización para pymes chilenas.
             </p>
           </div>
           <Link

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     "diagnóstico gratuito automatización",
     "consultoría gratis pymes Chile",
   ],
+  alternates: { canonical: "https://0kbot.com/contacto" },
 };
 
 export default function ContactoPage() {

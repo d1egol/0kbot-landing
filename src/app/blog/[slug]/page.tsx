@@ -13,6 +13,8 @@ import { ShareButtons } from "@/components/blog/ShareButtons";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { Calendar, Clock, User, ChevronRight, ArrowLeft } from "lucide-react";
 
+export const revalidate = 3600; // regenerar cada hora
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -27,10 +29,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug(slug);
   if (!post) return { title: "Artículo no encontrado" };
 
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://0kbot.com";
+
   return {
     title: `${post.title} | Blog 0kbot`,
     description: post.excerpt,
     keywords: post.tags,
+    alternates: {
+      canonical: `${baseUrl}/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,

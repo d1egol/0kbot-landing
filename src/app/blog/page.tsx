@@ -4,6 +4,8 @@ import { getAllPosts, getFeaturedPost, CATEGORIES } from "@/lib/blog";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { Rss } from "lucide-react";
 
+export const revalidate = 3600; // regenerar cada hora
+
 export const metadata: Metadata = {
   title: "Blog | 0kbot — Automatización de Procesos e IA para Pymes Chile",
   description:
@@ -22,6 +24,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
+    canonical: "https://0kbot.com/blog",
     types: {
       "application/rss+xml": "/feed.xml",
     },
@@ -31,7 +34,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   const allPosts = getAllPosts();
   const featuredPost = getFeaturedPost();
-  const regularPosts = allPosts.filter((p) => !p.featured);
+  const regularPosts = allPosts.filter((p) => p.slug !== featuredPost?.slug);
 
   return (
     <main className="min-h-screen bg-[#F7F5F0]">
@@ -53,12 +56,12 @@ export default function BlogPage() {
                 </span>
               </div>
               <h1 className="font-heading text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-4">
-                Noticias de IA y<br />
+                Procesos y<br />
                 <span className="text-gradient-accent">Automatización</span>
               </h1>
               <p className="text-[#666] text-lg max-w-xl leading-relaxed">
-                Casos reales, tutoriales prácticos y las últimas noticias sobre
-                inteligencia artificial para empresas latinoamericanas.
+                Casos reales, tutoriales prácticos y guías sobre mejora de
+                procesos y automatización para pymes chilenas.
               </p>
             </div>
 
@@ -117,20 +120,20 @@ export default function BlogPage() {
           </div>
         )}
 
-        {/* Newsletter CTA */}
+        {/* Diagnóstico CTA */}
         <div className="mt-16 rounded-2xl bg-gradient-to-br from-[#1B5FA6] to-[#0d3d6e] p-8 md:p-12 text-white text-center">
           <h3 className="font-heading text-2xl md:text-3xl font-bold mb-3">
-            No te pierdas ningún artículo
+            ¿Tu empresa tiene procesos que podrían mejorar?
           </h3>
           <p className="text-white/80 mb-8 max-w-md mx-auto">
-            Recibe en tu email las últimas noticias de IA y casos de automatización
-            para pymes latinoamericanas.
+            Haz nuestro diagnóstico gratuito de 30 minutos y descubre exactamente
+            dónde pierde tiempo y dinero tu operación.
           </p>
           <Link
-            href="/contacto"
-            className="inline-flex items-center gap-2 bg-[#1B5FA6] text-[#1A1A1A] px-8 py-3 rounded-xl font-bold hover:bg-[#c49843] transition-colors"
+            href="/#cta-diagnostico"
+            className="inline-flex items-center gap-2 bg-[#D4AF37] text-[#1A1A1A] px-8 py-3 rounded-xl font-bold hover:bg-[#c49843] transition-colors"
           >
-            Suscribirme al newsletter
+            Hacer diagnóstico gratuito →
           </Link>
         </div>
       </section>

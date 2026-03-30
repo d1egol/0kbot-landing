@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "automatización constructora Chile",
     "optimización inventario pymes",
   ],
+  alternates: { canonical: "https://0kbot.com/casos" },
 };
 
 

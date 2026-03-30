@@ -2,8 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { Calendar, Clock, CheckCircle2, ArrowRight } from "lucide-react";
-
-const CALENDLY_URL = "https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot";
+import OpenModalButton from "@/components/ui/OpenModalButton";
 
 const pasos = [
   "Agendas una llamada de 30 minutos.",
@@ -56,14 +55,9 @@ export default function ContactoClient() {
                   Selecciona un bloque disponible en nuestro calendario. La
                   reunión es por videollamada y dura 30 minutos.
                 </p>
-                <a
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-md font-semibold font-body text-sm hover:bg-primary/90 transition-colors"
-                >
+                <OpenModalButton className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-md font-semibold font-body text-sm hover:bg-primary/90 transition-colors">
                   Agendar ahora <ArrowRight size={16} />
-                </a>
+                </OpenModalButton>
               </div>
 
               <div className="bg-muted rounded-xl p-6 flex items-start gap-4">

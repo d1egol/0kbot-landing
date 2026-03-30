@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { LEAD_SOURCES, LEAD_ESTADOS } from "@/lib/constants";
 
 export const leadSchema = z.object({
   nombre: z
@@ -28,11 +29,11 @@ export const leadSchema = z.object({
     .max(2000, "El mensaje no puede superar los 2000 caracteres")
     .optional(),
 
-  fuente: z.string().default("landing_hero"),
+  fuente: z.string().default(LEAD_SOURCES.LANDING_HERO),
 
   estado: z
     .enum(["nuevo", "contactado", "calificado", "descartado"] as const)
-    .default("nuevo"),
+    .default(LEAD_ESTADOS.NUEVO),
 });
 
 export type LeadInput = z.infer<typeof leadSchema>;

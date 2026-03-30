@@ -41,6 +41,7 @@ const howToJsonLd = {
       url: "https://0kbot.com/como-trabajamos#medicion",
     },
   ],
+  alternates: { canonical: "https://0kbot.com/como-trabajamos" },
 };
 
 export const metadata: Metadata = {

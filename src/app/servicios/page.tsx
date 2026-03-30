@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "tableros indicadores pyme",
     "transformación digital pymes Chile",
   ],
+  alternates: { canonical: "https://0kbot.com/servicios" },
 };
 
 const servicios = [

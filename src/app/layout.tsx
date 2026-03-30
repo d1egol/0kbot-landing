@@ -1,8 +1,42 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import {
+  Space_Grotesk,
+  DM_Sans,
+  Playfair_Display,
+  JetBrains_Mono,
+} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -45,7 +79,18 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
+  alternates: {
+    canonical: "https://0kbot.com",
+  },
+  authors: [{ name: "Diego López", url: "https://0kbot.com/nosotros" }],
+  creator: "Diego López",
+  publisher: "0kbot",
+  category: "Consultoría de procesos",
 };
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -57,7 +102,10 @@ const jsonLd = {
     {
       "@type": "LocalBusiness",
       "@id": "https://0kbot.com/#business",
+      // "0kbot" usa el dígito cero (0), no la letra O — desambiguación explícita
       name: "0kbot",
+      alternateName: ["cero-kbot", "0kbot consultoría", "okbot Chile"],
+      legalName: "0kbot",
       description:
         "Consultoría de automatización de procesos para pymes chilenas. Detectamos pérdidas, estandarizamos y automatizamos tu operación con resultados medibles en 12 semanas.",
       url: "https://0kbot.com",
@@ -65,6 +113,7 @@ const jsonLd = {
       address: {
         "@type": "PostalAddress",
         addressLocality: "Santiago",
+        addressRegion: "Región Metropolitana",
         addressCountry: "CL",
       },
       areaServed: { "@type": "Country", name: "Chile" },
@@ -93,6 +142,23 @@ const jsonLd = {
       knowsLanguage: "es-CL",
       foundingDate: "2024",
       image: "https://0kbot.com/opengraph-image",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://0kbot.com/icon.png",
+        width: 1024,
+        height: 1024,
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: -33.4489,
+        longitude: -70.6693,
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: "hola@0kbot.com",
+        availableLanguage: "Spanish",
+      },
     },
     {
       "@type": "Person",
@@ -114,6 +180,15 @@ const jsonLd = {
       name: "0kbot",
       publisher: { "@id": "https://0kbot.com/#business" },
       inLanguage: "es-CL",
+      // Habilita el Sitelink Searchbox en resultados de Google
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: "https://0kbot.com/blog?q={search_term_string}",
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
   ],
 };
@@ -121,15 +196,16 @@ const jsonLd = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const fontVars = [
+    spaceGrotesk.variable,
+    dmSans.variable,
+    playfairDisplay.variable,
+    jetbrainsMono.variable,
+  ].join(" ");
+
   return (
-    <html lang="es-CL">
+    <html lang="es-CL" className={fontVars}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
         <Script id="gtm-head" strategy="afterInteractive">{`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

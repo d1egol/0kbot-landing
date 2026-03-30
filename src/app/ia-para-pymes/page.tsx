@@ -21,6 +21,7 @@ export const metadata: Metadata = {
       "Herramientas de IA que realmente funcionan para pymes chilenas. Sin hype, con casos reales y un método de 12 semanas.",
     type: "article",
   },
+  alternates: { canonical: "https://0kbot.com/ia-para-pymes" },
 };
 
 const loQueFunciona = [

@@ -1,9 +1,13 @@
 import HeroSection from "@/components/home/HeroSection";
 import PainPointsSection from "@/components/home/PainPointsSection";
+import SolucionSection from "@/components/home/SolucionSection";
 import CredencialesSection from "@/components/home/CredencialesSection";
 import ComoFuncionaSection from "@/components/home/ComoFuncionaSection";
+import ComparacionSection from "@/components/home/ComparacionSection";
 import CasosSection from "@/components/home/CasosSection";
+import PrincipiosSection from "@/components/home/PrincipiosSection";
 import FAQSection from "@/components/home/FAQSection";
+import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import DiagnosticoSection from "@/components/home/DiagnosticoSection";
 import CTAFinalSection from "@/components/home/CTAFinalSection";
 import FloatingCTA from "@/components/ui/FloatingCTA";
@@ -72,10 +76,14 @@ export default function HomePage() {
       />
       <HeroSection />
       <PainPointsSection />
-      <ComoFuncionaSection />
+      <SolucionSection />
       <CredencialesSection />
+      <ComoFuncionaSection />
+      <ComparacionSection />
       <CasosSection />
+      <PrincipiosSection />
       <FAQSection />
+      <BlogPreviewSection />
       <DiagnosticoSection />
       <CTAFinalSection />
       <FloatingCTA />

@@ -19,11 +19,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        body: ['"DM Sans"', 'system-ui', 'sans-serif'],
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
-        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        heading: ["var(--font-space-grotesk)", 'system-ui', 'sans-serif'],
+        body: ["var(--font-dm-sans)", 'system-ui', 'sans-serif'],
+        display: ["var(--font-playfair)", 'Georgia', 'serif'],
+        mono: ["var(--font-jetbrains-mono)", 'monospace'],
+        sans: ["var(--font-dm-sans)", 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -1,11 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { Truck, Wrench, Heart } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import React, { useRef, useState } from "react";
 import MotionSection from "./MotionSection";
-
-const iconMap: Record<string, LucideIcon> = { Truck, Wrench, Heart };
 
 interface EscenarioData {
   industria: string;
@@ -13,9 +9,11 @@ interface EscenarioData {
   problema: string;
   enfoque: string;
   impactoEsperado: string;
-  iconName?: string;
-  iconColor?: string;
-  iconBg?: string;
+  metricaDestacada?: string;
+  metricaLabel?: string;
+  accentColor?: string;
+  accentBg?: string;
+  icon?: React.ReactNode;
 }
 
 interface CasosCarouselProps {
@@ -23,28 +21,30 @@ interface CasosCarouselProps {
 }
 
 function EscenarioCard({ caso }: { caso: EscenarioData }) {
-  const Icon = caso.iconName ? iconMap[caso.iconName] : undefined;
+  const accent = caso.accentColor ?? "#1B5FA6";
+  const accentBg = caso.accentBg ?? "#EFF6FF";
+
   return (
-    <div className="bg-card border border-muted rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-shadow h-full flex flex-col">
-      {/* Header */}
-      <div className="p-6 pb-4 border-b border-muted flex items-center gap-3">
-        {Icon && (
-          <div className={`flex items-center justify-center w-10 h-10 rounded-xl shrink-0 ${caso.iconBg || ""}`}>
-            <Icon className={`w-5 h-5 ${caso.iconColor || ""}`} />
+    <div className="bg-card border border-muted rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow h-full flex flex-col">
+      {/* Header with icon + industry */}
+      <div className="p-5 pb-4 border-b border-muted flex items-center gap-3">
+        {caso.icon && (
+          <div className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: accentBg }}>
+            {caso.icon}
           </div>
         )}
         <div>
-          <p className="text-xs font-sans font-medium text-muted-foreground uppercase tracking-wide mb-1">
+          <p className="text-xs font-sans font-semibold" style={{ color: accent }}>
             {caso.industria}
           </p>
-          <p className="text-sm font-sans text-muted-foreground">{caso.tamano}</p>
+          <p className="text-xs font-sans text-muted-foreground mt-0.5">{caso.tamano}</p>
         </div>
       </div>
 
       {/* Body */}
-      <div className="p-6 flex-1 space-y-4">
+      <div className="p-5 flex-1 space-y-4">
         <div>
-          <p className="text-xs font-sans font-semibold text-foreground uppercase tracking-wide mb-1.5">
+          <p className="text-[10px] font-sans font-semibold text-foreground uppercase tracking-wider mb-1.5">
             El problema
           </p>
           <p className="text-sm text-muted-foreground font-sans leading-relaxed">
@@ -52,7 +52,7 @@ function EscenarioCard({ caso }: { caso: EscenarioData }) {
           </p>
         </div>
         <div>
-          <p className="text-xs font-sans font-semibold text-foreground uppercase tracking-wide mb-1.5">
+          <p className="text-[10px] font-sans font-semibold text-foreground uppercase tracking-wider mb-1.5">
             Nuestro enfoque
           </p>
           <p className="text-sm text-muted-foreground font-sans leading-relaxed">
@@ -61,14 +61,18 @@ function EscenarioCard({ caso }: { caso: EscenarioData }) {
         </div>
       </div>
 
-      {/* Impacto esperado */}
-      <div
-        className="p-6 pt-4 border-t-2"
-        style={{ borderTopColor: "#1B5FA6" }}
-      >
-        <p className="text-xs font-sans font-semibold text-foreground uppercase tracking-wide mb-1.5">
-          Impacto esperado
-        </p>
+      {/* Impacto — métrica destacada + texto */}
+      <div className="p-5 pt-4 border-t-2" style={{ borderTopColor: accent }}>
+        {caso.metricaDestacada && (
+          <div className="flex items-baseline gap-2 mb-2">
+            <span className="text-2xl font-bold font-heading" style={{ color: accent }}>
+              {caso.metricaDestacada}
+            </span>
+            {caso.metricaLabel && (
+              <span className="text-xs text-muted-foreground font-sans">{caso.metricaLabel}</span>
+            )}
+          </div>
+        )}
         <p className="text-xs text-muted-foreground font-sans leading-relaxed italic">
           {caso.impactoEsperado}
         </p>

@@ -1,16 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createAdminClient } from "@/lib/supabase";
 import { leadSchema } from "@/lib/validations";
 import { sendConfirmationEmail, sendNotificationEmail } from "@/lib/email";
-
-function getAdminClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) throw new Error("Supabase env vars not configured");
-  return createClient(url, key);
-}
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    request.headers.get("x-real-ip") ??
+    "unknown";
+  const { allowed, resetAt } = checkRateLimit(ip, 5, 60_000);
+  if (!allowed) {
+    return NextResponse.json(
+      { error: "Demasiadas solicitudes. Intenta en unos minutos." },
+      {
+        status: 429,
+        headers: { "Retry-After": String(Math.ceil((resetAt - Date.now()) / 1000)) },
+      }
+    );
+  }
+
   let body: unknown;
 
   try {
@@ -32,7 +41,7 @@ export async function POST(request: NextRequest) {
 
   // 1. Guardar en Supabase (crítico — si falla, retornamos 500)
   try {
-    const supabase = getAdminClient();
+    const supabase = createAdminClient();
     const { error } = await supabase.from("leads").insert({
       nombre: lead.nombre,
       email: lead.email,

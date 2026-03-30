@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "consultor mejora procesos Chile",
     "Lean Six Sigma Chile pymes",
   ],
+  alternates: { canonical: "https://0kbot.com/nosotros" },
 };
 
 const valores = [

@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     "visibilidad operaciones pyme",
     "automatización tareas manuales Chile",
   ],
+  alternates: { canonical: "https://0kbot.com/soluciones" },
 };
 
 const soluciones = [

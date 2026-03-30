@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     "transformación digital pymes recursos",
     "consultoría procesos preguntas frecuentes",
   ],
+  alternates: { canonical: "https://0kbot.com/recursos" },
 };
 
 const faqs = [

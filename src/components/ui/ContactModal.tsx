@@ -4,8 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { trackLeadCapture } from "@/lib/analytics";
-
-const CALENDLY_URL = "https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot";
+import { CALENDLY_URL, LEAD_SOURCES } from "@/lib/constants";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -77,7 +76,7 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
       body: JSON.stringify({
         nombre,
         email,
-        fuente: "cta_calendly",
+        fuente: LEAD_SOURCES.CTA_CALENDLY,
       }),
     }).catch(() => {});
 

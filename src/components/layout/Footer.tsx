@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Linkedin, Mail, MapPin } from "lucide-react";
+import { CALENDLY_URL, CONTACT_EMAIL } from "@/lib/constants";
 
 const footerLinks = [
   {
@@ -22,7 +23,7 @@ const footerLinks = [
     ],
   },
   {
-    title: "Recursos SEO",
+    title: "Guías",
     links: [
       { label: "Mejora de procesos pymes", href: "/mejora-de-procesos" },
       { label: "IA para pymes Chile", href: "/ia-para-pymes" },
@@ -33,7 +34,7 @@ const footerLinks = [
   {
     title: "Blog",
     links: [
-      { label: "IA para pymes Chile 2026", href: "/blog/ia-para-pymes-2025" },
+      { label: "IA para pymes Chile 2026", href: "/blog/ia-para-pymes-chile" },
       { label: "Señales de ineficiencia operativa", href: "/blog/5-senales-operacion-sangrando-plata" },
       { label: "Automatizar WhatsApp en pymes", href: "/blog/automatizacion-whatsapp-pymes" },
       { label: "Herramientas IA para empresas chilenas", href: "/blog/herramientas-ia-chile" },
@@ -45,8 +46,8 @@ const footerLinks = [
   {
     title: "Contacto",
     links: [
-      { label: "Agendar diagnóstico gratis", href: "https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot" },
-      { label: "hola@0kbot.com", href: "mailto:hola@0kbot.com" },
+      { label: "Agendar diagnóstico gratis", href: CALENDLY_URL },
+      { label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
     ],
   },
 ];
@@ -70,10 +71,10 @@ export default function Footer() {
             <div className="flex items-center gap-3 text-primary-foreground/50 mt-2">
               <Mail size={14} />
               <a
-                href="mailto:hola@0kbot.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="text-xs hover:text-primary-foreground transition-colors"
               >
-                hola@0kbot.com
+                {CONTACT_EMAIL}
               </a>
             </div>
           </div>
@@ -103,13 +104,13 @@ export default function Footer() {
         <div className="mt-10 p-5 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 flex flex-col sm:flex-row items-center gap-3 justify-between">
           <p className="text-sm text-primary-foreground/70">
             ¿Tienes una pregunta?{" "}
-            <a href="mailto:hola@0kbot.com" className="text-primary-foreground hover:underline font-medium">
-              hola@0kbot.com
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-primary-foreground hover:underline font-medium">
+              {CONTACT_EMAIL}
             </a>{" "}
             — Respondemos en 24 hrs
           </p>
           <Link
-            href="https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot"
+            href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 px-5 py-2.5 bg-accent text-[#1A1A1A] text-sm font-bold rounded-lg hover:bg-accent/90 transition-colors whitespace-nowrap"

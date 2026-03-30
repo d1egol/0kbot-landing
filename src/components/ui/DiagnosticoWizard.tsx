@@ -3,6 +3,7 @@
 import { useState, FormEvent } from "react";
 import Link from "next/link";
 import { trackDiagnosticoCompleted } from "@/lib/analytics";
+import { CALENDLY_URL, CONTACT_EMAIL } from "@/lib/constants";
 
 type TamanoOption = "<20" | "20-50" | "50-100" | "100-200" | ">200";
 
@@ -197,14 +198,14 @@ export default function DiagnosticoWizard() {
     } catch {
       setSubmitState("error");
       setApiError(
-        "Algo salió mal. Intenta nuevamente o escríbenos a hola@0kbot.com"
+        `Algo salió mal. Intenta nuevamente o escríbenos a ${CONTACT_EMAIL}`
       );
     }
   }
 
   // Pantalla de éxito
   if (success) {
-    const calendlyUrl = `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot?name=${encodeURIComponent(data.nombre)}&email=${encodeURIComponent(data.email)}`;
+    const calendlyUrl = `${CALENDLY_URL}?name=${encodeURIComponent(data.nombre)}&email=${encodeURIComponent(data.email)}`;
 
     return (
       <div className="max-w-lg mx-auto text-center py-12 px-8 bg-card border border-muted rounded-lg shadow-card">

@@ -22,6 +22,7 @@ export const metadata: Metadata = {
       "Identificamos ineficiencias y mejoramos los procesos operativos de pymes chilenas. Lean, práctico, 12 semanas.",
     type: "website",
   },
+  alternates: { canonical: "https://0kbot.com/mejora-de-procesos" },
 };
 
 const beneficios = [
