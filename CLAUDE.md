@@ -42,7 +42,7 @@ Para build sin `.env.local`: prefija con las vars de entorno del `.env.example`.
 src/app/                   # páginas y API routes (App Router)
 src/app/api/               # 3 routes: leads, diagnostico, onboarding
 src/components/
-  home/                    # 14 secciones de la homepage
+  home/                    # 13 secciones de la homepage (12 activas + StatsSection reservada)
   blog/                    # BlogCard, CategoryBadge, ShareButtons, RelatedPosts
   layout/                  # Navbar.tsx, Footer.tsx
   ui/                      # ContactModal, DiagnosticoWizard, etc.
@@ -124,16 +124,39 @@ Hardcodeadas a `https://0kbot.com/[ruta]` en metadata de cada página. En blog u
 
 ---
 
+## Homepage — secciones activas (orden actual en `page.tsx`)
+
+```
+1.  HeroSection          — H1 + card diagnóstico típico + CTA modal
+2.  PainPointsSection    — 4 dolores operativos
+3.  SolucionSection      — Qué/Cómo/Resultado en 3 columnas
+4.  CredencialesSection  — Perfil del founder
+5.  ComoFuncionaSection  — Timeline 4 etapas, 12 semanas
+6.  ComparacionSection   — 6 problemas + soluciones concretas
+7.  CasosSection         — 3 escenarios de industria (con disclaimer)
+8.  PrincipiosSection    — 3 principios de trabajo
+9.  FAQSection           — 6 preguntas (incluye pricing en UF)
+10. BlogPreviewSection   — 3 artículos recientes
+11. DiagnosticoSection   — DiagnosticoWizard inline (5 pasos)
+12. CTAFinalSection      — "Cada mes que esperas, el número crece"
++   FloatingCTA          — mobile only, sticky bottom
+```
+
+**StatsSection** existe como componente pero NO está en la homepage — solo activar cuando haya datos reales de clientes.
+
 ## Flujo de conversión de leads
 
 ```
-HomePage (HeroSection/DiagnosticoSection)
-  → ContactModal (DiagnosticoWizard)
-  → POST /api/diagnostico
-  → Supabase + email → Calendly
+HomePage CTAs (Hero/CTA Final/Floating)
+  → ContactModal (nombre + email)
+  → POST /api/leads → Supabase + email → redirect Calendly
 
-/soluciones → /contacto?dolor=X → Calendly
-/contacto → Calendly (directo)
+HomePage DiagnosticoSection
+  → DiagnosticoWizard (5 pasos: tamaño, industria, dolor, timeline, contacto)
+  → POST /api/diagnostico → Supabase + email → Calendly
+
+/contacto → ContactModal (captura lead) → Calendly
+/contacto?dolor=X → muestra dolor en UI + ContactModal → Calendly
 /onboarding → POST /api/onboarding (lead calificado con presupuesto y plazo)
 ```
 
@@ -167,7 +190,7 @@ HomePage (HeroSection/DiagnosticoSection)
 - **Práctica:** Enfocada en resultados medibles, sin hype tecnológico
 - **Chilena:** Usar "pymes", "plata", "operación", contexto local
 - **Lean:** Siempre referenciar metodología de 12 semanas y 4 fases
-- Copy NO necesita cambios — está auditado y es consistente
+- Copy auditado y consistente — contradicción "IA" resuelta desde blog/contenido, no desde el hero
 
 ---
 

@@ -141,7 +141,7 @@ export default function HeroSection() {
               transition={{ delay: 0.5 }}
               className="text-xs text-muted-foreground font-body"
             >
-              Diagnóstico gratuito · Sin compromiso · Respuesta en 24 hrs
+              Diagnóstico gratuito · Sin compromiso · Respuesta en 24 hrs · Garantía: sin resultados, no cobramos
             </motion.p>
           </div>
 

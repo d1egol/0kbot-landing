@@ -1,3 +1,4 @@
+import { Info } from "lucide-react";
 import MotionSection from "@/components/ui/MotionSection";
 import CasosCarousel from "@/components/ui/CasosCarousel";
 
@@ -89,6 +90,14 @@ export default function CasosSection() {
             Problemas reales que resolvemos con el mismo método.
           </p>
         </MotionSection>
+
+        <div className="mb-8 flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
+          <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+          <p className="text-sm text-amber-800 font-body">
+            Estos son escenarios basados en problemas comunes de la industria. Las métricas provienen de benchmarks sectoriales, no de proyectos propios.
+          </p>
+        </div>
+
         <CasosCarousel casos={escenarios} />
       </div>
     </section>

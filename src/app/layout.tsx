@@ -40,7 +40,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "0kbot — Automatización de procesos para pymes en Chile",
+    default: "0kbot — Consultoría de procesos para pymes en Chile",
     template: "%s — 0kbot",
   },
   description:
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     "automatización procesos Chile",
   ],
   openGraph: {
-    title: "0kbot — Automatización de procesos para pymes en Chile",
+    title: "0kbot — Consultoría de procesos para pymes en Chile",
     description:
       "Detectamos dónde se va tu tiempo y tu plata, y lo arreglamos con cambios concretos. Resultados medibles en 12 semanas.",
     url: "https://0kbot.com",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "0kbot — Automatización de procesos para pymes en Chile",
+    title: "0kbot — Consultoría de procesos para pymes en Chile",
     description:
       "Detectamos dónde se va tu tiempo y tu plata, y lo arreglamos con cambios concretos.",
   },
