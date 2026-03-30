@@ -8,11 +8,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import OpenModalButton from "@/components/ui/OpenModalButton";
 
 const navItems = [
-  { label: "Inicio", href: "/" },
   { label: "Servicios", href: "/servicios" },
   { label: "Cómo trabajamos", href: "/como-trabajamos" },
-  { label: "Soluciones", href: "/soluciones" },
-  { label: "Escenarios", href: "/casos" },
+  { label: "Casos", href: "/casos" },
   { label: "Blog", href: "/blog" },
   { label: "Nosotros", href: "/nosotros" },
 ];
@@ -45,7 +43,7 @@ export default function Navbar() {
           className="font-heading font-bold text-xl text-primary hover:text-primary/80 transition-colors tracking-tight"
           aria-label="0kbot — inicio"
         >
-          0kBot
+          0kbot
         </Link>
 
         {/* Desktop nav */}

@@ -204,12 +204,12 @@ export default async function BlogPostPage({ params }: PageProps) {
                   ¿Tu empresa tiene procesos que podrían automatizarse?
                 </h3>
                 <p className="text-white/80 text-sm mb-6">
-                  Haz nuestro diagnóstico gratuito de 10 minutos y descubre exactamente
+                  Haz nuestro diagnóstico gratuito de 30 minutos y descubre exactamente
                   qué procesos tienen mayor impacto en tu empresa.
                 </p>
                 <Link
                   href="/#diagnostico"
-                  className="inline-flex items-center gap-2 bg-[#1B5FA6] text-[#1A1A1A] px-6 py-3 rounded-xl font-bold hover:bg-[#c49843] transition-colors text-sm"
+                  className="inline-flex items-center gap-2 bg-[#D4AF37] text-[#1A1A1A] px-6 py-3 rounded-xl font-bold hover:bg-[#c49843] transition-colors text-sm"
                 >
                   Hacer diagnóstico gratuito →
                 </Link>
@@ -237,8 +237,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   Sobre 0kbot
                 </h3>
                 <p className="text-sm text-[#666] leading-relaxed mb-4">
-                  Ayudamos a pymes latinoamericanas a automatizar procesos repetitivos
-                  con IA. 12 semanas. Resultados medibles.
+                  Mejora de procesos y automatización para pymes en Chile. Sin tecnología innecesaria. Resultados medibles en 12 semanas.
                 </p>
                 <Link
                   href="/#diagnostico"

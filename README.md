@@ -78,20 +78,17 @@ docs/                        # Documentación operacional (no es código del sit
 
 ## Secciones del Homepage (orden)
 
-1. **HeroSection** — H1 + propuesta de valor + CTA principal
-2. **StatsSection** — Métricas clave (40+ empresas, 12 sem, 73% reducción errores)
-3. **PainPointsSection** — Dolores comunes de pymes
-4. **SolucionSection** — Qué hacemos / Cómo / Qué obtienes (3 columnas)
-5. **ComoFuncionaSection** — Timeline de 12 semanas (4 fases)
-6. **CasosSection** — Casos con métricas reales
-7. **TestimoniosSection** — Testimonios de clientes
-8. **ComparacionSection** — 6 desafíos operativos con soluciones
-9. **CredencialesSection** — Perfil de Diego (Ing. Civil Industrial PUC, MSc Data Science)
-10. **BlogPreviewSection** — 3 posts más recientes del blog
-11. **FAQSection** — 6 preguntas frecuentes
-12. **DiagnosticoSection** — CTA diagnóstico gratuito
-13. **CTAFinalSection** — CTA final de urgencia
-14. **FloatingCTA** — Botón flotante en mobile
+1. **HeroSection** — H1 + propuesta de valor + tarjeta de resultados de diagnóstico + credenciales bar
+2. **PainPointsSection** — Dolores comunes de pymes
+3. **CredencialesSection** — Perfil de Diego (Ing. Civil Industrial UDD, MSc Data Science PUC)
+4. **ComoFuncionaSection** — Timeline de 12 semanas (4 fases)
+5. **CasosSection** — Escenarios con métricas reales
+6. **FAQSection** — 6 preguntas frecuentes (incluye precio en UF)
+7. **DiagnosticoSection** — DiagnosticoWizard (5 pasos de calificación)
+8. **CTAFinalSection** — CTA final de urgencia
+9. **FloatingCTA** — Botón flotante en mobile
+
+> Ver `docs/prompts/PROMPT-HOMEPAGE-CRO.md` para decisiones de diseño y razón de cada sección.
 
 ---
 
@@ -99,15 +96,13 @@ docs/                        # Documentación operacional (no es código del sit
 
 | Ubicación | Texto | Acción |
 |---|---|---|
-| Hero primario | "Descubrir cuánto estoy perdiendo →" | Abre ContactModal |
+| Hero primario | "Agendar diagnóstico gratis →" | Abre ContactModal |
 | Hero secundario | "Ver cómo trabajamos ↓" | Scroll a #como-funciona |
-| SolucionSection | "Detectar mis cuellos de botella →" | Abre ContactModal |
-| ComparacionSection | "Descubrir pérdidas ocultas →" | Abre ContactModal |
-| DiagnosticoSection | "Ver cuánto estoy perdiendo →" | Abre ContactModal |
+| DiagnosticoSection | DiagnosticoWizard (5 pasos) | Calificación → éxito + Calendly |
 | CTAFinalSection | "Quiero números, no suposiciones →" | Abre ContactModal |
 | FloatingCTA (mobile) | "Ver cuánto estoy perdiendo →" | Abre ContactModal |
 | Navbar | "Agendar diagnóstico gratis" | Abre ContactModal |
-| Footer | "Agendar diagnóstico gratis" | Link directo a Calendly |
+| Footer strip | "Agendar diagnóstico gratis" | Link directo a Calendly |
 | ContactModal submit | "Ir a agendar ahora →" | Guarda lead + redirect Calendly |
 | Contacto page | "Agendar ahora →" | Link directo a Calendly |
 

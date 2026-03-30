@@ -1,25 +1,41 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Clock, Zap } from "lucide-react";
+import { CheckCircle2, TrendingDown, Clock, FileBarChart } from "lucide-react";
 import OpenModalButton from "@/components/ui/OpenModalButton";
 
-const chatMessages = [
-  { time: "Sáb 2:47am", text: "¿Tienen disponibilidad para el lunes?", from: "client" },
-  { time: "Sáb 2:47am", text: "✅ ¡Hola! Sí tenemos. Te agendo para las 10am. Recibirás confirmación en tu email.", from: "bot" },
-  { time: "Sáb 2:48am", text: "Perfecto, muchas gracias 🙌", from: "client" },
-];
-
-const capabilities = [
-  { icon: Clock, label: "Atención 24/7", color: "text-emerald-600", bg: "bg-emerald-50", border: "border-emerald-200" },
-  { icon: Zap, label: "Sin código", color: "text-blue-600", bg: "bg-blue-50", border: "border-blue-200" },
-  { icon: CheckCircle2, label: "12 semanas", color: "text-purple-600", bg: "bg-purple-50", border: "border-purple-200" },
+const diagnosisRows = [
+  {
+    process: "Coordinación de pedidos",
+    before: "12 hrs/semana manual",
+    after: "2 hrs/semana",
+    icon: Clock,
+  },
+  {
+    process: "Visitas fallidas",
+    before: "33% requieren segunda",
+    after: "12%",
+    icon: TrendingDown,
+  },
+  {
+    process: "Reporte gerencial",
+    before: "4 hrs armarlo",
+    after: "Automático",
+    icon: FileBarChart,
+  },
 ];
 
 const bullets = [
   "Detectamos cuellos de botella con números reales",
   "Eliminamos trabajo manual innecesario",
   "Implementamos soluciones simples que sí usa tu equipo",
+];
+
+const credentials = [
+  "Ing. Industrial UDD",
+  "MSc Data Science PUC",
+  "Lean Six Sigma",
+  "8+ años en operaciones",
 ];
 
 export default function HeroSection() {
@@ -57,6 +73,23 @@ export default function HeroSection() {
               <br />
               <span className="text-gradient-accent">No vendemos IA. Vendemos lunes tranquilos.</span>
             </motion.h1>
+
+            {/* Credentials bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.18 }}
+              className="flex flex-wrap gap-2"
+            >
+              {credentials.map((cred) => (
+                <span
+                  key={cred}
+                  className="text-xs px-2.5 py-1 rounded-full bg-muted text-muted-foreground font-body border border-border"
+                >
+                  {cred}
+                </span>
+              ))}
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -119,56 +152,54 @@ export default function HeroSection() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="relative"
             >
-              {/* Chat mockup card */}
+              {/* Diagnosis results card */}
               <div className="rounded-2xl bg-white border border-[#E5E2DB] shadow-xl p-5 relative overflow-hidden">
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#F0EDE8]">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-xs font-semibold text-[#1A1A1A]">0kbot Assistant</span>
-                  </div>
-                  <span className="text-xs text-[#999]">Operando 24/7</span>
+                  <span className="text-xs font-semibold text-[#1A1A1A]">Diagnóstico típico</span>
+                  <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                    Resultados en 12 semanas
+                  </span>
                 </div>
 
-                <div className="space-y-3 mb-5">
-                  {chatMessages.map((msg, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 + i * 0.2 }}
-                      className={`flex ${msg.from === "bot" ? "justify-start" : "justify-end"}`}
-                    >
-                      <div className={`max-w-[80%] rounded-xl px-3 py-2 text-xs ${
-                        msg.from === "bot"
-                          ? "bg-[#1B5FA6] text-white rounded-tl-none"
-                          : "bg-[#F7F5F0] text-[#1A1A1A] border border-[#E5E2DB] rounded-tr-none"
-                      }`}>
-                        <p>{msg.text}</p>
-                        <p className={`text-[10px] mt-0.5 ${msg.from === "bot" ? "text-white/60" : "text-[#999]"}`}>
-                          {msg.time}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
+                {/* Header row */}
+                <div className="grid grid-cols-3 gap-2 mb-2 px-1">
+                  <span className="text-[10px] font-semibold text-[#999] uppercase tracking-wider">Proceso</span>
+                  <span className="text-[10px] font-semibold text-[#999] uppercase tracking-wider">Hoy</span>
+                  <span className="text-[10px] font-semibold text-emerald-600 uppercase tracking-wider">Con 0kbot</span>
                 </div>
 
-                <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#F0EDE8]">
-                  {capabilities.map((m, i) => {
-                    const Icon = m.icon;
+                <div className="space-y-2.5">
+                  {diagnosisRows.map((row, i) => {
+                    const Icon = row.icon;
                     return (
                       <motion.div
-                        key={m.label}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 1 + i * 0.1 }}
-                        className={`rounded-lg p-2 text-center ${m.bg} border ${m.border}`}
+                        key={row.process}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 + i * 0.15 }}
+                        className="grid grid-cols-3 gap-2 items-center rounded-lg bg-[#F7F5F0] px-2.5 py-2"
                       >
-                        <Icon className={`w-3.5 h-3.5 mx-auto mb-1 ${m.color}`} />
-                        <div className={`text-[10px] font-semibold leading-tight ${m.color}`}>{m.label}</div>
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          <Icon className="w-3 h-3 text-[#1B5FA6] shrink-0" />
+                          <span className="text-[10px] font-medium text-[#1A1A1A] leading-tight truncate">
+                            {row.process}
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-[#999] leading-tight">{row.before}</span>
+                        <span className="text-[10px] font-semibold text-emerald-600 leading-tight">{row.after}</span>
                       </motion.div>
                     );
                   })}
                 </div>
+
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.1 }}
+                  className="mt-3 text-[9px] text-[#AAA] text-center leading-tight"
+                >
+                  Resultados típicos basados en benchmarks de industria
+                </motion.p>
               </div>
 
               <motion.div

@@ -76,7 +76,7 @@ export const CATEGORIES = [
   "Todos",
   "Automatización",
   "IA para Pymes",
-  "Casos de Uso",
+  "Mejora de Procesos",
   "Noticias de IA",
   "Tutoriales",
 ] as const;
@@ -114,7 +114,7 @@ coverImage: "/blog/nombre-imagen.svg"  # opcional
 Contenido del artículo en MDX...
 ```
 
-**Categorías válidas:** `Automatización` · `IA para Pymes` · `Casos de Uso` · `Noticias de IA` · `Tutoriales`
+**Categorías válidas:** `Automatización` · `IA para Pymes` · `Mejora de Procesos` · `Noticias de IA` · `Tutoriales`
 
 > **Importante:** Solo el primer post con `featured: true` se muestra como card destacada en el listado. Si hay más de uno, solo el primero en orden cronológico se usa.
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import Link from "next/link";
 import { trackDiagnosticoCompleted } from "@/lib/analytics";
 
 type TamanoOption = "<20" | "20-50" | "50-100" | "100-200" | ">200";
@@ -10,8 +11,6 @@ interface WizardData {
   industria: string;
   dolor: string;
   dolorOtro: string;
-  intentadoAntes: boolean | null;
-  intentadoDetalle: string;
   timeline: string;
   nombre: string;
   email: string;
@@ -56,7 +55,7 @@ const TIMELINES = [
   "Estoy explorando opciones",
 ];
 
-const TOTAL_STEPS = 6;
+const TOTAL_STEPS = 5;
 
 const OPTION_CLASS =
   "w-full text-left px-4 py-3.5 rounded-md border border-muted hover:border-primary hover:bg-primary/5 text-foreground font-sans text-sm transition-colors cursor-pointer";
@@ -95,8 +94,6 @@ export default function DiagnosticoWizard() {
     industria: "",
     dolor: "",
     dolorOtro: "",
-    intentadoAntes: null,
-    intentadoDetalle: "",
     timeline: "",
     nombre: "",
     email: "",
@@ -106,22 +103,18 @@ export default function DiagnosticoWizard() {
   const [submitState, setSubmitState] = useState<"idle" | "submitting" | "error">("idle");
   const [apiError, setApiError] = useState("");
 
-  // Estado para sub-pantallas de "Otro" y "¿Intentado?"
   const [awaitingOtro, setAwaitingOtro] = useState(false);
-  const [awaitingIntentado, setAwaitingIntentado] = useState(false);
   const [tempText, setTempText] = useState("");
 
   function advance() {
     setStep((s) => s + 1);
     setAwaitingOtro(false);
-    setAwaitingIntentado(false);
     setTempText("");
   }
 
   function back() {
-    if (awaitingOtro || awaitingIntentado) {
+    if (awaitingOtro) {
       setAwaitingOtro(false);
-      setAwaitingIntentado(false);
       setTempText("");
       return;
     }
@@ -168,30 +161,13 @@ export default function DiagnosticoWizard() {
     advance();
   }
 
-  // Paso 4 — Intentado antes
-  function selectIntentado(value: boolean) {
-    setData((d) => ({ ...d, intentadoAntes: value }));
-    if (value) {
-      setAwaitingIntentado(true);
-      setTempText("");
-    } else {
-      setData((d) => ({ ...d, intentadoDetalle: "" }));
-      advance();
-    }
-  }
-
-  function confirmIntentado() {
-    setData((d) => ({ ...d, intentadoDetalle: tempText.trim() }));
-    advance();
-  }
-
-  // Paso 5 — Timeline
+  // Paso 4 — Timeline
   function selectTimeline(value: string) {
     setData((d) => ({ ...d, timeline: value }));
     advance();
   }
 
-  // Paso 6 — Contacto
+  // Paso 5 — Contacto
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setSubmitState("submitting");
@@ -212,8 +188,6 @@ export default function DiagnosticoWizard() {
           tamano: data.tamano,
           industria: data.industria,
           dolor: dolorFinal,
-          intentadoAntes: data.intentadoAntes ?? false,
-          intentadoDetalle: data.intentadoDetalle,
           timeline: data.timeline,
         }),
       });
@@ -230,6 +204,8 @@ export default function DiagnosticoWizard() {
 
   // Pantalla de éxito
   if (success) {
+    const calendlyUrl = `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot?name=${encodeURIComponent(data.nombre)}&email=${encodeURIComponent(data.email)}`;
+
     return (
       <div className="max-w-lg mx-auto text-center py-12 px-8 bg-card border border-muted rounded-lg shadow-card">
         <div
@@ -255,13 +231,20 @@ export default function DiagnosticoWizard() {
         <h3 className="font-display text-2xl font-bold text-foreground mb-3">
           ¡Listo, {data.nombre.split(" ")[0]}!
         </h3>
-        <p className="text-muted-foreground font-sans leading-relaxed">
-          Recibimos tu diagnóstico. Te contactamos en{" "}
-          <strong className="text-foreground">menos de 24 horas</strong> para
-          coordinar la llamada.
+        <p className="text-muted-foreground font-sans leading-relaxed mb-2">
+          Recibimos tu diagnóstico. Para agendar tu llamada ahora mismo:
         </p>
-        <p className="text-sm text-muted-foreground font-sans mt-3">
-          Revisa tu email{" "}
+        <Link
+          href={calendlyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 mt-4 px-6 py-3.5 bg-primary text-primary-foreground rounded-md font-semibold font-sans text-sm hover:bg-primary/90 transition-colors"
+        >
+          Agendar diagnóstico gratuito →
+        </Link>
+        <p className="text-xs text-muted-foreground font-sans mt-4">
+          O si prefieres, te contactamos en{" "}
+          <strong className="text-foreground">menos de 24 horas</strong> al email{" "}
           <span className="text-foreground font-medium">{data.email}</span>
         </p>
       </div>
@@ -386,54 +369,8 @@ export default function DiagnosticoWizard() {
           </StepWrapper>
         )}
 
-        {/* Paso 4 — Intentado antes */}
-        {step === 3 && !awaitingIntentado && (
-          <StepWrapper
-            title="¿Has intentado resolver esto antes?"
-            subtitle="Sin juicios. Solo queremos entender el contexto."
-          >
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                onClick={() => selectIntentado(true)}
-                className="px-4 py-5 rounded-md border-2 border-muted hover:border-primary hover:bg-primary/5 text-foreground font-medium font-sans text-sm transition-colors"
-              >
-                Sí, lo intenté
-              </button>
-              <button
-                onClick={() => selectIntentado(false)}
-                className="px-4 py-5 rounded-md border-2 border-muted hover:border-primary hover:bg-primary/5 text-foreground font-medium font-sans text-sm transition-colors"
-              >
-                No todavía
-              </button>
-            </div>
-          </StepWrapper>
-        )}
-
-        {/* Paso 4 — Detalle intento */}
-        {step === 3 && awaitingIntentado && (
-          <StepWrapper
-            title="¿Qué intentaste?"
-            subtitle="Opcional — nos ayuda a no repetir lo que no funcionó."
-          >
-            <textarea
-              autoFocus
-              value={tempText}
-              onChange={(e) => setTempText(e.target.value)}
-              placeholder="Ej: Contraté a alguien para reorganizar el área, compramos un software..."
-              rows={4}
-              className="w-full px-4 py-3 border border-muted rounded-md font-sans text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-background text-foreground resize-none"
-            />
-            <button
-              onClick={confirmIntentado}
-              className="mt-3 w-full px-4 py-3 bg-primary text-primary-foreground rounded-md font-medium font-sans text-sm hover:bg-primary/90 transition-colors"
-            >
-              Continuar →
-            </button>
-          </StepWrapper>
-        )}
-
-        {/* Paso 5 — Timeline */}
-        {step === 4 && (
+        {/* Paso 4 — Timeline */}
+        {step === 3 && (
           <StepWrapper title="¿Cuándo te gustaría empezar?">
             <div className="space-y-2">
               {TIMELINES.map((opt) => (
@@ -449,8 +386,8 @@ export default function DiagnosticoWizard() {
           </StepWrapper>
         )}
 
-        {/* Paso 6 — Contacto */}
-        {step === 5 && (
+        {/* Paso 5 — Contacto */}
+        {step === 4 && (
           <StepWrapper
             title="Casi listo. ¿A quién le avisamos?"
             subtitle="Te contactamos para coordinar la llamada de diagnóstico (30 min, sin costo)."
