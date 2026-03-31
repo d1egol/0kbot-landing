@@ -12,6 +12,7 @@ interface WizardData {
   industria: string;
   dolor: string;
   dolorOtro: string;
+  intentadoAntes: boolean | null;
   timeline: string;
   nombre: string;
   email: string;
@@ -56,7 +57,7 @@ const TIMELINES = [
   "Estoy explorando opciones",
 ];
 
-const TOTAL_STEPS = 5;
+const TOTAL_STEPS = 6;
 
 const OPTION_CLASS =
   "w-full text-left px-4 py-3.5 rounded-md border border-muted hover:border-primary hover:bg-primary/5 text-foreground font-sans text-sm transition-colors cursor-pointer";
@@ -95,6 +96,7 @@ export default function DiagnosticoWizard() {
     industria: "",
     dolor: "",
     dolorOtro: "",
+    intentadoAntes: null,
     timeline: "",
     nombre: "",
     email: "",
@@ -162,7 +164,13 @@ export default function DiagnosticoWizard() {
     advance();
   }
 
-  // Paso 4 — Timeline
+  // Paso 4 — Intentado antes
+  function selectIntentado(value: boolean) {
+    setData((d) => ({ ...d, intentadoAntes: value }));
+    advance();
+  }
+
+  // Paso 5 — Timeline
   function selectTimeline(value: string) {
     setData((d) => ({ ...d, timeline: value }));
     advance();
@@ -189,6 +197,7 @@ export default function DiagnosticoWizard() {
           tamano: data.tamano,
           industria: data.industria,
           dolor: dolorFinal,
+          intentadoAntes: data.intentadoAntes ?? false,
           timeline: data.timeline,
         }),
       });
@@ -370,8 +379,31 @@ export default function DiagnosticoWizard() {
           </StepWrapper>
         )}
 
-        {/* Paso 4 — Timeline */}
+        {/* Paso 4 — Intentado antes */}
         {step === 3 && (
+          <StepWrapper
+            title="¿Han intentado resolver esto antes?"
+            subtitle="Nos ayuda a entender desde dónde partir."
+          >
+            <div className="space-y-3">
+              <button
+                onClick={() => selectIntentado(true)}
+                className={OPTION_CLASS}
+              >
+                Sí, hemos probado algo (Excel, contratar más gente, otro software...)
+              </button>
+              <button
+                onClick={() => selectIntentado(false)}
+                className={OPTION_CLASS}
+              >
+                No, es la primera vez que buscamos una solución
+              </button>
+            </div>
+          </StepWrapper>
+        )}
+
+        {/* Paso 5 — Timeline */}
+        {step === 4 && (
           <StepWrapper title="¿Cuándo te gustaría empezar?">
             <div className="space-y-2">
               {TIMELINES.map((opt) => (
@@ -387,8 +419,8 @@ export default function DiagnosticoWizard() {
           </StepWrapper>
         )}
 
-        {/* Paso 5 — Contacto */}
-        {step === 4 && (
+        {/* Paso 6 — Contacto */}
+        {step === 5 && (
           <StepWrapper
             title="Casi listo. ¿A quién le avisamos?"
             subtitle="Te contactamos para coordinar la llamada de diagnóstico (30 min, sin costo)."

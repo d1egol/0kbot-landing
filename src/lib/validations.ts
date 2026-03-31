@@ -49,7 +49,7 @@ export const diagnosticoSchema = z.object({
   tamano: z.enum(["<20", "20-50", "50-100", "100-200", ">200"] as const),
   industria: z.string().min(1).max(200),
   dolor: z.string().min(1).max(1000),
-  intentadoAntes: z.boolean(),
+  intentadoAntes: z.boolean().default(false),
   intentadoDetalle: z.string().max(2000).optional(),
   timeline: z.string().min(1).max(200),
 });
