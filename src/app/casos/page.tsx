@@ -38,15 +38,6 @@ export default function CasosPage() {
         </div>
       </section>
 
-      {/* Aviso de honestidad */}
-      <section className="bg-amber-50 border-b border-amber-100 py-4">
-        <div className="container-wide">
-          <p className="text-sm text-amber-800 font-body text-center">
-            <strong>Nota:</strong> Estos son escenarios basados en problemas comunes de la industria. Las métricas de referencia provienen de estudios del sector. Estamos en fase de lanzamiento y documentando nuestros primeros proyectos.
-          </p>
-        </div>
-      </section>
-
       {/* Escenarios */}
       <section className="section-padding bg-background">
         <div className="container-wide">
