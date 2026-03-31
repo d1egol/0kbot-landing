@@ -137,7 +137,7 @@ Hardcodeadas a `https://0kbot.com/[ruta]` en metadata de cada página. En blog u
 8.  PrincipiosSection    — 3 principios de trabajo
 9.  FAQSection           — 6 preguntas (incluye pricing en UF)
 10. BlogPreviewSection   — 3 artículos recientes
-11. DiagnosticoSection   — DiagnosticoWizard inline (5 pasos)
+11. DiagnosticoSection   — DiagnosticoWizard inline (6 pasos)
 12. CTAFinalSection      — "Cada mes que esperas, el número crece"
 +   FloatingCTA          — mobile only, sticky bottom
 ```
@@ -152,7 +152,7 @@ HomePage CTAs (Hero/CTA Final/Floating)
   → POST /api/leads → Supabase + email → redirect Calendly
 
 HomePage DiagnosticoSection
-  → DiagnosticoWizard (5 pasos: tamaño, industria, dolor, timeline, contacto)
+  → DiagnosticoWizard (6 pasos: tamaño, industria, dolor, intentadoAntes, timeline, contacto)
   → POST /api/diagnostico → Supabase + email → Calendly
 
 /contacto → ContactModal (captura lead) → Calendly
