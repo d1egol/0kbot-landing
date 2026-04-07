@@ -39,6 +39,24 @@ export function trackLeadCapture(
   }
 }
 
+/**
+ * Evento por paso del DiagnosticoWizard — permite ver tasas de abandono
+ * por paso en GA4 para identificar dónde se pierden leads.
+ */
+export function trackDiagnosticoStep(step: number, totalSteps: number): void {
+  try {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "diagnostico_step", {
+        event_category: "engagement",
+        step,
+        total_steps: totalSteps,
+      });
+    }
+  } catch {
+    // never block the user flow
+  }
+}
+
 export function trackDiagnosticoCompleted(): void {
   try {
     if (typeof window !== "undefined") {
