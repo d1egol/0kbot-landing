@@ -55,7 +55,7 @@ export default function ContactoClient() {
                   Selecciona un bloque disponible en nuestro calendario. La
                   reunión es por videollamada y dura 30 minutos.
                 </p>
-                <OpenModalButton className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-md font-semibold font-body text-sm hover:bg-primary/90 transition-colors">
+                <OpenModalButton location="contacto_page" className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-md font-semibold font-body text-sm hover:bg-primary/90 transition-colors">
                   Agendar ahora <ArrowRight size={16} />
                 </OpenModalButton>
               </div>

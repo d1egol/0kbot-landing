@@ -123,7 +123,7 @@ export default function CasosPage() {
           <p className="text-white/75 font-body mb-8">
             Agendemos 30 minutos para revisar tu operación. Sin compromiso.
           </p>
-          <OpenModalButton className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-[#1A1A1A] rounded-md font-semibold font-body text-sm hover:bg-accent/90 transition-colors">
+          <OpenModalButton location="casos_page" className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-[#1A1A1A] rounded-md font-semibold font-body text-sm hover:bg-accent/90 transition-colors">
             Agendar diagnóstico gratis →
           </OpenModalButton>
         </div>

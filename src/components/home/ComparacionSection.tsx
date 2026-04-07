@@ -96,7 +96,7 @@ export default function ComparacionSection() {
         </div>
 
         <MotionSection delay={0.2} className="mt-10 text-center">
-          <OpenModalButton className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium font-body text-sm hover:bg-primary/90 transition-colors">
+          <OpenModalButton location="comparacion" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium font-body text-sm hover:bg-primary/90 transition-colors">
             Agendar diagnóstico gratis →
           </OpenModalButton>
         </MotionSection>

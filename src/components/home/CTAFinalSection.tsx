@@ -14,7 +14,7 @@ export default function CTAFinalSection() {
             entierran, se vuelven &ldquo;así es esto&rdquo;. En 6 meses, lo que
             hoy es un dolor de cabeza será &ldquo;imposible de cambiar&rdquo;.
           </p>
-          <OpenModalButton className="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-md font-semibold font-body text-base hover:bg-accent/90 transition-colors">
+          <OpenModalButton location="cta_final" className="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-md font-semibold font-body text-base hover:bg-accent/90 transition-colors">
             Quiero números, no suposiciones →
           </OpenModalButton>
           <p className="text-sm text-white/40 font-body">

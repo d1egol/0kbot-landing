@@ -64,7 +64,7 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
-          <OpenModalButton className="px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors">
+          <OpenModalButton location="navbar_desktop" className="px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors">
             Agendar diagnóstico gratis
           </OpenModalButton>
         </div>
@@ -104,7 +104,7 @@ export default function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              <OpenModalButton className="mt-3 px-5 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors text-center w-full">
+              <OpenModalButton location="navbar_mobile" className="mt-3 px-5 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors text-center w-full">
                 Agendar diagnóstico gratis
               </OpenModalButton>
             </div>
