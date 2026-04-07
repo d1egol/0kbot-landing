@@ -31,7 +31,7 @@ export function leadNotificationHtml(lead: LeadInput): string {
 <body style="font-family: system-ui, sans-serif; background: ${C.bg}; margin: 0; padding: 40px 20px;">
   <div style="max-width: 520px; margin: 0 auto; background: ${C.surface}; border-radius: 8px; border: 1px solid ${C.border}; overflow: hidden;">
     <div style="background: ${C.primary}; padding: 20px 28px;">
-      <p style="color: ${C.accent}; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 4px;">Nuevo lead — landing_diagnostico</p>
+      <p style="color: ${C.accent}; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 4px;">Nuevo lead — ${lead.fuente}</p>
       <h1 style="color: ${C.surface}; font-size: 20px; font-weight: 700; margin: 0;">${lead.nombre}</h1>
     </div>
     <div style="padding: 28px;">
@@ -65,7 +65,7 @@ export function leadNotificationHtml(lead: LeadInput): string {
       </table>
     </div>
     <div style="background: ${C.bg}; padding: 16px 28px; border-top: 1px solid ${C.border};">
-      <p style="font-size: 11px; color: ${C.textMid}; margin: 0;">Enviado desde landing_diagnostico · ${timestamp}</p>
+      <p style="font-size: 11px; color: ${C.textMid}; margin: 0;">Enviado desde ${lead.fuente} · ${timestamp}</p>
     </div>
   </div>
 </body>

@@ -75,11 +75,23 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // 2. Emails (no crítico)
-  await Promise.allSettled([
+  // 2. Emails (no crítico) — loguear cada reject individualmente
+  const [confirmResult, notifResult] = await Promise.allSettled([
     sendDiagnosticoConfirmationEmail(d),
     sendDiagnosticoNotificationEmail(d),
   ]);
+  if (confirmResult.status === "rejected") {
+    console.error(
+      "[Diagnóstico API] Error email confirmación:",
+      confirmResult.reason
+    );
+  }
+  if (notifResult.status === "rejected") {
+    console.error(
+      "[Diagnóstico API] Error email notificación:",
+      notifResult.reason
+    );
+  }
 
   return NextResponse.json({ success: true }, { status: 200 });
 }

@@ -1,20 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { onboardingSchema } from "@/lib/validations";
 import { createAdminClient } from "@/lib/supabase";
-import { LEAD_SOURCES, LEAD_ESTADOS } from "@/lib/constants";
+import {
+  LEAD_SOURCES,
+  LEAD_ESTADOS,
+  ONBOARDING_TAMANO_MAP,
+} from "@/lib/constants";
 import { checkRateLimit } from "@/lib/rate-limit";
 import {
   sendOnboardingConfirmationEmail,
   sendOnboardingNotificationEmail,
 } from "@/lib/email";
-
-const TAMANO_MAP: Record<string, string> = {
-  "1-5": "<20",
-  "6-20": "<20",
-  "21-50": "20-50",
-  "51-100": "50-100",
-  "100+": ">200",
-};
 
 export async function POST(request: NextRequest) {
   const ip =
@@ -32,17 +28,32 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  let body: unknown;
   try {
-    const body = await request.json();
-    const data = onboardingSchema.parse(body);
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Cuerpo inválido" }, { status: 400 });
+  }
 
+  const parsed = onboardingSchema.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { error: "Datos inválidos", issues: parsed.error.issues },
+      { status: 422 }
+    );
+  }
+
+  const data = parsed.data;
+  console.log("[Onboarding API] Guardando lead:", data.email);
+
+  // 1. Guardar en Supabase (crítico)
+  try {
     const supabase = createAdminClient();
-
     const { error: dbError } = await supabase.from("leads").insert({
       nombre: data.nombre,
       email: data.email,
       empresa: data.empresa,
-      tamano_empresa: TAMANO_MAP[data.tamano] ?? "<20",
+      tamano_empresa: ONBOARDING_TAMANO_MAP[data.tamano] ?? "<20",
       fuente: LEAD_SOURCES.ONBOARDING_FORM,
       estado: LEAD_ESTADOS.NUEVO,
       diagnostico_data: {
@@ -57,25 +68,33 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    if (dbError) {
-      console.error("[Onboarding API] Supabase insert error:", dbError);
-      return NextResponse.json(
-        { error: "Error al guardar el formulario. Por favor intenta de nuevo." },
-        { status: 500 }
-      );
-    }
-
-    await Promise.allSettled([
-      sendOnboardingConfirmationEmail(data),
-      sendOnboardingNotificationEmail(data),
-    ]);
-
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Onboarding API error:", error);
+    if (dbError) throw dbError;
+    console.log("[Onboarding API] Lead guardado:", data.email);
+  } catch (err) {
+    console.error("[Onboarding API] Supabase insert error:", err);
     return NextResponse.json(
-      { error: "Error procesando el formulario" },
-      { status: 400 }
+      { error: "Error al guardar el formulario. Por favor intenta de nuevo." },
+      { status: 500 }
     );
   }
+
+  // 2. Emails (no crítico) — loguear cada reject individualmente
+  const [confirmResult, notifResult] = await Promise.allSettled([
+    sendOnboardingConfirmationEmail(data),
+    sendOnboardingNotificationEmail(data),
+  ]);
+  if (confirmResult.status === "rejected") {
+    console.error(
+      "[Onboarding API] Error email confirmación:",
+      confirmResult.reason
+    );
+  }
+  if (notifResult.status === "rejected") {
+    console.error(
+      "[Onboarding API] Error email notificación:",
+      notifResult.reason
+    );
+  }
+
+  return NextResponse.json({ success: true });
 }
