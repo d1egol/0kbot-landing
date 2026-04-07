@@ -9,6 +9,12 @@ interface OpenModalButtonProps {
   className?: string;
   id?: string;
   onBeforeOpen?: () => void;
+  /**
+   * Ubicación del CTA en la página (e.g. "hero", "cta_final"). Se envía a GA4
+   * como parámetro `location` de `cta_click` para poder distinguir abandonos
+   * y conversiones por sección en el A/B test de CTAs de homepage.
+   */
+  location?: string;
 }
 
 export default function OpenModalButton({
@@ -16,12 +22,13 @@ export default function OpenModalButton({
   className,
   id,
   onBeforeOpen,
+  location = "button",
 }: OpenModalButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <button id={id} className={className} onClick={() => { trackCTAClick(typeof children === "string" ? children : "modal_open", "button"); onBeforeOpen?.(); setIsOpen(true); }}>
+      <button id={id} className={className} onClick={() => { trackCTAClick(typeof children === "string" ? children : "modal_open", location); onBeforeOpen?.(); setIsOpen(true); }}>
         {children}
       </button>
       <ContactModal isOpen={isOpen} onClose={() => setIsOpen(false)} />

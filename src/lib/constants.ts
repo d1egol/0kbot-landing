@@ -36,4 +36,15 @@ export const ANALYTICS_EVENTS = {
   CTA_CLICK: "cta_click",
   GENERATE_LEAD: "generate_lead",
   DIAGNOSTICO_COMPLETED: "diagnostico_completed",
+  DIAGNOSTICO_STEP: "diagnostico_step",
+} as const;
+
+// Mapea rangos del onboarding (granulares) al enum canónico tamano_empresa
+// usado por Supabase y el resto del sistema.
+export const ONBOARDING_TAMANO_MAP: Record<string, string> = {
+  "1-5": "<20",
+  "6-20": "<20",
+  "21-50": "20-50",
+  "51-100": "50-100",
+  "100+": ">200",
 } as const;

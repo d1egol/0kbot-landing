@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
-import { trackDiagnosticoCompleted } from "@/lib/analytics";
+import { trackDiagnosticoCompleted, trackDiagnosticoStep } from "@/lib/analytics";
 import { CALENDLY_URL, CONTACT_EMAIL } from "@/lib/constants";
 
 type TamanoOption = "<20" | "20-50" | "50-100" | "100-200" | ">200";
@@ -110,7 +110,12 @@ export default function DiagnosticoWizard() {
   const [tempText, setTempText] = useState("");
 
   function advance() {
-    setStep((s) => s + 1);
+    setStep((s) => {
+      const next = s + 1;
+      // Trackea el paso al que avanza el usuario (1-indexed)
+      trackDiagnosticoStep(next + 1, TOTAL_STEPS);
+      return next;
+    });
     setAwaitingOtro(false);
     setTempText("");
   }
@@ -273,7 +278,14 @@ export default function DiagnosticoWizard() {
           </span>
           <span>{Math.round(progressPct)}%</span>
         </div>
-        <div className="h-1 bg-muted rounded-full overflow-hidden">
+        <div
+          className="h-1 bg-muted rounded-full overflow-hidden"
+          role="progressbar"
+          aria-label={`Progreso del diagnóstico: paso ${step + 1} de ${TOTAL_STEPS}`}
+          aria-valuenow={Math.round(progressPct)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        >
           <div
             className="h-full bg-primary rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progressPct}%` }}
@@ -518,6 +530,7 @@ export default function DiagnosticoWizard() {
         {step > 0 && (
           <button
             onClick={back}
+            aria-label="Volver al paso anterior"
             className="mt-6 text-sm text-muted-foreground hover:text-foreground font-sans transition-colors"
           >
             ← Anterior

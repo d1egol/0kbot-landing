@@ -1,17 +1,8 @@
 import type { OnboardingInput } from "@/lib/validations";
-
-const C = {
-  primary: "#1B5FA6",
-  accent: "#D4A853",
-  bg: "#F7F5F0",
-  surface: "#FFFFFF",
-  border: "#E5E2DB",
-  textDark: "#1A1A1A",
-  textMid: "#4A4A4A",
-} as const;
+import { EMAIL_COLORS as C, formatSantiagoTimestamp } from "./shared";
 
 export function onboardingNotificationHtml(d: OnboardingInput): string {
-  const timestamp = new Date().toLocaleString("es-CL", { timeZone: "America/Santiago" });
+  const timestamp = formatSantiagoTimestamp();
 
   return `
 <!DOCTYPE html>

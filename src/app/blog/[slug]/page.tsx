@@ -13,7 +13,7 @@ import { ShareButtons } from "@/components/blog/ShareButtons";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { Calendar, Clock, User, ChevronRight, ArrowLeft } from "lucide-react";
 
-export const revalidate = 3600; // regenerar cada hora
+export const revalidate = 300; // regenerar cada 5 minutos (blog activo)
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const related = getRelatedPosts(slug, post.category);
+  const related = getRelatedPosts(slug, post.category, 3, post.tags);
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://0kbot.com";
   const wordCount = post.content.split(/\s+/).length;

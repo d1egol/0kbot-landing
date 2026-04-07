@@ -46,9 +46,11 @@ export default function FloatingCTA() {
             : "opacity-0 translate-y-4 pointer-events-none"
         }`}
         style={{ width: "90%" }}
+        aria-hidden={!visible}
       >
         <button
           onClick={() => { trackCTAClick("floating_cta", "floating"); setIsOpen(true); }}
+          aria-label="Agendar diagnóstico gratuito"
           className="w-full px-6 py-4 bg-primary text-primary-foreground rounded-md font-semibold font-sans text-sm shadow-lg hover:bg-primary/90 transition-colors"
         >
           Agendar diagnóstico gratis →

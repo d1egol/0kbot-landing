@@ -1,28 +1,11 @@
 import type { LeadInput } from "@/lib/validations";
-
-const C = {
-  primary: "#1B5FA6",
-  accent: "#D4A853",
-  bg: "#F7F5F0",
-  surface: "#FFFFFF",
-  border: "#E5E2DB",
-  textDark: "#1A1A1A",
-  textMid: "#4A4A4A",
-} as const;
-
-const TAMANO_LABELS: Record<string, string> = {
-  "<20": "Menos de 20 personas",
-  "20-50": "20 a 50 personas",
-  "50-100": "50 a 100 personas",
-  "100-200": "100 a 200 personas",
-  ">200": "Más de 200 personas",
-};
+import { EMAIL_COLORS as C, TAMANO_LABELS, formatSantiagoTimestamp } from "./shared";
 
 export function leadNotificationHtml(lead: LeadInput): string {
   const tamanoLabel = TAMANO_LABELS[lead.tamano_empresa ?? "<20"] ?? lead.tamano_empresa;
   const problema = lead.problema?.trim() || "(no especificado)";
   const cargo = lead.cargo?.trim() || "(no especificado)";
-  const timestamp = new Date().toLocaleString("es-CL", { timeZone: "America/Santiago" });
+  const timestamp = formatSantiagoTimestamp();
 
   return `
 <!DOCTYPE html>
@@ -31,7 +14,7 @@ export function leadNotificationHtml(lead: LeadInput): string {
 <body style="font-family: system-ui, sans-serif; background: ${C.bg}; margin: 0; padding: 40px 20px;">
   <div style="max-width: 520px; margin: 0 auto; background: ${C.surface}; border-radius: 8px; border: 1px solid ${C.border}; overflow: hidden;">
     <div style="background: ${C.primary}; padding: 20px 28px;">
-      <p style="color: ${C.accent}; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 4px;">Nuevo lead — landing_diagnostico</p>
+      <p style="color: ${C.accent}; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 4px;">Nuevo lead — ${lead.fuente}</p>
       <h1 style="color: ${C.surface}; font-size: 20px; font-weight: 700; margin: 0;">${lead.nombre}</h1>
     </div>
     <div style="padding: 28px;">
@@ -65,7 +48,7 @@ export function leadNotificationHtml(lead: LeadInput): string {
       </table>
     </div>
     <div style="background: ${C.bg}; padding: 16px 28px; border-top: 1px solid ${C.border};">
-      <p style="font-size: 11px; color: ${C.textMid}; margin: 0;">Enviado desde landing_diagnostico · ${timestamp}</p>
+      <p style="font-size: 11px; color: ${C.textMid}; margin: 0;">Enviado desde ${lead.fuente} · ${timestamp}</p>
     </div>
   </div>
 </body>
