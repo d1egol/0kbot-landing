@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const related = getRelatedPosts(slug, post.category);
+  const related = getRelatedPosts(slug, post.category, 3, post.tags);
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://0kbot.com";
   const wordCount = post.content.split(/\s+/).length;

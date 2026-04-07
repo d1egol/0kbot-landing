@@ -1,15 +1,5 @@
 import type { LeadInput } from "@/lib/validations";
-
-// Brand color tokens — single source of truth for email styles
-const C = {
-  primary: "#1B5FA6",
-  accent: "#D4A853",
-  bg: "#F7F5F0",
-  surface: "#FFFFFF",
-  border: "#E5E2DB",
-  textDark: "#1A1A1A",
-  textMid: "#4A4A4A",
-} as const;
+import { EMAIL_COLORS as C } from "./shared";
 
 export function leadConfirmationHtml(lead: LeadInput): string {
   return `

@@ -85,15 +85,33 @@ export function getPostBySlug(slug: string): BlogPost | null {
   };
 }
 
+/**
+ * Relacionados por score: intersección de tags (×2) + match de categoría (×1).
+ * Fallback a posts más recientes de la misma categoría si no hay tags overlap.
+ */
 export function getRelatedPosts(
   currentSlug: string,
   category: string,
-  limit = 3
+  limit = 3,
+  tags: string[] = []
 ): BlogPostMeta[] {
-  const all = getAllPosts();
-  return all
-    .filter((p) => p.slug !== currentSlug && p.category === category)
-    .slice(0, limit);
+  const all = getAllPosts().filter((p) => p.slug !== currentSlug);
+  const tagSet = new Set(tags);
+
+  const scored = all.map((p) => {
+    const tagOverlap = p.tags.filter((t) => tagSet.has(t)).length;
+    const categoryMatch = p.category === category ? 1 : 0;
+    return { post: p, score: tagOverlap * 2 + categoryMatch };
+  });
+
+  return scored
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      // Desempate: más reciente primero
+      return new Date(b.post.date).getTime() - new Date(a.post.date).getTime();
+    })
+    .slice(0, limit)
+    .map((s) => s.post);
 }
 
 export function getFeaturedPost(): BlogPostMeta | null {
