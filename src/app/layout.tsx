@@ -95,7 +95,7 @@ export const metadata: Metadata = {
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-TKKTNXBS";
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-TKKTNXBS";
 
 const jsonLd = {
   "@context": "https://schema.org",
