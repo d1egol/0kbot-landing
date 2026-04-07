@@ -13,7 +13,7 @@ import { ShareButtons } from "@/components/blog/ShareButtons";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { Calendar, Clock, User, ChevronRight, ArrowLeft } from "lucide-react";
 
-export const revalidate = 3600; // regenerar cada hora
+export const revalidate = 300; // regenerar cada 5 minutos (blog activo)
 
 interface PageProps {
   params: Promise<{ slug: string }>;
