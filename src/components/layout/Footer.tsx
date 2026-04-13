@@ -20,6 +20,9 @@ const footerLinks = [
       { label: "Cómo trabajamos", href: "/como-trabajamos" },
       { label: "Casos y resultados", href: "/casos" },
       { label: "Recursos", href: "/recursos" },
+      { label: "Calculadora ROI", href: "/calculadora-roi" },
+      { label: "Comparativas", href: "/comparar" },
+      { label: "Herramientas", href: "/herramientas" },
     ],
   },
   {
