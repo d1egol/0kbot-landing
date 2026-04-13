@@ -1,5 +1,3 @@
-"use client";
-
 import { Shield, Wrench, Users } from "lucide-react";
 import MotionSection from "@/components/ui/MotionSection";
 
