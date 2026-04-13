@@ -36,6 +36,7 @@ export const metadata: Metadata = {
 
 const servicios = [
   {
+    slug: "diagnostico",
     icon: Workflow,
     title: "Diagnóstico y orden de procesos",
     desc: "Levantamos cómo opera tu negocio hoy: flujos, responsables, puntos de quiebre y tiempos muertos. Luego proponemos un mapa claro de cómo deberían funcionar las cosas, con prioridades y acciones concretas.",
@@ -47,6 +48,7 @@ const servicios = [
     ],
   },
   {
+    slug: "estandarizacion",
     icon: Database,
     title: "Estandarización de información y registros",
     desc: "Definimos qué información importa, cómo se debe registrar y dónde debe vivir. Terminamos con la dispersión de datos en planillas, correos y WhatsApp.",
@@ -58,6 +60,7 @@ const servicios = [
     ],
   },
   {
+    slug: "automatizacion",
     icon: Zap,
     title: "Automatización de tareas y reportes",
     desc: "Lo que se puede automatizar, lo automatizamos: notificaciones, asignaciones, actualizaciones de estado, cálculos e informes periódicos.",
@@ -69,6 +72,7 @@ const servicios = [
     ],
   },
   {
+    slug: "tableros",
     icon: BarChart2,
     title: "Tableros y visibilidad de datos",
     desc: "Creamos dashboards con los indicadores que importan para tu negocio. Información actualizada, visual y accesible para tomar decisiones.",
@@ -80,6 +84,7 @@ const servicios = [
     ],
   },
   {
+    slug: "gestion-comercial",
     icon: Users,
     title: "Apoyo a gestión comercial y seguimiento",
     desc: "Organizamos el seguimiento de clientes, oportunidades y pipeline de ventas. Que ningún contacto se pierda por falta de registro.",
@@ -91,6 +96,7 @@ const servicios = [
     ],
   },
   {
+    slug: "implementacion",
     icon: Settings,
     title: "Implementación práctica para pymes",
     desc: "No hacemos proyectos de meses. Configuramos herramientas, capacitamos equipos y dejamos todo funcionando de manera práctica y sostenible.",
@@ -166,7 +172,7 @@ export default function ServiciosPage() {
         <div className="container-wide space-y-16">
           {servicios.map((s, i) => (
             <MotionSection key={s.title} delay={0}>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+              <div id={s.slug} className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start scroll-mt-24">
                 <div>
                   <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-5">
                     <s.icon className="w-6 h-6 text-accent" />
