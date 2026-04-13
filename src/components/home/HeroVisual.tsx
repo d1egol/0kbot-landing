@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
 const diagnosisRows = [
@@ -45,8 +45,9 @@ const diagnosisRows = [
 
 export default function HeroVisual() {
   return (
+    <LazyMotion features={domAnimation}>
     <div className="lg:col-span-2 relative">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, delay: 0.3 }}
@@ -72,7 +73,7 @@ export default function HeroVisual() {
           {/* Rows with progress bars */}
           <div className="space-y-3">
             {diagnosisRows.map((row, i) => (
-              <motion.div
+              <m.div
                 key={row.process}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -91,7 +92,7 @@ export default function HeroVisual() {
                 </div>
                 {/* Progress bar showing improvement */}
                 <div className="h-1 rounded-full bg-[#E5E2DB] overflow-hidden">
-                  <motion.div
+                  <m.div
                     className="h-full rounded-full"
                     style={{ background: "linear-gradient(to right, #EF4444, #10B981)" }}
                     initial={{ width: "100%" }}
@@ -99,12 +100,12 @@ export default function HeroVisual() {
                     transition={{ delay: 0.9 + i * 0.15, duration: 0.8, ease: "easeOut" }}
                   />
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* Footer: total saving */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
@@ -112,11 +113,11 @@ export default function HeroVisual() {
           >
             <span className="text-[10px] text-[#999]">Ahorro estimado</span>
             <span className="text-sm font-bold text-emerald-600">~14 hrs / semana</span>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Floating badge */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.8, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ delay: 1.4, type: "spring" }}
@@ -127,12 +128,13 @@ export default function HeroVisual() {
             <div className="text-xs font-semibold text-[#1A1A1A]">Sin código</div>
             <div className="text-[10px] text-[#999]">Listo en 12 semanas</div>
           </div>
-        </motion.div>
+        </m.div>
 
         <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-10 blur-2xl"
           style={{ background: "radial-gradient(circle, #1B5FA6, transparent)" }}
         />
-      </motion.div>
+      </m.div>
     </div>
+    </LazyMotion>
   );
 }

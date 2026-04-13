@@ -17,6 +17,21 @@ export const metadata: Metadata = {
     "transformación digital pymes Chile",
   ],
   alternates: { canonical: "https://0kbot.com/servicios" },
+  openGraph: {
+    title: "Servicios de Automatización y Mejora de Procesos | 0kbot",
+    description:
+      "Diagnóstico, estandarización, automatización y tableros de datos para pymes en Chile. Resultados medibles en 12 semanas.",
+    url: "https://0kbot.com/servicios",
+    siteName: "0kbot",
+    locale: "es_CL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Servicios de Automatización y Mejora de Procesos | 0kbot",
+    description:
+      "Diagnóstico, estandarización, automatización y tableros de datos para pymes en Chile. Resultados medibles en 12 semanas.",
+  },
 };
 
 const servicios = [

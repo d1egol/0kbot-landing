@@ -19,14 +19,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const escenario = getEscenarioBySlug(industry);
   if (!escenario) return { title: "Caso no encontrado" };
 
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://0kbot.com";
+
   return {
     title: escenario.metaTitle,
     description: escenario.metaDescription,
     keywords: escenario.keywords,
+    alternates: { canonical: `${baseUrl}/casos/${industry}` },
     openGraph: {
       title: escenario.metaTitle,
       description: escenario.metaDescription,
+      url: `${baseUrl}/casos/${industry}`,
+      siteName: "0kbot",
+      locale: "es_CL",
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      title: escenario.metaTitle,
+      description: escenario.metaDescription,
     },
   };
 }

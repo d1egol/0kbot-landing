@@ -21,6 +21,12 @@ export const metadata: Metadata = {
       "Eliminamos trabajo manual y automatizamos procesos en pymes chilenas. 12 semanas, resultados medibles.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Automatización de Procesos para Pymes en Chile | 0kbot",
+    description:
+      "Eliminamos trabajo manual y automatizamos procesos en pymes chilenas. 12 semanas, resultados medibles.",
+  },
   alternates: { canonical: "https://0kbot.com/automatizacion-procesos-chile" },
 };
 

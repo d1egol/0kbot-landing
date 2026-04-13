@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import OpenModalButton from "@/components/ui/OpenModalButton";
 
 const navItems = [
@@ -81,9 +81,10 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
+      <LazyMotion features={domAnimation}>
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -108,9 +109,10 @@ export default function Navbar() {
                 Agendar diagnóstico gratis
               </OpenModalButton>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
+      </LazyMotion>
     </nav>
   );
 }

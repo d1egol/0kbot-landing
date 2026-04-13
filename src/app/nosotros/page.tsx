@@ -15,6 +15,21 @@ export const metadata: Metadata = {
     "Lean Six Sigma Chile pymes",
   ],
   alternates: { canonical: "https://0kbot.com/nosotros" },
+  openGraph: {
+    title: "Consultora de Procesos para Pymes en Chile | Diego López — 0kbot",
+    description:
+      "Fundada por Diego López, Ing. Civil Industrial UDD, MSc Data Science PUC, Lean Six Sigma Green Belt. 8+ años en operaciones reales.",
+    url: "https://0kbot.com/nosotros",
+    siteName: "0kbot",
+    locale: "es_CL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Consultora de Procesos para Pymes en Chile | Diego López — 0kbot",
+    description:
+      "Fundada por Diego López, Ing. Civil Industrial UDD, MSc Data Science PUC, Lean Six Sigma Green Belt.",
+  },
 };
 
 const valores = [

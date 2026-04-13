@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import PainPointsSection from "@/components/home/PainPointsSection";
 import SolucionSection from "@/components/home/SolucionSection";
@@ -11,6 +12,33 @@ import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import DiagnosticoSection from "@/components/home/DiagnosticoSection";
 import CTAFinalSection from "@/components/home/CTAFinalSection";
 import FloatingCTA from "@/components/ui/FloatingCTA";
+
+export const metadata: Metadata = {
+  title: {
+    absolute:
+      "0kbot — Consultoría en Mejora de Procesos y Automatización para Pymes Chile",
+  },
+  description:
+    "Mejora de procesos y automatización para pymes chilenas con metodología Lean. Resultados medibles en 12 semanas o no pagas. Diagnóstico gratuito.",
+  alternates: { canonical: "https://0kbot.com" },
+  openGraph: {
+    title:
+      "0kbot — Consultoría en Mejora de Procesos y Automatización para Pymes Chile",
+    description:
+      "Detectamos dónde se va tu tiempo y tu plata, y lo arreglamos con cambios concretos. Resultados medibles en 12 semanas.",
+    url: "https://0kbot.com",
+    siteName: "0kbot",
+    locale: "es_CL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "0kbot — Mejora de Procesos y Automatización para Pymes Chile",
+    description:
+      "Detectamos dónde se va tu tiempo y tu plata, y lo arreglamos con cambios concretos. Resultados medibles en 12 semanas.",
+  },
+};
 
 const faqJsonLd = {
   "@context": "https://schema.org",

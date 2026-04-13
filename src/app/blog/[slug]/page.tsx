@@ -41,9 +41,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: `${baseUrl}/blog/${slug}`,
+      siteName: "0kbot",
+      locale: "es_CL",
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
     },
   };
 }

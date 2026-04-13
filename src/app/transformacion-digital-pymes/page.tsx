@@ -21,6 +21,12 @@ export const metadata: Metadata = {
       "Digitalizamos la operación de pymes chilenas paso a paso, sin interrumpir el negocio. 12 semanas, resultados medibles.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Transformación Digital para Pymes en Chile | 0kbot",
+    description:
+      "Digitalizamos la operación de pymes chilenas paso a paso, sin interrumpir el negocio. 12 semanas.",
+  },
   alternates: { canonical: "https://0kbot.com/transformacion-digital-pymes" },
 };
 

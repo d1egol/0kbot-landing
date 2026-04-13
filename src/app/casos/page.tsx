@@ -17,12 +17,40 @@ export const metadata: Metadata = {
     "optimización inventario pymes",
   ],
   alternates: { canonical: "https://0kbot.com/casos" },
+  openGraph: {
+    title: "Casos de Mejora de Procesos en Pymes Chilenas | 0kbot",
+    description:
+      "Problemas operativos comunes en pymes chilenas y cómo los resolvemos con metodología Lean. Resultados reales.",
+    url: "https://0kbot.com/casos",
+    siteName: "0kbot",
+    locale: "es_CL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Casos de Mejora de Procesos en Pymes Chilenas | 0kbot",
+    description:
+      "Problemas operativos comunes en pymes chilenas y cómo los resolvemos con metodología Lean.",
+  },
 };
 
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://0kbot.com" },
+    { "@type": "ListItem", position: 2, name: "Casos", item: "https://0kbot.com/casos" },
+  ],
+};
 
 export default function CasosPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">
         <div className="container-wide">
