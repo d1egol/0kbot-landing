@@ -181,15 +181,6 @@ const jsonLd = {
       name: "0kbot",
       publisher: { "@id": "https://0kbot.com/#business" },
       inLanguage: "es-CL",
-      // Habilita el Sitelink Searchbox en resultados de Google
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://0kbot.com/blog?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
     },
   ],
 };
