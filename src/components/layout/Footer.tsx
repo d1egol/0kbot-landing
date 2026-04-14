@@ -23,6 +23,7 @@ const footerLinks = [
       { label: "Calculadora ROI", href: "/calculadora-roi" },
       { label: "Comparativas", href: "/comparar" },
       { label: "Herramientas", href: "/herramientas" },
+      { label: "Por industria", href: "/industria" },
     ],
   },
   {
