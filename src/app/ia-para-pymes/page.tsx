@@ -21,6 +21,12 @@ export const metadata: Metadata = {
       "Herramientas de IA que realmente funcionan para pymes chilenas. Sin hype, con casos reales y un método de 12 semanas.",
     type: "article",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "IA para Pymes en Chile: Guía Completa 2026 | 0kbot",
+    description:
+      "Herramientas de IA que realmente funcionan para pymes chilenas. Sin hype, con casos reales.",
+  },
   alternates: { canonical: "https://0kbot.com/ia-para-pymes" },
 };
 

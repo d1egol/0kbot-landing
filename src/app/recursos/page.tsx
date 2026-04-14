@@ -24,6 +24,21 @@ export const metadata: Metadata = {
     "consultoría procesos preguntas frecuentes",
   ],
   alternates: { canonical: "https://0kbot.com/recursos" },
+  openGraph: {
+    title: "Guías Gratuitas de Mejora de Procesos para Pymes | 0kbot",
+    description:
+      "Artículos y guías prácticas sobre automatización, IA y transformación digital para pymes en Chile.",
+    url: "https://0kbot.com/recursos",
+    siteName: "0kbot",
+    locale: "es_CL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Guías Gratuitas de Mejora de Procesos para Pymes | 0kbot",
+    description:
+      "Artículos y guías prácticas sobre automatización, IA y transformación digital para pymes en Chile.",
+  },
 };
 
 const faqs = [
@@ -85,11 +100,24 @@ const faqJsonLd = {
 export default function RecursosPage() {
   const posts = getAllPosts();
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://0kbot.com" },
+      { "@type": "ListItem", position: 2, name: "Recursos", item: "https://0kbot.com/recursos" },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">

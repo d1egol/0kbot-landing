@@ -22,6 +22,12 @@ export const metadata: Metadata = {
       "Identificamos ineficiencias y mejoramos los procesos operativos de pymes chilenas. Lean, práctico, 12 semanas.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mejora de Procesos con Lean Six Sigma para Pymes | 0kbot",
+    description:
+      "Identificamos ineficiencias y mejoramos procesos operativos de pymes chilenas. Lean, práctico, 12 semanas.",
+  },
   alternates: { canonical: "https://0kbot.com/mejora-de-procesos" },
 };
 

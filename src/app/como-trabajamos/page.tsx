@@ -55,6 +55,22 @@ export const metadata: Metadata = {
     "implementación automatización procesos",
     "diagnóstico operacional pymes",
   ],
+  alternates: { canonical: "https://0kbot.com/como-trabajamos" },
+  openGraph: {
+    title: "Metodología de mejora de procesos en 12 semanas | 0kbot",
+    description:
+      "4 etapas para ordenar, estandarizar y automatizar tu operación. Diagnóstico, priorización, implementación y medición.",
+    url: "https://0kbot.com/como-trabajamos",
+    siteName: "0kbot",
+    locale: "es_CL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Metodología de mejora de procesos en 12 semanas | 0kbot",
+    description:
+      "4 etapas para ordenar, estandarizar y automatizar tu operación. Resultados medibles en 12 semanas.",
+  },
 };
 
 const pasos = [
@@ -100,12 +116,25 @@ const pasos = [
   },
 ];
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://0kbot.com" },
+    { "@type": "ListItem", position: 2, name: "Cómo trabajamos", item: "https://0kbot.com/como-trabajamos" },
+  ],
+};
+
 export default function ComoTrabajamosPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">

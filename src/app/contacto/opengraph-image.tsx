@@ -1,105 +1,15 @@
-import { ImageResponse } from "next/og";
+import { renderOgImage, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og";
 
 export const runtime = "edge";
 export const alt = "Contacto — 0kbot";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+export const size = OG_SIZE;
+export const contentType = OG_CONTENT_TYPE;
 
 export default function OgImage() {
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          background: "#F7F5F0",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "80px",
-          fontFamily: "Georgia, serif",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: "8px",
-            background: "#1B5FA6",
-          }}
-        />
-
-        <div
-          style={{
-            fontSize: "22px",
-            fontWeight: "700",
-            color: "#1B5FA6",
-            letterSpacing: "-0.5px",
-            marginBottom: "28px",
-          }}
-        >
-          0kbot
-        </div>
-
-        <div
-          style={{
-            fontSize: "18px",
-            fontWeight: "600",
-            color: "#1B5FA6",
-            textTransform: "uppercase",
-            letterSpacing: "2px",
-            marginBottom: "16px",
-          }}
-        >
-          Contacto
-        </div>
-
-        <div
-          style={{
-            fontSize: "52px",
-            fontWeight: "700",
-            color: "#1A1A1A",
-            lineHeight: 1.15,
-            maxWidth: "820px",
-            marginBottom: "28px",
-          }}
-        >
-          Conversemos sobre tu operación
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-          }}
-        >
-          <div
-            style={{
-              background: "#1B5FA6",
-              color: "#F7F5F0",
-              fontSize: "18px",
-              fontWeight: "600",
-              padding: "12px 28px",
-              borderRadius: "6px",
-            }}
-          >
-            Diagnóstico gratuito · 30 min
-          </div>
-          <div
-            style={{
-              fontSize: "18px",
-              color: "#1B5FA6",
-              fontWeight: "600",
-            }}
-          >
-            Sin compromiso
-          </div>
-        </div>
-      </div>
-    ),
-    size
-  );
+  return renderOgImage({
+    eyebrow: "Contacto",
+    headline: "Conversemos sobre tu operación",
+    badge: "Diagnóstico gratuito · 30 min",
+    tagline: "Sin compromiso",
+  });
 }

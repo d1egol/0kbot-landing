@@ -6,11 +6,11 @@ const footerLinks = [
   {
     title: "Servicios",
     links: [
-      { label: "Diagnóstico de procesos", href: "/servicios" },
-      { label: "Estandarización", href: "/servicios" },
-      { label: "Automatización", href: "/servicios" },
-      { label: "Tableros de datos", href: "/servicios" },
-      { label: "Gestión comercial", href: "/servicios" },
+      { label: "Diagnóstico de procesos", href: "/servicios#diagnostico" },
+      { label: "Estandarización", href: "/servicios#estandarizacion" },
+      { label: "Automatización", href: "/servicios#automatizacion" },
+      { label: "Tableros de datos", href: "/servicios#tableros" },
+      { label: "Gestión comercial", href: "/servicios#gestion-comercial" },
     ],
   },
   {
@@ -20,6 +20,10 @@ const footerLinks = [
       { label: "Cómo trabajamos", href: "/como-trabajamos" },
       { label: "Casos y resultados", href: "/casos" },
       { label: "Recursos", href: "/recursos" },
+      { label: "Calculadora ROI", href: "/calculadora-roi" },
+      { label: "Comparativas", href: "/comparar" },
+      { label: "Herramientas", href: "/herramientas" },
+      { label: "Por industria", href: "/industria" },
     ],
   },
   {

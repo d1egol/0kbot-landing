@@ -19,14 +19,14 @@ const spaceGrotesk = Space_Grotesk({
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-dm-sans",
   display: "swap",
 });
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "600", "700"],
   variable: "--font-playfair",
   display: "swap",
 });
@@ -91,6 +91,14 @@ export const metadata: Metadata = {
   creator: "Diego López",
   publisher: "0kbot",
   category: "Consultoría de procesos",
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
+    other: {
+      ...(process.env.NEXT_PUBLIC_BING_VERIFICATION
+        ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION }
+        : {}),
+    },
+  },
 };
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -181,15 +189,6 @@ const jsonLd = {
       name: "0kbot",
       publisher: { "@id": "https://0kbot.com/#business" },
       inLanguage: "es-CL",
-      // Habilita el Sitelink Searchbox en resultados de Google
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://0kbot.com/blog?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
     },
   ],
 };

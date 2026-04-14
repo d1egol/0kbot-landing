@@ -23,6 +23,12 @@ export const metadata: Metadata = {
       "Artículos prácticos sobre automatización de procesos, IA y transformación digital para pymes chilenas.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog 0kbot — Automatización e IA para Pymes Chile",
+    description:
+      "Artículos prácticos sobre automatización de procesos, IA y transformación digital para pymes chilenas.",
+  },
   alternates: {
     canonical: "https://0kbot.com/blog",
     types: {
@@ -122,9 +128,9 @@ export default function BlogPage() {
 
         {/* Diagnóstico CTA */}
         <div className="mt-16 rounded-2xl bg-gradient-to-br from-[#1B5FA6] to-[#0d3d6e] p-8 md:p-12 text-white text-center">
-          <h3 className="font-heading text-2xl md:text-3xl font-bold mb-3">
+          <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3">
             ¿Tu empresa tiene procesos que podrían mejorar?
-          </h3>
+          </h2>
           <p className="text-white/80 mb-8 max-w-md mx-auto">
             Haz nuestro diagnóstico gratuito de 30 minutos y descubre exactamente
             dónde pierde tiempo y dinero tu operación.

@@ -24,6 +24,21 @@ export const metadata: Metadata = {
     "automatización tareas manuales Chile",
   ],
   alternates: { canonical: "https://0kbot.com/soluciones" },
+  openGraph: {
+    title: "Soluciones para Problemas Operativos en Pymes Chile | 0kbot",
+    description:
+      "Identifica tu desafío operativo y conoce cómo lo resolvemos: desorden, pérdida de tiempo, falta de visibilidad y más.",
+    url: "https://0kbot.com/soluciones",
+    siteName: "0kbot",
+    locale: "es_CL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Soluciones para Problemas Operativos en Pymes Chile | 0kbot",
+    description:
+      "Identifica tu desafío operativo y conoce cómo lo resolvemos con consultoría de procesos.",
+  },
 };
 
 const soluciones = [
@@ -95,9 +110,22 @@ const soluciones = [
   },
 ];
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://0kbot.com" },
+    { "@type": "ListItem", position: 2, name: "Soluciones", item: "https://0kbot.com/soluciones" },
+  ],
+};
+
 export default function SolucionesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">
         <div className="container-wide">

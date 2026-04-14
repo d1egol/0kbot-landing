@@ -1,0 +1,145 @@
+---
+title: "Cómo calcular el ROI real de automatizar procesos en tu pyme"
+excerpt: "Fórmula simple para estimar retorno y payback de un proyecto de automatización, con ejemplo trabajado."
+date: "2026-04-13"
+author: "Diego López"
+category: "Automatización"
+tags: ["ROI", "automatización", "finanzas pyme", "KPIs"]
+featured: false
+---
+
+"Nos conviene automatizar." Esa frase, dicha sin números, ha llevado a muchas pymes a gastar plata en proyectos que nunca demostraron retorno. Y también ha llevado a muchas otras a no invertir en algo que les habría ahorrado millones al año, porque "no había forma de saber si iba a funcionar".
+
+Este artículo es para el dueño, gerente general o jefe de operaciones que necesita llegar al directorio con una estimación de ROI defendible, no con una promesa de proveedor. La fórmula es simple, la disciplina para aplicarla es lo difícil.
+
+## La fórmula base
+
+El ROI de un proyecto de automatización se estima así:
+
+```
+ROI anual = (Ahorro en horas × Costo hora)
+          + (Reducción de errores × Costo por error)
+          + (Ingresos adicionales atribuibles)
+          − Inversión total (implementación + licencias año 1)
+```
+
+Y el payback:
+
+```
+Payback (meses) = Inversión total / (ROI anual / 12)
+```
+
+Tres componentes, tres supuestos, una resta. Suena trivial. Lo que la hace útil o inútil es la calidad de los datos que metes en cada variable.
+
+## Cómo estimar cada variable sin autoengañarte
+
+### Ahorro en horas
+
+Horas semanales que el equipo deja de destinar al proceso después de automatizarlo, multiplicadas por 48 semanas laborales al año.
+
+- **Dato que necesitas**: cuántas horas-persona por semana consume el proceso hoy
+- **Cómo obtenerlo**: medir con el equipo durante 2 semanas, no estimarlo de memoria
+- **Trampa típica**: contar horas que en realidad no se liberan, porque la persona va a seguir trabajando el mismo tiempo haciendo otras cosas. Solo cuenta horas que se convierten en capacidad productiva real o en menos horas extras pagadas
+
+### Costo hora
+
+El costo total de una hora de trabajo de las personas involucradas, incluyendo sueldo, leyes sociales y costos indirectos.
+
+- **Cálculo realista**: sueldo bruto mensual × 1,45 / 160 horas
+- **Ejemplo**: vendedor con sueldo líquido de 1.500.000 CLP → bruto aprox. 1.800.000 → costo total aprox. 2.600.000 → costo hora ≈ 16.250 CLP (≈ 0,4 UF)
+
+### Reducción de errores
+
+Cuántos errores operativos mensuales desaparecen y cuánto cuesta cada uno.
+
+- **Tipos de error típicos**: cotizaciones mal enviadas, pedidos duplicados, cobros no facturados, leads no contactados
+- **Costo por error**: desde la hora que toma corregirlo hasta el impacto en venta perdida o cliente enojado
+- **Sé conservador**: si no puedes ponerle un número defendible a un error, no lo incluyas
+
+### Ingresos adicionales atribuibles
+
+Ventas extra que se generan porque el proceso automatizado captura, responde o cierra más rápido que el manual.
+
+- **Ejemplo**: si hoy respondes el 60% de los WhatsApp entrantes y con automatización respondes el 95%, puedes estimar el ingreso adicional con tu tasa de conversión actual
+- **Regla conservadora**: usa la mitad del número que te gustaría usar
+
+### Inversión total
+
+Todo lo que se paga en el año 1.
+
+- Implementación (consultoría, desarrollo, configuración)
+- Licencias de software
+- Horas internas del equipo en el proyecto
+- Capacitación y cambio organizacional
+
+No dejes nada fuera. Un ROI que omite las horas internas del equipo es un ROI inflado.
+
+## Ejemplo trabajado: pyme comercial de 25 personas
+
+Empresa distribuidora de insumos industriales. Recibe pedidos por WhatsApp, correo y teléfono. Hoy una asistente comercial los digita manualmente en el ERP. Vamos a calcular el ROI de automatizar ese flujo en 3 escenarios.
+
+**Situación inicial:**
+
+- Volumen: 400 pedidos/mes
+- Tiempo por pedido: 6 minutos → 40 h/mes de digitación
+- Errores actuales: 5% de los pedidos tienen error → 20 errores/mes × 45 minutos de corrección
+- Costo hora asistente: 0,4 UF
+- Costo por error (incluye corrección + impacto cliente): 1,2 UF
+- Ventas perdidas por pedidos no procesados a tiempo: estimación conservadora 8 UF/mes
+
+**Inversión estimada:** 180 UF (diagnóstico + automatización + licencias año 1)
+
+### Escenario conservador
+
+Asume que la automatización captura el 70% de los pedidos sin intervención humana y reduce errores a la mitad.
+
+- Horas recuperadas: 28/mes × 12 = 336 h/año × 0,4 UF = **134 UF/año**
+- Errores evitados: 10/mes × 12 × 1,2 UF = **144 UF/año**
+- Ventas recuperadas: 4 UF/mes × 12 = **48 UF/año**
+- **Total ahorro año 1: 326 UF**
+- ROI año 1: 326 − 180 = **146 UF**
+- Payback: **6,6 meses**
+
+### Escenario base
+
+Automatización captura 85% de los pedidos y reduce errores en 70%.
+
+- Horas recuperadas: 34/mes × 12 × 0,4 UF = **163 UF/año**
+- Errores evitados: 14/mes × 12 × 1,2 UF = **202 UF/año**
+- Ventas recuperadas: 6 UF/mes × 12 = **72 UF/año**
+- **Total ahorro año 1: 437 UF**
+- ROI año 1: 437 − 180 = **257 UF**
+- Payback: **4,9 meses**
+
+### Escenario optimista
+
+Automatización captura 95% y prácticamente elimina errores de digitación.
+
+- Horas recuperadas: 38/mes × 12 × 0,4 UF = **182 UF/año**
+- Errores evitados: 18/mes × 12 × 1,2 UF = **259 UF/año**
+- Ventas recuperadas: 10 UF/mes × 12 = **120 UF/año**
+- **Total ahorro año 1: 561 UF**
+- ROI año 1: 561 − 180 = **381 UF**
+- Payback: **3,8 meses**
+
+La decisión se toma mirando el escenario conservador. Si el ROI conservador es positivo y el payback es menor a 12 meses, el proyecto se defiende solo. Si no, hay que volver a revisar supuestos o descartar el proyecto.
+
+## Factores cualitativos que no entran en la fórmula
+
+Hay beneficios reales que no deberías meter en la planilla porque son difíciles de cuantificar, pero sí deberías mencionar en la presentación al directorio:
+
+1. **Moral del equipo**: sacarle 40 horas de digitación al mes a alguien mejora su trabajo y su permanencia
+2. **Capacidad de crecer**: un proceso automatizado escala con más pedidos sin contratar. Uno manual no
+3. **Reducción de riesgo operacional**: si la asistente se enferma, el proceso no se cae
+4. **Datos limpios para decidir mejor**: la automatización obliga a estructurar datos que antes estaban sueltos
+5. **Velocidad de respuesta al cliente**: un pedido confirmado en 30 segundos tiene un valor distinto a uno confirmado en 4 horas
+
+Estos factores justifican que elijas el proyecto aun cuando el ROI esté en el borde, pero no los uses para inflar el número.
+
+## Cuándo el ROI no te da
+
+Si después de armar los 3 escenarios con datos honestos el ROI sigue siendo negativo o el payback se va sobre 18 meses, el proyecto no es bueno o está mal alcanzado. No lo fuerces. Vuelve al diagnóstico: probablemente hay un proceso mejor para atacar primero o la solución propuesta está sobredimensionada.
+
+---
+
+¿Quieres ayuda para armar los 3 escenarios de ROI de un proceso específico de tu pyme? Agenda un **[diagnóstico gratuito de 30 minutos](/contacto)** y lo trabajamos juntos. Puedes revisar también [cómo trabajamos](/como-trabajamos) para entender la metodología.

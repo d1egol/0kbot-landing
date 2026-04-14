@@ -86,3 +86,29 @@ export function trackCTAClick(ctaName: string, location: string): void {
     // never block the user flow
   }
 }
+
+/**
+ * Uso pasivo de la calculadora ROI — se dispara una vez por sesion despues
+ * de que el usuario termino de ajustar inputs (debounce). Sirve para medir
+ * engagement de la herramienta aunque no hagan click en el CTA final.
+ */
+export function trackCalculatorComputed(params: {
+  equipo: number;
+  ahorro_anual: number;
+  payback_meses: number | null;
+  roi_12m: number;
+}): void {
+  try {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "calculator_computed", {
+        event_category: "engagement",
+        equipo: params.equipo,
+        ahorro_anual: Math.round(params.ahorro_anual),
+        payback_meses: params.payback_meses ?? 0,
+        roi_12m: Math.round(params.roi_12m),
+      });
+    }
+  } catch {
+    // never block the user flow
+  }
+}

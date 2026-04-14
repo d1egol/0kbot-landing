@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { LazyMotion, domAnimation, m, useInView } from "framer-motion";
 import { Clock, TrendingDown, Zap, Building2 } from "lucide-react";
 
 const stats = [
@@ -89,9 +89,10 @@ export default function StatsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
+    <LazyMotion features={domAnimation}>
     <section ref={ref} className="section-padding bg-white border-y border-[#E5E2DB]">
       <div className="container-content">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
@@ -107,13 +108,13 @@ export default function StatsSection() {
             Basados en proyectos reales implementados con empresas
             latinoamericanas de 15 a 150 personas.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, i) => {
             const Icon = stat.icon;
             return (
-              <motion.div
+              <m.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 24 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -134,11 +135,12 @@ export default function StatsSection() {
                   {stat.label}
                 </div>
                 <div className="text-xs text-[#666]">{stat.description}</div>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

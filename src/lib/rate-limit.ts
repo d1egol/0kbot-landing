@@ -1,10 +1,14 @@
 /**
  * Simple in-memory rate limiter for Next.js API routes.
- * The module-level Map persists across warm lambda invocations on the same instance.
- * Resets on cold start — acceptable for landing page traffic.
  *
- * For higher traffic needs, swap the store for Upstash Redis
- * using @upstash/ratelimit without touching the API routes.
+ * LIMITACIÓN SERVERLESS: En Vercel/serverless, cada instancia mantiene su propio
+ * Map en memoria. El store se resetea en cada cold start y no se comparte entre
+ * instancias concurrentes. Esto significa que el rate limiting es best-effort:
+ * protege contra ráfagas dentro de una misma instancia warm, pero no garantiza
+ * un límite global estricto bajo alta concurrencia.
+ *
+ * Para un rate limiter global y persistente, reemplazar el Map por Upstash Redis
+ * (@upstash/ratelimit) sin cambiar la interfaz de checkRateLimit().
  */
 
 interface RateEntry {

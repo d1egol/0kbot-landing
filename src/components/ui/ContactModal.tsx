@@ -69,16 +69,24 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
 
     setSubmitting(true);
 
-    // Fire-and-forget: save lead to DB, don't block redirect
-    fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        nombre,
-        email,
-        fuente: LEAD_SOURCES.CTA_CALENDLY,
-      }),
-    }).catch(() => {});
+    // Intentar guardar el lead antes de redirigir (timeout 3s para no bloquear al usuario)
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 3000);
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre,
+          email,
+          fuente: LEAD_SOURCES.CTA_CALENDLY,
+        }),
+        signal: controller.signal,
+      });
+      clearTimeout(timeout);
+    } catch {
+      console.warn("[ContactModal] No se pudo guardar el lead en DB");
+    }
 
     trackLeadCapture("modal");
 
