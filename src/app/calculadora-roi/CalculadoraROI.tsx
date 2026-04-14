@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { trackCTAClick } from "@/lib/analytics";
+import { trackCalculatorComputed, trackCTAClick } from "@/lib/analytics";
 
 const UF_TO_CLP = 40000;
 const TASA_AUTOMATIZACION = 0.6;
@@ -89,6 +89,24 @@ export default function CalculadoraROI() {
   }, [inputs]);
 
   const sinDatos = results.costoActualAnual === 0;
+
+  // Dispara calculator_computed una sola vez por sesion (dos segundos despues
+  // del ultimo ajuste) para medir engagement sin sesgar por cambios ruidosos.
+  const hasTrackedRef = useRef(false);
+  useEffect(() => {
+    if (hasTrackedRef.current || sinDatos) return;
+    const timeoutId = window.setTimeout(() => {
+      if (hasTrackedRef.current) return;
+      hasTrackedRef.current = true;
+      trackCalculatorComputed({
+        equipo: inputs.equipo,
+        ahorro_anual: results.ahorroAnual,
+        payback_meses: results.paybackMeses,
+        roi_12m: results.roi12m,
+      });
+    }, 2000);
+    return () => window.clearTimeout(timeoutId);
+  }, [inputs.equipo, results.ahorroAnual, results.paybackMeses, results.roi12m, sinDatos]);
 
   const ctaHref = `/contacto?fuente=calculadora-roi&ahorro=${Math.round(
     results.ahorroAnual
