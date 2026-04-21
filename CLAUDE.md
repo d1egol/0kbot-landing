@@ -213,6 +213,16 @@ HomePage DiagnosticoSection
 - No hardcodear la URL de Calendly ni el email de contacto fuera de `constants.ts`
 - No agregar `@import` de Google Fonts en CSS
 - No saltarse `npm run lint` antes de dar trabajo por terminado
+- **No duplicar copy de casos**: los escenarios por industria viven en `src/lib/casos.ts` como única fuente de verdad. La homepage (`CasosSection.tsx`) consume de ahí y mantiene sólo `uiMeta` (iconos, colores, métrica destacada) por `slug`. Nunca reintroducir copy inline ahí.
+- **No confiar en `npm run build` local en Windows**: `@vercel/og` falla al resolver paths de fonts con `fileURLToPath` (prerender error en rutas `/blog/[slug]/opengraph-image`). El CI en Linux sí pasa y Vercel deploya bien. Verificar con `npm run lint` local + CI de GitHub, no con build local.
+
+---
+
+## Decisiones de copy ya tomadas (no revisitar sin preguntar)
+
+- **`/casos` NO lleva disclaimer** sobre si los escenarios son reales o ilustrativos. Decisión del usuario (2026-04-21).
+- **Pregunta FAQ "¿Cuánto cuesta esto?" → "¿Cuánto cuesta un proyecto de mejora de procesos?"** (forma larga, unificada con JSON-LD para evitar discrepancia en structured data).
+- **Footer tiene 2 iconos de LinkedIn**: primero empresa (`/company/0kbot`), luego personal (`/in/diego-lopez-dinamarca`). No consolidar.
 
 ---
 
