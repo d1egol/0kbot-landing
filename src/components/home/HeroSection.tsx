@@ -10,7 +10,7 @@ const bullets = [
 
 export default function HeroSection() {
   return (
-    <section className="bg-background pt-24 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
+    <section className="relative bg-background pt-24 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
       {/* Background grid pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{

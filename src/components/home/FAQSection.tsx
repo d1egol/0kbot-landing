@@ -6,7 +6,7 @@ const preguntas = [
     respuesta: "No. Muchas veces el problema no es el software, sino el proceso. Si se resuelve con orden, estandarización o una herramienta simple, esa será la recomendación.",
   },
   {
-    pregunta: "¿Cuánto cuesta esto?",
+    pregunta: "¿Cuánto cuesta un proyecto de mejora de procesos?",
     respuesta: "Depende del tamaño y alcance, pero para orientarte: programas para pymes de 10–50 personas parten desde 30–50 UF, y para operaciones de 50–200 personas suelen estar entre 60–120 UF. El diagnóstico inicial es siempre gratuito. Si no hay retorno visible proyectado, no tiene sentido avanzar.",
   },
   {
@@ -18,12 +18,12 @@ const preguntas = [
     respuesta: "En la mayoría de los casos, el problema no parte por las personas, sino por procesos mal diseñados, información dispersa y roles poco claros.",
   },
   {
-    pregunta: "¿Usan IA?",
+    pregunta: "¿Usan IA en la consultoría de procesos?",
     respuesta: "Sí, pero solo cuando ayuda de verdad. No se implementa IA por moda, sino cuando reduce trabajo manual, errores o tiempos de respuesta.",
   },
   {
-    pregunta: "¿Cuánto se demoran en verse resultados?",
-    respuesta: "Muchas mejoras muestran impacto en las primeras semanas, sobre todo cuando el cuello de botella está claro.",
+    pregunta: "¿Cuánto se demoran en verse resultados de la mejora de procesos?",
+    respuesta: "Muchas mejoras muestran impacto en las primeras semanas, sobre todo cuando el cuello de botella está claro. El programa completo dura 12 semanas.",
   },
 ];
 
