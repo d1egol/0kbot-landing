@@ -1,16 +1,27 @@
 import MotionSection from "@/components/ui/MotionSection";
 import CasosCarousel from "@/components/ui/CasosCarousel";
+import { escenarios } from "@/lib/casos";
 
-const escenarios = [
+// Slugs mostrados en la homepage — subconjunto curado de @/lib/casos.
+const HOMEPAGE_SLUGS = [
+  "distribuidoras",
+  "empresas-servicios-tecnicos",
+  "clinicas-centros-salud",
+] as const;
+
+// Presentación (iconos, colores de acento, métricas destacadas) por slug.
+// Los datos de copy viven en @/lib/casos como única fuente de verdad.
+const uiMeta: Record<
+  string,
   {
-    industria: "Distribuidora de alimentos",
-    tamano: "40–60 personas",
-    problema:
-      "Los pedidos se coordinan por WhatsApp y planilla Excel. El picking se hace de memoria, sin checklist, y los errores llegan con el cliente.",
-    enfoque:
-      "Estandarizar el proceso de picking con checklist digital. Centralizar el registro de pedidos para eliminar la doble entrada de datos.",
-    impactoEsperado:
-      "La estandarización del picking reduce errores típicamente en un 50–80% según benchmarks de la industria logística (Lean Institute).",
+    metricaDestacada: string;
+    metricaLabel: string;
+    accentColor: string;
+    accentBg: string;
+    icon: React.ReactNode;
+  }
+> = {
+  distribuidoras: {
     metricaDestacada: "↓ 80%",
     metricaLabel: "errores de picking",
     accentColor: "#1B5FA6",
@@ -27,15 +38,7 @@ const escenarios = [
       </svg>
     ),
   },
-  {
-    industria: "Empresa de servicios técnicos",
-    tamano: "30–50 personas",
-    problema:
-      "Los técnicos llegan a terreno sin el repuesto correcto porque no hay diagnóstico previo estandarizado. 1 de cada 3 visitas requiere una segunda.",
-    enfoque:
-      "Protocolo de diagnóstico telefónico previo a la visita + lista de materiales recomendada según tipo de trabajo y historial.",
-    impactoEsperado:
-      "Reducir las segundas visitas libera capacidad para atender más órdenes con la misma dotación, sin contratar.",
+  "empresas-servicios-tecnicos": {
     metricaDestacada: "−64%",
     metricaLabel: "visitas fallidas",
     accentColor: "#7C3AED",
@@ -51,15 +54,7 @@ const escenarios = [
       </svg>
     ),
   },
-  {
-    industria: "Centro de salud · Servicios con agenda",
-    tamano: "10–30 personas",
-    problema:
-      "El 20–30% de las horas agendadas resultan en inasistencias. El personal llama manualmente para confirmar, quitando tiempo de la operación.",
-    enfoque:
-      "Recordatorios automáticos por WhatsApp a 48 y 24 horas antes de la cita. Lista de espera activa para llenar cancelaciones.",
-    impactoEsperado:
-      "Estudios del sector salud muestran reducciones del 30–50% en inasistencias con recordatorios automatizados (NEJM Catalyst).",
+  "clinicas-centros-salud": {
     metricaDestacada: "↓ 50%",
     metricaLabel: "inasistencias",
     accentColor: "#059669",
@@ -75,7 +70,20 @@ const escenarios = [
       </svg>
     ),
   },
-];
+};
+
+const casosHomepage = HOMEPAGE_SLUGS.map((slug) => {
+  const e = escenarios.find((esc) => esc.slug === slug);
+  if (!e) throw new Error(`Escenario '${slug}' no encontrado en @/lib/casos`);
+  return {
+    industria: e.industria,
+    tamano: e.tamano,
+    problema: e.problema,
+    enfoque: e.enfoque,
+    impactoEsperado: e.impactoEsperado,
+    ...uiMeta[slug],
+  };
+});
 
 export default function CasosSection() {
   return (
@@ -90,7 +98,7 @@ export default function CasosSection() {
           </p>
         </MotionSection>
 
-        <CasosCarousel casos={escenarios} />
+        <CasosCarousel casos={casosHomepage} />
       </div>
     </section>
   );

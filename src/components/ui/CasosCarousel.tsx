@@ -7,7 +7,7 @@ interface EscenarioData {
   industria: string;
   tamano: string;
   problema: string;
-  enfoque: string;
+  enfoque: string | string[];
   impactoEsperado: string;
   metricaDestacada?: string;
   metricaLabel?: string;
@@ -55,9 +55,17 @@ function EscenarioCard({ caso }: { caso: EscenarioData }) {
           <p className="text-[10px] font-sans font-semibold text-foreground uppercase tracking-wider mb-1.5">
             Nuestro enfoque
           </p>
-          <p className="text-sm text-muted-foreground font-sans leading-relaxed">
-            {caso.enfoque}
-          </p>
+          {Array.isArray(caso.enfoque) ? (
+            <ul className="text-sm text-muted-foreground font-sans leading-relaxed space-y-1.5 list-disc list-outside pl-5">
+              {caso.enfoque.map((punto, i) => (
+                <li key={i}>{punto}</li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-sm text-muted-foreground font-sans leading-relaxed">
+              {caso.enfoque}
+            </p>
+          )}
         </div>
       </div>
 
