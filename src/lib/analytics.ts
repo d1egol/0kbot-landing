@@ -74,6 +74,28 @@ export function trackDiagnosticoCompleted(): void {
   }
 }
 
+/**
+ * Falla al guardar el lead en /api/leads (timeout, 5xx, network error).
+ * Se dispara desde el cliente antes de redirigir a Calendly, para poder
+ * monitorear drift entre leads reportados por Calendly vs Supabase.
+ */
+export function trackLeadSaveFailed(
+  source: "modal" | "diagnostico" | "contacto",
+  reason: "timeout" | "network" | "server_error" | "unknown"
+): void {
+  try {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "lead_save_failed", {
+        event_category: "error",
+        source,
+        reason,
+      });
+    }
+  } catch {
+    // never block the user flow
+  }
+}
+
 export function trackCTAClick(ctaName: string, location: string): void {
   try {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {

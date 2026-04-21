@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
-import { trackLeadCapture } from "@/lib/analytics";
+import { trackLeadCapture, trackLeadSaveFailed } from "@/lib/analytics";
 import { CALENDLY_URL, LEAD_SOURCES } from "@/lib/constants";
 
 interface ContactModalProps {
@@ -73,7 +73,7 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
     try {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 3000);
-      await fetch("/api/leads", {
+      const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -84,8 +84,17 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
         signal: controller.signal,
       });
       clearTimeout(timeout);
-    } catch {
+      if (!res.ok) {
+        console.warn("[ContactModal] /api/leads respondió", res.status);
+        trackLeadSaveFailed("modal", "server_error");
+      }
+    } catch (err) {
       console.warn("[ContactModal] No se pudo guardar el lead en DB");
+      const reason: "timeout" | "network" =
+        err instanceof DOMException && err.name === "AbortError"
+          ? "timeout"
+          : "network";
+      trackLeadSaveFailed("modal", reason);
     }
 
     trackLeadCapture("modal");
