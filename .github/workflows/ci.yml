@@ -41,13 +41,17 @@ jobs:
         continue-on-error: true
 
       - name: Build
-        run: npm run build
+        run: npm run build 2>&1 | tee build-output.txt
+        shell: bash
         env:
           NEXT_PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
           NEXT_PUBLIC_SUPABASE_ANON_KEY: placeholder_anon_key
           SUPABASE_SERVICE_ROLE_KEY: placeholder_service_role_key
           RESEND_API_KEY: placeholder_resend_key
           NEXT_PUBLIC_APP_URL: https://0kbot.com
+
+      - name: Check perf budget
+        run: node scripts/check-bundle-budget.js build-output.txt .perf-budget.json
 
       - name: Lighthouse CI
         run: |

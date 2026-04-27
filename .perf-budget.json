@@ -3,7 +3,9 @@
     "established_phase": "3",
     "established_at": "2026-04-27",
     "source_run": "https://github.com/d1egol/0kbot-landing/actions/runs/25012831996",
-    "note": "Bundle post-Fase 3 = idéntico a baseline Fase 0. Los 25 paquetes Radix removidos no estaban en bundle final (tree-shaking ya los excluía). Higiene logged: -1981 líneas en package-lock.json. Fase 4 (Magic UI + Lenis + GSAP) NO puede superar estos valores."
+    "note": "Bundle post-Fase 3 = idéntico a baseline Fase 0. Los 25 paquetes Radix removidos no estaban en bundle final (tree-shaking ya los excluía). Higiene logged: -1981 líneas en package-lock.json. Fase 4 (Magic UI + Lenis + GSAP) NO puede superar estos valores.",
+    "enforced_by": "scripts/check-bundle-budget.js (corre en CI tras next build, falla si excede)",
+    "todo_fase_8_0": "Al hacer upgrade Next 14 -> 15, bumpear @next/bundle-analyzer en mismo PR (actualmente fijado a 14.2.35 por compat). Tras upgrade, re-baseline este budget si Next 15 cambia el bundle base."
   },
   "first_load_js_kb": {
     "shared": 87.3,
