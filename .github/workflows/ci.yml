@@ -59,7 +59,6 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: placeholder_service_role_key
           RESEND_API_KEY: placeholder_resend_key
           NEXT_PUBLIC_APP_URL: https://0kbot.com
-        continue-on-error: true
 
   secret-scan:
     name: Secret Scan
