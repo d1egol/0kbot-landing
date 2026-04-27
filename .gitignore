@@ -41,3 +41,9 @@ tsconfig.tsbuildinfo
 # Lighthouse manual reports per phase (no commitear, solo locales)
 .phase*-lh*.json
 .phase*-lh*.html
+
+# graphify knowledge graph artifacts (locales, regenerables con /graphify)
+graphify-out/
+
+# Claude Code per-project state
+.claude/
