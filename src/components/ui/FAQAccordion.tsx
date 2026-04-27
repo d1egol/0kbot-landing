@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import Link from "next/link";
+import { Plus, Minus, ArrowRight } from "lucide-react";
 import MotionSection from "./MotionSection";
 
 interface FAQItem {
   pregunta: string;
   respuesta: string;
+  cta?: { label: string; href: string };
 }
 
 interface FAQAccordionProps {
@@ -38,6 +40,15 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
                 <p className="text-sm text-muted-foreground font-sans leading-relaxed">
                   {item.respuesta}
                 </p>
+                {item.cta && (
+                  <Link
+                    href={item.cta.href}
+                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+                  >
+                    {item.cta.label}
+                    <ArrowRight size={14} />
+                  </Link>
+                )}
               </div>
             )}
           </div>
