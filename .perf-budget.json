@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "established_phase": "3",
+    "established_at": "2026-04-27",
+    "source_run": "https://github.com/d1egol/0kbot-landing/actions/runs/25012831996",
+    "note": "Bundle post-Fase 3 = idéntico a baseline Fase 0. Los 25 paquetes Radix removidos no estaban en bundle final (tree-shaking ya los excluía). Higiene logged: -1981 líneas en package-lock.json. Fase 4 (Magic UI + Lenis + GSAP) NO puede superar estos valores."
+  },
+  "first_load_js_kb": {
+    "shared": 87.3,
+    "/": 141,
+    "/blog": 103,
+    "/blog/[slug]": 105,
+    "/recursos": 109,
+    "marketing_generic": 96.7
+  },
+  "lighthouse_min": {
+    "performance": 64,
+    "accessibility": 89,
+    "seo": 100,
+    "best_practices": 73
+  },
+  "core_web_vitals_max": {
+    "largest_contentful_paint_ms": 5100,
+    "total_blocking_time_ms": 480,
+    "first_contentful_paint_ms": 2800,
+    "cumulative_layout_shift": 0.1
+  }
+}
