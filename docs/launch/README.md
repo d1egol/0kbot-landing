@@ -38,34 +38,62 @@ Actualiza el estado de cada ítem a medida que los completes.
 
 ## BLOQUE 4 — Ya listo ✅
 
+### Producto core
 | Tarea | Detalle |
 |---|---|
 | Sitio web en producción | `0kbot.com` con todas las secciones optimizadas |
-| Blog con 10 artículos | `/blog` + SEO configurado |
-| Hero reescrito con copy claro | H1: "Automatizamos procesos para pymes en Chile" + "No vendemos IA. Vendemos lunes tranquilos." |
+| Blog con **13 artículos** | `/blog` + SEO configurado |
+| Hero reescrito con copy claro | H1: "Mejora de procesos para pymes en Chile" + "No vendemos IA. Vendemos lunes tranquilos." |
 | SEO on-page optimizado | Keywords distribuidas en metadata, hero, secciones |
 | Flujo de conversión Calendly | ContactModal (2 campos) → lead en Supabase → redirect a Calendly con prefill |
 | Captura de leads en Supabase | Verificado: leads se guardan correctamente con fuente `cta_calendly` |
-| Emails transaccionales | Resend configurado — notificaciones al registrar lead |
+| Emails transaccionales | Resend configurado — `sendTransactionalEmail` dispatcher unificado (3 flows × 2 kinds) |
 | FAQs actualizadas | 6 preguntas con respuestas alineadas a la marca |
 | CTAs optimizados | Todos orientados a pérdidas/números, no genéricos |
-| SolucionSection reescrita | 3 columnas: Qué/Cómo/Qué obtienes |
-| DiagnosticoSection simplificada | CTA directo sin wizard de 6 pasos |
-| Formulario de onboarding | `/onboarding` — cuestionario pre-reunión |
+| Homepage | 12 secciones + `FloatingCTA` (mobile). Ver CLAUDE.md y PROMPT-HOMEPAGE-CRO.md |
+| DiagnosticoSection con DiagnosticoWizard de 6 pasos | tamaño · industria · dolor · intentadoAntes · timeline · contacto |
+| Formulario de onboarding | `/onboarding` — cuestionario pre-reunión calificado (presupuesto, plazo, rubro) |
 | Email `hola@0kbot.com` | Google Workspace activo |
 | Redes sociales | LinkedIn empresa, Instagram, Facebook creados |
-| Templates cold email | 4 rubros en `docs/email-templates/` |
+| Templates cold email | 4 rubros en `docs/email-templates/` + LinkedIn DMs + follow-up sequence |
 | Posts RRSS | 15 posts listos (5 artículos × 3 redes) en `docs/social-media/` |
-| LinkedIn DMs | Templates en `docs/email-templates/linkedin-dm.md` |
-| Follow-up sequence | 2 emails en `docs/email-templates/followup-sequences.md` |
 | Propuesta template | `docs/launch/PROPUESTA-TEMPLATE.md` |
+
+### Páginas SEO construidas (no listadas en versiones previas del checklist)
+| Sección | Páginas | Sitemap priority |
+|---|---|---|
+| `/calculadora-roi` | Herramienta interactiva (lead magnet) con JSON-LD `WebApplication` | 0.85 |
+| `/comparar/*` | 0kbot vs consultoras / vs contratar / ERP vs procesos / interno vs externa (4 sub + index) | 0.75–0.80 |
+| `/herramientas/*` | n8n · Make · Airtable · Google Workspace (4 sub + index) | 0.75–0.80 |
+| `/industria/*` | Retail · Manufactura · Servicios · Salud · Logística (5 sub + index) | 0.75–0.80 |
+| `/casos/[industry]` | 6 escenarios dinámicos desde `src/lib/casos.ts` | 0.80 |
+| Landings principales SEO | `/ia-para-pymes` · `/mejora-de-procesos` · `/automatizacion-procesos-chile` · `/transformacion-digital-pymes` | 0.90 |
+| OG images | 16 archivos `opengraph-image.tsx` (12 vía helper `renderOgImage`, 4 con layout custom) | — |
+
+### Performance e infraestructura
+| Tarea | Detalle |
+|---|---|
+| Lighthouse CI bloqueante | thresholds en `lighthouserc.json`: perf 0.60 · a11y 0.85 · seo 0.95 · best-practices 0.70 |
+| Headers de seguridad | CSP estricta, X-Frame-Options, Permissions-Policy en `next.config.mjs` |
+| Bundle analyzer | configurado vía `ANALYZE=true npm run build` |
+| Type checking | `npm run typecheck` (tsc --noEmit) sin errores |
+| Linting dual | ESLint + Biome configurados |
+| Sitemap dinámico | indexa blog y casos automáticamente desde `src/app/sitemap.ts` |
+| Phase 4 (Magic UI + Lenis + GSAP) | **revertida tras review de Codex** — Lenis añadía +78ms TBT por gain cosmético, Magic UI/GSAP sin uso. Ver commit `1273f1b`. No reintentar como bundle |
 
 ---
 
 ## Próximos pasos sugeridos (orden de prioridad)
 
-1. **Inmediato:** Conectar Calendly con Google Calendar de hola@0kbot.com para que las citas aparezcan automáticamente
-2. **Esta semana:** Finalizar constitución SpA en tuempresa.cl (esperando firma digital)
-3. **Esta semana:** Documentar caso Dos Huertos con métricas reales (preguntar al cliente por WhatsApp)
-4. **Próxima semana:** Primer lote de 10 cold emails + LinkedIn DMs
-5. **Próxima semana:** Publicar primeros posts en RRSS (programar semana completa en Metricool)
+### Operacional (revenue-first)
+1. **Inmediato:** Conectar Calendly con Google Calendar de hola@0kbot.com para que las citas aparezcan automáticamente (BLOQUE 1 #5)
+2. **Esta semana:** Finalizar constitución SpA en tuempresa.cl (esperando firma digital) (BLOQUE 1 #1)
+3. **Esta semana:** Documentar caso Dos Huertos con métricas reales (preguntar al cliente por WhatsApp) (BLOQUE 2 #9)
+4. **Próxima semana:** Primer lote de 10 cold emails + LinkedIn DMs (BLOQUE 3 #13–15)
+5. **Próxima semana:** Publicar primeros posts en RRSS (programar semana completa en Metricool) (BLOQUE 2 #11)
+
+### Hygiene técnica (deuda priorizada)
+1. **Decisión Navbar:** `/calculadora-roi` ya está enlazada en Footer pero no en Navbar primario. Evaluar si subirla (rompe regla "5 items" del CRO doc) o dejar solo en Footer.
+2. **Lighthouse threshold**: subir `categories:performance` de `0.60` a `0.80` en `lighthouserc.json` para que el gate detecte regresiones reales (perf real ≈86 según commit `55f3573`).
+3. **Tests automatizados**: agregar al menos 1 integration test por API route (`leads`, `diagnostico`, `onboarding`). Cero coverage hoy en las rutas críticas para conversión.
+4. **Phase 4 cerrada como deuda resuelta**: NO reintentar el bundle Magic UI + Lenis + GSAP. Si se necesita una animación específica en el futuro, implementar à la carte.
