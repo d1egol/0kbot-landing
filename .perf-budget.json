@@ -1,10 +1,12 @@
 {
   "_meta": {
-    "established_phase": "3",
+    "established_phase": "4-pre",
     "established_at": "2026-04-27",
-    "source_run": "https://github.com/d1egol/0kbot-landing/actions/runs/25012831996",
-    "note": "Bundle post-Fase 3 = idéntico a baseline Fase 0. Los 25 paquetes Radix removidos no estaban en bundle final (tree-shaking ya los excluía). Higiene logged: -1981 líneas en package-lock.json. Fase 4 (Magic UI + Lenis + GSAP) NO puede superar estos valores.",
-    "enforced_by": "scripts/check-bundle-budget.js (corre en CI tras next build, falla si excede)",
+    "source_run": "https://github.com/d1egol/0kbot-landing/actions/runs/25013985579",
+    "lighthouse_run": ".phase4pre-lh.json (vs https://0kbot.com prod, post lazyOnload trackers)",
+    "history": "v1 Fase 3: bundle baseline. v2 Fase 4-pre: Lighthouse subió Performance 64->86 al mover GTM/GA/Meta a lazyOnload. Trade-off aceptado: SI +0.8s, TTI +1.2s (métricas deprecated en LH v10).",
+    "note": "Bundle no cambió en Fase 3 (tree-shaking ya excluía Radix). En Fase 4-pre cambió Lighthouse pero no bundle (solo strategy de <Script>). Fase 4 (Magic UI + Lenis + GSAP) NO puede superar bundle ni bajar Lighthouse.",
+    "enforced_by": "scripts/check-bundle-budget.js (bundle) + Lighthouse manual vs prod (perf)",
     "todo_fase_8_0": "Al hacer upgrade Next 14 -> 15, bumpear @next/bundle-analyzer en mismo PR (actualmente fijado a 14.2.35 por compat). Tras upgrade, re-baseline este budget si Next 15 cambia el bundle base."
   },
   "first_load_js_kb": {
@@ -16,15 +18,15 @@
     "marketing_generic": 96.7
   },
   "lighthouse_min": {
-    "performance": 64,
+    "performance": 80,
     "accessibility": 89,
     "seo": 100,
     "best_practices": 73
   },
   "core_web_vitals_max": {
-    "largest_contentful_paint_ms": 5100,
-    "total_blocking_time_ms": 480,
-    "first_contentful_paint_ms": 2800,
+    "largest_contentful_paint_ms": 3500,
+    "total_blocking_time_ms": 400,
+    "first_contentful_paint_ms": 2000,
     "cumulative_layout_shift": 0.1
   }
 }
