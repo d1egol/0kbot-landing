@@ -9,6 +9,7 @@ import {
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import LenisProvider from "@/components/providers/LenisProvider";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -227,9 +228,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <LenisProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </LenisProvider>
       </body>
 
       {META_PIXEL_ID && (

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Lenis smooth scroll — solo desktop, mobile usa scroll nativo */
+@import "lenis/dist/lenis.css";
+
 @layer base {
   :root {
     /* Paleta brand 0kbot — cálida y profesional */
