@@ -5,9 +5,9 @@
 
 ---
 
-## Estado actual (actualizado marzo 2026)
+## Estado actual (actualizado abril 2026)
 
-El homepage tiene **8 secciones** (reducidas de 13 originales). Cada sección tiene una función específica en el funnel.
+El homepage tiene **12 secciones** + `FloatingCTA` (mobile). La auditoría CRO original propuso reducir a 8, pero las secciones marcadas como "eliminadas" en versiones previas de este doc se mantuvieron o reactivaron — la realidad es la documentada abajo.
 
 ---
 
@@ -15,41 +15,48 @@ El homepage tiene **8 secciones** (reducidas de 13 originales). Cada sección ti
 
 ```tsx
 // src/app/page.tsx
-<HeroSection />         // 1 — H1 + propuesta de valor + visual diagnóstico + credenciales
-<PainPointsSection />   // 2 — Dolores del cliente (mejor copy del sitio)
-<CredencialesSection /> // 3 — ¿Por qué confiar? — antes de explicar el proceso
-<ComoFuncionaSection /> // 4 — Metodología 12 semanas (4 fases)
-<CasosSection />        // 5 — Escenarios con métricas
-<FAQSection />          // 6 — Preguntas frecuentes (incluye precio en UF)
-<DiagnosticoSection />  // 7 — DiagnosticoWizard (calificación)
-<CTAFinalSection />     // 8 — CTA final de urgencia
+<HeroSection />         //  1 — H1 + propuesta de valor + visual diagnóstico
+<PainPointsSection />   //  2 — Dolores del cliente
+<SolucionSection />     //  3 — Qué/Cómo/Resultado en 3 columnas
+<CredencialesSection /> //  4 — Founder + credenciales
+<ComoFuncionaSection /> //  5 — Metodología 12 semanas (4 fases)
+<ComparacionSection />  //  6 — 6 problemas + soluciones concretas
+<CasosSection />        //  7 — Escenarios con métricas
+<PrincipiosSection />   //  8 — 3 principios de trabajo
+<FAQSection />          //  9 — Preguntas frecuentes (incluye precio en UF)
+<BlogPreviewSection />  // 10 — 3 artículos recientes
+<DiagnosticoSection />  // 11 — DiagnosticoWizard (calificación)
+<CTAFinalSection />     // 12 — CTA final de urgencia
 <FloatingCTA />         // Mobile only — botón flotante
 ```
 
 ### Por qué este orden
 
-El orden sigue el arco de credibilidad del buyer:
-1. **Hero**: ¿De qué va esto? (H1 + subhead + visual tangible)
+El orden sigue el arco de credibilidad del buyer y mantiene un solo CTA visible por viewport:
+
+1. **Hero**: ¿De qué va esto?
 2. **PainPoints**: ¿Ese es mi problema? (espejo del cliente)
-3. **Credenciales**: ¿Por qué Diego? (antes de explicar el proceso, el cliente necesita saber con quién trata)
-4. **ComoFunciona**: ¿Cómo lo hacen? (proceso, duración, garantía último tramo)
-5. **Casos**: ¿Funciona en mi industria? (escenarios realistas)
-6. **FAQ**: ¿Cuánto cuesta? ¿Qué pasa con mi gente? (objeciones)
-7. **Diagnóstico**: ¿Cómo empiezo? (acción cualificada)
-8. **CTAFinal**: Último impulso para quienes leyeron todo
+3. **Solucion**: ¿Qué resuelven y cómo? (Qué/Cómo/Resultado en 3 columnas)
+4. **Credenciales**: ¿Por qué Diego? (antes del proceso, el lector necesita saber con quién trata)
+5. **ComoFunciona**: ¿Cómo lo hacen? (proceso, duración, garantía último tramo)
+6. **Comparacion**: ¿En qué se diferencia esto de un ERP / agencia / interno? (objeciones operativas)
+7. **Casos**: ¿Funciona en mi industria? (escenarios realistas)
+8. **Principios**: ¿Cómo trabajan? (qué esperar de la relación)
+9. **FAQ**: ¿Cuánto cuesta? ¿Qué pasa con mi gente? (objeciones explícitas, con precio en UF)
+10. **BlogPreview**: ¿Tienen autoridad? (3 artículos recientes para señal de expertise + dwell time)
+11. **Diagnóstico**: ¿Cómo empiezo? (acción cualificada vía wizard)
+12. **CTAFinal**: Último impulso para quien leyó todo
 
 ---
 
-## Secciones eliminadas del homepage (no borrar los componentes)
+## Componentes que NO están en el homepage
 
-| Componente | Por qué se eliminó | Dónde vive ahora |
+| Componente | Estado | Dónde vive |
 |---|---|---|
-| `TestimoniosSection` | No son testimonios reales — son principios de trabajo. Confunde. | `/nosotros` o `/como-trabajamos` |
-| `SolucionSection` | Redundante con ComoFuncionaSection | `/servicios` |
-| `ComparacionSection` | Redundante con CasosSection | `/servicios` |
-| `BlogPreviewSection` | No es sección de conversión | Footer o Navbar |
+| `TestimoniosSection` | No incluido — no hay testimonios reales aún | `/nosotros` o `/como-trabajamos` |
+| `StatsSection` | Reservado — sólo activar cuando haya datos reales de clientes | Existe en `src/components/home/` pero no se renderiza |
 
-> **IMPORTANTE:** No re-agregar estas secciones al homepage. Si el cliente las pide, primero discutir el trade-off de atención dividida.
+> **IMPORTANTE:** Antes de agregar/quitar una sección al homepage, evaluar el trade-off de atención dividida. Si una sección no aporta a una pregunta nueva del buyer, no debería estar.
 
 ---
 
@@ -109,18 +116,15 @@ Este dato también está en `faqJsonLd` en `src/app/page.tsx` para Google Rich R
 
 ---
 
-## DiagnosticoWizard — 5 pasos
+## DiagnosticoWizard — 6 pasos
 
-El wizard se redujo de 6 a 5 pasos. Se eliminó el paso "¿Has intentado resolver esto antes?" porque:
-- Añadía fricción sin cambiar el outcome de la llamada
-- El dato era de baja utilidad para pre-calificación
-
-**Pasos actuales:**
+**Pasos actuales (`src/components/ui/DiagnosticoWizard.tsx`, `step` 0..5):**
 1. Tamaño de empresa
 2. Industria
 3. Principal dolor
-4. Timeline
-5. Datos de contacto
+4. ¿Has intentado resolver esto antes?
+5. Timeline
+6. Datos de contacto
 
 **Pantalla de éxito:** incluye link directo a Calendly prefilled con nombre + email. Esto convierte el wizard de "te llamo yo" a "agenda tú".
 
@@ -209,7 +213,7 @@ No cambiar. El primer H1 tiene el keyword primario exacto. El subhead es el hook
 
 ## Verificación post-cambios al homepage
 
-1. Confirmar que `src/app/page.tsx` tiene exactamente 8 secciones renderizadas
+1. Confirmar que `src/app/page.tsx` tiene exactamente 12 secciones renderizadas + `FloatingCTA`
 2. Confirmar que no hay más de 1 CTA visible simultáneamente en cualquier viewport
 3. Correr `npm run build` — no debe haber errores TypeScript
 4. Google Rich Results Test en `/` → debe detectar FAQPage con la respuesta de precio en UF
