@@ -228,7 +228,6 @@ HomePage DiagnosticoSection
 
 ## Memoria persistente
 
-El sistema de memoria automática guarda preferencias y contexto cross-sesión en:
-`/home/codespace/.claude/projects/-workspaces-0kbot-landing/memory/`
+El sistema de memoria automática guarda preferencias y contexto cross-sesión en `~/.claude/projects/<id-del-proyecto>/memory/`. El path absoluto exacto depende del entorno (Codespaces, macOS/Linux, Windows) — Claude lo resuelve automáticamente y no debe hardcodearse aquí.
 
 Índice: `MEMORY.md` — contiene perfil de usuario, contexto del proyecto, feedback acumulado.

@@ -5,11 +5,11 @@
 
 ---
 
-## Estado actual (actualizado marzo 2026)
+## Estado actual (actualizado abril 2026)
 
 El blog está completamente implementado y en producción en `https://0kbot.com/blog`.
 
-- **9 artículos** publicados en `src/content/blog/`
+- **13 artículos** publicados en `src/content/blog/`
 - **Ruta:** `/blog` (listado) y `/blog/[slug]` (artículo individual)
 - **Renderizado:** estático (SSG) con `generateStaticParams`
 - **Formato:** archivos `.mdx` con frontmatter
@@ -22,15 +22,19 @@ El blog está completamente implementado y en producción en `https://0kbot.com/
 src/
 ├── content/
 │   └── blog/              ← Artículos en formato .mdx
-│       ├── automatizacion-whatsapp-pymes.mdx
-│       ├── ia-para-pymes-2025.mdx
-│       ├── reducir-horas-extras-automatizacion.mdx
-│       ├── herramientas-ia-chile.mdx
-│       ├── ia-para-pymes-lo-que-realmente-sirve.mdx
-│       ├── 5-senales-operacion-sangrando-plata.mdx
-│       ├── por-que-tu-empresa-vive-en-whatsapp.mdx
 │       ├── 3-herramientas-gratuitas-pyme.mdx
-│       └── mejora-de-procesos-pymes-chilenas.mdx
+│       ├── 5-senales-operacion-sangrando-plata.mdx
+│       ├── automatizacion-whatsapp-pymes.mdx
+│       ├── checklist-pyme-lista-para-automatizar.mdx
+│       ├── cuanto-cuesta-automatizar-pyme-chile.mdx
+│       ├── erp-vs-mejora-procesos-cual-primero.mdx
+│       ├── herramientas-ia-chile.mdx
+│       ├── ia-para-pymes-chile.mdx
+│       ├── ia-para-pymes-lo-que-realmente-sirve.mdx
+│       ├── mejora-de-procesos-pymes-chilenas.mdx
+│       ├── por-que-tu-empresa-vive-en-whatsapp.mdx
+│       ├── reducir-horas-extras-automatizacion.mdx
+│       └── roi-automatizacion-procesos-pyme.mdx
 ├── lib/
 │   └── blog.ts            ← Funciones utilitarias para leer posts
 ├── app/
@@ -77,7 +81,6 @@ export const CATEGORIES = [
   "Automatización",
   "IA para Pymes",
   "Mejora de Procesos",
-  "Noticias de IA",
   "Tutoriales",
 ] as const;
 
@@ -105,7 +108,7 @@ title: "Título del artículo"
 excerpt: "Descripción de 1-2 oraciones para SEO y cards. Máximo 160 caracteres."
 date: "2026-04-01"          # formato ISO, determina el orden en el listado
 author: "Diego López"
-category: "Automatización"  # debe ser una de las 6 categorías válidas
+category: "Automatización"  # debe ser una de las 4 categorías asignables a posts
 tags: ["tag1", "tag2"]      # 3-5 tags relevantes
 featured: false             # solo true en el artículo destacado principal
 coverImage: "/blog/nombre-imagen.svg"  # opcional
@@ -114,7 +117,7 @@ coverImage: "/blog/nombre-imagen.svg"  # opcional
 Contenido del artículo en MDX...
 ```
 
-**Categorías válidas:** `Automatización` · `IA para Pymes` · `Mejora de Procesos` · `Noticias de IA` · `Tutoriales`
+**Categorías asignables a un post:** `Automatización` · `IA para Pymes` · `Mejora de Procesos` · `Tutoriales`. La constante `CATEGORIES` incluye además `"Todos"` como filtro UI en el listado, pero no es una categoría que se asigne en frontmatter.
 
 > **Importante:** Solo el primer post con `featured: true` se muestra como card destacada en el listado. Si hay más de uno, solo el primero en orden cronológico se usa.
 

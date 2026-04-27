@@ -28,7 +28,8 @@ Sitio web de 0kbot, consultora de mejora y automatización de procesos operativo
 src/
 ├── app/                    # Rutas (App Router)
 │   ├── page.tsx            # Homepage
-│   ├── layout.tsx          # Layout global + SEO metadata
+│   ├── layout.tsx          # Layout global + SEO metadata + JSON-LD globales
+│   ├── globals.css         # Estilos globales + Tailwind
 │   ├── blog/               # Blog listado + [slug]
 │   ├── contacto/           # Página de contacto → CTA a Calendly
 │   ├── servicios/          # Servicios
@@ -38,35 +39,40 @@ src/
 │   ├── nosotros/           # Sobre 0kbot
 │   ├── onboarding/         # Formulario pre-reunión
 │   ├── recursos/           # Recursos
-│   ├── ia-para-pymes/          # Landing SEO: IA para pymes
-│   ├── mejora-de-procesos/     # Landing SEO: mejora de procesos
+│   ├── ia-para-pymes/                  # Landing SEO: IA para pymes
+│   ├── mejora-de-procesos/             # Landing SEO: mejora de procesos
 │   ├── automatizacion-procesos-chile/  # Landing SEO: automatización
 │   ├── transformacion-digital-pymes/   # Landing SEO: transformación digital
-│   ├── privacidad/             # Política de privacidad
-│   ├── terminos/               # Términos y condiciones
-│   ├── feed.xml/               # RSS feed
+│   ├── privacidad/         # Política de privacidad
+│   ├── terminos/           # Términos y condiciones
+│   ├── feed.xml/           # RSS feed
 │   └── api/
-│       ├── leads/route.ts  # POST: guarda lead en Supabase + envía email
-│       └── onboarding/route.ts  # POST: guarda datos de onboarding
+│       ├── leads/route.ts        # POST: lead simple (ContactModal) → Supabase + emails
+│       ├── diagnostico/route.ts  # POST: DiagnosticoWizard (6 pasos) → Supabase + emails
+│       └── onboarding/route.ts   # POST: formulario pre-reunión calificado → Supabase + emails
 ├── components/
 │   ├── home/               # Secciones del homepage
 │   ├── layout/             # Navbar, Footer
-│   ├── ui/                 # ContactModal, OpenModalButton, FloatingCTA, FAQAccordion
+│   ├── ui/                 # ContactModal, OpenModalButton, FloatingCTA, FAQAccordion, DiagnosticoWizard
 │   └── blog/               # BlogCard, CategoryBadge, ShareButtons, RelatedPosts
 ├── content/
-│   └── blog/               # Artículos .mdx (9 publicados)
+│   └── blog/               # Artículos .mdx (13 publicados)
 ├── lib/
 │   ├── blog.ts             # Utilidades para leer posts MDX
 │   ├── casos.ts            # Datos estáticos para 6 casos por industria
 │   ├── analytics.ts        # Eventos GA4 + Meta Pixel
-│   ├── supabase.ts         # Cliente Supabase
-│   ├── resend.ts           # Cliente Resend
+│   ├── supabase.ts         # createAdminClient() — cliente Supabase admin
+│   ├── email.ts            # sendTransactionalEmail() dispatcher (3 flows × 2 kinds)
+│   ├── email-templates/    # 6 archivos *.ts — HTML por flow + kind
+│   ├── constants.ts        # Magic strings (LEAD_SOURCES, LEAD_ESTADOS, CALENDLY_URL, ...)
+│   ├── rate-limit.ts       # checkRateLimit() in-memory, 5 req/min/IP
+│   ├── og.tsx              # renderOgImage() helper para opengraph-image.tsx
+│   ├── utils.ts            # cn() y helpers
 │   └── validations.ts      # Schemas Zod (leadSchema, diagnosticoSchema, onboardingSchema)
-├── types/
-│   └── index.ts            # Tipos TypeScript del proyecto
-└── styles/
-    └── globals.css          # Estilos globales + Tailwind
-docs/                        # Documentación operacional (no es código del sitio)
+└── types/
+    ├── index.ts            # Tipos TypeScript del proyecto
+    └── analytics.d.ts      # Tipos globales window.gtag / window.fbq
+docs/                       # Documentación operacional (no es código del sitio)
 ```
 
 ---
@@ -85,19 +91,12 @@ docs/                        # Documentación operacional (no es código del sit
 
 ---
 
-## Secciones del Homepage (orden)
+## Secciones del Homepage
 
-1. **HeroSection** — H1 + propuesta de valor + tarjeta de resultados de diagnóstico + credenciales bar
-2. **PainPointsSection** — Dolores comunes de pymes
-3. **CredencialesSection** — Perfil de Diego (Ing. Civil Industrial UDD, MSc Data Science PUC)
-4. **ComoFuncionaSection** — Timeline de 12 semanas (4 fases)
-5. **CasosSection** — Escenarios con métricas reales
-6. **FAQSection** — 6 preguntas frecuentes (incluye precio en UF)
-7. **DiagnosticoSection** — DiagnosticoWizard (5 pasos de calificación)
-8. **CTAFinalSection** — CTA final de urgencia
-9. **FloatingCTA** — Botón flotante en mobile
+12 secciones + `FloatingCTA` (mobile only). El orden y la justificación de cada sección viven en **un solo lugar** para evitar drift:
 
-> Ver `docs/prompts/PROMPT-HOMEPAGE-CRO.md` para decisiones de diseño y razón de cada sección.
+- Lista canónica + orden actual: `CLAUDE.md` → sección "Homepage — secciones activas"
+- Argumentación CRO + decisiones de copy: `docs/prompts/PROMPT-HOMEPAGE-CRO.md`
 
 ---
 
@@ -107,7 +106,7 @@ docs/                        # Documentación operacional (no es código del sit
 |---|---|---|
 | Hero primario | "Agendar diagnóstico gratis →" | Abre ContactModal |
 | Hero secundario | "Ver cómo trabajamos ↓" | Scroll a #como-funciona |
-| DiagnosticoSection | DiagnosticoWizard (5 pasos) | Calificación → éxito + Calendly |
+| DiagnosticoSection | DiagnosticoWizard (6 pasos) | Calificación → éxito + Calendly |
 | CTAFinalSection | "Quiero números, no suposiciones →" | Abre ContactModal |
 | FloatingCTA (mobile) | "Ver cuánto estoy perdiendo →" | Abre ContactModal |
 | Navbar | "Agendar diagnóstico gratis" | Abre ContactModal |
