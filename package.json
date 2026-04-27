@@ -51,7 +51,7 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.61.1",
     "reading-time": "^1.5.0",
-    "resend": "^6.9.4",
+    "resend": "^6.12.2",
     "sonner": "^1.7.4",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
@@ -66,8 +66,12 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.12",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3"
+  },
+  "overrides": {
+    "svix": "^1.92.2",
+    "postcss": "^8.5.12"
   }
 }
