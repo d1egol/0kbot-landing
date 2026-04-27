@@ -1,0 +1,42 @@
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5277690Z Route (app)                                                        Size     First Load JS
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5279161Z ┌ ○ /                                                              8.69 kB         141 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5280329Z ├ ○ /_not-found                                                    162 B          87.5 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5285299Z ├ ○ /automatizacion-procesos-chile                                 723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5288006Z ├ ○ /blog                                                          628 B           103 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5289094Z ├ ● /blog/[slug]                                                   2.13 kB         105 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5299054Z ├ ○ /calculadora-roi                                               3.66 kB        99.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5300122Z ├ ○ /casos                                                         142 B          99.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5301131Z ├ ● /casos/[industry]                                              143 B          99.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5305720Z ├ ○ /como-trabajamos                                               723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5308000Z ├ ○ /comparar                                                      723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5309013Z ├ ○ /comparar/0kbot-vs-consultoras-tradicionales                   723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5310214Z ├ ○ /comparar/automatizar-vs-contratar-mas-gente                   723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5311463Z ├ ○ /comparar/hacerlo-interno-vs-consultora-externa                723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5312885Z ├ ○ /comparar/software-erp-vs-mejora-de-procesos                   723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5313973Z ├ ○ /contacto                                                      4.69 kB          92 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5316865Z ├ ○ /herramientas                                                  723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5317477Z ├ ○ /herramientas/airtable                                         724 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5318119Z ├ ○ /herramientas/google-workspace                                 723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5318749Z ├ ○ /herramientas/make                                             723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5319337Z ├ ○ /herramientas/n8n                                              723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5319916Z ├ ○ /ia-para-pymes                                                 723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5321180Z ├ ○ /industria                                                     723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5322095Z ├ ○ /industria/logistica                                           724 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5322748Z ├ ○ /industria/manufactura                                         722 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5323352Z ├ ○ /industria/retail                                              724 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5323940Z ├ ○ /industria/salud                                               723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5324574Z ├ ○ /industria/servicios-profesionales                             723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5325257Z ├ ○ /mejora-de-procesos                                            723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5326746Z ├ ○ /nosotros                                                      723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5328079Z ├ ○ /onboarding                                                    3.63 kB        99.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5329884Z ├ ○ /privacidad                                                    162 B          87.5 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5331087Z ├ ○ /recursos                                                      5.78 kB         109 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5331899Z ├ ● /recursos/[slug]                                               162 B          87.5 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5335620Z ├ ○ /servicios                                                     724 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5337382Z ├ ○ /soluciones                                                    723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5338627Z ├ ○ /terminos                                                      162 B          87.5 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5339886Z ├ ○ /transformacion-digital-pymes                                  723 B          96.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5341169Z + First Load JS shared by all                                      87.3 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5342029Z   ├ chunks/2117-9ef0b8851acbd556.js                                31.7 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5342611Z   ├ chunks/fd9d1056-80b00a325f72af1b.js                            53.6 kB
+Lint & Build	UNKNOWN STEP	2026-04-21T06:34:09.5343160Z   └ other shared chunks (total)                                    1.95 kB

@@ -27,3 +27,13 @@ tsconfig.tsbuildinfo
 *.njsproj
 *.sln
 *.sw?
+
+# Phase 0 baselines (large reports stay local; .baseline-build-from-ci.log is the only one committed)
+.baseline-deps.txt
+.baseline-size.txt
+.baseline-lighthouse.report.html
+.baseline-lighthouse.report.json
+!.baseline-build-from-ci.log
+
+# Lighthouse CI artifacts
+.lighthouseci/

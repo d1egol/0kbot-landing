@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -24,16 +26,51 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint (next lint — primary gate)
         run: npm run lint
+
+      - name: Lint (Biome — informative, non-blocking)
+        run: npm run lint:biome
+        continue-on-error: true
+
+      - name: npm audit (production deps, informative)
+        run: npm audit --omit=dev --audit-level=high
+        continue-on-error: true
 
       - name: Build
         run: npm run build
         env:
-          # lib/supabase.ts throws at load time if these are missing.
-          # Placeholder values satisfy the check — they never reach Supabase during build.
           NEXT_PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
           NEXT_PUBLIC_SUPABASE_ANON_KEY: placeholder_anon_key
           SUPABASE_SERVICE_ROLE_KEY: placeholder_service_role_key
           RESEND_API_KEY: placeholder_resend_key
           NEXT_PUBLIC_APP_URL: https://0kbot.com
+
+      - name: Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: placeholder_anon_key
+          SUPABASE_SERVICE_ROLE_KEY: placeholder_service_role_key
+          RESEND_API_KEY: placeholder_resend_key
+          NEXT_PUBLIC_APP_URL: https://0kbot.com
+        continue-on-error: true
+
+  secret-scan:
+    name: Secret Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
