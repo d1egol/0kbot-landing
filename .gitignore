@@ -37,3 +37,7 @@ tsconfig.tsbuildinfo
 
 # Lighthouse CI artifacts
 .lighthouseci/
+
+# Lighthouse manual reports per phase (no commitear, solo locales)
+.phase*-lh*.json
+.phase*-lh*.html
