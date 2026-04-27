@@ -7,9 +7,6 @@ import { diagnosticoNotificationHtml } from "@/lib/email-templates/diagnostico-n
 import { onboardingConfirmationHtml } from "@/lib/email-templates/onboarding-confirmation";
 import { onboardingNotificationHtml } from "@/lib/email-templates/onboarding-notification";
 
-// Lazy init — si RESEND_API_KEY no está definido, lanza un error explícito
-// para que `Promise.allSettled` lo marque como rejected y los handlers
-// per-reject lo loguen como skipped (en vez de reportarse como sent exitoso).
 class ResendNotConfiguredError extends Error {
   constructor() {
     super("RESEND_API_KEY no está definido — email omitido");
@@ -22,81 +19,96 @@ function getResend(): Resend {
   if (!key) throw new ResendNotConfiguredError();
   return new Resend(key);
 }
+
 const FROM = () => process.env.RESEND_FROM_EMAIL ?? "hola@0kbot.com";
 const NOTIFICATION_TO = () => process.env.NOTIFICATION_EMAIL ?? "hola@0kbot.com";
 
-export async function sendConfirmationEmail(lead: LeadInput): Promise<void> {
-  const resend = getResend();
-  await resend.emails.send({
-    from: `0kbot <${FROM()}>`,
-    to: lead.email,
-    subject: "Tu diagnóstico está agendado — 0kbot",
-    html: leadConfirmationHtml(lead),
-  });
-}
+const DIAGNOSTICO_TIMELINE_LABELS: Record<string, string> = {
+  "Lo antes posible — tengo un problema urgente": "🔴 Urgente",
+  "En los próximos 3 meses": "🟡 3 meses",
+  "En el segundo semestre": "🟢 Segundo semestre",
+  "Estoy explorando opciones": "⚪ Explorando",
+};
 
-export async function sendNotificationEmail(lead: LeadInput): Promise<void> {
-  const resend = getResend();
-  await resend.emails.send({
-    from: `0kbot Leads <${FROM()}>`,
-    to: NOTIFICATION_TO(),
-    subject: `Nuevo lead: ${lead.nombre} de ${lead.empresa}`,
-    html: leadNotificationHtml(lead),
-  });
-}
+export type EmailFlow = "lead" | "diagnostico" | "onboarding";
+export type EmailKind = "confirmation" | "notification";
 
-export async function sendDiagnosticoConfirmationEmail(
-  d: DiagnosticoInput
+type FlowPayload = {
+  lead: LeadInput;
+  diagnostico: DiagnosticoInput;
+  onboarding: OnboardingInput;
+};
+
+type Variant<F extends EmailFlow> = {
+  fromLabel: string;
+  to: (p: FlowPayload[F]) => string;
+  subject: (p: FlowPayload[F]) => string;
+  html: (p: FlowPayload[F]) => string;
+};
+
+type VariantMap = {
+  [F in EmailFlow]: Record<EmailKind, Variant<F>>;
+};
+
+const VARIANTS: VariantMap = {
+  lead: {
+    confirmation: {
+      fromLabel: "0kbot",
+      to: (l) => l.email,
+      subject: () => "Tu diagnóstico está agendado — 0kbot",
+      html: (l) => leadConfirmationHtml(l),
+    },
+    notification: {
+      fromLabel: "0kbot Leads",
+      to: () => NOTIFICATION_TO(),
+      subject: (l) => `Nuevo lead: ${l.nombre} de ${l.empresa}`,
+      html: (l) => leadNotificationHtml(l),
+    },
+  },
+  diagnostico: {
+    confirmation: {
+      fromLabel: "0kbot",
+      to: (d) => d.email,
+      subject: () => "Recibimos tu diagnóstico — 0kbot",
+      html: (d) => diagnosticoConfirmationHtml(d),
+    },
+    notification: {
+      fromLabel: "0kbot Leads",
+      to: () => NOTIFICATION_TO(),
+      subject: (d) => {
+        const label = DIAGNOSTICO_TIMELINE_LABELS[d.timeline] ?? d.timeline;
+        return `[Diagnóstico] ${d.nombre} · ${label}`;
+      },
+      html: (d) => diagnosticoNotificationHtml(d),
+    },
+  },
+  onboarding: {
+    confirmation: {
+      fromLabel: "0kbot",
+      to: (d) => d.email,
+      subject: () => "Todo listo para nuestra reunión — 0kbot",
+      html: (d) => onboardingConfirmationHtml(d),
+    },
+    notification: {
+      fromLabel: "0kbot Leads",
+      to: () => NOTIFICATION_TO(),
+      subject: (d) => `[Onboarding] ${d.nombre} · ${d.empresa} · ${d.rubro}`,
+      html: (d) => onboardingNotificationHtml(d),
+    },
+  },
+};
+
+export async function sendTransactionalEmail<F extends EmailFlow>(
+  flow: F,
+  kind: EmailKind,
+  payload: FlowPayload[F]
 ): Promise<void> {
+  const variant = VARIANTS[flow][kind] as Variant<F>;
   const resend = getResend();
   await resend.emails.send({
-    from: `0kbot <${FROM()}>`,
-    to: d.email,
-    subject: "Recibimos tu diagnóstico — 0kbot",
-    html: diagnosticoConfirmationHtml(d),
-  });
-}
-
-export async function sendDiagnosticoNotificationEmail(
-  d: DiagnosticoInput
-): Promise<void> {
-  const resend = getResend();
-  const timelineLabel =
-    {
-      "Lo antes posible — tengo un problema urgente": "🔴 Urgente",
-      "En los próximos 3 meses": "🟡 3 meses",
-      "En el segundo semestre": "🟢 Segundo semestre",
-      "Estoy explorando opciones": "⚪ Explorando",
-    }[d.timeline] ?? d.timeline;
-
-  await resend.emails.send({
-    from: `0kbot Leads <${FROM()}>`,
-    to: NOTIFICATION_TO(),
-    subject: `[Diagnóstico] ${d.nombre} · ${timelineLabel}`,
-    html: diagnosticoNotificationHtml(d),
-  });
-}
-
-export async function sendOnboardingConfirmationEmail(
-  d: OnboardingInput
-): Promise<void> {
-  const resend = getResend();
-  await resend.emails.send({
-    from: `0kbot <${FROM()}>`,
-    to: d.email,
-    subject: "Todo listo para nuestra reunión — 0kbot",
-    html: onboardingConfirmationHtml(d),
-  });
-}
-
-export async function sendOnboardingNotificationEmail(
-  d: OnboardingInput
-): Promise<void> {
-  const resend = getResend();
-  await resend.emails.send({
-    from: `0kbot Leads <${FROM()}>`,
-    to: NOTIFICATION_TO(),
-    subject: `[Onboarding] ${d.nombre} · ${d.empresa} · ${d.rubro}`,
-    html: onboardingNotificationHtml(d),
+    from: `${variant.fromLabel} <${FROM()}>`,
+    to: variant.to(payload),
+    subject: variant.subject(payload),
+    html: variant.html(payload),
   });
 }

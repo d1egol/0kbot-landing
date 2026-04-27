@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase";
 import { leadSchema } from "@/lib/validations";
-import { sendConfirmationEmail, sendNotificationEmail } from "@/lib/email";
+import { sendTransactionalEmail } from "@/lib/email";
 import { checkRateLimit } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
@@ -65,8 +65,8 @@ export async function POST(request: NextRequest) {
   // 2. Enviar emails (no crítico — si falla, igual retornamos 200)
   let emailSent = false;
   const [confirmResult, notifResult] = await Promise.allSettled([
-    sendConfirmationEmail(lead),
-    sendNotificationEmail(lead),
+    sendTransactionalEmail("lead", "confirmation", lead),
+    sendTransactionalEmail("lead", "notification", lead),
   ]);
 
   if (confirmResult.status === "rejected") {

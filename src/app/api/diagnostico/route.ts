@@ -3,10 +3,7 @@ import { createAdminClient } from "@/lib/supabase";
 import { diagnosticoSchema } from "@/lib/validations";
 import { LEAD_SOURCES, LEAD_ESTADOS } from "@/lib/constants";
 import { checkRateLimit } from "@/lib/rate-limit";
-import {
-  sendDiagnosticoConfirmationEmail,
-  sendDiagnosticoNotificationEmail,
-} from "@/lib/email";
+import { sendTransactionalEmail } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
   const ip =
@@ -77,8 +74,8 @@ export async function POST(request: NextRequest) {
 
   // 2. Emails (no crítico) — loguear cada reject individualmente
   const [confirmResult, notifResult] = await Promise.allSettled([
-    sendDiagnosticoConfirmationEmail(d),
-    sendDiagnosticoNotificationEmail(d),
+    sendTransactionalEmail("diagnostico", "confirmation", d),
+    sendTransactionalEmail("diagnostico", "notification", d),
   ]);
   if (confirmResult.status === "rejected") {
     console.error(

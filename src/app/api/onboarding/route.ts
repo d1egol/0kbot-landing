@@ -7,10 +7,7 @@ import {
   ONBOARDING_TAMANO_MAP,
 } from "@/lib/constants";
 import { checkRateLimit } from "@/lib/rate-limit";
-import {
-  sendOnboardingConfirmationEmail,
-  sendOnboardingNotificationEmail,
-} from "@/lib/email";
+import { sendTransactionalEmail } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
   const ip =
@@ -80,8 +77,8 @@ export async function POST(request: NextRequest) {
 
   // 2. Emails (no crítico) — loguear cada reject individualmente
   const [confirmResult, notifResult] = await Promise.allSettled([
-    sendOnboardingConfirmationEmail(data),
-    sendOnboardingNotificationEmail(data),
+    sendTransactionalEmail("onboarding", "confirmation", data),
+    sendTransactionalEmail("onboarding", "notification", data),
   ]);
   if (confirmResult.status === "rejected") {
     console.error(
