@@ -9,11 +9,11 @@ Actualiza el estado de cada ítem a medida que los completes.
 
 | # | Tarea | Estado | Referencia |
 |---|---|---|---|
-| 1 | Constituir SpA en Chile (Empresa en un Día) | ⬜ Pendiente (esperando firma digital tuempresa.cl) | `FORMALIZACION-LEGAL.md` |
-| 2 | Inicio de actividades en SII (Primera categoría) | ⬜ Pendiente (requiere paso 1) | `FORMALIZACION-LEGAL.md` |
-| 3 | Abrir cuenta bancaria empresa | ⬜ Pendiente (requiere paso 1) | `FORMALIZACION-LEGAL.md` |
+| 1 | Constituir SpA en Chile (Empresa en un Día) | ✅ Listo | `FORMALIZACION-LEGAL.md` |
+| 2 | Inicio de actividades en SII (Primera categoría) | ⬜ Pendiente | `FORMALIZACION-LEGAL.md` |
+| 3 | Abrir cuenta bancaria empresa | ⬜ Pendiente | `FORMALIZACION-LEGAL.md` |
 | 4 | Configurar Calendly (evento "Diagnóstico 30 min") | ✅ Listo | `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` |
-| 5 | Conectar Calendly con Google Calendar de hola@0kbot.com | ⬜ Pendiente | Calendly → Account → Calendar connections |
+| 5 | Conectar Calendly con Google Calendar de hola@0kbot.com | ✅ Listo | Calendly → Account → Calendar connections |
 | 6 | Link de Calendly actualizado en todos los CTAs del sitio | ✅ Listo | Todos los CTAs → ContactModal → Calendly |
 | 7 | Definir precio del programa de 12 semanas | ⬜ Pendiente | `PRICING.md` |
 | 8 | Configurar método de cobro | ⬜ Pendiente | `COBRO.md` |
@@ -22,8 +22,8 @@ Actualiza el estado de cada ítem a medida que los completes.
 
 | # | Tarea | Estado | Referencia |
 |---|---|---|---|
-| 9 | Documentar caso Dos Huertos (frutas y verduras) | ⬜ Pendiente (esperando métricas del cliente vía WhatsApp) | `CASO-ESTUDIO-TEMPLATE.md` |
-| 10 | Agregar caso real con métricas a CasosSection | ⬜ Pendiente (requiere paso 9) | `src/components/home/CasosSection.tsx` |
+| 9 | Documentar caso Dos Huertos (frutas y verduras) | ⚠️ Cerrado — relación terminada. CRM construido vive en repo separado de Dos Huertos. Decidir si se usa como caso público o se reemplaza por el primer cliente nuevo | `CASO-ESTUDIO-TEMPLATE.md` |
+| 10 | Agregar caso real con métricas a CasosSection | ⬜ Pendiente — depende de #9 (decisión Dos Huertos vs nuevo cliente) | `src/components/home/CasosSection.tsx` |
 | 11 | Publicar primeros 3 posts en RRSS vía Metricool | ⬜ Pendiente | `docs/social-media/` |
 | 12 | Actualizar bio de Instagram con link a 0kbot.com | ⬜ Pendiente | — |
 
