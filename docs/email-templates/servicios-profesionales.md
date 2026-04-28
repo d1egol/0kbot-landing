@@ -27,7 +27,7 @@ El resultado habitual es recuperar entre 8 y 15 horas semanales que hoy se van e
 https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 
 Saludos,
-Diego Leiva
+Diego López
 0kbot — Automatización para empresas
 hola@0kbot.com | www.0kbot.com
 

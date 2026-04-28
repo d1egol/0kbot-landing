@@ -29,7 +29,7 @@ Con una distribuidora de [Ciudad] logramos reducir en 70% las consultas de estad
 https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 
 Saludos,
-Diego Leiva
+Diego López
 0kbot — Automatización para empresas
 hola@0kbot.com | www.0kbot.com
 

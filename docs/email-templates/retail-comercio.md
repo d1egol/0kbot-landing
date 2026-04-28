@@ -27,7 +27,7 @@ Ya lo hicimos con una distribuidora que tenía el mismo problema: pasaron de 3 p
 https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 
 Saludos,
-Diego Leiva
+Diego López
 0kbot — Automatización para empresas
 hola@0kbot.com | www.0kbot.com
 

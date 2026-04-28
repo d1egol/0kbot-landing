@@ -15,8 +15,8 @@ Actualiza el estado de cada ítem a medida que los completes.
 | 4 | Configurar Calendly (evento "Diagnóstico 30 min") | ✅ Listo | `https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot` |
 | 5 | Conectar Calendly con Google Calendar de hola@0kbot.com | ✅ Listo | Calendly → Account → Calendar connections |
 | 6 | Link de Calendly actualizado en todos los CTAs del sitio | ✅ Listo | Todos los CTAs → ContactModal → Calendly |
-| 7 | Definir precio del programa de 12 semanas | ⬜ Pendiente | `PRICING.md` |
-| 8 | Configurar método de cobro | ⬜ Pendiente | `COBRO.md` |
+| 7 | Definir precio del programa de 12 semanas | ⏳ Caso a caso — cada proyecto es relativo. Ver `PRICING.md` para framework de rangos por tamaño | `PRICING.md` |
+| 8 | Configurar método de cobro | ⏳ Caso a caso — definir con primer cliente concreto | `COBRO.md` |
 
 ## BLOQUE 2 — Contenido y caso de estudio
 
@@ -25,14 +25,14 @@ Actualiza el estado de cada ítem a medida que los completes.
 | 9 | Documentar caso Dos Huertos (frutas y verduras) | ⚠️ Cerrado — relación terminada. CRM construido vive en repo separado de Dos Huertos. Decidir si se usa como caso público o se reemplaza por el primer cliente nuevo | `CASO-ESTUDIO-TEMPLATE.md` |
 | 10 | Agregar caso real con métricas a CasosSection | ⬜ Pendiente — depende de #9 (decisión Dos Huertos vs nuevo cliente) | `src/components/home/CasosSection.tsx` |
 | 11 | Publicar primeros 3 posts en RRSS vía Metricool | ⬜ Pendiente | `docs/social-media/` |
-| 12 | Actualizar bio de Instagram con link a 0kbot.com | ⬜ Pendiente | — |
+| 12 | Actualizar bio de Instagram con link a 0kbot.com | ✅ Listo | — |
 
 ## BLOQUE 3 — Primer cliente
 
 | # | Tarea | Estado | Referencia |
 |---|---|---|---|
-| 13 | Identificar 10 prospectos por rubro | ⬜ Pendiente | `docs/email-templates/README.md` |
-| 14 | Enviar primeros 5 cold emails con template correspondiente | ⬜ Pendiente | `docs/email-templates/` |
+| 13 | Identificar 10 prospectos por rubro | ⬜ Pendiente — sin lista aún | `docs/email-templates/README.md` |
+| 14 | Enviar primeros cold emails con template correspondiente | ⏳ Drafts genéricos por rubro listos en Gmail (`hola@0kbot.com` → Drafts), pendiente personalización por prospecto | `docs/email-templates/` |
 | 15 | Primera conexión de LinkedIn por rubro | ⬜ Pendiente | `docs/email-templates/linkedin-dm.md` |
 | 16 | Tener primera reunión de diagnóstico agendada | ⬜ Pendiente | — |
 

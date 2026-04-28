@@ -29,7 +29,7 @@ La SpA es la forma más usada por consultoras y startups en Chile. Permite un so
 - RUT personal vigente
 - Clave Única del Registro Civil (para autenticarse)
 - Email personal
-- Nombre tentativo para la empresa (ej: "0kbot SpA" o "Diego Leiva Consultores SpA")
+- Nombre tentativo para la empresa (ej: "0kbot SpA" o "Diego López Consultores SpA")
 - Capital inicial: puede ser $1 peso (no requiere depósito real)
 
 ### Pasos en tuempresa.cl:

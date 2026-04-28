@@ -8,7 +8,7 @@
 # PROPUESTA DE AUTOMATIZACIÓN
 ## [NOMBRE DE LA EMPRESA]
 
-**Preparado por:** Diego Leiva — 0kbot
+**Preparado por:** Diego López — 0kbot
 **Fecha:** [FECHA]
 **Válida hasta:** [FECHA + 15 días]
 
@@ -114,7 +114,7 @@ Para que el proyecto funcione, necesitamos:
 
 ---
 
-*Diego Leiva — 0kbot SpA — Santiago, Chile*
+*Diego López — 0kbot SpA — Santiago, Chile*
 *hola@0kbot.com — www.0kbot.com*
 
 ---

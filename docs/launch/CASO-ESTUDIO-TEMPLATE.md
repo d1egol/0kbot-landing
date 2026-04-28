@@ -10,7 +10,7 @@
 - **Empresa:** Dos Huertos
 - **Rubro:** Venta y distribución de frutas y verduras
 - **Proyecto:** Automatización de registro de información y procesos internos
-- **Consultor:** Diego Leiva — 0kbot
+- **Consultor:** Diego López — 0kbot
 
 ---
 

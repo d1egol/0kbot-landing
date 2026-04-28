@@ -33,7 +33,7 @@ En caso de que no, en resumen: ayudamos a empresas como [Empresa] a automatizar 
 ¿Tendría sentido hablar? https://calendly.com/hola-0kbot/diagnostico-gratuito-0kbot
 
 Saludos,
-Diego Leiva
+Diego López
 0kbot — hola@0kbot.com
 ```
 
@@ -57,7 +57,7 @@ Puedes agendar cuando quieras: https://calendly.com/hola-0kbot/diagnostico-gratu
 Y si hay un mejor momento para hablar (próximo trimestre, después de temporada, etc.), con gusto me avisas.
 
 Suerte con el negocio,
-Diego Leiva
+Diego López
 0kbot — hola@0kbot.com | www.0kbot.com
 ```
 
