@@ -11,7 +11,7 @@ import { trackCTAClick, trackMobileMenuOpen } from "@/lib/analytics";
 
 const navItems = [
   { label: "Problemas", href: "/#problemas" },
-  { label: "Método", href: "/#como-funciona" },
+  { label: "Método", href: "/#metodo" },
   { label: "Casos", href: "/#casos" },
   { label: "Blog", href: "/blog" },
 ];

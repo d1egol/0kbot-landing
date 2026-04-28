@@ -64,7 +64,7 @@ export default function HeroSection() {
                 Calcular mi pérdida operativa →
               </TrackedLink>
               <TrackedLink
-                href="/#como-funciona"
+                href="/#metodo"
                 ctaName="Ver cómo funciona"
                 location="hero_secondary"
                 className="inline-flex items-center justify-center px-6 py-3.5 border-2 border-primary/40 text-primary rounded-md font-medium font-body text-sm hover:border-primary hover:bg-primary/5 transition-colors"

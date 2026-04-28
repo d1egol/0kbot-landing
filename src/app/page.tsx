@@ -3,8 +3,9 @@ import HeroSection from "@/components/home/HeroSection";
 import PainPointsSection from "@/components/home/PainPointsSection";
 import SolucionSection from "@/components/home/SolucionSection";
 import CredencialesSection from "@/components/home/CredencialesSection";
-import ComoFuncionaSection from "@/components/home/ComoFuncionaSection";
+import MetodoSection from "@/components/home/MetodoSection";
 import ComparacionSection from "@/components/home/ComparacionSection";
+import NoSomosSoftwareSection from "@/components/home/NoSomosSoftwareSection";
 import CasosSection from "@/components/home/CasosSection";
 import PrincipiosSection from "@/components/home/PrincipiosSection";
 import FAQSection from "@/components/home/FAQSection";
@@ -106,8 +107,9 @@ export default function HomePage() {
       <PainPointsSection />
       <SolucionSection />
       <CredencialesSection />
-      <ComoFuncionaSection />
+      <MetodoSection />
       <ComparacionSection />
+      <NoSomosSoftwareSection />
       <CasosSection />
       <PrincipiosSection />
       <FAQSection />
