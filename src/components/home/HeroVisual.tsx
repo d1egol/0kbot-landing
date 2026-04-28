@@ -1,7 +1,6 @@
 "use client";
 
 import { LazyMotion, domAnimation, m } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
 
 const diagnosisRows = [
   {
@@ -116,17 +115,33 @@ export default function HeroVisual() {
           </m.div>
         </div>
 
-        {/* Floating badge */}
+        {/* Floating badge: flow del Método 0kbot OS */}
         <m.div
           initial={{ opacity: 0, scale: 0.8, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ delay: 1.4, type: "spring" }}
-          className="absolute -bottom-4 -left-4 bg-white border border-[#E5E2DB] shadow-lg rounded-xl px-3 py-2 flex items-center gap-2"
+          className="absolute -bottom-5 -left-4 bg-white border border-[#E5E2DB] shadow-lg rounded-xl px-3.5 py-2.5"
         >
-          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-          <div>
-            <div className="text-xs font-semibold text-[#1A1A1A]">Sin código</div>
-            <div className="text-[10px] text-[#999]">Listo en 12 semanas</div>
+          <div className="text-[9px] font-semibold text-[#999] uppercase tracking-wider mb-1.5">
+            Método 0kbot OS
+          </div>
+          <div className="flex items-end gap-2.5">
+            {[
+              { c: "#1B5FA6", t: "Detectar" },
+              { c: "#1A74C4", t: "Ordenar" },
+              { c: "#D4AF37", t: "Automatizar" },
+              { c: "#10B981", t: "Medir" },
+            ].map((step) => (
+              <div key={step.t} className="flex flex-col items-center gap-0.5">
+                <span
+                  className="w-2 h-2 rounded-full"
+                  style={{ background: step.c }}
+                />
+                <span className="text-[8px] text-[#666] font-medium leading-tight">
+                  {step.t}
+                </span>
+              </div>
+            ))}
           </div>
         </m.div>
 
