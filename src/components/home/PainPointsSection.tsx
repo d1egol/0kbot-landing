@@ -75,7 +75,7 @@ const cards = [
 
 export default function PainPointsSection() {
   return (
-    <section className="bg-background py-20 lg:py-32">
+    <section id="problemas" className="bg-background py-20 lg:py-32">
       <div className="container-content">
         <MotionSection className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">

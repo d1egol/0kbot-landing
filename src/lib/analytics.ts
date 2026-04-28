@@ -109,6 +109,30 @@ export function trackCTAClick(ctaName: string, location: string): void {
   }
 }
 
+export function trackMobileMenuOpen(): void {
+  try {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "mobile_menu_open", {
+        event_category: "engagement",
+      });
+    }
+  } catch {
+    // never block the user flow
+  }
+}
+
+export function trackROIEstimatorStarted(): void {
+  try {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "roi_estimator_started", {
+        event_category: "engagement",
+      });
+    }
+  } catch {
+    // never block the user flow
+  }
+}
+
 /**
  * Uso pasivo de la calculadora ROI — se dispara una vez por sesion despues
  * de que el usuario termino de ajustar inputs (debounce). Sirve para medir

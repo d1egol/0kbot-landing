@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Linkedin, Mail, MapPin } from "lucide-react";
 import { CALENDLY_URL, CONTACT_EMAIL } from "@/lib/constants";
 
@@ -63,7 +64,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand */}
           <div>
-            <h3 className="font-heading font-bold text-xl mb-4">0kbot</h3>
+            <h3 className="sr-only">0kbot</h3>
+            <Image
+              src="/brand/0kbot-logo-dark.svg"
+              alt="0kbot"
+              width={154}
+              height={40}
+              className="h-9 w-auto mb-4"
+            />
             <p className="text-primary-foreground/70 text-sm leading-relaxed max-w-xs mb-5">
               Consultora de mejora de procesos para pymes en Chile. Lean, sin
               tecnología innecesaria, con resultados en 12 semanas.
