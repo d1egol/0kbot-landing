@@ -125,7 +125,16 @@ const jsonLd = {
         addressRegion: "Región Metropolitana",
         addressCountry: "CL",
       },
-      areaServed: { "@type": "Country", name: "Chile" },
+      areaServed: [
+        { "@type": "Country", name: "Chile" },
+        { "@type": "AdministrativeArea", name: "Región Metropolitana" },
+        { "@type": "City", name: "Santiago" },
+        { "@type": "City", name: "Ñuñoa" },
+        { "@type": "City", name: "Providencia" },
+        { "@type": "City", name: "Las Condes" },
+        { "@type": "City", name: "Vitacura" },
+        { "@type": "City", name: "Lo Barnechea" },
+      ],
       serviceType: "Consultoría de procesos y automatización para pymes",
       knowsAbout: [
         "Lean Manufacturing",
