@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -40,10 +41,17 @@ export default function Navbar() {
       <div className="container-wide flex items-center justify-between h-16">
         <Link
           href="/"
-          className="font-heading font-bold text-xl text-primary hover:text-primary/80 transition-colors tracking-tight"
+          className="group inline-flex items-center rounded-md transition-opacity hover:opacity-90"
           aria-label="0kbot — inicio"
         >
-          0kbot
+          <Image
+            src="/brand/0kbot-logo.svg"
+            alt="0kbot"
+            width={154}
+            height={40}
+            priority
+            className="h-9 w-auto"
+          />
         </Link>
 
         {/* Desktop nav */}
