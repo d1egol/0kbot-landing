@@ -56,7 +56,7 @@ export default function HeroSection() {
 
             <div className="hero-fade hero-fade-4 flex flex-col sm:flex-row gap-3 pt-2">
               <TrackedLink
-                href="/calculadora-roi"
+                href="/#estimador"
                 ctaName="Calcular mi pérdida operativa"
                 location="hero"
                 className="inline-flex items-center justify-center px-6 py-3.5 bg-primary text-primary-foreground rounded-md font-medium font-body text-sm hover:bg-primary/90 transition-colors"

@@ -4,6 +4,7 @@ import PainPointsSection from "@/components/home/PainPointsSection";
 import SolucionSection from "@/components/home/SolucionSection";
 import CredencialesSection from "@/components/home/CredencialesSection";
 import MetodoSection from "@/components/home/MetodoSection";
+import ROIEstimatorSection from "@/components/home/ROIEstimatorSection";
 import ComparacionSection from "@/components/home/ComparacionSection";
 import NoSomosSoftwareSection from "@/components/home/NoSomosSoftwareSection";
 import CasosSection from "@/components/home/CasosSection";
@@ -108,6 +109,7 @@ export default function HomePage() {
       <SolucionSection />
       <CredencialesSection />
       <MetodoSection />
+      <ROIEstimatorSection />
       <ComparacionSection />
       <NoSomosSoftwareSection />
       <CasosSection />
