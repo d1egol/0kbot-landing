@@ -1,0 +1,27 @@
+> 0kbot@0.1.0 build
+> next build
+
+   ▲ Next.js 14.2.35
+   - Environments: .env.production
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (60/60)
+   Finalizing page optimization ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    8.5 kB          135 kB
+├ ○ /_not-found                          875 B          88.2 kB
+├ ○ /blog                                3.1 kB          100 kB
+├ ƒ /blog/[slug]                         5.2 kB          103 kB
+├ ○ /recursos                            4.4 kB          105 kB
+└ ○ /servicios                           3.8 kB           94 kB
++ First Load JS shared by all            85.1 kB
+  ├ chunks/framework-abc.js              45 kB
+  ├ chunks/main-app-def.js               37.5 kB
+  └ other shared chunks (total)          2.6 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

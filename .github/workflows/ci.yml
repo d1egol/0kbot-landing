@@ -32,6 +32,9 @@ jobs:
       - name: Lint (next lint — primary gate)
         run: npm run lint
 
+      - name: Unit tests (Vitest)
+        run: npm test
+
       - name: Lint (Biome — informative, non-blocking)
         run: npm run lint:biome
         continue-on-error: true

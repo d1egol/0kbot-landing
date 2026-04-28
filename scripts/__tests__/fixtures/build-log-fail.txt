@@ -1,0 +1,16 @@
+> 0kbot@0.1.0 build
+> next build
+
+   ▲ Next.js 14.2.35
+ ✓ Compiled successfully
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    8.5 kB          200 kB
+├ ○ /blog                                3.1 kB          150 kB
+├ ƒ /blog/[slug]                         5.2 kB          160 kB
+├ ○ /recursos                            4.4 kB          180 kB
+└ ○ /servicios                           3.8 kB          120 kB
++ First Load JS shared by all            120 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
