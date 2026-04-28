@@ -4,28 +4,28 @@ import MotionSection from "@/components/ui/MotionSection";
 import { ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Transformación Digital para Pymes en Chile",
+  title: "Digitalizar tu pyme en Chile sin transformación de slogan",
   description:
-    "Consultoría de transformación digital para pymes chilenas. Digitalizamos tu operación paso a paso, sin interrumpir el negocio ni gastar en tecnología innecesaria. Resultados en 12 semanas.",
+    "Consultora de procesos para pymes chilenas. Digitalizamos tu operación paso a paso, ordenando primero los procesos y agregando tecnología cuando aporta. 12 semanas, resultados medibles.",
   keywords: [
     "transformación digital pymes Chile",
     "digitalización pymes Santiago",
-    "consultora transformación digital Chile",
-    "digitalizar empresa pyme Chile",
-    "transformación digital empresas medianas Chile",
+    "consultora procesos Chile",
+    "ordenar operación pyme Chile",
+    "mejora de procesos pymes",
     "cómo digitalizar mi empresa Chile",
   ],
   openGraph: {
-    title: "Transformación Digital para Pymes en Chile | 0kbot",
+    title: "Digitalizar tu pyme en Chile sin transformación de slogan | 0kbot",
     description:
-      "Digitalizamos la operación de pymes chilenas paso a paso, sin interrumpir el negocio. 12 semanas, resultados medibles.",
+      "Ordenamos primero los procesos, después digitalizamos. Sin grandes inversiones, sin cambiar todo de golpe. 12 semanas con resultados medibles.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Transformación Digital para Pymes en Chile | 0kbot",
+    title: "Digitalizar tu pyme en Chile sin transformación de slogan | 0kbot",
     description:
-      "Digitalizamos la operación de pymes chilenas paso a paso, sin interrumpir el negocio. 12 semanas.",
+      "Ordenamos primero los procesos, después digitalizamos. 12 semanas con resultados medibles.",
   },
   alternates: { canonical: "https://0kbot.com/transformacion-digital-pymes" },
 };
@@ -33,56 +33,56 @@ export const metadata: Metadata = {
 const etapas = [
   {
     num: "01",
-    title: "Diagnóstico digital",
-    desc: "Entendemos cómo opera tu empresa hoy: qué herramientas usas, dónde hay papel y Excel, qué procesos son manuales y cuáles tienen potencial de digitalización.",
+    title: "Diagnóstico operacional",
+    desc: "Entendemos cómo opera tu empresa hoy: qué herramientas usas, dónde hay papel y planillas dispersas, qué procesos viven en la memoria de una persona y cuáles se pueden documentar y digitalizar primero.",
   },
   {
     num: "02",
     title: "Hoja de ruta priorizada",
-    desc: "No digitalizamos todo al mismo tiempo. Priorizamos según impacto en el negocio y facilidad de adopción del equipo.",
+    desc: "No digitalizamos todo al mismo tiempo. Ordenamos los procesos por impacto en el negocio y por facilidad de adopción. Lo que duele más y se puede tocar primero, va primero.",
   },
   {
     num: "03",
-    title: "Implementación gradual",
-    desc: "Configuramos herramientas, digitalizamos formularios, integramos sistemas y capacitamos al equipo en cada etapa.",
+    title: "Estandarización y digitalización gradual",
+    desc: "Documentamos el proceso, lo dejamos repetible sin tecnología nueva, y recién ahí lo digitalizamos. Configuramos las herramientas, integramos sistemas y capacitamos al equipo en cada etapa.",
   },
   {
     num: "04",
     title: "Medición de resultados",
-    desc: "Medimos el impacto: tiempo ahorrado, errores reducidos, procesos más rápidos. La digitalización tiene que generar retorno.",
+    desc: "Medimos contra el KPI definido al inicio: tiempo ahorrado, errores reducidos, decisiones más rápidas. La digitalización tiene que generar retorno o no se sostiene.",
   },
 ];
 
 const mitos = [
-  "La transformación digital requiere un gran presupuesto",
+  "La transformación digital requiere una gran inversión inicial",
   "Hay que cambiar todos los sistemas de una vez",
   "Solo las empresas grandes pueden digitalizarse",
   "La tecnología reemplaza al equipo humano",
 ];
 
 const realidades = [
-  "Muchas digitalizaciones se hacen con herramientas que ya existen o son muy económicas",
-  "El mejor enfoque es gradual: una herramienta a la vez, comenzando donde más duele",
-  "Las pymes son las que más se benefician porque tienen menos inercia organizacional",
-  "La digitalización libera al equipo de tareas repetitivas para hacer trabajo de mayor valor",
+  "La mayoría de las digitalizaciones se hacen con herramientas que ya existen o son muy económicas — el costo real está en ordenar el proceso primero",
+  "El mejor enfoque es gradual: un proceso a la vez, comenzando donde más duele",
+  "Las pymes son las que más se benefician porque tienen menos inercia organizacional para cambiar",
+  "La digitalización libera al equipo de tareas repetitivas para hacer trabajo que requiere criterio",
 ];
 
 const faqItems = [
   {
-    q: "¿Qué significa exactamente 'transformación digital' para una pyme?",
-    a: "Para una pyme chilena, transformación digital significa reemplazar procesos manuales y en papel por procesos digitales, integrar las herramientas que ya usan para que funcionen juntas, y usar datos para tomar mejores decisiones. No requiere tecnología sofisticada.",
+    q: "¿Qué significa exactamente 'digitalizar tu pyme'?",
+    a: "Para una pyme chilena significa reemplazar procesos manuales y en papel por procesos digitales documentados, integrar las herramientas que ya usás para que funcionen juntas, y usar datos confiables para tomar mejores decisiones. No requiere tecnología sofisticada. Requiere ordenar primero el proceso.",
   },
   {
-    q: "¿Por dónde empieza la transformación digital de una pyme?",
-    a: "Por el proceso que más duele. No por el más complejo ni el más visible, sino el que genera más fricción en el día a día. Una vez que ese proceso funciona bien digitalmente, el equipo confía y la adopción de lo siguiente es más fácil.",
+    q: "¿Por dónde empieza la digitalización de una pyme?",
+    a: "Por el proceso que más duele. No por el más complejo ni el más visible, sino el que genera más fricción en el día a día. Una vez que ese proceso funciona bien — primero ordenado, después digitalizado — el equipo confía y la adopción de lo siguiente es más fácil.",
   },
   {
     q: "¿Cuánto tiempo toma digitalizar una pyme?",
-    a: "Depende del alcance. Un proceso específico puede digitalizarse en 2–4 semanas. Una transformación más amplia de la operación toma 3–6 meses. Nuestro programa de 12 semanas aborda los procesos de mayor impacto.",
+    a: "Depende del alcance. Un proceso específico puede ordenarse y digitalizarse en 4–6 semanas. Una transformación más amplia de la operación toma 3–6 meses. Nuestro programa de 12 semanas aborda los procesos de mayor impacto y deja al menos uno medido y estable al cierre.",
   },
   {
     q: "¿Mi equipo va a adoptar las nuevas herramientas?",
-    a: "Sí, si la implementación se hace bien. La clave es involucrar al equipo desde el diseño, no imponerles herramientas. Y empezar con herramientas simples que resuelven un problema real que ellos ya tienen.",
+    a: "Sí, si la implementación se hace bien. La clave es involucrar al equipo desde el diseño del proceso, no imponerles herramientas. Y empezar por ordenar lo que ya hacen — la herramienta nueva llega después, cuando todos saben qué problema resuelve.",
   },
 ];
 
@@ -101,7 +101,7 @@ const breadcrumbJsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Inicio", item: "https://0kbot.com" },
-    { "@type": "ListItem", position: 2, name: "Transformación Digital Pymes", item: "https://0kbot.com/transformacion-digital-pymes" },
+    { "@type": "ListItem", position: 2, name: "Digitalización para Pymes", item: "https://0kbot.com/transformacion-digital-pymes" },
   ],
 };
 
@@ -120,14 +120,15 @@ export default function TransformacionDigitalPymesPage() {
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">
         <div className="container-wide">
           <span className="text-sm font-medium text-primary-foreground/60 uppercase tracking-wider">
-            Transformación Digital · Pymes Chile
+            Digitalización · Pymes Chile
           </span>
           <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-4 max-w-3xl">
-            Transformación Digital para Pymes en Chile
+            Digitalizar tu pyme sin transformación digital de slogan
           </h1>
           <p className="text-lg text-primary-foreground/75 max-w-2xl font-body">
-            Sin grandes inversiones, sin cambiar todo de golpe. Digitalizamos tu operación
-            paso a paso, con resultados visibles desde las primeras semanas.
+            Sin grandes inversiones, sin cambiar todo de golpe. Primero ordenamos el
+            proceso; después lo digitalizamos. Resultados visibles desde las primeras
+            semanas.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -145,10 +146,11 @@ export default function TransformacionDigitalPymesPage() {
         <div className="container-narrow">
           <MotionSection>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Cómo llevamos la transformación digital de tu pyme
+              Cómo llevamos la digitalización de tu pyme
             </h2>
             <p className="text-muted-foreground font-body mb-10 max-w-2xl">
               Un proceso estructurado, gradual y sin interrumpir tu operación actual.
+              Ordenamos antes de digitalizar.
             </p>
           </MotionSection>
           <div className="space-y-10">
@@ -179,7 +181,7 @@ export default function TransformacionDigitalPymesPage() {
         <div className="container-narrow">
           <MotionSection>
             <h2 className="font-heading text-2xl font-bold text-foreground mb-8">
-              Mitos y realidades de la transformación digital en pymes
+              Mitos y realidades de la digitalización en pymes
             </h2>
           </MotionSection>
           <div className="space-y-4">
@@ -205,7 +207,7 @@ export default function TransformacionDigitalPymesPage() {
       <section className="section-padding bg-background">
         <div className="container-narrow">
           <h2 className="font-heading text-2xl font-bold text-foreground mb-8">
-            Preguntas frecuentes sobre transformación digital
+            Preguntas frecuentes sobre digitalización de pymes
           </h2>
           <div className="space-y-6">
             {faqItems.map((item) => (
@@ -224,11 +226,12 @@ export default function TransformacionDigitalPymesPage() {
       <section className="bg-primary py-16 md:py-20 text-center">
         <div className="container-narrow">
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-white mb-4">
-            ¿Listo para digitalizar tu operación?
+            ¿Listo para ordenar tu operación?
           </h2>
           <p className="text-white/75 font-body mb-8 max-w-xl mx-auto">
-            El primer diagnóstico es gratuito. En 30 minutos te mostramos
-            cuál es el proceso con mayor potencial de digitalización en tu empresa.
+            El primer diagnóstico es gratuito. En 60 minutos te mostramos
+            cuál es el proceso con mayor potencial de mejora en tu empresa y
+            cómo lo abordaríamos.
           </p>
           <Link
             href="/contacto"

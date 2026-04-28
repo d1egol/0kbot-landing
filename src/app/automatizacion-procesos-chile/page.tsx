@@ -4,28 +4,28 @@ import MotionSection from "@/components/ui/MotionSection";
 import { ArrowRight, CheckCircle2, Workflow, Database, Zap, BarChart2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Automatización de Procesos para Pymes en Chile",
+  title: "Automatización de procesos para pymes en Chile",
   description:
-    "Consultora de automatización de procesos para pymes en Chile. Eliminamos trabajo manual, estandarizamos flujos y automatizamos tareas repetitivas. Resultados medibles en 12 semanas.",
+    "Consultora de procesos en Chile. Primero ordenamos el flujo, después automatizamos lo repetitivo. Sin amplificar caos. Resultados medibles en 12 semanas.",
   keywords: [
     "automatización de procesos Chile",
-    "automatización pymes Chile",
-    "consultora automatización procesos pymes Santiago",
-    "automatizar procesos empresa Chile",
-    "optimización procesos operativos Chile",
-    "eliminación trabajo manual pymes",
+    "consultora de procesos Chile",
+    "mejora de procesos pymes Santiago",
+    "ordenar procesos pyme Chile",
+    "Lean Six Sigma pymes Chile",
+    "estandarización operativa pymes",
   ],
   openGraph: {
-    title: "Automatización de Procesos para Pymes en Chile | 0kbot",
+    title: "Automatización de procesos para pymes en Chile | 0kbot",
     description:
-      "Eliminamos trabajo manual y automatizamos procesos en pymes chilenas. 12 semanas, resultados medibles.",
+      "Primero ordenamos el proceso, después automatizamos. 12 semanas con resultados medibles, sin amplificar caos operativo.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Automatización de Procesos para Pymes en Chile | 0kbot",
+    title: "Automatización de procesos para pymes en Chile | 0kbot",
     description:
-      "Eliminamos trabajo manual y automatizamos procesos en pymes chilenas. 12 semanas, resultados medibles.",
+      "Primero ordenamos, después automatizamos. 12 semanas con resultados medibles.",
   },
   alternates: { canonical: "https://0kbot.com/automatizacion-procesos-chile" },
 };
@@ -33,27 +33,27 @@ export const metadata: Metadata = {
 const procesos = [
   {
     icon: Workflow,
-    title: "Ingreso y traspaso de datos",
-    desc: "Elimina el copy-paste entre sistemas. Cuando llega un pedido, los datos fluyen automáticamente a CRM, producción y contabilidad.",
-    impacto: "10–20 horas/semana recuperadas",
+    title: "Ingreso y traspaso de datos entre sistemas",
+    desc: "Eliminamos el copy-paste manual. Cuando el flujo está documentado y el dato es estándar, automatizamos para que un pedido se refleje solo en CRM, producción y contabilidad.",
+    impacto: "Potencial estimado: 10–20 hrs/semana recuperadas",
   },
   {
     icon: Zap,
     title: "Comunicaciones y seguimiento",
-    desc: "Respuestas automáticas a consultas frecuentes, seguimiento post-reunión, alertas a clientes. El equipo interviene solo cuando hay algo complejo.",
-    impacto: "15–25 horas/semana recuperadas",
+    desc: "Respuestas estándar a consultas frecuentes, seguimiento post-reunión, alertas a clientes. El equipo interviene solo en lo no rutinario.",
+    impacto: "Potencial estimado: 15–25 hrs/semana recuperadas",
   },
   {
     icon: BarChart2,
-    title: "Reportes y dashboards",
-    desc: "Informes que antes tomaban medio día ahora se generan solos. Datos actualizados en tiempo real, sin trabajo manual.",
-    impacto: "3–6 horas/semana recuperadas",
+    title: "Reportes y tableros operativos",
+    desc: "Informes que antes tomaban medio día se generan solos sobre datos consolidados. Útil cuando los datos ya viven en un lugar consultable.",
+    impacto: "Potencial estimado: 3–6 hrs/semana recuperadas",
   },
   {
     icon: Database,
-    title: "Registros y formularios",
-    desc: "Centralización de información dispersa en planillas, correos y cuadernos. Un solo lugar donde todos registran y todos consultan.",
-    impacto: "Errores reducidos 50–80%",
+    title: "Registros y formularios centralizados",
+    desc: "Información dispersa en planillas, correos y cuadernos consolidada en un lugar. Todos registran y consultan ahí. Reduce el error de 'cuál era la última versión'.",
+    impacto: "Potencial estimado: 50–80% menos errores de captura",
   },
 ];
 
@@ -69,19 +69,19 @@ const industrias = [
 const faqItems = [
   {
     q: "¿Qué procesos se pueden automatizar en una pyme?",
-    a: "Casi cualquier proceso repetitivo: ingreso de datos, generación de reportes, seguimiento comercial, comunicaciones con clientes, coordinación interna. Si alguien hace lo mismo más de 10 veces por semana, se puede automatizar.",
+    a: "Cualquier proceso repetitivo y documentable: ingreso de datos, generación de reportes recurrentes, seguimiento comercial, comunicaciones estándar con clientes, coordinación interna. Si alguien hace lo mismo más de 10 veces por semana siguiendo reglas explícitas, es candidato. Si el proceso no está documentado, primero lo ordenamos.",
   },
   {
     q: "¿Cuánto cuesta la automatización de procesos en Chile?",
-    a: "Depende del alcance. Trabajamos con presupuestos adaptados a la realidad de cada pyme. Lo más importante es que el ROI sea claro antes de empezar.",
+    a: "Depende del alcance. Trabajamos con presupuestos adaptados a cada pyme y al cierre del diagnóstico te entregamos una propuesta concreta. Lo más importante es que el ROI sea claro antes de empezar.",
   },
   {
     q: "¿Cuánto tiempo toma automatizar un proceso?",
-    a: "Procesos simples pueden automatizarse en 1–2 semanas. Proyectos más complejos con múltiples integraciones toman 6–10 semanas. Nuestro programa completo es de 12 semanas.",
+    a: "Una automatización simple sobre un proceso ya ordenado puede estar en producción en 1–2 semanas. Proyectos más complejos con varias integraciones toman 6–10 semanas. Nuestro programa completo es de 12 semanas e incluye ordenar, automatizar y medir.",
   },
   {
     q: "¿Necesito cambiar todos mis sistemas para automatizar?",
-    a: "No. La mayoría de las automatizaciones se construyen sobre las herramientas que ya usas (Excel, WhatsApp, email, formularios). Cuando vale la pena cambiar una herramienta, lo decimos con argumentos concretos.",
+    a: "Casi nunca. La mayoría de las automatizaciones se construyen sobre las herramientas que ya usás (Excel, WhatsApp, email, formularios). Cuando vale la pena cambiar una herramienta, lo decimos con argumentos concretos.",
   },
 ];
 
@@ -119,14 +119,14 @@ export default function AutomatizacionProcesosChilePage() {
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">
         <div className="container-wide">
           <span className="text-sm font-medium text-primary-foreground/60 uppercase tracking-wider">
-            Automatización de Procesos · Chile
+            Automatización de procesos · Chile
           </span>
           <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-4 max-w-3xl">
-            Automatización de Procesos para Pymes en Chile
+            Automatización de procesos para pymes en Chile
           </h1>
           <p className="text-lg text-primary-foreground/75 max-w-2xl font-body">
-            Eliminamos trabajo manual repetitivo, integramos sistemas y automatizamos
-            flujos. Tu equipo gana tiempo para lo que realmente importa.
+            Primero ordenamos el flujo, después automatizamos lo repetitivo. Sin
+            amplificar el caos. Tu equipo gana tiempo para lo que requiere criterio.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -150,11 +150,12 @@ export default function AutomatizacionProcesosChilePage() {
         <div className="container-wide">
           <MotionSection>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Procesos que automatizamos en pymes chilenas
+              Procesos típicos que automatizamos en pymes
             </h2>
             <p className="text-muted-foreground font-body mb-10 max-w-2xl">
               No automatizamos por automatizar. Identificamos primero dónde está el mayor
-              impacto y construimos la solución mínima que lo resuelve.
+              impacto, ordenamos el proceso y construimos la solución mínima que lo
+              sostiene.
             </p>
           </MotionSection>
           <div className="grid md:grid-cols-2 gap-6">
@@ -186,11 +187,11 @@ export default function AutomatizacionProcesosChilePage() {
         <div className="container-narrow">
           <MotionSection>
             <h2 className="font-heading text-2xl font-bold text-foreground mb-4">
-              Industrias donde hemos trabajado
+              Industrias donde conocemos los patrones
             </h2>
             <p className="text-muted-foreground font-body mb-8">
-              Cada industria tiene sus procesos específicos. Conocemos los patrones más
-              comunes y cómo resolverlos.
+              Cada industria tiene sus procesos típicos. Conocemos los cuellos de botella
+              más frecuentes y cómo abordarlos.
             </p>
           </MotionSection>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -210,7 +211,7 @@ export default function AutomatizacionProcesosChilePage() {
               href="/casos"
               className="inline-flex items-center gap-2 text-primary font-medium font-body hover:gap-3 transition-all text-sm"
             >
-              Ver casos por industria <ArrowRight size={14} />
+              Ver problemas típicos por industria <ArrowRight size={14} />
             </Link>
           </div>
         </div>
