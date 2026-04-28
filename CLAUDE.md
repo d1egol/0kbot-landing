@@ -13,12 +13,13 @@ Landing page de generación de leads para **0kbot**, consultora chilena de mejor
 ## Comandos esenciales
 
 ```bash
-npm run dev       # desarrollo local
-npm run build     # build producción (usa placeholders si no hay .env.local)
-npm run lint      # ESLint — debe pasar a 0 errores
+npm run dev        # desarrollo local
+npm run build      # build producción (usa placeholders si no hay .env.local)
+npm run lint       # ESLint — debe pasar a 0 errores
+npm run typecheck  # tsc --noEmit — debe pasar a 0 errores
 ```
 
-Siempre ejecutar `npm run lint && npm run build` al terminar cambios.
+Siempre ejecutar `npm run lint && npm run typecheck && npm run build` al terminar cambios.
 Para build sin `.env.local`: prefija con las vars de entorno del `.env.example`.
 
 ---
@@ -42,10 +43,10 @@ Para build sin `.env.local`: prefija con las vars de entorno del `.env.example`.
 src/app/                   # páginas y API routes (App Router)
 src/app/api/               # 3 routes: leads, diagnostico, onboarding
 src/components/
-  home/                    # 13 secciones de la homepage (12 activas + StatsSection reservada)
+  home/                    # 14 secciones de la homepage (13 activas + StatsSection reservada)
   blog/                    # BlogCard, CategoryBadge, ShareButtons, RelatedPosts
   layout/                  # Navbar.tsx, Footer.tsx
-  ui/                      # ContactModal, DiagnosticoWizard, etc.
+  ui/                      # ContactModal, DiagnosticoWizard, OpenModalButton, TrackedLink, etc.
 src/lib/
   constants.ts             # ÚNICA fuente de verdad para magic strings
   supabase.ts              # createAdminClient() — usar SIEMPRE esto
@@ -57,6 +58,7 @@ src/lib/
   casos.ts                 # datos hardcodeados de 6 escenarios de industria
 src/content/blog/          # *.mdx — posts del blog con frontmatter estricto
 public/                    # favicon.ico, icon.png (1024×1024, usado en JSON-LD)
+public/brand/              # 0kbot-logo.svg (horizontal), 0kbot-logo-dark.svg (footer), 0kbot-mark.svg (isotipo)
 ```
 
 ---
@@ -127,22 +129,26 @@ Hardcodeadas a `https://0kbot.com/[ruta]` en metadata de cada página. En blog u
 ## Homepage — secciones activas (orden actual en `page.tsx`)
 
 ```
-1.  HeroSection          — H1 + card diagnóstico típico + CTA modal
-2.  PainPointsSection    — 4 dolores operativos
-3.  SolucionSection      — Qué/Cómo/Resultado en 3 columnas
-4.  CredencialesSection  — Perfil del founder
-5.  ComoFuncionaSection  — Timeline 4 etapas, 12 semanas
-6.  ComparacionSection   — 6 problemas + soluciones concretas
-7.  CasosSection         — 3 escenarios de industria (con disclaimer)
-8.  PrincipiosSection    — 3 principios de trabajo
-9.  FAQSection           — 6 preguntas (incluye pricing en UF)
-10. BlogPreviewSection   — 3 artículos recientes
-11. DiagnosticoSection   — DiagnosticoWizard inline (6 pasos)
-12. CTAFinalSection      — "Cada mes que esperas, el número crece"
-+   FloatingCTA          — mobile only, sticky bottom
+1.  HeroSection             — H1 "No vendemos IA. Vendemos lunes tranquilos." + dashboard típico + CTA #estimador
+2.  PainPointsSection       — 6 dolores en bento 2×3 (id="problemas")
+3.  SolucionSection         — Qué/Cómo/Resultado en 3 columnas
+4.  CredencialesSection     — Perfil del founder
+5.  MetodoSection           — Método 0kbot OS: Detectar/Ordenar/Automatizar/Medir (id="metodo")
+6.  ROIEstimatorSection     — 3 inputs → costo mensual + costo anual + alerta tonal (id="estimador")
+7.  ComparacionSection      — 6 problemas + soluciones concretas
+8.  NoSomosSoftwareSection  — 6 objeciones "lo que NO hacemos" (fondo oscuro)
+9.  CasosSection            — 3 escenarios de industria (id="casos")
+10. PrincipiosSection       — 3 principios de trabajo
+11. FAQSection              — 6 preguntas (incluye pricing en UF)
+12. BlogPreviewSection      — 3 artículos recientes
+13. DiagnosticoSection      — DiagnosticoWizard inline (6 pasos, id="cta-diagnostico")
+14. CTAFinalSection         — "Cada mes que esperas, el número crece."
++   FloatingCTA             — mobile only, sticky bottom
 ```
 
 **StatsSection** existe como componente pero NO está en la homepage — solo activar cuando haya datos reales de clientes.
+
+**Anchors del navbar:** `/#problemas`, `/#metodo`, `/#casos`, `/blog`. CTA primario del navbar abre ContactModal.
 
 ## Flujo de conversión de leads
 
@@ -215,6 +221,7 @@ HomePage DiagnosticoSection
 - No saltarse `npm run lint` antes de dar trabajo por terminado
 - **No duplicar copy de casos**: los escenarios por industria viven en `src/lib/casos.ts` como única fuente de verdad. La homepage (`CasosSection.tsx`) consume de ahí y mantiene sólo `uiMeta` (iconos, colores, métrica destacada) por `slug`. Nunca reintroducir copy inline ahí.
 - **No confiar en `npm run build` local en Windows**: `@vercel/og` falla al resolver paths de fonts con `fileURLToPath` (prerender error en rutas `/blog/[slug]/opengraph-image`). El CI en Linux sí pasa y Vercel deploya bien. Verificar con `npm run lint` local + CI de GitHub, no con build local.
+- **No duplicar la lógica del ROI estimator**: `ROIEstimatorSection.tsx` es la versión simple embebida en home (3 inputs, costo mensual+anual). `src/app/calculadora-roi/CalculadoraROI.tsx` es la versión completa (5 inputs, ROI 12m + payback + inversión). La sección embebida linkea a la página completa al final — no convertir el embebido en duplicado de la calculadora.
 
 ---
 
@@ -223,6 +230,20 @@ HomePage DiagnosticoSection
 - **`/casos` NO lleva disclaimer** sobre si los escenarios son reales o ilustrativos. Decisión del usuario (2026-04-21).
 - **Pregunta FAQ "¿Cuánto cuesta esto?" → "¿Cuánto cuesta un proyecto de mejora de procesos?"** (forma larga, unificada con JSON-LD para evitar discrepancia en structured data).
 - **Footer tiene 2 iconos de LinkedIn**: primero empresa (`/company/0kbot`), luego personal (`/in/diego-lopez-dinamarca`). No consolidar.
+- **Hero v2 (2026-04-27)**: H1 simplificado a "No vendemos IA. Vendemos lunes tranquilos." con eyebrow "Mejora de procesos para pymes en Chile" encima (conserva keyword SEO). Badge superior cambió a "Consultoría de procesos + automatización para pymes chilenas".
+- **CTA primario del Hero**: "Calcular mi pérdida operativa →" → `/#estimador` (sección embebida, no abre modal).
+- **CTA secundario del Hero**: "Ver cómo funciona ↓" → `/#metodo`.
+- **CTAFinal v2 (2026-04-27)**: "Agendar diagnóstico gratuito →" con microcopy "Si no vemos una oportunidad clara de mejora, te lo diremos directo."
+- **Método 0kbot OS**: las 4 fases son Detectar / Ordenar / Automatizar / Medir (ese es el orden y nombramiento canónico del servicio). El archivo es `MetodoSection.tsx` (rename de `ComoFuncionaSection.tsx` el 2026-04-27).
+
+---
+
+## Pendientes conocidos (post rediseño v2, 2026-04-27)
+
+- **`ComparacionSection` redundante con `PainPointsSection` v2**: ambas tienen estructura "problema → solución" con 6 cards. Decidir si fusionar (mover el copy útil de Comparación a PainPoints), eliminar Comparación, o reescribirla con un ángulo diferente. Por ahora ambas conviven en homepage.
+- **Páginas /servicios, /como-trabajamos, /nosotros fuera del nav primario**: siguen vivas (SEO + footer) pero el navbar ya no las lista. Si en analítica se ve drop fuerte de tráfico interno hacia ellas, considerar reincorporarlas o consolidar contenido al home.
+- **Logo `0kbot-logo-dark.svg` en footer**: derivado del logo principal, con wordmark blanco + acento dorado. Si visualmente se ve flojo sobre `bg-primary`, ajustar variantes.
+- **Verificar tracking en GA4 Debug View**: eventos nuevos `mobile_menu_open`, `roi_estimator_started`, `home_estimator_computed`, y `cta_click` con locations nuevas (`hero`, `hero_secondary`, `estimador`, `navbar`).
 
 ---
 

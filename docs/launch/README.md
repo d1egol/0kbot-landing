@@ -43,14 +43,14 @@ Actualiza el estado de cada ítem a medida que los completes.
 |---|---|
 | Sitio web en producción | `0kbot.com` con todas las secciones optimizadas |
 | Blog con **13 artículos** | `/blog` + SEO configurado |
-| Hero reescrito con copy claro | H1: "Mejora de procesos para pymes en Chile" + "No vendemos IA. Vendemos lunes tranquilos." |
+| Hero v2 (2026-04-27) | H1: "No vendemos IA. Vendemos lunes tranquilos." con eyebrow "Mejora de procesos para pymes en Chile". CTA primario → `/#estimador` (sección embebida). Visual con flow del Método 0kbot OS. |
 | SEO on-page optimizado | Keywords distribuidas en metadata, hero, secciones |
 | Flujo de conversión Calendly | ContactModal (2 campos) → lead en Supabase → redirect a Calendly con prefill |
 | Captura de leads en Supabase | Verificado: leads se guardan correctamente con fuente `cta_calendly` |
 | Emails transaccionales | Resend configurado — `sendTransactionalEmail` dispatcher unificado (3 flows × 2 kinds) |
 | FAQs actualizadas | 6 preguntas con respuestas alineadas a la marca |
 | CTAs optimizados | Todos orientados a pérdidas/números, no genéricos |
-| Homepage | 12 secciones + `FloatingCTA` (mobile). Ver CLAUDE.md y PROMPT-HOMEPAGE-CRO.md |
+| Homepage | 13 secciones + `FloatingCTA` (mobile). Rediseño v2 (2026-04-27): Método 0kbot OS, ROI estimator embebido, sección "No somos software caro", PainPoints en bento 2×3, navbar con anchors. Ver CLAUDE.md y PROMPT-HOMEPAGE-CRO.md |
 | DiagnosticoSection con DiagnosticoWizard de 6 pasos | tamaño · industria · dolor · intentadoAntes · timeline · contacto |
 | Formulario de onboarding | `/onboarding` — cuestionario pre-reunión calificado (presupuesto, plazo, rubro) |
 | Email `hola@0kbot.com` | Google Workspace activo |

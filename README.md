@@ -51,9 +51,9 @@ src/
 │       ├── diagnostico/route.ts  # POST: DiagnosticoWizard (6 pasos) → Supabase + emails
 │       └── onboarding/route.ts   # POST: formulario pre-reunión calificado → Supabase + emails
 ├── components/
-│   ├── home/               # Secciones del homepage
+│   ├── home/               # Secciones del homepage (HeroSection, PainPointsSection, MetodoSection, ROIEstimatorSection, NoSomosSoftwareSection, ...)
 │   ├── layout/             # Navbar, Footer
-│   ├── ui/                 # ContactModal, OpenModalButton, FloatingCTA, FAQAccordion, DiagnosticoWizard
+│   ├── ui/                 # ContactModal, OpenModalButton, TrackedLink, FloatingCTA, FAQAccordion, DiagnosticoWizard, OkbotLogo
 │   └── blog/               # BlogCard, CategoryBadge, ShareButtons, RelatedPosts
 ├── content/
 │   └── blog/               # Artículos .mdx (13 publicados)
@@ -73,6 +73,7 @@ src/
     ├── index.ts            # Tipos TypeScript del proyecto
     └── analytics.d.ts      # Tipos globales window.gtag / window.fbq
 docs/                       # Documentación operacional (no es código del sitio)
+public/brand/               # Variantes del logo (0kbot-logo.svg horizontal, 0kbot-logo-dark.svg footer, 0kbot-mark.svg isotipo)
 ```
 
 ---
@@ -104,12 +105,13 @@ docs/                       # Documentación operacional (no es código del siti
 
 | Ubicación | Texto | Acción |
 |---|---|---|
-| Hero primario | "Agendar diagnóstico gratis →" | Abre ContactModal |
-| Hero secundario | "Ver cómo trabajamos ↓" | Scroll a #como-funciona |
+| Navbar | "Diagnóstico gratis" | Abre ContactModal |
+| Hero primario | "Calcular mi pérdida operativa →" | Scroll a `#estimador` |
+| Hero secundario | "Ver cómo funciona ↓" | Scroll a `#metodo` |
+| ROIEstimatorSection | "Quiero revisar este número →" | Abre ContactModal |
 | DiagnosticoSection | DiagnosticoWizard (6 pasos) | Calificación → éxito + Calendly |
-| CTAFinalSection | "Quiero números, no suposiciones →" | Abre ContactModal |
+| CTAFinalSection | "Agendar diagnóstico gratuito →" | Abre ContactModal |
 | FloatingCTA (mobile) | "Ver cuánto estoy perdiendo →" | Abre ContactModal |
-| Navbar | "Agendar diagnóstico gratis" | Abre ContactModal |
 | Footer strip | "Agendar diagnóstico gratis" | Link directo a Calendly |
 | ContactModal submit | "Ir a agendar ahora →" | Guarda lead + redirect Calendly |
 | Contacto page | "Agendar ahora →" | Link directo a Calendly |
