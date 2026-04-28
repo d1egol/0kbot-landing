@@ -1,0 +1,16 @@
+<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="0kbot">
+  <defs>
+    <linearGradient id="markBg" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A74C4"/>
+      <stop offset="1" stop-color="#1B5FA6"/>
+    </linearGradient>
+    <linearGradient id="markGold" x1="16" y1="14" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0D77A"/>
+      <stop offset="1" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="56" height="56" rx="12" fill="url(#markBg)"/>
+  <path d="M28 13C19.71 13 13 19.71 13 28C13 36.29 19.71 43 28 43C36.29 43 43 36.29 43 28C43 19.71 36.29 13 28 13ZM28 20C32.42 20 36 23.58 36 28C36 32.42 32.42 36 28 36C23.58 36 20 32.42 20 28C20 23.58 23.58 20 28 20Z" fill="white"/>
+  <path d="M28 13C32.05 13 35.74 14.6 38.46 17.2L33.4 22.26C32 21.05 30.13 20 28 20V13Z" fill="url(#markGold)"/>
+  <circle cx="42" cy="14" r="3.4" fill="#D4AF37"/>
+</svg>
