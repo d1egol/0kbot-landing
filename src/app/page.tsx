@@ -2,17 +2,15 @@ import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import PainPointsSection from "@/components/home/PainPointsSection";
 import SolucionSection from "@/components/home/SolucionSection";
-import CredencialesSection from "@/components/home/CredencialesSection";
 import MetodoSection from "@/components/home/MetodoSection";
 import ROIEstimatorSection from "@/components/home/ROIEstimatorSection";
-import ComparacionSection from "@/components/home/ComparacionSection";
 import NoSomosSoftwareSection from "@/components/home/NoSomosSoftwareSection";
 import CasosSection from "@/components/home/CasosSection";
-import PrincipiosSection from "@/components/home/PrincipiosSection";
+import CredencialesSection from "@/components/home/CredencialesSection";
 import FAQSection from "@/components/home/FAQSection";
-import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import DiagnosticoSection from "@/components/home/DiagnosticoSection";
 import CTAFinalSection from "@/components/home/CTAFinalSection";
+import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 
 export const metadata: Metadata = {
@@ -107,17 +105,15 @@ export default function HomePage() {
       <HeroSection />
       <PainPointsSection />
       <SolucionSection />
-      <CredencialesSection />
       <MetodoSection />
       <ROIEstimatorSection />
-      <ComparacionSection />
       <NoSomosSoftwareSection />
       <CasosSection />
-      <PrincipiosSection />
+      <CredencialesSection />
       <FAQSection />
-      <BlogPreviewSection />
       <DiagnosticoSection />
       <CTAFinalSection />
+      <BlogPreviewSection />
       <FloatingCTA />
     </>
   );

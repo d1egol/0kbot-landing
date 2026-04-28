@@ -186,8 +186,9 @@ export default function ROIEstimatorSection() {
                   Quiero revisar este número →
                 </OpenModalButton>
                 <p className="text-xs text-muted-foreground font-body text-center">
-                  Estimación basada en tus datos. Sin guardar nada hasta que
-                  tú lo decidas.
+                  Estimación referencial basada en tus datos. No reemplaza un
+                  diagnóstico operativo. Sin guardar nada hasta que tú lo
+                  decidas.
                 </p>
               </div>
             </div>

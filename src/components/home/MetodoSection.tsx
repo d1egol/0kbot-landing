@@ -51,7 +51,7 @@ export default function MetodoSection() {
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
             Detectar → Ordenar → Automatizar → Medir.
             <br />
-            En 12 semanas, te olvidas de nosotros.
+            En 12 semanas, tu operación deja de depender de nosotros.
           </h2>
         </MotionSection>
 

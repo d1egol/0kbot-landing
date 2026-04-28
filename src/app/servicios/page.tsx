@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import MotionSection from "@/components/ui/MotionSection";
+import ComparacionSection from "@/components/home/ComparacionSection";
 import { Workflow, Database, Zap, BarChart2, Users, Settings, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -208,6 +209,9 @@ export default function ServiciosPage() {
           ))}
         </div>
       </section>
+
+      {/* Mapa problema → solución por desafío operativo */}
+      <ComparacionSection />
 
       {/* CTA */}
       <section className="bg-primary py-16 md:py-20 text-center">
