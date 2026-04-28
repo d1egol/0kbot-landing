@@ -68,6 +68,7 @@ const EMPTY: Field = {
 
 export default function OnboardingPage() {
   const [form, setForm] = useState<Field>(EMPTY);
+  const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const set = (key: keyof Field) => (
@@ -76,12 +77,16 @@ export default function OnboardingPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!consent) {
+      setStatus("error");
+      return;
+    }
     setStatus("loading");
     try {
       const res = await fetch("/api/onboarding", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, consent }),
       });
       if (!res.ok) throw new Error();
       setStatus("success");
@@ -358,9 +363,41 @@ export default function OnboardingPage() {
             </div>
           </div>
 
+          {/* Consentimiento Ley 21.719 */}
+          <div className="bg-white rounded-2xl p-5 md:p-6 border border-[#E5E2DB]">
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                required
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                disabled={status === "loading"}
+                className="mt-0.5 w-4 h-4 accent-[#1B5FA6] shrink-0 cursor-pointer"
+                aria-describedby="onboarding-consent-help"
+              />
+              <span className="text-sm text-[#444] leading-relaxed">
+                He leído y acepto la{" "}
+                <Link
+                  href="/privacidad"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#1B5FA6] underline hover:no-underline font-medium"
+                >
+                  política de privacidad
+                </Link>
+                .
+              </span>
+            </label>
+            <p id="onboarding-consent-help" className="text-xs text-[#999] mt-2 leading-relaxed pl-7">
+              Usamos esta información solo para preparar tu diagnóstico operativo y la reunión. No la compartimos con terceros.
+            </p>
+          </div>
+
           {status === "error" && (
             <p className="text-red-600 text-sm text-center">
-              Hubo un error al enviar. Intenta de nuevo o escríbenos a hola@0kbot.com.
+              {consent
+                ? "Hubo un error al enviar. Intenta de nuevo o escríbenos a hola@0kbot.com."
+                : "Debes aceptar la política de privacidad para continuar."}
             </p>
           )}
 
@@ -378,10 +415,6 @@ export default function OnboardingPage() {
               </>
             )}
           </button>
-
-          <p className="text-xs text-[#999] text-center">
-            Esta información es confidencial y se usa únicamente para preparar tu diagnóstico.
-          </p>
         </form>
       </div>
     </main>

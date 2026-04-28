@@ -2,42 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase";
 import { leadSchema } from "@/lib/validations";
 import { sendTransactionalEmail } from "@/lib/email";
-import { checkRateLimit } from "@/lib/rate-limit";
+import { rateLimitParseValidate } from "@/lib/api-handler";
+import { logInfo, logError, newRequestId } from "@/lib/logger";
 
 export async function POST(request: NextRequest) {
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    request.headers.get("x-real-ip") ??
-    "unknown";
-  const { allowed, resetAt } = checkRateLimit(ip, 5, 60_000);
-  if (!allowed) {
-    return NextResponse.json(
-      { error: "Demasiadas solicitudes. Intenta en unos minutos." },
-      {
-        status: 429,
-        headers: { "Retry-After": String(Math.ceil((resetAt - Date.now()) / 1000)) },
-      }
-    );
-  }
+  const requestId = newRequestId();
+  const ctx = { flow: "lead", endpoint: "/api/leads", requestId };
 
-  let body: unknown;
+  const guard = await rateLimitParseValidate(request, leadSchema);
+  if (guard instanceof NextResponse) return guard;
 
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: "Cuerpo inválido" }, { status: 400 });
-  }
-
-  const result = leadSchema.safeParse(body);
-  if (!result.success) {
-    return NextResponse.json(
-      { error: "Datos inválidos", issues: result.error.issues },
-      { status: 422 }
-    );
-  }
-
-  const lead = result.data;
-  console.log("[Leads API] Guardando lead:", lead.email);
+  const lead = guard.data;
+  logInfo("Guardando lead", { ...ctx, email: lead.email });
 
   // 1. Guardar en Supabase (crítico — si falla, retornamos 500)
   try {
@@ -53,9 +29,14 @@ export async function POST(request: NextRequest) {
       estado: lead.estado,
     });
     if (error) throw error;
-    console.log("[Leads API] Lead guardado en Supabase:", lead.email);
+    logInfo("Lead guardado en Supabase", { ...ctx, email: lead.email, result: "ok" });
   } catch (err) {
-    console.error("[Leads API] Error guardando en Supabase:", err);
+    logError("Error guardando en Supabase", {
+      ...ctx,
+      result: "fail",
+      errorCode: "supabase_insert_failed",
+      err: String(err),
+    });
     return NextResponse.json(
       { error: "Error interno al guardar el lead" },
       { status: 500 }
@@ -70,10 +51,10 @@ export async function POST(request: NextRequest) {
   ]);
 
   if (confirmResult.status === "rejected") {
-    console.error("[Leads API] Error email confirmación:", confirmResult.reason);
+    logError("Error email confirmación", { ...ctx, errorCode: "email_confirmation_failed", reason: String(confirmResult.reason) });
   }
   if (notifResult.status === "rejected") {
-    console.error("[Leads API] Error email notificación:", notifResult.reason);
+    logError("Error email notificación", { ...ctx, errorCode: "email_notification_failed", reason: String(notifResult.reason) });
   }
   if (
     confirmResult.status === "fulfilled" &&

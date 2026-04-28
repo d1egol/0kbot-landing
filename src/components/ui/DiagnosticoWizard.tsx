@@ -18,6 +18,7 @@ interface WizardData {
   email: string;
   telefono: string;
   empresa: string;
+  consent: boolean;
 }
 
 const TAMANOS: { value: TamanoOption; label: string }[] = [
@@ -102,6 +103,7 @@ export default function DiagnosticoWizard() {
     email: "",
     telefono: "",
     empresa: "",
+    consent: false,
   });
   const [submitState, setSubmitState] = useState<"idle" | "submitting" | "error">("idle");
   const [apiError, setApiError] = useState("");
@@ -184,6 +186,11 @@ export default function DiagnosticoWizard() {
   // Paso 5 — Contacto
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    if (!data.consent) {
+      setSubmitState("error");
+      setApiError("Debes aceptar la política de privacidad para continuar");
+      return;
+    }
     setSubmitState("submitting");
     setApiError("");
 
@@ -204,6 +211,7 @@ export default function DiagnosticoWizard() {
           dolor: dolorFinal,
           intentadoAntes: data.intentadoAntes ?? false,
           timeline: data.timeline,
+          consent: data.consent,
         }),
       });
       if (!res.ok) throw new Error("Error");
@@ -501,6 +509,37 @@ export default function DiagnosticoWizard() {
                   placeholder="Nombre de tu empresa"
                   className="w-full px-4 py-3 border border-muted rounded-md font-sans text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-background text-foreground"
                 />
+              </div>
+
+              <div>
+                <label className="flex items-start gap-2.5 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={data.consent}
+                    onChange={(e) =>
+                      setData((d) => ({ ...d, consent: e.target.checked }))
+                    }
+                    disabled={submitState === "submitting"}
+                    className="mt-0.5 w-4 h-4 accent-primary shrink-0 cursor-pointer"
+                    aria-describedby="wizard-consent-help"
+                    required
+                  />
+                  <span className="text-xs text-muted-foreground font-sans leading-relaxed">
+                    He leído y acepto la{" "}
+                    <Link
+                      href="/privacidad"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline hover:no-underline"
+                    >
+                      política de privacidad
+                    </Link>
+                    .
+                  </span>
+                </label>
+                <p id="wizard-consent-help" className="text-[11px] text-muted-foreground/80 font-sans mt-1.5 leading-relaxed">
+                  Usamos los datos de este formulario solo para preparar tu diagnóstico operativo y contactarte. No los compartimos con terceros.
+                </p>
               </div>
 
               {apiError && (

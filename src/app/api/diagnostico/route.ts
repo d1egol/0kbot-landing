@@ -2,43 +2,19 @@ import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase";
 import { diagnosticoSchema } from "@/lib/validations";
 import { LEAD_SOURCES, LEAD_ESTADOS } from "@/lib/constants";
-import { checkRateLimit } from "@/lib/rate-limit";
 import { sendTransactionalEmail } from "@/lib/email";
+import { rateLimitParseValidate } from "@/lib/api-handler";
+import { logInfo, logError, newRequestId } from "@/lib/logger";
 
 export async function POST(request: NextRequest) {
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    request.headers.get("x-real-ip") ??
-    "unknown";
-  const { allowed, resetAt } = checkRateLimit(ip, 5, 60_000);
-  if (!allowed) {
-    return NextResponse.json(
-      { error: "Demasiadas solicitudes. Intenta en unos minutos." },
-      {
-        status: 429,
-        headers: { "Retry-After": String(Math.ceil((resetAt - Date.now()) / 1000)) },
-      }
-    );
-  }
+  const requestId = newRequestId();
+  const ctx = { flow: "diagnostico", endpoint: "/api/diagnostico", requestId };
 
-  let body: unknown;
+  const guard = await rateLimitParseValidate(request, diagnosticoSchema);
+  if (guard instanceof NextResponse) return guard;
 
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: "Cuerpo inválido" }, { status: 400 });
-  }
-
-  const result = diagnosticoSchema.safeParse(body);
-  if (!result.success) {
-    return NextResponse.json(
-      { error: "Datos inválidos", issues: result.error.issues },
-      { status: 422 }
-    );
-  }
-
-  const d = result.data;
-  console.log("[Diagnóstico API] Guardando lead:", d.email);
+  const d = guard.data;
+  logInfo("Guardando diagnóstico", { ...ctx, email: d.email });
 
   // 1. Guardar en Supabase (crítico)
   try {
@@ -63,9 +39,14 @@ export async function POST(request: NextRequest) {
       },
     });
     if (error) throw error;
-    console.log("[Diagnóstico API] Lead guardado:", d.email);
+    logInfo("Lead diagnóstico guardado", { ...ctx, email: d.email, result: "ok" });
   } catch (err) {
-    console.error("[Diagnóstico API] Error en Supabase:", err);
+    logError("Error en Supabase", {
+      ...ctx,
+      result: "fail",
+      errorCode: "supabase_insert_failed",
+      err: String(err),
+    });
     return NextResponse.json(
       { error: "Error interno al guardar el diagnóstico" },
       { status: 500 }
@@ -78,16 +59,10 @@ export async function POST(request: NextRequest) {
     sendTransactionalEmail("diagnostico", "notification", d),
   ]);
   if (confirmResult.status === "rejected") {
-    console.error(
-      "[Diagnóstico API] Error email confirmación:",
-      confirmResult.reason
-    );
+    logError("Error email confirmación", { ...ctx, errorCode: "email_confirmation_failed", reason: String(confirmResult.reason) });
   }
   if (notifResult.status === "rejected") {
-    console.error(
-      "[Diagnóstico API] Error email notificación:",
-      notifResult.reason
-    );
+    logError("Error email notificación", { ...ctx, errorCode: "email_notification_failed", reason: String(notifResult.reason) });
   }
 
   return NextResponse.json({ success: true }, { status: 200 });

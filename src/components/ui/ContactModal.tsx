@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
+import Link from "next/link";
 import { X } from "lucide-react";
 import { trackLeadCapture, trackLeadSaveFailed } from "@/lib/analytics";
 import { CALENDLY_URL, LEAD_SOURCES } from "@/lib/constants";
@@ -14,20 +15,23 @@ interface ContactModalProps {
 interface FieldErrors {
   nombre?: string;
   email?: string;
+  consent?: string;
 }
 
-function validate(nombre: string, email: string): FieldErrors {
+function validate(nombre: string, email: string, consent: boolean): FieldErrors {
   const errors: FieldErrors = {};
   if (!nombre || nombre.trim().length < 2)
     errors.nombre = "Ingresa tu nombre completo";
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
     errors.email = "Ingresa un email válido";
+  if (!consent) errors.consent = "Debes aceptar la política de privacidad";
   return errors;
 }
 
 function ModalContent({ isOpen, onClose }: ContactModalProps) {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
+  const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitting, setSubmitting] = useState(false);
 
@@ -35,6 +39,7 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
     if (isOpen) {
       setNombre("");
       setEmail("");
+      setConsent(false);
       setErrors({});
       setSubmitting(false);
     }
@@ -61,7 +66,7 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const clientErrors = validate(nombre, email);
+    const clientErrors = validate(nombre, email, consent);
     if (Object.keys(clientErrors).length > 0) {
       setErrors(clientErrors);
       return;
@@ -80,6 +85,7 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
           nombre,
           email,
           fuente: LEAD_SOURCES.CTA_CALENDLY,
+          consent,
         }),
         signal: controller.signal,
       });
@@ -190,6 +196,39 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
               {errors.email && (
                 <p className="text-xs text-destructive mt-1 font-sans">
                   {errors.email}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="flex items-start gap-2.5 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={consent}
+                  onChange={(e) => {
+                    setConsent(e.target.checked);
+                    if (errors.consent && e.target.checked) {
+                      setErrors((p) => ({ ...p, consent: undefined }));
+                    }
+                  }}
+                  disabled={submitting}
+                  className="mt-0.5 w-4 h-4 accent-primary shrink-0 cursor-pointer"
+                  aria-describedby="modal-consent-help"
+                />
+                <span className="text-xs text-muted-foreground font-sans leading-relaxed">
+                  He leído y acepto la{" "}
+                  <Link href="/privacidad" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:no-underline">
+                    política de privacidad
+                  </Link>
+                  .
+                </span>
+              </label>
+              <p id="modal-consent-help" className="text-[11px] text-muted-foreground/80 font-sans mt-1.5 leading-relaxed">
+                Usamos tu nombre y correo solo para contactarte sobre tu diagnóstico operativo. No los compartimos con terceros.
+              </p>
+              {errors.consent && (
+                <p className="text-xs text-destructive mt-1 font-sans">
+                  {errors.consent}
                 </p>
               )}
             </div>

@@ -6,42 +6,19 @@ import {
   LEAD_ESTADOS,
   ONBOARDING_TAMANO_MAP,
 } from "@/lib/constants";
-import { checkRateLimit } from "@/lib/rate-limit";
 import { sendTransactionalEmail } from "@/lib/email";
+import { rateLimitParseValidate } from "@/lib/api-handler";
+import { logInfo, logError, newRequestId } from "@/lib/logger";
 
 export async function POST(request: NextRequest) {
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    request.headers.get("x-real-ip") ??
-    "unknown";
-  const { allowed, resetAt } = checkRateLimit(ip, 5, 60_000);
-  if (!allowed) {
-    return NextResponse.json(
-      { error: "Demasiadas solicitudes. Intenta en unos minutos." },
-      {
-        status: 429,
-        headers: { "Retry-After": String(Math.ceil((resetAt - Date.now()) / 1000)) },
-      }
-    );
-  }
+  const requestId = newRequestId();
+  const ctx = { flow: "onboarding", endpoint: "/api/onboarding", requestId };
 
-  let body: unknown;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: "Cuerpo inválido" }, { status: 400 });
-  }
+  const guard = await rateLimitParseValidate(request, onboardingSchema);
+  if (guard instanceof NextResponse) return guard;
 
-  const parsed = onboardingSchema.safeParse(body);
-  if (!parsed.success) {
-    return NextResponse.json(
-      { error: "Datos inválidos", issues: parsed.error.issues },
-      { status: 422 }
-    );
-  }
-
-  const data = parsed.data;
-  console.log("[Onboarding API] Guardando lead:", data.email);
+  const data = guard.data;
+  logInfo("Guardando onboarding", { ...ctx, email: data.email });
 
   // 1. Guardar en Supabase (crítico)
   try {
@@ -66,9 +43,14 @@ export async function POST(request: NextRequest) {
     });
 
     if (dbError) throw dbError;
-    console.log("[Onboarding API] Lead guardado:", data.email);
+    logInfo("Onboarding guardado", { ...ctx, email: data.email, result: "ok" });
   } catch (err) {
-    console.error("[Onboarding API] Supabase insert error:", err);
+    logError("Supabase insert error", {
+      ...ctx,
+      result: "fail",
+      errorCode: "supabase_insert_failed",
+      err: String(err),
+    });
     return NextResponse.json(
       { error: "Error al guardar el formulario. Por favor intenta de nuevo." },
       { status: 500 }
@@ -81,16 +63,10 @@ export async function POST(request: NextRequest) {
     sendTransactionalEmail("onboarding", "notification", data),
   ]);
   if (confirmResult.status === "rejected") {
-    console.error(
-      "[Onboarding API] Error email confirmación:",
-      confirmResult.reason
-    );
+    logError("Error email confirmación", { ...ctx, errorCode: "email_confirmation_failed", reason: String(confirmResult.reason) });
   }
   if (notifResult.status === "rejected") {
-    console.error(
-      "[Onboarding API] Error email notificación:",
-      notifResult.reason
-    );
+    logError("Error email notificación", { ...ctx, errorCode: "email_notification_failed", reason: String(notifResult.reason) });
   }
 
   return NextResponse.json({ success: true });

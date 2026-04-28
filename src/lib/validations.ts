@@ -11,6 +11,14 @@ const normalizedEmail = z
 const trimmedString = (max: number, msg?: string) =>
   z.string().trim().max(max, msg);
 
+// Consentimiento explícito Ley 21.719 (Protección de Datos Personales, Chile).
+// Debe ser `true` literal — no acepta default ni omitido.
+const consentLiteral = z.literal(true, {
+  errorMap: () => ({
+    message: "Debes aceptar la política de privacidad para continuar",
+  }),
+});
+
 export const leadSchema = z.object({
   nombre: z
     .string()
@@ -42,6 +50,8 @@ export const leadSchema = z.object({
   estado: z
     .enum(["nuevo", "contactado", "calificado", "descartado"] as const)
     .default(LEAD_ESTADOS.NUEVO),
+
+  consent: consentLiteral,
 });
 
 export type LeadInput = z.infer<typeof leadSchema>;
@@ -61,6 +71,7 @@ export const diagnosticoSchema = z.object({
   intentadoAntes: z.boolean().default(false),
   intentadoDetalle: trimmedString(2000).optional(),
   timeline: z.string().trim().min(1).max(200),
+  consent: consentLiteral,
 });
 
 export type DiagnosticoInput = z.infer<typeof diagnosticoSchema>;
@@ -95,6 +106,7 @@ export const onboardingSchema = z.object({
     "$1.500.000 – $3.000.000 CLP",
     "Abierto / a definir",
   ] as const),
+  consent: consentLiteral,
 });
 
 export type OnboardingInput = z.infer<typeof onboardingSchema>;

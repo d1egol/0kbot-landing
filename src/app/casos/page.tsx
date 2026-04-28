@@ -5,12 +5,12 @@ import OpenModalButton from "@/components/ui/OpenModalButton";
 import { escenarios } from "@/lib/casos";
 
 export const metadata: Metadata = {
-  title: "Casos de automatización de procesos en pymes chilenas",
+  title: "Problemas operativos típicos en pymes chilenas | 0kbot",
   description:
-    "Problemas operativos comunes en pymes chilenas y cómo los resolvemos: distribuidoras, servicios técnicos, clínicas, constructoras, bodegas y más. Resultados reales con metodología probada.",
+    "Situaciones operativas recurrentes en pymes chilenas y cómo las abordamos: distribuidoras, servicios técnicos, clínicas, constructoras, bodegas y más. Enfoque con metodología Lean.",
   keywords: [
     "automatización procesos pymes Chile",
-    "casos mejora de procesos Chile",
+    "problemas operativos pymes Chile",
     "automatización distribuidora Chile",
     "mejora procesos clínica Chile",
     "automatización constructora Chile",
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://0kbot.com/casos" },
   openGraph: {
-    title: "Casos de Mejora de Procesos en Pymes Chilenas | 0kbot",
+    title: "Problemas operativos típicos en pymes chilenas | 0kbot",
     description:
-      "Problemas operativos comunes en pymes chilenas y cómo los resolvemos con metodología Lean. Resultados reales.",
+      "Situaciones operativas recurrentes en pymes chilenas y cómo las abordamos con metodología Lean.",
     url: "https://0kbot.com/casos",
     siteName: "0kbot",
     locale: "es_CL",
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Casos de Mejora de Procesos en Pymes Chilenas | 0kbot",
+    title: "Problemas operativos típicos en pymes chilenas | 0kbot",
     description:
-      "Problemas operativos comunes en pymes chilenas y cómo los resolvemos con metodología Lean.",
+      "Situaciones operativas recurrentes en pymes chilenas y cómo las abordamos con metodología Lean.",
   },
 };
 
@@ -132,7 +132,7 @@ export default function CasosPage() {
                       href={`/casos/${e.slug}`}
                       className="text-sm text-primary font-medium font-body hover:underline inline-flex items-center gap-1.5"
                     >
-                      Ver caso detallado →
+                      Ver enfoque completo →
                     </Link>
                   </div>
                 </div>

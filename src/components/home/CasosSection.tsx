@@ -22,8 +22,8 @@ const uiMeta: Record<
   }
 > = {
   distribuidoras: {
-    metricaDestacada: "↓ 80%",
-    metricaLabel: "errores de picking",
+    metricaDestacada: "60–80%",
+    metricaLabel: "menos errores de picking, potencial estimado",
     accentColor: "#1B5FA6",
     accentBg: "#EFF6FF",
     icon: (
@@ -39,8 +39,8 @@ const uiMeta: Record<
     ),
   },
   "empresas-servicios-tecnicos": {
-    metricaDestacada: "−64%",
-    metricaLabel: "visitas fallidas",
+    metricaDestacada: "40–60%",
+    metricaLabel: "menos visitas fallidas, potencial estimado",
     accentColor: "#7C3AED",
     accentBg: "#F5F3FF",
     icon: (
@@ -55,8 +55,8 @@ const uiMeta: Record<
     ),
   },
   "clinicas-centros-salud": {
-    metricaDestacada: "↓ 50%",
-    metricaLabel: "inasistencias",
+    metricaDestacada: "30–50%",
+    metricaLabel: "menos inasistencias, potencial estimado",
     accentColor: "#059669",
     accentBg: "#ECFDF5",
     icon: (
@@ -91,10 +91,10 @@ export default function CasosSection() {
       <div className="container-content">
         <MotionSection className="mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-            Cómo funciona en la práctica
+            Problemas que resolvemos
           </h2>
           <p className="mt-3 text-lg text-muted-foreground font-body">
-            Problemas reales que resolvemos con el mismo método.
+            Situaciones típicas en pymes chilenas que abordamos con el mismo método. Las cifras son rangos esperables del enfoque, no logros pasados.
           </p>
         </MotionSection>
 

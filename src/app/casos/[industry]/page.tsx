@@ -104,7 +104,7 @@ export default async function CasoIndustriaPage({ params }: PageProps) {
             <span className="text-primary-foreground/80">{escenario.industria}</span>
           </nav>
           <span className="text-sm font-medium text-primary-foreground/60 uppercase tracking-wider">
-            Caso de industria
+            Situación típica del rubro
           </span>
           <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-4 max-w-3xl">
             {escenario.industria}
@@ -119,7 +119,7 @@ export default async function CasoIndustriaPage({ params }: PageProps) {
       <section className="bg-amber-50 border-b border-amber-100 py-4">
         <div className="container-wide">
           <p className="text-sm text-amber-800 font-body text-center">
-            <strong>Nota:</strong> Este es un escenario basado en problemas comunes de la industria. Las métricas provienen de estudios del sector. Estamos documentando nuestros primeros proyectos.
+            <strong>Nota:</strong> este escenario describe una situación operativa típica del rubro. Las cifras del &ldquo;Impacto esperado&rdquo; son rangos del método y referencias de industria, no resultados de un cliente específico.
           </p>
         </div>
       </section>
@@ -218,7 +218,7 @@ export default async function CasoIndustriaPage({ params }: PageProps) {
               className="flex items-center gap-2 text-sm text-muted-foreground hover:gap-3 transition-all font-body"
             >
               <ArrowRight size={14} className="flex-shrink-0" />
-              Ver todos los casos por industria
+              Ver todas las situaciones típicas
             </Link>
           </div>
         </div>
@@ -228,7 +228,7 @@ export default async function CasoIndustriaPage({ params }: PageProps) {
       <section className="section-padding bg-background">
         <div className="container-narrow">
           <h2 className="font-heading text-xl font-bold text-foreground mb-6">
-            Otros casos de industria
+            Otras situaciones típicas
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {escenarios

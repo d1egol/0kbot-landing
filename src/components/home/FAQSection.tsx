@@ -7,8 +7,8 @@ const preguntas = [
   },
   {
     pregunta: "¿Cuánto cuesta un proyecto de mejora de procesos?",
-    respuesta: "Depende del tamaño y alcance, pero para orientarte: programas para pymes de 10–50 personas parten desde 30–50 UF, y para operaciones de 50–200 personas suelen estar entre 60–120 UF. El diagnóstico inicial es siempre gratuito. Si no hay retorno visible proyectado, no tiene sentido avanzar.",
-    cta: { label: "Calcula tu ROI estimado en 30 segundos", href: "/calculadora-roi" },
+    respuesta: "Depende del alcance — qué procesos se atacan, cuánta gente está involucrada, qué se automatiza. El diagnóstico inicial es siempre gratuito y al cierre te entregamos una propuesta concreta con el número exacto. Si después del diagnóstico no hay un retorno claro proyectado, te lo decimos directo y no avanzamos.",
+    cta: { label: "Calcula tu pérdida operativa estimada", href: "/calculadora-roi" },
   },
   {
     pregunta: "¿Tengo que parar mi operación para esto?",
