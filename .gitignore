@@ -47,3 +47,5 @@ graphify-out/
 
 # Claude Code per-project state
 .claude/
+.vercel
+.env*.local
