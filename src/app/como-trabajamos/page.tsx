@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import MotionSection from "@/components/ui/MotionSection";
+import PrincipiosSection from "@/components/home/PrincipiosSection";
 import { Search, ListChecks, Wrench, TrendingUp, ArrowRight } from "lucide-react";
 
 const howToJsonLd = {
@@ -195,6 +196,9 @@ export default function ComoTrabajamosPage() {
           ))}
         </div>
       </section>
+
+      {/* Principios de trabajo */}
+      <PrincipiosSection />
 
       {/* CTA */}
       <section className="bg-primary py-16 md:py-20 text-center">
