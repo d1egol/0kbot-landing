@@ -1,0 +1,24 @@
+# Normalización LF — preventivo para SRI hashes en builds Vercel/Linux desde Windows.
+#
+# Lección registrada en ~/.claude/projects/c--Users-dilop/memory/lesson_sri_crlf_lf_vercel.md:
+# Repo Windows con autocrlf=true rompe SRI integrity hash en producción Vercel/Linux.
+# Fix: `.gitattributes eol=lf` + computar hash desde blob git, no desde disco.
+#
+# Hoy el landing no usa <script integrity=...> manual. Pero el preventivo evita
+# que un cambio futuro reintroduzca el bug.
+
+* text=auto eol=lf
+
+# Binarios (no normalizar)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.pdf binary

@@ -45,7 +45,10 @@ tsconfig.tsbuildinfo
 # graphify knowledge graph artifacts (locales, regenerables con /graphify)
 graphify-out/
 
-# Claude Code per-project state
-.claude/
+# Claude Code per-project state — versionar config compartido del harness LLM,
+# ignorar caches/sesiones locales no replicables.
+.claude/cache/
+.claude/sessions/
+.claude/local/
 .vercel
 .env*.local
