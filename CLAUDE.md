@@ -118,6 +118,7 @@ Hardcodeadas a `https://0kbot.com/[ruta]` en metadata de cada página. En blog u
 3. `opengraph-image.tsx` si es página de marketing clave
 4. `export const revalidate` si tiene contenido dinámico o ISR
 5. `npm run lint && npm run build` antes de declarar terminado
+6. **Verificación visual post-deploy**: para cualquier cambio que altere UI visible, usar Chrome DevTools MCP (`take_screenshot` sobre el preview de Vercel) y comparar contra la expectativa antes de marcar la tarea completa. `lint` y `build` verifican que el código compila, no que el cambio se ve bien.
 
 ### Commits
 - Formato: `tipo: descripción corta en español` (ej: `fix: corregir silent failure en onboarding API`)
@@ -221,6 +222,7 @@ HomePage DiagnosticoSection
 - No saltarse `npm run lint` antes de dar trabajo por terminado
 - **No duplicar copy de casos**: los escenarios por industria viven en `src/lib/casos.ts` como única fuente de verdad. La homepage (`CasosSection.tsx`) consume de ahí y mantiene sólo `uiMeta` (iconos, colores, métrica destacada) por `slug`. Nunca reintroducir copy inline ahí.
 - **No confiar en `npm run build` local en Windows**: `@vercel/og` falla al resolver paths de fonts con `fileURLToPath` (prerender error en rutas `/blog/[slug]/opengraph-image`). El CI en Linux sí pasa y Vercel deploya bien. Verificar con `npm run lint` local + CI de GitHub, no con build local.
+- **No commitear sin `eol=lf` en `.gitattributes`**: repo Windows con `autocrlf=true` rompe SRI integrity hash en producción Vercel/Linux (los assets se sirven con CRLF en local pero LF en build remoto, y el hash inline no matchea). Si trabajás con SRI, computar hashes desde el blob git (`git hash-object` + lectura de blob), no desde el archivo en disco.
 - **No duplicar la lógica del ROI estimator**: `ROIEstimatorSection.tsx` es la versión simple embebida en home (3 inputs, costo mensual+anual). `src/app/calculadora-roi/CalculadoraROI.tsx` es la versión completa (5 inputs, ROI 12m + payback + inversión). La sección embebida linkea a la página completa al final — no convertir el embebido en duplicado de la calculadora.
 
 ---
