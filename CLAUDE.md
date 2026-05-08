@@ -2,11 +2,14 @@
 
 ## ¿Qué es este proyecto?
 
-Landing page de generación de leads para **0kbot**, consultora chilena de mejora de procesos y automatización para pymes. El objetivo de cada decisión de código es maximizar conversiones (leads → diagnósticos → clientes).
+Landing page de generación de leads para **0kbot Centinela** — plataforma de ciberseguridad regulatoria para Operadores de Importancia Vital (OIVs) en Chile. El objetivo de cada decisión de código es maximizar conversiones (leads → diagnósticos → clientes).
 
-**Fundador:** Diego López — Ing. Civil Industrial (UDD), MSc Data Science (PUC), Lean Six Sigma Green Belt.
-**Audiencia:** Pymes chilenas de 10–200 personas con operaciones desordenadas.
-**Propuesta de valor:** Metodología Lean de 12 semanas, resultados medibles, sin cobro si no hay ROI.
+**Producto:** Centinela — motor regulatorio Python que mapea NIST CSF ↔ Ley 21.663/21.719/21.459/ANCI y genera reportes de diagnóstico regulatorio. Repositorio principal: `0kbot-seguridad` (adyacente).
+**Fundador:** Diego López — Ing. Civil Industrial + MSc Data Science + Lead Pentester.
+**Audiencia:** OIVs chilenos (banca, telco, energía, salud, transporte) y empresas mid-market afectas a [[Ley 21.719]].
+**Propuesta de valor:** Diagnóstico regulatorio accionable con trazabilidad legal. SKUs desde lead magnet gratuito hasta Regulated 9.9M CLP.
+
+> Este repo es el funnel de intake (landing + form → Supabase leads). El motor regulatorio, SKUs y modelo de negocio están en `0kbot-seguridad/`. Si necesitas entender el producto, leer `0kbot-seguridad/docs/strategy/master_plan_v3.md` y `0kbot-seguridad/AGENTS.md`.
 
 ---
 
