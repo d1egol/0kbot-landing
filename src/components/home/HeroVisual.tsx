@@ -77,6 +77,7 @@ function useCounterOnVisible(target: number, durationMs: number = 1500) {
     if (!node) return;
     const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- accessibility shortcut: prefers-reduced-motion salta animación, una sola actualización síncrona
       setValue(target);
       return;
     }
