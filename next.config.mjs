@@ -1,4 +1,8 @@
 import withBundleAnalyzer from "@next/bundle-analyzer";
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -29,6 +33,12 @@ const securityHeaders = [
 
 const nextConfig = {
   reactStrictMode: true,
+  // Next 16: fija workspace root al directorio del proyecto. Hay un package-lock.json en
+  // C:\Users\dilop\ (raíz del usuario) por trabajo en otros repos que confunde la
+  // detección automática de root y dispara el warning "multiple lockfiles detected".
+  turbopack: {
+    root: __dirname,
+  },
   async headers() {
     return [
       {

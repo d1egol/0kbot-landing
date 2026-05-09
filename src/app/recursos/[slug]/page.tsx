@@ -2,11 +2,12 @@ import { redirect } from "next/navigation";
 import { getAllPosts } from "@/lib/blog";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // Redirect /recursos/[slug] → /blog/[slug] to avoid duplicate content
-export default function RecursosSlugPage({ params }: Props) {
+export default async function RecursosSlugPage(props: Props) {
+  const params = await props.params;
   redirect(`/blog/${params.slug}`);
 }
 

@@ -35,6 +35,7 @@ export default function Navbar() {
 
   // Close on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- sync con sistema externo (router pathname): cerrar menú mobile en navegación
     setMobileOpen(false);
   }, [pathname]);
 

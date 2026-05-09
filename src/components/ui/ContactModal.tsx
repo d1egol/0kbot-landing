@@ -37,6 +37,7 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
 
   useEffect(() => {
     if (isOpen) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- reset form al abrir modal (trigger externo: prop isOpen). Refactor a key= reset es opción futura.
       setNombre("");
       setEmail("");
       setConsent(false);
@@ -255,6 +256,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR hydration trick: portal solo renderiza post-mount. Refactor futuro a useSyncExternalStore o 'use client' guard al portal.
     setMounted(true);
   }, []);
 
