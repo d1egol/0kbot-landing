@@ -2,8 +2,20 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
-import { trackDiagnosticoCompleted, trackDiagnosticoStep } from "@/lib/analytics";
-import { CALENDLY_URL, CONTACT_EMAIL } from "@/lib/constants";
+import { Shield, ArrowUpRight } from "lucide-react";
+import {
+  trackCentinelaCtaClick,
+  trackCrossDomainReferral,
+  trackDiagnosticoCompleted,
+  trackDiagnosticoStep,
+  trackRegulatedSectorDetected,
+} from "@/lib/analytics";
+import {
+  CALENDLY_URL,
+  CONTACT_EMAIL,
+  REGULATED_SECTORS,
+  SEGURIDAD_URL,
+} from "@/lib/constants";
 
 type TamanoOption = "<20" | "20-50" | "50-100" | "100-200" | ">200";
 
@@ -36,6 +48,11 @@ const INDUSTRIAS = [
   "Servicios profesionales",
   "Retail y comercio",
   "Salud y clínicas",
+  "Servicios financieros / Fintech",
+  "Energía / Utilities",
+  "Telecomunicaciones",
+  "Infraestructura digital",
+  "Transporte y logística crítica",
   "Gastronomía y hotelería",
   "Educación",
   "Otro",
@@ -145,6 +162,9 @@ export default function DiagnosticoWizard() {
       setTempText("");
     } else {
       setData((d) => ({ ...d, industria: value }));
+      if (REGULATED_SECTORS.includes(value)) {
+        trackRegulatedSectorDetected(value);
+      }
       advance();
     }
   }
@@ -228,48 +248,91 @@ export default function DiagnosticoWizard() {
   // Pantalla de éxito
   if (success) {
     const calendlyUrl = `${CALENDLY_URL}?name=${encodeURIComponent(data.nombre)}&email=${encodeURIComponent(data.email)}`;
+    const isRegulatedSector = REGULATED_SECTORS.includes(data.industria);
 
     return (
-      <div className="max-w-lg mx-auto text-center py-12 px-8 bg-card border border-muted rounded-lg shadow-card">
-        <div
-          className="inline-flex items-center justify-center w-12 h-12 rounded-full mb-5"
-          style={{ backgroundColor: "#1B5FA6" }}
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            aria-hidden="true"
+      <div className="max-w-lg mx-auto">
+        <div className="text-center py-12 px-8 bg-card border border-muted rounded-lg shadow-card">
+          <div
+            className="inline-flex items-center justify-center w-12 h-12 rounded-full mb-5"
+            style={{ backgroundColor: "#1B5FA6" }}
           >
-            <path
-              d="M4 10l4 4 8-8"
-              stroke="#FFFFFF"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 10l4 4 8-8"
+                stroke="#FFFFFF"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <h3 className="font-display text-2xl font-bold text-foreground mb-3">
+            ¡Listo, {data.nombre.split(" ")[0]}!
+          </h3>
+          <p className="text-muted-foreground font-sans leading-relaxed mb-2">
+            Recibimos tu diagnóstico. Para agendar tu llamada ahora mismo:
+          </p>
+          <Link
+            href={calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mt-4 px-6 py-3.5 bg-primary text-primary-foreground rounded-md font-semibold font-sans text-sm hover:bg-primary/90 transition-colors"
+          >
+            Agendar diagnóstico gratuito →
+          </Link>
+          <p className="text-xs text-muted-foreground font-sans mt-4">
+            O si prefieres, te contactamos en{" "}
+            <strong className="text-foreground">menos de 24 horas</strong> al email{" "}
+            <span className="text-foreground font-medium">{data.email}</span>
+          </p>
         </div>
-        <h3 className="font-display text-2xl font-bold text-foreground mb-3">
-          ¡Listo, {data.nombre.split(" ")[0]}!
-        </h3>
-        <p className="text-muted-foreground font-sans leading-relaxed mb-2">
-          Recibimos tu diagnóstico. Para agendar tu llamada ahora mismo:
-        </p>
-        <Link
-          href={calendlyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 mt-4 px-6 py-3.5 bg-primary text-primary-foreground rounded-md font-semibold font-sans text-sm hover:bg-primary/90 transition-colors"
-        >
-          Agendar diagnóstico gratuito →
-        </Link>
-        <p className="text-xs text-muted-foreground font-sans mt-4">
-          O si prefieres, te contactamos en{" "}
-          <strong className="text-foreground">menos de 24 horas</strong> al email{" "}
-          <span className="text-foreground font-medium">{data.email}</span>
-        </p>
+
+        {isRegulatedSector && (
+          <div className="mt-6 p-6 bg-foreground text-background rounded-lg border border-foreground/10">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#D4AF37]/15 border border-[#D4AF37]/30 shrink-0">
+                <Shield className="w-4 h-4 text-[#D4AF37]" aria-hidden="true" />
+              </div>
+              <div>
+                <p className="font-display font-semibold text-base leading-snug">
+                  Tu sector tiene exigencias regulatorias específicas
+                </p>
+                <p className="text-xs text-background/60 font-sans mt-0.5">
+                  {data.industria}
+                </p>
+              </div>
+            </div>
+            <p className="text-sm font-sans leading-relaxed text-background/85 mb-4">
+              Para empresas en {data.industria.toLowerCase()}, además del
+              diagnóstico operativo tenemos una vertical dedicada a
+              ciberseguridad y cumplimiento normativo.
+            </p>
+            <a
+              href={SEGURIDAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                trackCentinelaCtaClick("wizard_post_completion");
+                trackCrossDomainReferral(
+                  "seguridad.0kbot.com",
+                  "wizard_post_completion"
+                );
+              }}
+              className="inline-flex items-center gap-2 px-5 py-3 bg-[#D4AF37] text-foreground rounded-md font-semibold font-sans text-sm hover:bg-[#D4AF37]/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D4AF37]"
+              aria-label="Ir a seguridad.0kbot.com — abre en nueva pestaña"
+            >
+              Solicitar diagnóstico de seguridad
+              <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+            </a>
+          </div>
+        )}
       </div>
     );
   }

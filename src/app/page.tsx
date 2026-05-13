@@ -6,6 +6,7 @@ import MetodoSection from "@/components/home/MetodoSection";
 import ROIEstimatorSection from "@/components/home/ROIEstimatorSection";
 import NoSomosSoftwareSection from "@/components/home/NoSomosSoftwareSection";
 import CasosSection from "@/components/home/CasosSection";
+import VerticalesSection from "@/components/home/VerticalesSection";
 import CredencialesSection from "@/components/home/CredencialesSection";
 import FAQSection from "@/components/home/FAQSection";
 import DiagnosticoSection from "@/components/home/DiagnosticoSection";
@@ -19,13 +20,13 @@ export const metadata: Metadata = {
       "0kbot — Consultoría en Mejora de Procesos y Automatización para Pymes Chile",
   },
   description:
-    "Mejora de procesos y automatización para pymes chilenas con metodología Lean. Resultados medibles en 12 semanas o no pagas. Diagnóstico gratuito.",
+    "Mejora de procesos y automatización para pymes chilenas con metodología Lean. También vertical especializada en ciberseguridad y cumplimiento normativo. Diagnóstico gratuito.",
   alternates: { canonical: "https://0kbot.com" },
   openGraph: {
     title:
       "0kbot — Consultoría en Mejora de Procesos y Automatización para Pymes Chile",
     description:
-      "Detectamos dónde se va tu tiempo y tu plata, y lo arreglamos con cambios concretos. Resultados medibles en 12 semanas.",
+      "Detectamos dónde se va tu tiempo y tu plata, y lo arreglamos con cambios concretos. También vertical especializada en ciberseguridad y cumplimiento normativo.",
     url: "https://0kbot.com",
     siteName: "0kbot",
     locale: "es_CL",
@@ -109,6 +110,7 @@ export default function HomePage() {
       <ROIEstimatorSection />
       <NoSomosSoftwareSection />
       <CasosSection />
+      <VerticalesSection />
       <CredencialesSection />
       <FAQSection />
       <DiagnosticoSection />

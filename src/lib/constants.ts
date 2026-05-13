@@ -31,12 +31,29 @@ export const CALENDLY_URL =
 // Contact email — single source of truth
 export const CONTACT_EMAIL = "hola@0kbot.com";
 
+// Subdominio vertical seguridad — single source of truth
+export const SEGURIDAD_URL = "https://seguridad.0kbot.com";
+
+// Industrias que el DiagnosticoWizard considera "reguladas" — disparan
+// derivación a la vertical seguridad post-completion.
+export const REGULATED_SECTORS: ReadonlyArray<string> = [
+  "Servicios financieros / Fintech",
+  "Energía / Utilities",
+  "Telecomunicaciones",
+  "Infraestructura digital",
+  "Salud y clínicas",
+  "Transporte y logística crítica",
+] as const;
+
 // Analytics event names
 export const ANALYTICS_EVENTS = {
   CTA_CLICK: "cta_click",
   GENERATE_LEAD: "generate_lead",
   DIAGNOSTICO_COMPLETED: "diagnostico_completed",
   DIAGNOSTICO_STEP: "diagnostico_step",
+  CENTINELA_CTA_CLICK: "centinela_cta_click",
+  CROSS_DOMAIN_REFERRAL: "cross_domain_referral",
+  REGULATED_SECTOR_DETECTED: "regulated_sector_detected",
 } as const;
 
 // Mapea rangos del onboarding (granulares) al enum canónico tamano_empresa

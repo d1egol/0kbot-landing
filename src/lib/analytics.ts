@@ -134,6 +134,64 @@ export function trackROIEstimatorStarted(): void {
 }
 
 /**
+ * Click en CTA hacia la vertical de seguridad (seguridad.0kbot.com).
+ * `location` permite distinguir si el click vino de la sección puente
+ * de la home, del panel post-diagnóstico del wizard, o de futuros puntos
+ * de derivación.
+ *
+ * NOTA: para ver el journey cross-dominio completo en GA4, el contenedor
+ * GTM (GTM-TKKTNXBS) debe tener cross-domain linker configurado entre
+ * 0kbot.com y seguridad.0kbot.com. Sin ese paso, el evento se registra
+ * pero la sesión se rompe al cruzar el dominio.
+ */
+export function trackCentinelaCtaClick(location: string): void {
+  try {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "centinela_cta_click", { location });
+    }
+  } catch {
+    // never block the user flow
+  }
+}
+
+/**
+ * Navegación saliente hacia un dominio propio distinto (hoy: seguridad.0kbot.com).
+ * Complementa `cta_click` con metadata específica del journey cross-vertical.
+ */
+export function trackCrossDomainReferral(
+  destination: string,
+  sourceSection: string
+): void {
+  try {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "cross_domain_referral", {
+        destination,
+        source_section: sourceSection,
+      });
+    }
+  } catch {
+    // never block the user flow
+  }
+}
+
+/**
+ * Sector regulado detectado en el DiagnosticoWizard. Se dispara al
+ * seleccionar industria en paso 2 si la opción está en REGULATED_SECTORS
+ * (ver constants.ts). Permite medir qué fracción del tráfico inbound
+ * de la home generalista corresponde a verticales con obligaciones
+ * regulatorias activas.
+ */
+export function trackRegulatedSectorDetected(sector: string): void {
+  try {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "regulated_sector_detected", { sector });
+    }
+  } catch {
+    // never block the user flow
+  }
+}
+
+/**
  * Uso pasivo de la calculadora ROI — se dispara una vez por sesion despues
  * de que el usuario termino de ajustar inputs (debounce). Sirve para medir
  * engagement de la herramienta aunque no hagan click en el CTA final.
