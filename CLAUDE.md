@@ -2,14 +2,15 @@
 
 ## ¿Qué es este proyecto?
 
-Landing page de generación de leads para **0kbot Centinela** — plataforma de ciberseguridad regulatoria para Operadores de Importancia Vital (OIVs) en Chile. El objetivo de cada decisión de código es maximizar conversiones (leads → diagnósticos → clientes).
+Landing page generalista de **0kbot** — consultora automatizada de mejora de procesos y automatización para pymes chilenas (vertical principal de la home), con **vertical especializada en ciberseguridad y cumplimiento normativo** que vive en el subdominio `seguridad.0kbot.com` (repo `0kbot-seguridad`). El objetivo de cada decisión de código es maximizar conversiones (leads → diagnósticos → clientes) y derivar al subdominio a los visitantes de sectores regulados.
 
-**Producto:** Centinela — motor regulatorio Python que mapea NIST CSF ↔ Ley 21.663/21.719/21.459/ANCI y genera reportes de diagnóstico regulatorio. Repositorio principal: `0kbot-seguridad` (adyacente).
+**Foco home `0kbot.com`:** Mejora de procesos + automatización para pymes 20-150 personas, metodología Lean en 12 semanas.
+**Vertical seguridad `seguridad.0kbot.com`:** Diagnósticos de seguridad accionables. Centinela (motor regulatorio que mapea NIST CSF ↔ Ley 21.663/21.719/ANCI) es uno de los productos que se venden ahí, no la propuesta de la home.
 **Fundador:** Diego López — Ing. Civil Industrial + MSc Data Science + Lead Pentester.
-**Audiencia:** OIVs chilenos (banca, telco, energía, salud, transporte) y empresas mid-market afectas a [[Ley 21.719]].
-**Propuesta de valor:** Diagnóstico regulatorio accionable con trazabilidad legal. SKUs desde lead magnet gratuito hasta Regulated 9.9M CLP.
+**Audiencia home generalista:** Pymes operativas de 20-150 personas en Chile (distribución, manufactura, retail, servicios, salud, gastronomía, etc.).
+**Audiencia vertical seguridad:** OIVs designadas por ANCI, sectores regulados (Ley 21.663/21.719), proveedores de grandes empresas con exigencias contractuales de cumplimiento.
 
-> Este repo es el funnel de intake (landing + form → Supabase leads). El motor regulatorio, SKUs y modelo de negocio están en `0kbot-seguridad/`. Si necesitas entender el producto, leer `0kbot-seguridad/docs/strategy/master_plan_v3.md` y `0kbot-seguridad/AGENTS.md`.
+> Este repo es el funnel de intake generalista (landing + form → Supabase leads). El motor regulatorio Centinela, SKUs y modelo de negocio de la vertical seguridad están en `0kbot-seguridad/`. La sección `VerticalesSection` de la home + el panel post-completion del `DiagnosticoWizard` (cuando el sector es regulado) son los puentes hacia el subdominio.
 
 ---
 
@@ -29,7 +30,7 @@ Para build sin `.env.local`: prefija con las vars de entorno del `.env.example`.
 
 ## Stack técnico
 
-- **Next.js 14** App Router, TypeScript 5.8 strict, `src/` directory
+- **Next.js 16** App Router (16.2.6) + React 19, TypeScript 5.8 strict, `src/` directory. Build con `--webpack` flag (ver `package.json`); ver lección `lesson_next16_upgrade_bundle_analyzer` en memoria.
 - **Supabase** PostgreSQL — tabla `leads` con campo JSONB `diagnostico_data`
 - **Resend** — email transaccional (6 templates en `src/lib/email-templates/`)
 - **Zod** — validación servidor + cliente; React Hook Form en forms
@@ -136,21 +137,22 @@ Hardcodeadas a `https://0kbot.com/[ruta]` en metadata de cada página. En blog u
 1.  HeroSection             — H1 "No vendemos IA. Vendemos lunes tranquilos." + dashboard típico + CTA #estimador
 2.  PainPointsSection       — 6 dolores en bento 2×3 (id="problemas")
 3.  SolucionSection         — Qué/Cómo/Resultado en 3 columnas
-4.  CredencialesSection     — Perfil del founder
-5.  MetodoSection           — Método 0kbot OS: Detectar/Ordenar/Automatizar/Medir (id="metodo")
-6.  ROIEstimatorSection     — 3 inputs → costo mensual + costo anual + alerta tonal (id="estimador")
-7.  ComparacionSection      — 6 problemas + soluciones concretas
-8.  NoSomosSoftwareSection  — 6 objeciones "lo que NO hacemos" (fondo oscuro)
-9.  CasosSection            — 3 escenarios de industria (id="casos")
-10. PrincipiosSection       — 3 principios de trabajo
-11. FAQSection              — 6 preguntas (incluye pricing en UF)
-12. BlogPreviewSection      — 3 artículos recientes
-13. DiagnosticoSection      — DiagnosticoWizard inline (6 pasos, id="cta-diagnostico")
-14. CTAFinalSection         — "Cada mes que esperas, el número crece."
+4.  MetodoSection           — Método 0kbot OS: Detectar/Ordenar/Automatizar/Medir (id="metodo")
+5.  ROIEstimatorSection     — 3 inputs → costo mensual + costo anual + alerta tonal (id="estimador")
+6.  NoSomosSoftwareSection  — 6 objeciones "lo que NO hacemos" (fondo oscuro)
+7.  CasosSection            — 3 escenarios de industria (id="casos")
+8.  VerticalesSection       — Puente a vertical seguridad.0kbot.com (fondo oscuro + acento dorado, id="verticales")
+9.  CredencialesSection     — Perfil del founder
+10. FAQSection              — 6 preguntas (incluye pricing en UF)
+11. DiagnosticoSection      — DiagnosticoWizard inline (6 pasos, id="cta-diagnostico")
+12. CTAFinalSection         — "Cada mes que esperas, el número crece."
+13. BlogPreviewSection      — 3 artículos recientes
 +   FloatingCTA             — mobile only, sticky bottom
 ```
 
 **StatsSection** existe como componente pero NO está en la homepage — solo activar cuando haya datos reales de clientes.
+
+**ComparacionSection y PrincipiosSection** existen como archivos en `src/components/home/` pero ya NO están en `page.tsx` desde el rediseño v2. Conservar archivos por si se rescatan; decisión final pendiente (Diego).
 
 **Anchors del navbar:** `/#problemas`, `/#metodo`, `/#casos`, `/blog`. CTA primario del navbar abre ContactModal.
 
@@ -243,12 +245,14 @@ HomePage DiagnosticoSection
 
 ---
 
-## Pendientes conocidos (post rediseño v2, 2026-04-27)
+## Pendientes conocidos (post rediseño v2, 2026-04-27 + sección puente 2026-05-13)
 
-- **`ComparacionSection` redundante con `PainPointsSection` v2**: ambas tienen estructura "problema → solución" con 6 cards. Decidir si fusionar (mover el copy útil de Comparación a PainPoints), eliminar Comparación, o reescribirla con un ángulo diferente. Por ahora ambas conviven en homepage.
+- **`ComparacionSection` redundante con `PainPointsSection` v2**: ambas tienen estructura "problema → solución" con 6 cards. Ya fue retirada de `page.tsx`; archivo conservado para posible rescate. Decidir si eliminar permanentemente.
 - **Páginas /servicios, /como-trabajamos, /nosotros fuera del nav primario**: siguen vivas (SEO + footer) pero el navbar ya no las lista. Si en analítica se ve drop fuerte de tráfico interno hacia ellas, considerar reincorporarlas o consolidar contenido al home.
 - **Logo `0kbot-logo-dark.svg` en footer**: derivado del logo principal, con wordmark blanco + acento dorado. Si visualmente se ve flojo sobre `bg-primary`, ajustar variantes.
 - **Verificar tracking en GA4 Debug View**: eventos nuevos `mobile_menu_open`, `roi_estimator_started`, `home_estimator_computed`, y `cta_click` con locations nuevas (`hero`, `hero_secondary`, `estimador`, `navbar`).
+- **Cross-domain GTM linker pendiente (config manual fuera del repo)**: para que GA4 sticheé sesiones cross-dominio `0kbot.com ↔ seguridad.0kbot.com` los eventos `centinela_cta_click` + `cross_domain_referral` (sección puente + wizard post-completion) necesitan Google tag linker activo en el contenedor GTM-TKKTNXBS. Sin esto el evento se registra pero la sesión se rompe al cruzar el dominio.
+- **Schema Supabase `leads`**: si se quiere persistir el flag `regulated_sector_detected` para segmentar leads en CRM, agregar campo opcional `vertical` o derivar desde `diagnostico_data.industria` (ya viene en JSONB). Hoy el evento solo se trackea en GA4.
 
 ---
 
