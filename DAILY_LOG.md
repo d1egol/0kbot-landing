@@ -53,3 +53,26 @@ Gates verde: lint + typecheck + build en Windows local + CI Vercel previo a merg
 - Decisión separada pendiente: eliminar definitivamente `ComparacionSection.tsx` y `PrincipiosSection.tsx` (archivos vivos pero no importados desde el rediseño v2).
 
 ---
+
+## 2026-05-13 20:00 — @claude (cierre extendido post-merge)
+
+**Status:** Ejecuté los 3 pendientes que quedaron tras el merge de PR #16, más un bonus encadenado:
+
+1. **Verificación visual prod** ✅ — Chrome DevTools MCP sobre `https://0kbot.com` viewport desktop (1440×900) y mobile (390×844 emulado). `VerticalesSection` renderiza limpio en ambos: eyebrow dorado, título h2 a 2-4 líneas legibles, card con icono escudo + CTA dorado prominente, lista "Para quién aplica" responsive (colapsa debajo del card en mobile), microcopy y disclaimer presentes. Navbar hamburguesa mobile OK. FloatingCTA sticky-bottom no compite con el CTA dorado de la sección. Screenshots en `%TEMP%\0kbot-verticales-*.png`.
+2. **Supabase schema** ✅ — Migration `add_vertical_to_leads` aplicada vía MCP al proyecto `cgmhkeocffwrlegktonw` (0kbot-landing, sa-east-1). Campo `vertical TEXT NULL` con check constraint `NULL OR 'procesos' OR 'seguridad'`. Verificado post-aplicación: 0 security advisors, 1 row existente intacto.
+3. **Guía GTM cross-domain** ✅ — `docs/GTM_CROSS_DOMAIN_SETUP.md` commit `0b40038`. 5 pasos concretos + tabla de troubleshooting + validación end-to-end con DebugView GA4. No tengo MCP de GTM, por eso es guía manual.
+4. **Bonus encadenado** ✅ — Commit `910eecb` actualiza `/api/diagnostico` para derivar `vertical` automáticamente en cada insert: si `industria ∈ REGULATED_SECTORS` (fintech, energía, telco, salud, infra digital, transporte) → `vertical='seguridad'`, sino `'procesos'`. CRM ya puede segmentar leads por vertical sin parsear el JSONB `diagnostico_data.industria`.
+
+Lint + typecheck verde pre-push. Push directo a main (autorizado).
+
+**Necesito (de Diego):**
+- ⚠ **Configurar GTM linker** siguiendo `docs/GTM_CROSS_DOMAIN_SETUP.md` (5-10 min en la UI de GTM). Es el único pendiente bloqueante para que GA4 stitchee sesiones cross-dominio.
+- (Opcional) Test E2E manual: completar wizard en `https://0kbot.com` con industria "Servicios financieros / Fintech" y verificar en Supabase Studio que el lead nuevo tiene `vertical='seguridad'`. Confirma que el cambio de API funciona en prod.
+
+**Bloqueos:** ninguno. Todo lo que requiere ejecutarse desde el harness está hecho.
+
+**Próximo paso:**
+- Cuando Diego configure el GTM linker, primer chequeo GA4 DebugView a las 24-48h para validar que `centinela_cta_click` y `cross_domain_referral` aparecen con `session_id` persistente cruzando dominios.
+- Si el wizard captura ≥5 leads con `vertical='seguridad'` en las próximas 2 semanas, considerar handoff automático a `crm-pipeline-mover` para enrutarlos al Sheet Pipeline OIV.
+
+---
