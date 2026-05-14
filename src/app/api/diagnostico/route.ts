@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase";
 import { diagnosticoSchema } from "@/lib/validations";
-import { LEAD_SOURCES, LEAD_ESTADOS } from "@/lib/constants";
+import { LEAD_SOURCES, LEAD_ESTADOS, REGULATED_SECTORS } from "@/lib/constants";
 import { sendTransactionalEmail } from "@/lib/email";
 import { rateLimitParseValidate } from "@/lib/api-handler";
 import { logInfo, logError, newRequestId } from "@/lib/logger";
@@ -27,6 +27,7 @@ export async function POST(request: NextRequest) {
       problema: d.dolor,
       fuente: LEAD_SOURCES.DIAGNOSTICO_WIZARD,
       estado: LEAD_ESTADOS.NUEVO,
+      vertical: REGULATED_SECTORS.includes(d.industria) ? "seguridad" : "procesos",
       diagnostico_data: {
         tamano: d.tamano,
         industria: d.industria,
