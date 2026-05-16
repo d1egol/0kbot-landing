@@ -35,6 +35,7 @@ export async function POST(request: NextRequest) {
         intentadoAntes: d.intentadoAntes,
         intentadoDetalle: d.intentadoDetalle ?? "",
         timeline: d.timeline,
+        servicioInteres: d.servicioInteres ?? "",
         telefono: d.telefono ?? "",
         empresa: d.empresa ?? "",
       },

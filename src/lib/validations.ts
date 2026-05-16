@@ -71,6 +71,7 @@ export const diagnosticoSchema = z.object({
   intentadoAntes: z.boolean().default(false),
   intentadoDetalle: trimmedString(2000).optional(),
   timeline: z.string().trim().min(1).max(200),
+  servicioInteres: trimmedString(200).optional(),
   consent: consentLiteral,
 });
 
