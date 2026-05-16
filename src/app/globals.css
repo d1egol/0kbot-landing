@@ -4,35 +4,35 @@
 
 @layer base {
   :root {
-    /* Paleta brand 0kbot — cálida y profesional */
-    --background: 40 25% 96%;        /* #F7F5F0 */
-    --foreground: 0 0% 10%;          /* #1A1A1A */
+    /* Paleta brand 0kbot v1.1 (2026-05-15) — editorial cálido, monocromo + 1 acento */
+    --background: 60 22% 98%;        /* #FAFAF7 off-white tibio */
+    --foreground: 0 0% 4%;           /* #0A0A0A casi negro */
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 0 0% 4%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 0 0% 4%;
 
-    --primary: 213 73% 37%;          /* #1B5FA6 azul 0kbot */
+    --primary: 226 71% 40%;          /* #1E40AF navy — Tailwind blue-800 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 20% 90%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary: 60 15% 94%;
+    --secondary-foreground: 0 0% 4%;
 
-    --muted: 40 15% 88%;             /* #E5E2DB */
-    --muted-foreground: 0 0% 29%;    /* #4A4A4A */
+    --muted: 0 0% 92%;               /* neutral-200 */
+    --muted-foreground: 0 0% 32%;    /* #525252 neutral-600 */
 
-    --accent: 213 78% 48%;            /* #1A74C4 azul */
+    --accent: 226 67% 47%;           /* #1D4ED8 blue-700 — hover/active del primary */
     --accent-foreground: 0 0% 100%;
-    --accent-glow: 213 78% 60%;
+    --accent-glow: 217 91% 75%;      /* #93C5FD blue-300 — para destacar texto/iconos sobre bg-primary navy */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 15% 88%;
-    --input: 40 15% 88%;
-    --ring: 213 73% 37%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 226 71% 40%;
 
     --radius: 0.5rem;
 
@@ -70,11 +70,12 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'DM Sans', system-ui, sans-serif;
+    font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-family: var(--font-roboto-slab), 'Roboto Slab', 'IBM Plex Serif', Georgia, serif;
+    letter-spacing: -0.01em;
   }
 
   /* Scroll margin para navegación fija */

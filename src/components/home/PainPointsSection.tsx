@@ -8,6 +8,8 @@ import {
   Flame,
 } from "lucide-react";
 
+// Brand v1.1: monocromo. Las 6 cards comparten estilo neutro; la distinción
+// visual viene del icono + número, no del hue. Hover sutil mueve el border al primary.
 const cards = [
   {
     number: "01",
@@ -16,9 +18,6 @@ const cards = [
     dolor: "Tu equipo responde lo mismo 40 veces al día.",
     costo: "Horas perdidas, errores y clientes esperando.",
     solucion: "Lo convertimos en flujo, registro y seguimiento.",
-    border: "border-emerald-200 hover:border-emerald-300",
-    iconBg: "bg-emerald-50",
-    iconColor: "text-emerald-600",
   },
   {
     number: "02",
@@ -27,9 +26,6 @@ const cards = [
     dolor: "Tres versiones del mismo archivo y nadie sabe cuál es la buena.",
     costo: "Decisiones con datos viejos y reprocesos en cierre.",
     solucion: "Una fuente única de datos, con permisos y auditoría.",
-    border: "border-amber-200 hover:border-amber-300",
-    iconBg: "bg-amber-50",
-    iconColor: "text-amber-600",
   },
   {
     number: "03",
@@ -38,9 +34,6 @@ const cards = [
     dolor: "Algunos clientes ya no preguntan. Otros se quejan después.",
     costo: "Plata que ya estaba ganada y se va por la cañería.",
     solucion: "Captura, asignación y trazabilidad de cada pedido.",
-    border: "border-red-200 hover:border-red-300",
-    iconBg: "bg-red-50",
-    iconColor: "text-red-600",
   },
   {
     number: "04",
@@ -49,9 +42,6 @@ const cards = [
     dolor: "Cada lunes alguien arma el reporte copiando y pegando 4 horas.",
     costo: "Tu gerencia toma decisiones tarde y con números desactualizados.",
     solucion: "Tableros automáticos que ven lo mismo y se actualizan solos.",
-    border: "border-purple-200 hover:border-purple-300",
-    iconBg: "bg-purple-50",
-    iconColor: "text-purple-600",
   },
   {
     number: "05",
@@ -60,9 +50,6 @@ const cards = [
     dolor: "Cotizaste, mandaste el correo y nunca más supiste.",
     costo: "Ventas que estaban casi cerradas se enfrían sin que te enteres.",
     solucion: "Pipeline simple con recordatorios y estado de cada cuenta.",
-    border: "border-blue-200 hover:border-blue-300",
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-600",
   },
   {
     number: "06",
@@ -71,9 +58,6 @@ const cards = [
     dolor: "Tu día es resolver lo que nadie más puede resolver.",
     costo: "No avanzas en nada estratégico. Y si te enfermas, todo se detiene.",
     solucion: "Estandarizamos, documentamos y delegamos sin pánico.",
-    border: "border-orange-200 hover:border-orange-300",
-    iconBg: "bg-orange-50",
-    iconColor: "text-orange-600",
   },
 ];
 
@@ -96,19 +80,15 @@ export default function PainPointsSection() {
             const Icon = card.Icon;
             return (
               <MotionSection key={card.titulo} delay={i * 0.06}>
-                <div
-                  className={`relative bg-card border rounded-xl p-6 shadow-card hover:shadow-card-hover transition-all h-full overflow-hidden ${card.border}`}
-                >
+                <div className="relative bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/40 transition-all h-full overflow-hidden">
                   {/* Number decoration */}
-                  <span className="absolute top-4 right-5 font-heading font-bold text-5xl text-muted/30 select-none leading-none">
+                  <span className="absolute top-4 right-5 font-heading font-bold text-5xl text-muted/40 select-none leading-none">
                     {card.number}
                   </span>
 
                   <div className="flex items-start gap-3 mb-4">
-                    <div
-                      className={`flex items-center justify-center w-11 h-11 rounded-xl shrink-0 ${card.iconBg}`}
-                    >
-                      <Icon className={`w-5 h-5 ${card.iconColor}`} />
+                    <div className="flex items-center justify-center w-11 h-11 rounded-xl shrink-0 bg-primary/8 ring-1 ring-primary/15">
+                      <Icon className="w-5 h-5 text-primary" />
                     </div>
                     <h3 className="font-heading font-semibold text-base text-foreground pt-2">
                       {card.titulo}

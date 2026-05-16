@@ -1,6 +1,8 @@
 import MotionSection from "@/components/ui/MotionSection";
 import { Search, ListChecks, Cog, Activity } from "lucide-react";
 
+// Brand v1.1: monocromo + 1 acento. Los 4 pasos comparten color primary;
+// la distinción visual viene del número + ícono, no del hue.
 const etapas = [
   {
     numero: "01",
@@ -9,7 +11,6 @@ const etapas = [
     texto:
       "Mapeamos sin interrumpir. Tu equipo sigue trabajando; nosotros medimos. Salimos con un documento de números rojos que no se pueden ignorar.",
     icono: Search,
-    color: "#1B5FA6",
   },
   {
     numero: "02",
@@ -18,7 +19,6 @@ const etapas = [
     texto:
       "Estandarizamos lo que hoy depende de memoria. Quién hace qué, con qué información, en qué momento y dónde queda registrado.",
     icono: ListChecks,
-    color: "#1A74C4",
   },
   {
     numero: "03",
@@ -27,7 +27,6 @@ const etapas = [
     texto:
       "Formularios, tableros, bots y alertas. Sin software caro, sin proyectos eternos. Lo que automatizamos lo deja documentado tu equipo, no nosotros.",
     icono: Cog,
-    color: "#D4AF37",
   },
   {
     numero: "04",
@@ -36,7 +35,6 @@ const etapas = [
     texto:
       "Mismo indicador, mismo período. La diferencia es tu ROI. Si no se ve, no cobramos el último tramo. La mejora deja de depender de memoria.",
     icono: Activity,
-    color: "#10B981",
   },
 ];
 
@@ -64,17 +62,11 @@ export default function MetodoSection() {
               return (
                 <MotionSection key={etapa.numero} delay={i * 0.1}>
                   <div className="flex flex-col items-start">
-                    <div
-                      className="flex items-center justify-center w-12 h-12 rounded-full bg-background border-2 mb-4"
-                      style={{ borderColor: etapa.color }}
-                    >
-                      <Icono size={18} style={{ color: etapa.color }} />
+                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-background border-2 border-primary mb-4">
+                      <Icono size={18} className="text-primary" />
                     </div>
                     <div className="bg-card rounded-xl p-5 border border-muted/50 space-y-3 w-full">
-                      <p
-                        className="text-xs font-medium font-mono"
-                        style={{ color: etapa.color }}
-                      >
+                      <p className="text-xs font-medium font-mono text-primary">
                         {etapa.numero} · {etapa.fase}
                       </p>
                       <h3 className="font-heading font-semibold text-base text-foreground">
@@ -99,21 +91,15 @@ export default function MetodoSection() {
               <MotionSection key={etapa.numero} delay={i * 0.08}>
                 <div className="flex gap-5">
                   <div className="flex flex-col items-center">
-                    <div
-                      className="flex items-center justify-center w-10 h-10 rounded-full border-2 shrink-0"
-                      style={{ borderColor: etapa.color }}
-                    >
-                      <Icono size={16} style={{ color: etapa.color }} />
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary shrink-0">
+                      <Icono size={16} className="text-primary" />
                     </div>
                     {i < etapas.length - 1 && (
                       <div className="w-px flex-1 bg-muted mt-2 min-h-[2rem]" />
                     )}
                   </div>
                   <div className="pb-8 space-y-1.5">
-                    <p
-                      className="text-xs font-medium font-mono"
-                      style={{ color: etapa.color }}
-                    >
+                    <p className="text-xs font-medium font-mono text-primary">
                       {etapa.numero} · {etapa.fase}
                     </p>
                     <h3 className="font-heading font-semibold text-base text-foreground">

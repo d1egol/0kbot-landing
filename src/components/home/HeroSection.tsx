@@ -1,12 +1,5 @@
-import { CheckCircle2 } from "lucide-react";
 import TrackedLink from "@/components/ui/TrackedLink";
 import HeroVisual from "./HeroVisual";
-
-const bullets = [
-  "Detectamos cuellos de botella con números reales",
-  "Reducimos trabajo manual, errores y reprocesos",
-  "Implementamos soluciones simples que tu equipo sí usa",
-];
 
 export default function HeroSection() {
   return (
@@ -14,7 +7,7 @@ export default function HeroSection() {
       {/* Background grid pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
-          backgroundImage: "linear-gradient(#1B5FA6 1px, transparent 1px), linear-gradient(to right, #1B5FA6 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(to right, hsl(var(--primary)) 1px, transparent 1px)",
           backgroundSize: "60px 60px"
         }}
       />
@@ -43,16 +36,6 @@ export default function HeroSection() {
               ordenamos, automatizamos y medimos mejoras reales en 12 semanas.
               Sin teoría. Sin software innecesario.
             </p>
-
-            {/* Bullets */}
-            <ul className="hero-fade hero-fade-3 space-y-2">
-              {bullets.map((b) => (
-                <li key={b} className="flex items-center gap-2.5 text-sm text-foreground font-body">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                  {b}
-                </li>
-              ))}
-            </ul>
 
             <div className="hero-fade hero-fade-4 flex flex-col sm:flex-row gap-3 pt-2">
               <TrackedLink

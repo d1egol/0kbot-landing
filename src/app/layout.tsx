@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import {
+  Roboto_Slab,
+  Inter,
   Space_Grotesk,
   DM_Sans,
   Playfair_Display,
@@ -10,6 +12,22 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+// Brand v1.1 (2026-05-15): slab serif + sans neutro — display canónico
+const robotoSlab = Roboto_Slab({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-roboto-slab",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+// Brand v1 Fase 2 (deprecado, conservado como fallback durante migración)
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -206,6 +224,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const fontVars = [
+    robotoSlab.variable,
+    inter.variable,
     spaceGrotesk.variable,
     dmSans.variable,
     playfairDisplay.variable,
