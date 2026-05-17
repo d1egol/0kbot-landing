@@ -164,3 +164,36 @@ opencode  # build (Sonnet via Zen) o build-gpt
 Vertical seguridad/OIV intencionalmente **fuera de scope** de esta sesión. Centinela / 0kbot-seguridad se revisa en sesión separada. Esta sesión es 100% pyme generalista. Time-to-first-cobro ahora depende solo de pendientes Diego offline (foto, contactos, datos bancarios, merge PR).
 
 ---
+
+## 2026-05-15 21:55 — @claude (refresh brand v1.1 a main)
+
+**Status:** Refresh visual completo de la home alineando al Brand Brief v1.1 (canónico desde 2026-05-15 después de detectar contradicción con el viejo Brand Guide Fase 2 que efectivamente vivía en la landing).
+
+Decisión Diego de la sesión: Brand Brief v1.1 (Doc Google) es el canónico. Fase 2 (Markdown OneDrive con Space Grotesk + dorado + #1B5FA6) queda deprecado.
+
+Cambios aplicados (commit `522090d`, fast-forward a main):
+- **Paleta:** `--primary` `#1B5FA6` → `#1E40AF` (navy blue-800). `--accent-glow` ahora `#93C5FD` (blue-300) para destacar texto/iconos sobre `bg-primary`. Eliminado gold `#D4AF37`. Fondo `#F7F5F0` → `#FAFAF7` off-white tibio.
+- **Tipografía:** Roboto Slab cargado para H1-H6 (slab serif editorial estilo Linear/IBM Plex). Inter para body. Space Grotesk + DM Sans conservados como fallback durante migración.
+- **MetodoSection:** 4 colores inline hardcoded eliminados (los 4 pasos comparten primary; distinción por número + icono).
+- **PainPointsSection:** paleta rainbow 6 colores → monocromo neutro con hover navy.
+- **SolucionSection:** fix contraste — `text-accent` era casi invisible sobre `bg-primary` navy → migrado a `text-accent-glow`. CTA "Agendar diagnóstico gratis" ahora `bg-white text-primary` (Stripe pattern).
+- **HeroSection:** eliminados 3 bullets `CheckCircle2` emerald (cumple "NO bullets en hero" del brief v1.1). Grid pattern usa `hsl(var(--primary))`.
+- **CLAUDE.md repo:** tabla "Colores de marca" reescrita con tokens v1.1.
+
+Pre-merge: lint ✓ typecheck ✓ dev server arranca ✓ verificación visual Chrome DevTools en hero / painpoints / método / solución / diagnóstico / blog preview. Build local skip por issue conocido `@vercel/og` Windows.
+Post-merge: Vercel deployment production `dpl_4mijUHXwdZe1ZxLNTFpWae6ZjgRL` status success. Screenshot prod confirmado en `%TEMP%\0kbot-v11-PROD-hero.png`.
+
+Branch `refresh/brand-v1-1` borrada local + remote post-merge.
+
+**Necesito (de Diego):**
+- (Opcional) Validación visual final en `https://0kbot.com` — especialmente mobile + secciones no auditadas hoy (Casos, Verticales, NoSomosSoftware, Credenciales, FAQ, CTAFinal).
+- Decidir cuándo retomar el sprint `feat/sprint-pymes-skus` (PR #17 abierto, branch tiene WIP stashed con cambio menor a `landing-design-refresher.md` agent model alias).
+- ¿Autorizo push directo de este commit DAILY_LOG a main? (classifier denegó push directo solo-docs; tu OK previo era para el refresh).
+
+**Bloqueos:** ninguno.
+
+**Próximo paso:**
+- Si validación visual prod OK, próxima ola: aplicar elementos de seguridad.0kbot.com identificados en la revisión crítica (stats numéricos hero, muestras del entregable, tabla comparativa Big4/Mediana/0kbot, FAQ-bot decision tree, screenshot real del producto).
+- Funnel inconsistente (problema #1 de la revisión crítica) sigue pendiente: 4 CTAs "Agendar" saltan a Calendly sin pasar por el wizard.
+
+---

@@ -35,7 +35,7 @@ export default function SolucionSection() {
               <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
                 <ScanSearch size={22} className="text-white" />
               </div>
-              <h3 className="font-heading font-semibold text-lg text-accent">
+              <h3 className="font-heading font-semibold text-lg text-accent-glow">
                 Qué hacemos
               </h3>
               <p className="text-white/80 font-body text-sm leading-relaxed">
@@ -51,13 +51,13 @@ export default function SolucionSection() {
               <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
                 <Settings2 size={22} className="text-white" />
               </div>
-              <h3 className="font-heading font-semibold text-lg text-accent">
+              <h3 className="font-heading font-semibold text-lg text-accent-glow">
                 Cómo lo hacemos
               </h3>
               <ol className="space-y-2">
                 {pasos.map((paso, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-white/80 font-body text-sm leading-relaxed">
-                    <span className="text-accent font-mono text-xs font-bold mt-0.5 shrink-0">
+                    <span className="text-accent-glow font-mono text-xs font-bold mt-0.5 shrink-0">
                       {i + 1}.
                     </span>
                     {paso}
@@ -73,13 +73,13 @@ export default function SolucionSection() {
               <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
                 <Award size={22} className="text-white" />
               </div>
-              <h3 className="font-heading font-semibold text-lg text-accent">
+              <h3 className="font-heading font-semibold text-lg text-accent-glow">
                 Qué obtienes
               </h3>
               <ul className="space-y-2">
                 {resultados.map((r) => (
                   <li key={r} className="flex items-center gap-2.5 text-white/80 font-body text-sm leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent-glow shrink-0" />
                     {r}
                   </li>
                 ))}
@@ -89,7 +89,7 @@ export default function SolucionSection() {
         </div>
 
         <MotionSection className="text-center">
-          <OpenModalButton location="solucion" className="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-md font-semibold font-body text-sm hover:bg-accent/90 transition-colors">
+          <OpenModalButton location="solucion" className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-md font-semibold font-body text-sm hover:bg-accent-glow transition-colors">
             Agendar diagnóstico gratis →
           </OpenModalButton>
           <p className="mt-3 text-white/50 text-xs font-body">

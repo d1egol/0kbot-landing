@@ -184,15 +184,33 @@ HomePage DiagnosticoSection
 
 ---
 
-## Colores de marca (Tailwind hardcoded — no cambiar sin motivo)
+## Colores de marca — Brand Brief v1.1 (canónico desde 2026-05-15)
 
-| Token | Hex | Uso |
-|-------|-----|-----|
-| Primary blue | `#1B5FA6` | CTAs, links, accents |
-| Gold accent | `#D4AF37` | Botón final CTA |
-| Background | `#F7F5F0` | Fondo warm |
-| Text dark | `#1A1A1A` | Headings |
-| Border | `#E5E2DB` | Separadores |
+Monocromo + 1 acento. Paleta aplicada en branch `refresh/brand-v1-1`.
+
+| Token CSS | Hex | Tailwind class | Uso |
+|---|---|---|---|
+| `--primary` | `#1E40AF` | `bg-primary` / `text-primary` | CTAs, links, eyebrows, énfasis (Tailwind blue-800) |
+| `--accent` | `#1D4ED8` | `bg-accent` / `text-accent` | Hover/active de primary (blue-700) |
+| `--accent-glow` | `#93C5FD` | `bg-accent-glow` / `text-accent-glow` | Destacar texto/iconos sobre `bg-primary` navy (blue-300) |
+| `--background` | `#FAFAF7` | `bg-background` | Fondo principal off-white tibio |
+| `--foreground` | `#0A0A0A` | `text-foreground` | Texto principal casi negro |
+| `--muted-foreground` | `#525252` | `text-muted-foreground` | Texto secundario (neutral-600) |
+| `--border` | neutral-200 | `border-border` | Separadores |
+
+**Tipografía v1.1:**
+| Clase | Familia | Variable CSS |
+|---|---|---|
+| `font-heading` | Roboto Slab (slab serif) | `--font-roboto-slab` |
+| `font-body` / `font-sans` | Inter | `--font-inter` |
+| `font-display` | Playfair Display | `--font-playfair` (citas editoriales) |
+| `font-mono` | JetBrains Mono | `--font-jetbrains-mono` |
+
+**Reglas operativas:**
+- NO usar gold `#D4AF37` (eliminado en v1.1 — quedó como decisión Fase 2 deprecada).
+- NO usar paletas rainbow (emerald/amber/red/purple por sección) — el brief dice monocromo + 1 acento.
+- Para destacar sobre `bg-primary` navy, usar `text-accent-glow` (no `text-accent` que es casi el mismo navy).
+- Space Grotesk + DM Sans siguen cargados como fallback durante migración; no usar para piezas nuevas.
 
 ---
 

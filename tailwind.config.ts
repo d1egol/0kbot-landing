@@ -19,11 +19,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["var(--font-space-grotesk)", 'system-ui', 'sans-serif'],
-        body: ["var(--font-dm-sans)", 'system-ui', 'sans-serif'],
+        // Brand v1.1 (2026-05-15): slab serif para display, sans neutro para body
+        heading: ["var(--font-roboto-slab)", 'Roboto Slab', 'IBM Plex Serif', 'Georgia', 'serif'],
+        body: ["var(--font-inter)", 'Inter', 'system-ui', 'sans-serif'],
         display: ["var(--font-playfair)", 'Georgia', 'serif'],
         mono: ["var(--font-jetbrains-mono)", 'monospace'],
-        sans: ["var(--font-dm-sans)", 'system-ui', 'sans-serif'],
+        sans: ["var(--font-inter)", 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
