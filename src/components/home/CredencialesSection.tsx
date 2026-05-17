@@ -105,6 +105,23 @@ export default function CredencialesSection() {
                 más roto de lo que admites. Tienes razón. Agendemos 30 minutos
                 y te confirmamos dónde.
               </p>
+
+              <div className="pt-6 mt-2 border-t border-muted">
+                <p className="font-heading font-bold text-base text-foreground">
+                  Diego López
+                </p>
+                <p className="text-sm text-muted-foreground font-body mb-3">
+                  Fundador 0kbot · Ing. Civil Industrial · MSc Data Science · Lead Pentester
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/diego-lopez-dinamarca"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-primary hover:underline font-body font-medium"
+                >
+                  Ver perfil en LinkedIn →
+                </a>
+              </div>
             </div>
           </MotionSection>
         </div>

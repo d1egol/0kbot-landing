@@ -3,6 +3,7 @@ import HeroSection from "@/components/home/HeroSection";
 import PainPointsSection from "@/components/home/PainPointsSection";
 import SolucionSection from "@/components/home/SolucionSection";
 import MetodoSection from "@/components/home/MetodoSection";
+import ServiciosSection from "@/components/home/ServiciosSection";
 import ROIEstimatorSection from "@/components/home/ROIEstimatorSection";
 import NoSomosSoftwareSection from "@/components/home/NoSomosSoftwareSection";
 import CasosSection from "@/components/home/CasosSection";
@@ -58,7 +59,7 @@ const faqJsonLd = {
       name: "¿Cuánto cuesta un proyecto de mejora de procesos?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Depende del alcance — qué procesos se atacan, cuánta gente está involucrada, qué se automatiza. El diagnóstico inicial es siempre gratuito y al cierre te entregamos una propuesta concreta con el número exacto. Si después del diagnóstico no hay un retorno claro proyectado, te lo decimos directo y no avanzamos.",
+        text: "El diagnóstico inicial es gratuito y dura 30 minutos. Para servicios acotados con precio fijo, los rangos parten desde $390.000 CLP y suben según alcance — mapeo de procesos, auditoría de herramientas, plan de acción priorizado, entre otros. Cuando el problema es más grande, lo cotizamos al cierre del diagnóstico inicial. Si no vemos retorno claro, te lo decimos directo y no avanzamos.",
       },
     },
     {
@@ -107,6 +108,7 @@ export default function HomePage() {
       <PainPointsSection />
       <SolucionSection />
       <MetodoSection />
+      <ServiciosSection />
       <ROIEstimatorSection />
       <NoSomosSoftwareSection />
       <CasosSection />

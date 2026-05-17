@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase";
 import { leadSchema } from "@/lib/validations";
 import { sendTransactionalEmail } from "@/lib/email";
@@ -37,10 +37,7 @@ export async function POST(request: NextRequest) {
       errorCode: "supabase_insert_failed",
       err: String(err),
     });
-    return NextResponse.json(
-      { error: "Error interno al guardar el lead" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Error interno al guardar el lead" }, { status: 500 });
   }
 
   // 2. Enviar emails (no crítico — si falla, igual retornamos 200)
@@ -51,15 +48,20 @@ export async function POST(request: NextRequest) {
   ]);
 
   if (confirmResult.status === "rejected") {
-    logError("Error email confirmación", { ...ctx, errorCode: "email_confirmation_failed", reason: String(confirmResult.reason) });
+    logError("Error email confirmación", {
+      ...ctx,
+      errorCode: "email_confirmation_failed",
+      reason: String(confirmResult.reason),
+    });
   }
   if (notifResult.status === "rejected") {
-    logError("Error email notificación", { ...ctx, errorCode: "email_notification_failed", reason: String(notifResult.reason) });
+    logError("Error email notificación", {
+      ...ctx,
+      errorCode: "email_notification_failed",
+      reason: String(notifResult.reason),
+    });
   }
-  if (
-    confirmResult.status === "fulfilled" &&
-    notifResult.status === "fulfilled"
-  ) {
+  if (confirmResult.status === "fulfilled" && notifResult.status === "fulfilled") {
     emailSent = true;
   }
 

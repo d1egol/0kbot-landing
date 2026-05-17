@@ -223,7 +223,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   qué procesos tienen mayor impacto en tu empresa.
                 </p>
                 <Link
-                  href="/#diagnostico"
+                  href="/#cta-diagnostico"
                   className="inline-flex items-center gap-2 bg-[#D4AF37] text-[#1A1A1A] px-6 py-3 rounded-xl font-bold hover:bg-[#c49843] transition-colors text-sm"
                 >
                   Hacer diagnóstico gratuito →
@@ -255,7 +255,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   Mejora de procesos y automatización para pymes en Chile. Sin tecnología innecesaria. Resultados medibles en 12 semanas.
                 </p>
                 <Link
-                  href="/#diagnostico"
+                  href="/#cta-diagnostico"
                   className="block text-center bg-[#1B5FA6] text-white px-4 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#154d8a] transition-colors"
                 >
                   Diagnóstico gratuito

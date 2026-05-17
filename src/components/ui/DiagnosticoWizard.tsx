@@ -26,6 +26,7 @@ interface WizardData {
   dolorOtro: string;
   intentadoAntes: boolean | null;
   timeline: string;
+  servicioInteres: string;
   nombre: string;
   email: string;
   telefono: string;
@@ -75,7 +76,16 @@ const TIMELINES = [
   "Estoy explorando opciones",
 ];
 
-const TOTAL_STEPS = 6;
+const SERVICIOS_OPCIONES = [
+  "Radiografía Operacional (mapeo de procesos)",
+  "Primer Paso Digital (auditoría de herramientas)",
+  "SOP Express (documentar 3 procesos)",
+  "Diagnóstico de Costos Ocultos",
+  "Plan de Acción Priorizado",
+  "No estoy seguro, quiero conversar",
+];
+
+const TOTAL_STEPS = 7;
 
 const OPTION_CLASS =
   "w-full text-left px-4 py-3.5 rounded-md border border-muted hover:border-primary hover:bg-primary/5 text-foreground font-sans text-sm transition-colors cursor-pointer";
@@ -116,6 +126,7 @@ export default function DiagnosticoWizard() {
     dolorOtro: "",
     intentadoAntes: null,
     timeline: "",
+    servicioInteres: "",
     nombre: "",
     email: "",
     telefono: "",
@@ -203,7 +214,13 @@ export default function DiagnosticoWizard() {
     advance();
   }
 
-  // Paso 5 — Contacto
+  // Paso 6 — Servicio de interés
+  function selectServicio(value: string) {
+    setData((d) => ({ ...d, servicioInteres: value }));
+    advance();
+  }
+
+  // Paso 7 — Contacto
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!data.consent) {
@@ -231,6 +248,7 @@ export default function DiagnosticoWizard() {
           dolor: dolorFinal,
           intentadoAntes: data.intentadoAntes ?? false,
           timeline: data.timeline,
+          servicioInteres: data.servicioInteres,
           consent: data.consent,
         }),
       });
@@ -502,8 +520,28 @@ export default function DiagnosticoWizard() {
           </StepWrapper>
         )}
 
-        {/* Paso 6 — Contacto */}
+        {/* Paso 6 — Servicio de interés */}
         {step === 5 && (
+          <StepWrapper
+            title="¿Qué tipo de ayuda buscas?"
+            subtitle="Si no lo tienes claro, marca la última opción y lo definimos en la llamada."
+          >
+            <div className="space-y-2">
+              {SERVICIOS_OPCIONES.map((opt) => (
+                <button
+                  key={opt}
+                  onClick={() => selectServicio(opt)}
+                  className={OPTION_CLASS}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
+          </StepWrapper>
+        )}
+
+        {/* Paso 7 — Contacto */}
+        {step === 6 && (
           <StepWrapper
             title="Casi listo. ¿A quién le avisamos?"
             subtitle="Te contactamos para coordinar la llamada de diagnóstico (30 min, sin costo)."

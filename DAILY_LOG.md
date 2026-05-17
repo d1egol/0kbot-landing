@@ -77,6 +77,94 @@ Lint + typecheck verde pre-push. Push directo a main (autorizado).
 
 ---
 
+## 2026-05-15 20:56 — [HANDOFF] Sprint pre-lanzamiento vertical pymes
+
+### Quién cerró + por qué
+- Tier actual: Claude Opus 4.7 (1M context)
+- Razón cierre: Sprint completado, pendientes son offline (Diego) + próxima sesión
+
+### Estado git al cierre
+- Branch: `feat/sprint-pymes-skus`
+- HEAD: `4032867 feat: sprint pymes - SKUs vitrina + founder LinkedIn + servicio en wizard`
+- Working tree: 1 archivo modificado fuera del scope (`.claude/agents/landing-design-refresher.md`, preexistente, NO incluido en commit)
+- PR abierto: https://github.com/d1egol/0kbot-landing/pull/17
+
+### Qué se estaba haciendo
+Pivote táctico de 0kbot: Diego se quedó sin trabajo, necesita generar revenue real desde 0kbot.com (vertical pymes, NO seguridad/OIV que va en sesión separada). Sprint pre-lanzamiento para que la landing pueda recibir primer cliente real desde la semana próxima.
+
+### Last decisión / acción
+SOW Radiografía Operacional creado en Drive Workspace (`02_Contratos/Plantillas/SOW_Radiografia_Operacional_TEMPLATE_v1`) con findings Gemini peer review aplicados. Permisos `workspace-mcp create_*` autorizados explícitamente por Diego en `settings.json` global.
+
+### Métricas pre-cierre
+- Lighthouse mobile/desktop: NO corrido — pendiente `lighthouse-gate` antes de merge a main
+- Bundle size delta vs main: no medido
+- Preview Vercel: auto-deploy del PR #17 (URL aparece en GitHub PR)
+- Lint: ✅ exit 0
+- Typecheck: ✅ exit 0
+- Build local: NO corrido (font path issues Windows + lección `lesson_next16_upgrade_bundle_analyzer`)
+
+### Cambios sensibles above-the-fold
+- Hero: **NO tocado** (Diego rechazó el cambio A — H1 "No vendemos IA. Vendemos lunes tranquilos." intacto)
+- FAQ pricing: cambio de copy auditado → suavizado con rangos visibles desde $390K CLP
+- Nueva ServiciosSection entre `MetodoSection` y `ROIEstimatorSection`
+- DiagnosticoWizard: 6→7 steps (paso nuevo "qué tipo de ayuda buscas")
+- CredencialesSection: bloque founder + link LinkedIn directo (foto pendiente)
+
+### 5 SKUs definidos en ServiciosSection
+1. **Radiografía Operacional** (bandera) — $490K–$690K CLP, 5d hábiles, mapeo 8-12 procesos
+2. Primer Paso Digital — desde $690K, 7d, auditoría stack tecnológico
+3. SOP Express — desde $390K, 4d, 3 procesos documentados
+4. Diagnóstico Costos Ocultos — desde $490K, 5d, mapa gastos + rentabilidad
+5. Plan de Acción Priorizado — desde $490K, 5d, brechas ordenadas por impacto/esfuerzo
+
+### Pendiente para próxima sesión
+1. **Lighthouse-gate sobre preview Vercel del PR #17** (skill `lighthouse-gate`) — gate de merge.
+2. **Verificación visual Chrome DevTools MCP** sobre preview deploy (screenshot ServiciosSection nueva + bloque founder).
+3. **Generar mensajes outbound A/B/C** desde lista de 20 contactos LinkedIn que Diego prepare offline (task #9 pendiente).
+4. **Upgrade bloque founder** en CredencialesSection cuando Diego tenga foto profesional en `public/diego.jpg`.
+5. **Bridge eventos `qué tipo de ayuda buscas` → Sheet Pipeline** si Diego quiere que el SKU elegido salga al Sheet observability/CRM (hoy solo persiste en Supabase `diagnostico_data` JSONB).
+
+### Pendiente Diego offline
+1. Mergear PR #17 cuando preview Vercel verde + Lighthouse OK.
+2. Foto profesional → `public/diego.jpg`.
+3. Completar placeholders internos en SOW Drive: `{{RUT_0KBOT}}`, `{{DIRECCION_0KBOT}}`, `{{DATOS_CUENTA_0KBOT}}`, `{{BANCO_0KBOT}}`.
+4. Preparar lista 20 contactos LinkedIn 1er grado (pyme servicios 5-25 personas, 120M-600M CLP/año).
+5. Copiar/pegar **Variante B** del post LinkedIn martes próximo (`#consultoriachile #pymeschile #0kbot #transformacionpymes #automatizacion`).
+
+### Bloqueos
+Ninguno. PR #17 depende solo de preview Vercel + Lighthouse gate antes de merge.
+
+### Cómo retomar
+**Plan Max disponible:**
+```
+cd C:\Users\dilop\Documents\0kbot\0kbot-landing
+claude
+"Lee última entrada [HANDOFF] del DAILY_LOG y continúa con pendiente #1: lighthouse-gate sobre preview Vercel del PR #17"
+```
+
+**Plan Max al cap:**
+```
+opencode  # build (Sonnet via Zen) o build-gpt
+```
+
+### Archivos en juego (sprint completado)
+- `src/components/home/ServiciosSection.tsx` — NUEVO, listo
+- `src/components/home/FAQSection.tsx` + `src/app/page.tsx` (faqJsonLd) — pricing visible
+- `src/components/home/CredencialesSection.tsx` — bloque founder + LinkedIn
+- `src/components/ui/DiagnosticoWizard.tsx` — paso 6 servicioInteres, 7 steps total
+- `src/lib/validations.ts` — campo `servicioInteres` opcional
+- `src/app/api/diagnostico/route.ts` — persiste `servicioInteres` en `diagnostico_data` JSONB
+
+### Artefactos fuera del repo
+- Drive: `02_Contratos/Plantillas/SOW_Radiografia_Operacional_TEMPLATE_v1` (ID: `1VtPmAmvJiqqzdDwQm8vlkF6NuIVCWmsUpch9gMBRPJU`)
+- Post LinkedIn 3 variantes UTF-8 (en transcript sesión, Variante B recomendada)
+- Settings.json global: 5 nuevos permisos `mcp__workspace-mcp__create_*` autorizados
+
+### Contexto crítico — leer antes de retomar
+Vertical seguridad/OIV intencionalmente **fuera de scope** de esta sesión. Centinela / 0kbot-seguridad se revisa en sesión separada. Esta sesión es 100% pyme generalista. Time-to-first-cobro ahora depende solo de pendientes Diego offline (foto, contactos, datos bancarios, merge PR).
+
+---
+
 ## 2026-05-15 21:55 — @claude (refresh brand v1.1 a main)
 
 **Status:** Refresh visual completo de la home alineando al Brand Brief v1.1 (canónico desde 2026-05-15 después de detectar contradicción con el viejo Brand Guide Fase 2 que efectivamente vivía en la landing).
