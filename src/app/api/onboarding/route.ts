@@ -1,11 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { onboardingSchema } from "@/lib/validations";
 import { createAdminClient } from "@/lib/supabase";
-import {
-  LEAD_SOURCES,
-  LEAD_ESTADOS,
-  ONBOARDING_TAMANO_MAP,
-} from "@/lib/constants";
+import { LEAD_SOURCES, LEAD_ESTADOS, ONBOARDING_TAMANO_MAP } from "@/lib/constants";
 import { sendTransactionalEmail } from "@/lib/email";
 import { rateLimitParseValidate } from "@/lib/api-handler";
 import { logInfo, logError, newRequestId } from "@/lib/logger";
@@ -53,7 +49,7 @@ export async function POST(request: NextRequest) {
     });
     return NextResponse.json(
       { error: "Error al guardar el formulario. Por favor intenta de nuevo." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -63,10 +59,18 @@ export async function POST(request: NextRequest) {
     sendTransactionalEmail("onboarding", "notification", data),
   ]);
   if (confirmResult.status === "rejected") {
-    logError("Error email confirmación", { ...ctx, errorCode: "email_confirmation_failed", reason: String(confirmResult.reason) });
+    logError("Error email confirmación", {
+      ...ctx,
+      errorCode: "email_confirmation_failed",
+      reason: String(confirmResult.reason),
+    });
   }
   if (notifResult.status === "rejected") {
-    logError("Error email notificación", { ...ctx, errorCode: "email_notification_failed", reason: String(notifResult.reason) });
+    logError("Error email notificación", {
+      ...ctx,
+      errorCode: "email_notification_failed",
+      reason: String(notifResult.reason),
+    });
   }
 
   return NextResponse.json({ success: true });

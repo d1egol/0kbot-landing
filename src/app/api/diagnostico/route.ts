@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase";
 import { diagnosticoSchema } from "@/lib/validations";
 import { LEAD_SOURCES, LEAD_ESTADOS, REGULATED_SECTORS } from "@/lib/constants";
@@ -49,10 +49,7 @@ export async function POST(request: NextRequest) {
       errorCode: "supabase_insert_failed",
       err: String(err),
     });
-    return NextResponse.json(
-      { error: "Error interno al guardar el diagnóstico" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Error interno al guardar el diagnóstico" }, { status: 500 });
   }
 
   // 2. Emails (no crítico) — loguear cada reject individualmente
@@ -61,10 +58,18 @@ export async function POST(request: NextRequest) {
     sendTransactionalEmail("diagnostico", "notification", d),
   ]);
   if (confirmResult.status === "rejected") {
-    logError("Error email confirmación", { ...ctx, errorCode: "email_confirmation_failed", reason: String(confirmResult.reason) });
+    logError("Error email confirmación", {
+      ...ctx,
+      errorCode: "email_confirmation_failed",
+      reason: String(confirmResult.reason),
+    });
   }
   if (notifResult.status === "rejected") {
-    logError("Error email notificación", { ...ctx, errorCode: "email_notification_failed", reason: String(notifResult.reason) });
+    logError("Error email notificación", {
+      ...ctx,
+      errorCode: "email_notification_failed",
+      reason: String(notifResult.reason),
+    });
   }
 
   return NextResponse.json({ success: true }, { status: 200 });
