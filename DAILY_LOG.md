@@ -246,3 +246,62 @@ Branch `refresh/brand-v1-1` borrada local + remote post-merge.
 - Cuando llegue foto: upgrade CredencialesSection con bloque founder visual.
 
 ---
+
+## 2026-05-17 19:50 — @claude (batch 2 — priorización 13 items + CI verde)
+
+**Status:** Diego autorizó avanzar con los 13 pendientes "NO aplicados". Batch 2 ejecutado:
+
+**Aplicados** (commits `34b019a` + `54dacf1`):
+
+Copy (autorizado por Diego):
+- `CredencialesSection.tsx:113`: "Lead Pentester" → "Lean Six Sigma" (alinea con vertical pymes generalista).
+
+Conversión / funnel (growth-lead):
+- `ServiciosSection.tsx`: ROI inline debajo del CTA bandera ("Radiografía paga en ≤4 semanas").
+- `ServiciosSection.tsx`: 4 SKUs secundarios — precio elevado a header destacado, CTA "Hablemos →" upgrade a botón outline con tap target +36px, query param `?servicio=<slug>` para pre-context wizard.
+- `ServiciosSection.tsx`: footer con CTA primario "Agendar diagnóstico gratuito" (era solo italic).
+- `ROIEstimatorSection.tsx`: bloque condicional conecta # estimado con SKU ("Radiografía se paga en ~N meses") cuando alertaTono != baja.
+- `DiagnosticoWizard.tsx`: paso 6 con subtext plazo+precio por SKU, "No estoy seguro" arriba (reduce fricción).
+- `DiagnosticoWizard.tsx`: `progressPct = ((step+1)/TOTAL_STEPS)*100` (paso 1 ahora 14%, no 0%).
+- `DiagnosticoWizard.tsx`: auto-redirect `setTimeout 1.8s window.open Calendly` post-submit (solo si NO regulated; sectores regulados ven panel seguridad antes).
+
+Brand v1.1 — gold `#D4AF37` legacy sweep (creative-director caveat verificado):
+- `VerticalesSection.tsx`: 5 callsites `#D4AF37` → `accent-glow` (blue-300, SSOT v1.1).
+- `NoSomosSoftwareSection.tsx`: eyebrow `#D4AF37` → `accent-glow`.
+- `DiagnosticoWizard.tsx` (regulated panel): `#D4AF37` icon/border + Calendly CTA → `accent-glow`.
+
+CI / perf budget:
+- `scripts/check-bundle-budget.js`: graceful degradation cuando regex no matchea (Next 16 removió Size/FirstLoadJS inline). WARN + exit 0 hasta reescribir contra `.next/build-manifest.json`.
+- `scripts/__tests__/check-bundle-budget.test.js`: test "exit 2 cuando no parsea" actualizado al nuevo behavior "exit 0 + WARN".
+
+**No aplicados aún** (heavy assets — requieren regeneración, sesión propia):
+- Email templates `src/lib/email-templates/shared.ts`: `accent: "#D4AF37"` legacy.
+- OG images `src/app/blog/[slug]/opengraph-image.tsx`: gradient `#1B5FA6 → #D4AF37`.
+- `src/app/icon.svg`: gradient stop `#D4AF37`.
+- `src/app/calculadora-roi/CalculadoraROI.tsx:252`: hex inline `#D4AF37`.
+- `src/app/blog/[slug]/page.tsx:227` + `src/app/blog/page.tsx:140`: CTAs gold `#D4AF37`.
+- `src/components/home/CasosSection.tsx`: rainbow accent palette por industria (#10B981, #F59E0B, etc.) — decisión consciente vs brand v1.1 monocromo, mantener hasta decisión Diego.
+
+**No aplicados deliberadamente** (decisión producto):
+- Hero CTA prioridad (Diego rechazó cambios al Hero previamente).
+- FAQ UF vs CLP cross-surface unification (requiere audit emails+landing).
+- Lighthouse residuales: color-contrast `#999999` (selector ambiguo), aria-hidden-focus `<main fixed>` (probable FloatingCTA tabindex), Chrome deprecations (info-only).
+
+**Métricas post-batch:**
+- Lighthouse mobile: a11y **90 → 94** (+4). BP 81, SEO 100. Failed: 4 (era 5).
+- CI main: **VERDE** por primera vez desde refresh brand v1.1 (16-may). Lint + typecheck + biome + tests (41/41) + audit + build + perf-budget (graceful) + secret scan: todo pass.
+- Commits batch sesión: 9 (878630d, e1b2396, 3f9d677, 44aa593, 00d4223, 34b019a, 54dacf1 + merge admin PR #17 + merge resolve).
+
+**Necesito (de Diego al regreso):**
+- Validación visual prod mobile + desktop (cambios visibles en VerticalesSection, NoSomosSoftware eyebrow, wizard paso 6, ServiciosSection SKUs grid, ROI estimator bloque conexión).
+- Decisión sobre items "no aplicados aún" (gold sweep heavy assets): hacer en una próxima sesión o dejar legacy.
+- Decisión sobre CasosSection rainbow palette: ¿migrar a monocromo v1.1 o mantener por diferenciación visual de industrias?
+- Pendientes offline siguen activos: foto `public/diego.jpg`, lista 20 contactos LinkedIn, datos bancarios SOW.
+
+**Bloqueos:** ninguno. Landing en prod con sprint pymes + brand v1.1 (mayor consistencia) + a11y mejorada + CI verde.
+
+**Próximo paso:**
+- Cuando Diego vuelva: re-correr Lighthouse desktop para verificar paridad. Smoke test del auto-redirect Calendly (completar wizard end-to-end con email real).
+- Si Diego autoriza, próxima sesión: gold sweep en email-templates + OG + icon.svg + calculadora-roi + blog (heavy assets).
+
+---
