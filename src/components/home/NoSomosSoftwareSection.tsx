@@ -15,7 +15,7 @@ export default function NoSomosSoftwareSection() {
     <section className="bg-foreground text-background py-20 lg:py-28">
       <div className="container-content">
         <MotionSection className="mb-12 max-w-3xl">
-          <p className="text-xs font-mono font-semibold uppercase tracking-widest mb-4 text-[#D4AF37]">
+          <p className="text-xs font-mono font-semibold uppercase tracking-widest mb-4 text-accent-glow">
             Lo que NO hacemos
           </p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight">

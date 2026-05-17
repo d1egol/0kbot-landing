@@ -110,7 +110,7 @@ export default function CredencialesSection() {
                   Diego López
                 </p>
                 <p className="text-sm text-muted-foreground font-body mb-3">
-                  Fundador 0kbot · Ing. Civil Industrial · MSc Data Science · Lead Pentester
+                  Fundador 0kbot · Ing. Civil Industrial · MSc Data Science · Lean Six Sigma
                 </p>
                 <a
                   href="https://www.linkedin.com/in/diego-lopez-dinamarca"

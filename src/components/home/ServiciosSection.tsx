@@ -164,6 +164,10 @@ export default function ServiciosSection() {
                 >
                   Quiero la Radiografía →
                 </TrackedLink>
+                <p className="text-xs text-muted-foreground font-body mt-3 leading-relaxed">
+                  <span className="font-medium text-foreground">ROI típico:</span>{" "}
+                  una mejora del 10% en eficiencia paga la Radiografía en ≤4 semanas.
+                </p>
               </div>
             </div>
           </div>
@@ -178,14 +182,14 @@ export default function ServiciosSection() {
             {SERVICIOS_BREVES.map((s) => (
               <div
                 key={s.slug}
-                className="bg-background rounded-xl border border-muted p-6 space-y-3 hover:border-primary/40 transition-colors"
+                className="bg-background rounded-xl border border-muted p-6 space-y-3 hover:border-primary/40 transition-colors flex flex-col"
               >
-                <div className="flex items-baseline justify-between gap-2 flex-wrap">
+                <div className="flex items-start justify-between gap-3">
                   <h4 className="font-heading text-lg font-bold text-foreground">
                     {s.nombre}
                   </h4>
-                  <span className="text-xs text-muted-foreground font-body whitespace-nowrap">
-                    {s.plazo}
+                  <span className="text-sm font-heading font-bold text-primary whitespace-nowrap">
+                    {s.precio.replace("Desde ", "")}
                   </span>
                 </div>
                 <p className="text-sm text-foreground font-body leading-relaxed">
@@ -195,15 +199,15 @@ export default function ServiciosSection() {
                   <span className="font-medium text-foreground">Recibes:</span>{" "}
                   {s.entregable}
                 </p>
-                <div className="flex items-center justify-between pt-2 border-t border-muted">
-                  <span className="text-sm font-heading font-bold text-foreground">
-                    {s.precio}
+                <div className="flex items-center justify-between gap-3 pt-3 mt-auto border-t border-muted">
+                  <span className="text-xs text-muted-foreground font-body whitespace-nowrap">
+                    {s.plazo}
                   </span>
                   <TrackedLink
-                    href="/#cta-diagnostico"
+                    href={`/#cta-diagnostico?servicio=${s.slug}`}
                     ctaName={`Conocer ${s.nombre}`}
                     location={`servicios_breve_${s.slug}`}
-                    className="text-xs text-primary font-medium font-body hover:underline"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 border border-primary text-primary rounded-md font-medium font-body text-xs hover:bg-primary hover:text-primary-foreground transition-colors"
                   >
                     Hablemos →
                   </TrackedLink>
@@ -214,10 +218,20 @@ export default function ServiciosSection() {
         </MotionSection>
 
         <MotionSection delay={0.15} className="mt-12 pt-8 border-t border-muted">
-          <p className="text-sm text-muted-foreground font-body text-center italic max-w-xl mx-auto">
-            ¿No sabes cuál calza? El diagnóstico inicial de 30 minutos es
-            gratuito. Lo definimos ahí, sin compromiso.
-          </p>
+          <div className="text-center max-w-xl mx-auto space-y-4">
+            <p className="text-sm text-muted-foreground font-body italic">
+              ¿No sabes cuál calza? El diagnóstico inicial de 30 minutos es
+              gratuito. Lo definimos ahí, sin compromiso.
+            </p>
+            <TrackedLink
+              href="/#cta-diagnostico"
+              ctaName="Agendar diagnóstico gratuito"
+              location="servicios_footer"
+              className="inline-flex items-center gap-2 px-5 py-3 bg-primary text-primary-foreground rounded-md font-semibold font-body text-sm hover:bg-primary/90 transition-colors"
+            >
+              Agendar diagnóstico gratuito →
+            </TrackedLink>
+          </div>
         </MotionSection>
       </div>
     </section>

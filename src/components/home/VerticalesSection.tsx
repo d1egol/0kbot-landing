@@ -28,7 +28,7 @@ export default function VerticalesSection() {
     >
       <div className="container-content">
         <MotionSection className="mb-10 max-w-3xl">
-          <p className="text-xs font-mono font-semibold uppercase tracking-widest mb-4 text-[#D4AF37]">
+          <p className="text-xs font-mono font-semibold uppercase tracking-widest mb-4 text-accent-glow">
             Vertical especializada
           </p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
@@ -42,10 +42,10 @@ export default function VerticalesSection() {
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
           <MotionSection className="lg:col-span-3" delay={0.1}>
-            <div className="bg-background/5 border border-background/10 rounded-2xl p-8 lg:p-10 hover:border-[#D4AF37]/30 transition-colors">
+            <div className="bg-background/5 border border-background/10 rounded-2xl p-8 lg:p-10 hover:border-accent-glow/30 transition-colors">
               <div className="flex items-center gap-3 mb-5">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#D4AF37]/15 border border-[#D4AF37]/30">
-                  <Shield className="w-5 h-5 text-[#D4AF37]" aria-hidden="true" />
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent-glow/15 border border-accent-glow/30">
+                  <Shield className="w-5 h-5 text-accent-glow" aria-hidden="true" />
                 </div>
                 <p className="font-heading text-lg font-semibold">
                   Diagnósticos de seguridad
@@ -63,7 +63,7 @@ export default function VerticalesSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleSeguridadCtaClick}
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#D4AF37] text-foreground rounded-md font-semibold font-sans text-sm hover:bg-[#D4AF37]/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D4AF37]"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent-glow text-foreground rounded-md font-semibold font-sans text-sm hover:bg-accent-glow/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-glow"
                 aria-label="Ir a seguridad.0kbot.com — abre en nueva pestaña"
               >
                 Solicitar diagnóstico de seguridad
@@ -90,7 +90,7 @@ export default function VerticalesSection() {
                 >
                   <span
                     aria-hidden="true"
-                    className="mt-2 w-1.5 h-1.5 rounded-full bg-[#D4AF37] shrink-0"
+                    className="mt-2 w-1.5 h-1.5 rounded-full bg-accent-glow shrink-0"
                   />
                   <span>{item}</span>
                 </li>

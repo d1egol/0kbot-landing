@@ -76,13 +76,13 @@ const TIMELINES = [
   "Estoy explorando opciones",
 ];
 
-const SERVICIOS_OPCIONES = [
-  "Radiografía Operacional (mapeo de procesos)",
-  "Primer Paso Digital (auditoría de herramientas)",
-  "SOP Express (documentar 3 procesos)",
-  "Diagnóstico de Costos Ocultos",
-  "Plan de Acción Priorizado",
-  "No estoy seguro, quiero conversar",
+const SERVICIOS_OPCIONES: Array<{ value: string; meta?: string }> = [
+  { value: "No estoy seguro, quiero conversar", meta: "Lo definimos en la llamada" },
+  { value: "Radiografía Operacional (mapeo de procesos)", meta: "5 días · desde $490K" },
+  { value: "Primer Paso Digital (auditoría de herramientas)", meta: "7 días · desde $690K" },
+  { value: "SOP Express (documentar 3 procesos)", meta: "4 días · desde $390K" },
+  { value: "Diagnóstico de Costos Ocultos", meta: "5 días · desde $490K" },
+  { value: "Plan de Acción Priorizado", meta: "5 días · desde $490K" },
 ];
 
 const TOTAL_STEPS = 7;
@@ -255,6 +255,14 @@ export default function DiagnosticoWizard() {
       if (!res.ok) throw new Error("Error");
       trackDiagnosticoCompleted();
       setSuccess(true);
+      // Auto-redirect a Calendly si NO es sector regulado.
+      // Sectores regulados ven panel adicional de seguridad antes de decidir.
+      if (!REGULATED_SECTORS.includes(data.industria)) {
+        const calendlyUrl = `${CALENDLY_URL}?name=${encodeURIComponent(data.nombre)}&email=${encodeURIComponent(data.email)}`;
+        setTimeout(() => {
+          window.open(calendlyUrl, "_blank", "noopener,noreferrer");
+        }, 1800);
+      }
     } catch {
       setSubmitState("error");
       setApiError(
@@ -292,7 +300,11 @@ export default function DiagnosticoWizard() {
             ¡Listo, {data.nombre.split(" ")[0]}!
           </h3>
           <p className="text-muted-foreground font-sans leading-relaxed mb-2">
-            Recibimos tu diagnóstico. Para agendar tu llamada ahora mismo:
+            Recibimos tu diagnóstico.{" "}
+            {!isRegulatedSector && (
+              <span>Te estamos abriendo Calendly para agendar la llamada ahora.</span>
+            )}
+            {isRegulatedSector && <span>Para agendar tu llamada ahora mismo:</span>}
           </p>
           <Link
             href={calendlyUrl}
@@ -312,8 +324,8 @@ export default function DiagnosticoWizard() {
         {isRegulatedSector && (
           <div className="mt-6 p-6 bg-foreground text-background rounded-lg border border-foreground/10">
             <div className="flex items-start gap-3 mb-3">
-              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#D4AF37]/15 border border-[#D4AF37]/30 shrink-0">
-                <Shield className="w-4 h-4 text-[#D4AF37]" aria-hidden="true" />
+              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-accent-glow/15 border border-accent-glow/30 shrink-0">
+                <Shield className="w-4 h-4 text-accent-glow" aria-hidden="true" />
               </div>
               <div>
                 <p className="font-display font-semibold text-base leading-snug">
@@ -340,7 +352,7 @@ export default function DiagnosticoWizard() {
                   "wizard_post_completion"
                 );
               }}
-              className="inline-flex items-center gap-2 px-5 py-3 bg-[#D4AF37] text-foreground rounded-md font-semibold font-sans text-sm hover:bg-[#D4AF37]/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D4AF37]"
+              className="inline-flex items-center gap-2 px-5 py-3 bg-accent-glow text-foreground rounded-md font-semibold font-sans text-sm hover:bg-accent-glow/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-glow"
               aria-label="Ir a seguridad.0kbot.com — abre en nueva pestaña"
             >
               Solicitar diagnóstico de seguridad
@@ -352,7 +364,7 @@ export default function DiagnosticoWizard() {
     );
   }
 
-  const progressPct = (step / (TOTAL_STEPS - 1)) * 100;
+  const progressPct = ((step + 1) / TOTAL_STEPS) * 100;
 
   return (
     <div className="max-w-lg mx-auto">
@@ -526,11 +538,16 @@ export default function DiagnosticoWizard() {
             <div className="space-y-2">
               {SERVICIOS_OPCIONES.map((opt) => (
                 <button
-                  key={opt}
-                  onClick={() => selectServicio(opt)}
-                  className={OPTION_CLASS}
+                  key={opt.value}
+                  onClick={() => selectServicio(opt.value)}
+                  className={`${OPTION_CLASS} flex items-center justify-between gap-3`}
                 >
-                  {opt}
+                  <span>{opt.value}</span>
+                  {opt.meta && (
+                    <span className="text-xs text-muted-foreground font-body whitespace-nowrap">
+                      {opt.meta}
+                    </span>
+                  )}
                 </button>
               ))}
             </div>

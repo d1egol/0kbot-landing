@@ -179,6 +179,17 @@ export default function ROIEstimatorSection() {
               </div>
 
               <div className="mt-6 space-y-3">
+                {!sinDatos && alertaTono !== "baja" && (
+                  <div className="rounded-lg bg-primary/5 border border-primary/15 p-3 text-xs font-body text-foreground leading-relaxed">
+                    <span className="font-semibold">Radiografía Operacional:</span>{" "}
+                    desde <span className="font-semibold">$490K CLP</span>. Si reduce un 10% el
+                    costo mensual, se paga en{" "}
+                    <span className="font-semibold">
+                      ~{Math.max(1, Math.ceil(490000 / (results.costoMensual * 0.1)))} mes(es)
+                    </span>
+                    .
+                  </div>
+                )}
                 <OpenModalButton
                   location="estimador"
                   className="inline-flex w-full items-center justify-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground rounded-md font-semibold font-body text-sm hover:bg-primary/90 transition-colors"
