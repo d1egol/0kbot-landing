@@ -126,8 +126,8 @@ export default function CasosCarousel({ casos }: CasosCarouselProps) {
           ))}
         </div>
 
-        {/* Dots */}
-        <div className="flex justify-center gap-2 mt-5" role="tablist">
+        {/* Dots — tap target 24×24 con dot visual 8×8 dentro */}
+        <div className="flex justify-center gap-1 mt-5" role="tablist">
           {casos.map((caso, i) => (
             <button
               key={caso.industria}
@@ -135,10 +135,14 @@ export default function CasosCarousel({ casos }: CasosCarouselProps) {
               aria-selected={i === activeIndex}
               aria-label={`Ver escenario ${i + 1}: ${caso.industria}`}
               onClick={() => goTo(i)}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                i === activeIndex ? "bg-primary" : "bg-muted"
-              }`}
-            />
+              className="w-6 h-6 flex items-center justify-center group"
+            >
+              <span
+                className={`block w-2 h-2 rounded-full transition-colors ${
+                  i === activeIndex ? "bg-primary" : "bg-muted group-hover:bg-primary/50"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

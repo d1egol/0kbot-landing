@@ -271,10 +271,7 @@ export default function DiagnosticoWizard() {
     return (
       <div className="max-w-lg mx-auto">
         <div className="text-center py-12 px-8 bg-card border border-muted rounded-lg shadow-card">
-          <div
-            className="inline-flex items-center justify-center w-12 h-12 rounded-full mb-5"
-            style={{ backgroundColor: "#1B5FA6" }}
-          >
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full mb-5 bg-primary">
             <svg
               width="20"
               height="20"

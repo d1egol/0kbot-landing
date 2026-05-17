@@ -116,7 +116,7 @@ export default function ServiciosSection() {
                       key={b}
                       className="flex items-start gap-2.5 text-sm text-foreground font-body leading-snug"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                       <span>{b}</span>
                     </li>
                   ))}
