@@ -62,14 +62,14 @@ describe("check-bundle-budget.js", () => {
     }
   });
 
-  it("exit 2 cuando el build-log no parsea (rutas/shared no encontrados)", () => {
+  it("exit 0 con WARN cuando el build-log no parsea (Next 16+ removió Size/FirstLoadJS inline)", () => {
     const { file, cleanup } = makeTempBudget({
       first_load_js_kb: { shared: 90, "/": 145 },
     });
     try {
       const r = run(path.join(FIX, "build-log-empty.txt"), file);
-      expect(r.status).toBe(2);
-      expect(r.stderr).toContain("Could not parse");
+      expect(r.status).toBe(0);
+      expect(r.stderr).toContain("could not parse");
     } finally {
       cleanup();
     }
