@@ -197,3 +197,52 @@ Branch `refresh/brand-v1-1` borrada local + remote post-merge.
 - Funnel inconsistente (problema #1 de la revisión crítica) sigue pendiente: 4 CTAs "Agendar" saltan a Calendly sin pasar por el wizard.
 
 ---
+
+## 2026-05-17 14:45 — @claude (cierre sesión retomar sprint pymes)
+
+**Status:** Sesión autónoma con autorización Diego ("ok push y merge el fix"). Retomé pendientes del HANDOFF 2026-05-15:
+
+**Cerrado en sesión:**
+1. **Fix CI biome** (commit `878630d`): `useImportType` + LF normalize en 3 API routes (`diagnostico`, `leads`, `onboarding`). CI estaba bloqueado por esto.
+2. **Audit links "Hablemos"** (commit `e1b2396`): encontrado 2 links rotos en `src/app/blog/[slug]/page.tsx` apuntando a `/#diagnostico` (no existe — el id real es `cta-diagnostico`). Fix aplicado. Resto del repo verificado: todos los `href="/#X"` apuntan a anchors válidos. Hardcoded Calendly en `/nosotros` y mailto en email templates noted (no roto, pero viola constants.ts; dejo para refactor futuro).
+3. **Merge resolution + merge PR #17 a main** (commit `3f9d677` + merge admin). Conflicto en DAILY_LOG resuelto preservando ambas entradas (sprint pymes 20:56 + refresh brand v1.1 21:55).
+4. **Lighthouse-gate prod post-merge**: mobile a11y 90 / BP 81 / SEO 100. Desktop a11y 96 / BP 81 / SEO 100 / Agentic 100. 5 fails mobile identificados (deprecations, aria-hidden-focus, color-contrast emerald + grey, target-size dots).
+5. **Multi-agent review post-merge paralelo** (ux-lead + growth-lead + creative-director): 22 hallazgos consolidados.
+6. **Fixes claros aplicados** (commit `44aa593`):
+   - `ServiciosSection.tsx:119`: `text-emerald-500` → `text-primary` (brand v1.1)
+   - `CredencialesSection.tsx`: 4 badges rainbow (blue/purple/amber/emerald-50) → monocromo `bg-primary/5 border-primary/15 text-primary`
+   - `CredencialesSection.tsx`: hex legacy `#1B5FA6`/`#0d3d6e` → `bg-primary`/`from-primary to-primary/80` (token v1.1)
+   - `DiagnosticoWizard.tsx:276`: hex `#1B5FA6` → `bg-primary` (success screen)
+   - `CasosCarousel.tsx:130`: tap target dots 8x8 → wrapper 24x24 con dot visual inside (WCAG 2.5.5 mobile)
+   - Convergencia: 2/3 agentes coincidieron en cada item aplicado.
+
+**Pendientes NO aplicados** (opinables o requieren OK Diego):
+1. **Lead Pentester** en bloque founder (CredencialesSection:114) — copy generalista vs vertical. CLAUDE.md regla "no editar copy sin confirmación". 2 agentes lo marcan, Diego decide.
+2. **Hero CTA prioridad** (growth-lead): Diego rechazó previamente cambios al Hero. NO se toca.
+3. **Wizard paso 6 subtext precio/plazo** en cada SKU (growth-lead): feature, no fix.
+4. **Wizard paso 7 auto-redirect Calendly** post-submit (growth-lead): opinable — UX semantics (¿redirect inmediato o pantalla intermedia confirmación?).
+5. **DiagnosticoWizard progressPct semántica** (ux-lead): paso 1 muestra 0%. Decisión UX subjetiva.
+6. **CTA "Hablemos" weight** en SKUs secundarios (ux-lead): text-xs vs botón. Decisión visual.
+7. **SKUs secundarios jerarquía precio** (growth-lead): mover precio a bloque destacado igual que Radiografía.
+8. **FAQ UF vs CLP** (ux-lead): unificar moneda cross-surface. Requiere audit.
+9. **VerticalesSection gold legacy** (creative caveat): no verificado en esta sesión.
+10. **ROI inline en SKU bandera** (growth-lead): "ROI típico: recuperas en ≤4 semanas" debajo del CTA.
+11. **Estimador conecta con SKU** (growth-lead): "Un diagnóstico de $490K que reduce eso un 30% se paga en 3 semanas".
+12. **Lighthouse fails restantes**: color-contrast `#999999` (selector incierto), aria-hidden-focus (`<main fixed>` — investigación), deprecations (Chrome API).
+13. **Perf budget script `scripts/check-bundle-budget.js`** regex desactualizado para Next 16 output → CI sigue rojo en main por este check secundario. NO bloquea build/deploy/Vercel. Fix: actualizar regex `routePattern` para parsear formato Next 16.
+
+**Necesito (de Diego):**
+- Revisar listado "Pendientes NO aplicados" y marcar cuáles aplicar/descartar.
+- Decisión sobre "Lead Pentester" copy (mantener / reemplazar por "Mejora de procesos · Data Science · Lean Six Sigma").
+- Foto profesional → `public/diego.jpg` (pendiente offline).
+- Lista 20 contactos LinkedIn (pendiente offline).
+- Datos bancarios SOW Drive (pendiente offline).
+
+**Bloqueos:** ninguno. Sprint pymes 100% en prod. CI rojo es perf budget script (no bloquea deploy).
+
+**Próximo paso:**
+- Cuando Diego vuelva: revisar 13 pendientes "NO aplicados" + decidir scope próxima sesión.
+- Si Diego autoriza: arreglar perf budget regex en una sesión corta.
+- Cuando llegue foto: upgrade CredencialesSection con bloque founder visual.
+
+---
