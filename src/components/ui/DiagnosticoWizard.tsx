@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Shield, ArrowUpRight } from "lucide-react";
@@ -165,13 +165,37 @@ export default function DiagnosticoWizard() {
   const [awaitingOtro, setAwaitingOtro] = useState(false);
   const [tempText, setTempText] = useState("");
 
+  // Sincroniza data.servicioInteres con el query param cuando cambia post-mount
+  // (soft navigation, p.ej. usuario carga `/`, scrollea, click en CTA de
+  // ServiciosSection con `?servicio=X#cta-diagnostico`). El useState initializer
+  // sólo corre 1 vez al montar — sin este effect, `skipServicioStep` se activa
+  // pero `data.servicioInteres` queda `""` y el POST manda servicio vacío.
+  useEffect(() => {
+    if (servicioPreseleccionado) {
+      const label = SERVICIO_SLUG_TO_LABEL[servicioPreseleccionado];
+      if (label) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- sync con sistema externo (URL searchParams) tras soft-nav, no triggereable de otra forma.
+        setData((d) => (d.servicioInteres === label ? d : { ...d, servicioInteres: label }));
+      }
+    }
+  }, [servicioPreseleccionado]);
+
+  // Calcula el paso visible al usuario (1-indexed) ignorando el paso interno
+  // saltado. Usado en progress bar Y en analytics — antes el track se calculaba
+  // sobre el índice interno, lo que producía eventos "Paso 7 de 6" cuando se
+  // saltaba el paso 5.
+  function toDisplayStep(internalStep: number): number {
+    if (skipServicioStep && internalStep > SERVICIO_STEP_INDEX) return internalStep;
+    return internalStep + 1;
+  }
+
   function advance() {
     setStep((s) => {
       let next = s + 1;
       // Skip paso 5 (servicio) si ya viene pre-seleccionado desde el URL.
       if (next === SERVICIO_STEP_INDEX && skipServicioStep) next = SERVICIO_STEP_INDEX + 1;
-      // Trackea el paso al que avanza el usuario (1-indexed)
-      trackDiagnosticoStep(next + 1, totalSteps);
+      // Trackea el paso visible al usuario, no el índice interno.
+      trackDiagnosticoStep(toDisplayStep(next), totalSteps);
       return next;
     });
     setAwaitingOtro(false);
@@ -397,10 +421,7 @@ export default function DiagnosticoWizard() {
     );
   }
 
-  // displayStep: paso visible al usuario (1-indexed). Cuando se salta el paso 5
-  // por servicio pre-seleccionado, el paso 6 (contacto) se muestra como "paso 6 de 6"
-  // en lugar de "paso 7 de 6".
-  const displayStep = skipServicioStep && step > SERVICIO_STEP_INDEX ? step : step + 1;
+  const displayStep = toDisplayStep(step);
   const progressPct = (displayStep / totalSteps) * 100;
 
   return (
