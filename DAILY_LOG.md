@@ -408,3 +408,25 @@ Mi capa (orquestador):
 - Decisión `/nosotros` rewrite.
 
 ---
+
+## 2026-05-18 12:50 — @claude (sesión bug lead "undefined" + deudas técnicas)
+
+**Status:**
+- **Bug Curtis "undefined" diagnosticado y fixed.** Lead llegó con `Empresa: undefined` por 3 puntos de fuga distintos en email templates: subject (`email.ts:64`), notification body (`lead-notification.ts:30`), confirmation al prospecto (`lead-confirmation.ts:22`). Causa raíz: `ContactModal` enviaba solo `{nombre, email, fuente, consent}` y los templates interpolaban `${lead.empresa}` sin fallback, así que Zod-undefined → string literal "undefined". Mergeado en PR #18.
+- **ContactModal alineado con info que pedimos** (opción B, no A ni C). Modal ahora pide 4 campos: nombre + email (requeridos) + empresa + tamaño (opcionales). Select usa los 5 valores canónicos del enum `tamano_empresa`. Si el usuario no completa, el payload omite el campo entero (no envía empty strings) y los templates muestran "(sin especificar)".
+- **3 deudas técnicas cerradas en PR #19:**
+  1. `TAMANO_OPTIONS` consolidado en `lib/constants.ts` como SSOT (antes duplicado en wizard + modal + email-templates/shared.ts).
+  2. Subtítulo del modal actualizado: "Tu nombre y email para reservar" → "Datos mínimos para reservar. Empresa y tamaño son opcionales — nos ayudan a preparar mejor la llamada."
+  3. `?servicio=<slug>` en los 5 CTAs de ServiciosSection ahora SÍ se hidrata en el wizard. Antes el query iba después del `#` (dentro del fragment, nadie lo parseaba) y el campo `servicioInteres` arrancaba siempre vacío. Fix: query antes del fragment + `useSearchParams` en wizard + validación contra `SERVICIO_SLUGS` canónico + badge UI "Te interesó: <Servicio>" arriba del progress bar. Requirió `<Suspense>` boundary en `DiagnosticoSection` (regla Next 16 SSG).
+- **Auditoría de links completa**: las 16 rutas de Navbar/Footer existen, las 6 anchors home (`#problemas/metodo/casos/estimador/cta-diagnostico/verticales`) tienen su `id`, los 5 service slugs (`#diagnostico/estandarizacion/automatizacion/tableros/gestion-comercial`) matchean con `/servicios/page.tsx`, los 7 blog posts del footer existen como MDX. **Drift menor**: CLAUDE.md dice "Footer tiene 2 iconos de LinkedIn" pero solo hay 1 (personal removido) — no actualicé el CLAUDE.md, queda como follow-up trivial.
+
+**Necesito:** nada bloqueante. Si Diego quiere ajustar el copy del subtítulo del modal, decir y lo cambio (1 línea).
+
+**Bloqueos:** ninguno. Producción `0kbot.com` debería tener todo en breve cuando termine el deploy post-merge #19.
+
+**Próximo paso:**
+- Smoke test del flow real cuando Diego mande un lead de prueba: confirmar que (a) el email interno llega con datos completos si se completaron, (b) si NO se completaron, dice "(sin especificar)" en vez de "undefined", (c) si el lead vino via CTA `Quiero la Radiografía`, el wizard muestra el badge y persiste `servicioInteres` en Supabase.
+- Ticket separado abierto (no implementado): que el wizard *salte pasos* o *adapte preguntas* cuando ya hay servicio pre-seleccionado. Decisión UX explícita pendiente Diego.
+- Drift CLAUDE.md (2 → 1 iconos LinkedIn footer) — actualización trivial cuando alguien toque la sección.
+
+---
