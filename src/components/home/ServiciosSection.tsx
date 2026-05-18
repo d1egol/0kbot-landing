@@ -4,7 +4,7 @@ import { CheckCircle2 } from "lucide-react";
 
 const banderaBullets = [
   "Mapa visual de 8-12 procesos críticos (PDF + Miro editable)",
-  "Ranking de los 3 procesos más costosos en tiempo y errores, estimados en CLP/mes",
+  "Ranking de los 3 procesos más costosos en tiempo y errores, con costo estimado mensual",
   "Ficha por proceso: duración, frecuencia, cuellos de botella, costo de ineficiencia",
   "Recomendación de qué automatizar primero (criterio impacto/esfuerzo)",
 ];
@@ -157,7 +157,7 @@ export default function ServiciosSection() {
                 </div>
 
                 <TrackedLink
-                  href="/#cta-diagnostico"
+                  href="/#cta-diagnostico?servicio=radiografia-operacional"
                   ctaName="Quiero la Radiografía"
                   location="servicios_bandera"
                   className="mt-6 inline-flex items-center justify-center px-5 py-3.5 bg-primary text-primary-foreground rounded-md font-semibold font-body text-sm hover:bg-primary/90 transition-colors"
