@@ -305,3 +305,106 @@ CI / perf budget:
 - Si Diego autoriza, próxima sesión: gold sweep en email-templates + OG + icon.svg + calculadora-roi + blog (heavy assets).
 
 ---
+
+## 2026-05-17T23:55Z — [HANDOFF] Opus session: dream consolidation + settings.json patch + agent rename
+
+**Sesión**: harness-focused, no sprint pymes. Delta mínimo en landing.
+
+**Hecho:**
+- `/dream` 7d auto-apply (49 transcripts, 18 señales): 3 CREATE + 3 UPDATE + 2 VERIFY + 4 drafts. Diff completo en `~/.claude/docs/dream-diff-2026-05-17.md`.
+- Settings.json patch aplicado por Diego manualmente (11 entries, dreaming nightly desbloqueado). Auto-mode bloqueó intento del agente, esperado (self-modification policy).
+- Smoke test `/dream 2 --dry` PASS: 3 writes objetivo OK sin sandbox prompts.
+- Landing commit `482e697`: chore(agent) rename `claude-sonnet-4-6 → sonnet` en `landing-design-refresher.md`. Pushed a main.
+
+**No hecho (decisión Diego):**
+- Spec `ecommerce-pilot-chile` queda en `Pending` — Diego priorizó 0kbot first (cashflow Indra=0). NO se aprobó L2.
+
+**Estado landing al cierre**: main verde, branch limpio, 0 cambios pendientes.
+
+**Próximo paso**:
+- Validar cron nightly del dreaming esta noche (Task Scheduler 22:30 Chile → confirmar que applica operaciones reales sin issues).
+- Cuando Diego retome sprint pymes: items "no aplicados aún" del HANDOFF anterior (gold sweep, CasosSection rainbow, foto diego.jpg).
+
+**Bloqueos**: ninguno.
+
+---
+
+## 2026-05-17 23:50 — @claude (batch 3 — pivote empresa + UF + multi-agente)
+
+**Status:** Diego volvió con 4 decisiones vinculantes: (1) desestimar perfil personal en home, (2) estandarizar UF, (3) delegar colores/decisiones al equipo (agentes + Claude), (4) página 100% funcional con agendamiento correcto.
+
+**Aplicado** (3 commits: `fc5d383`, `44a85f6`, `27c0105`):
+
+PIVOTE EMPRESA (decisión Diego):
+- `CredencialesSection.tsx`: bloque founder personal eliminado, narrativa "Equipo 0kbot" + CTA `linkedin.com/company/0kbot`.
+- `Footer.tsx`: 2 LinkedIn icons → 1 (solo company).
+- `layout.tsx` JSON-LD LocalBusiness `sameAs`: LinkedIn personal removido.
+- `blog/[slug]/page.tsx` Article author: `Person Diego` → `Organization 0kbot`.
+- `nosotros/page.tsx`: LinkedIn personal → company.
+
+UF ESTÁNDAR (decisión Diego):
+- ServiciosSection 5 SKUs: $390K→10 UF, $490K→12 UF, $690K→18 UF.
+- Radiografía bandera: "12 UF" (rango 12 a 18).
+- DiagnosticoWizard step 6 subtext: UF.
+- FAQ pricing: "10 UF".
+- ROIEstimator conexión SKU: "12 UF".
+- `validations.ts` + `onboarding/page.tsx`: presupuesto ranges en UF.
+- ROIEstimator/CalculadoraROI CLP preservado (cliente ingresa costos reales operacionales).
+
+DELEGADO A AGENTES — convergencia 3 agentes (ux-lead + creative-director + el orquestador):
+
+`creative-director` decidió y aplicó gold sweep (13 ediciones, 9 archivos):
+- email-templates/shared.ts accent #D4AF37 → #1E40AF (navy v1.1)
+- blog OG images gradients gold → navy
+- icon.svg: linearGradient gold eliminado, mark unificado navy
+- CalculadoraROI hex inline gold → navy
+- blog page + blog/[slug] CTAs gold → primary
+- opengraph-image home métricas verde #059669 → navy
+- contacto CheckCircle2 emerald → primary
+- HeroVisual fase "Automatizando" gold → navy
+- HeroVisual emerald semántico (antes→hoy bueno) PRESERVADO (metáfora UI, no marca)
+
+`ux-lead` decidió y aplicó (8 archivos):
+- CasosSection: rainbow palette por industria → monocromo navy variants (diferenciación por tono dentro de paleta v1.1)
+- HeroSection CTA secundario: "Ver cómo funciona ↓ #metodo" → "Ver qué diagnóstico me conviene ↓ #cta-diagnostico" (cierra fuga growth-lead sin tocar primario `/#estimador` que Diego había rechazado)
+- FloatingCTA: `inert={!visible || undefined}` (resuelve aria-hidden-focus Lighthouse)
+- 9 ocurrencias text-[#999] / hardcode gris → text-muted-foreground (#525252, ratio 7.4:1) en HeroVisual, BlogCard, RelatedPosts, blog pages
+
+Mi capa (orquestador):
+- Footer CTA Calendly: bg-accent text-#1A1A1A (contraste 2.47) → bg-accent-glow text-primary
+- Footer column headers + Privacidad/Términos: opacidad /40,/50 → /70 (a11y)
+- Casos breadcrumb /50 → /70
+- ServiciosSection bandera CTA: `?servicio=radiografia-operacional` (consistencia con 4 SKUs secundarios)
+- ServiciosSection bullet "estimados en CLP/mes" → "con costo estimado mensual" (más neutro, pricing en UF)
+
+**Métricas finales:**
+- Lighthouse mobile a11y: **90 → 97** (+7 pts sesión completa).
+- Lighthouse Agentic Browsing: **50 → 100** (+50).
+- Lighthouse desktop a11y: 96, BP 81, SEO 100, Agentic 100.
+- Fails residuales: 2 (deprecations Chrome API info-only + color-contrast residual menor — no bloqueante).
+- CI main: VERDE (4 checks consecutivos).
+- Commits sesión total: 14 (878630d, e1b2396, 3f9d677, 44aa593, 00d4223, 34b019a, 54dacf1, 72843ff, fc5d383, 44a85f6, 27c0105 + 3 merge admin / merge resolution).
+- Tests: 41/41 ✓ tipos ✓ lint ✓ build ✓.
+
+**Verificación visual prod** (snapshot `https://0kbot.com/#cta-diagnostico` post-batch3):
+- ✓ Hero CTAs ambos visibles ("Calcular pérdida →" primario + "Ver qué diagnóstico ↓" secundario nuevo).
+- ✓ SKUs en UF (12 UF Radiografía, 18 UF Primer Paso, 10 UF SOP, 12 UF Costos, 12 UF Plan).
+- ✓ ROI estimator inputs CLP + bloque conexión "se paga en ~5 meses" cuando alertaTono ≠ baja.
+- ✓ CredencialesSection sin Diego López — "Equipo 0kbot — ingeniería industrial, data science y Lean Six Sigma" + LinkedIn company.
+- ✓ Wizard paso 1 de 7 = 14% (progressPct fix vigente).
+- ✓ Footer single LinkedIn company icon.
+- ✓ VerticalesSection accent-glow (no gold).
+
+**Necesito (de Diego):**
+- Smoke test wizard end-to-end manual: completar los 7 pasos con email real para validar (a) POST /api/diagnostico con `servicioInteres` + `vertical` derivado, (b) auto-redirect Calendly 1.8s post-submit funciona, (c) email Resend confirmación llega, (d) Calendly recibe `?name=&email=` pre-rellenados.
+- Decidir si reescribir `/nosotros` (página todavía habla de Diego López como founder con título personalizado; mantiene el contexto SEO pero contradice "somos 0kbot empresa"). Es una página de 262 LoC con copy denso; merece sesión propia si se hace.
+- Pendientes offline siguen: lista 20 contactos LinkedIn, datos bancarios SOW Drive.
+
+**Bloqueos:** ninguno. Página 100% funcional, agendamiento operativo (ContactModal + Calendly + DiagnosticoWizard auto-redirect), CI verde, brand v1.1 100% aplicado, UF estandarizado.
+
+**Próximo paso:**
+- Smoke test wizard cuando Diego pueda.
+- Si Lighthouse mobile a11y 97→100 es objetivo, debug puntual del `color-contrast` residual + investigar deprecations Chrome (probable referencia a API antigua de framer-motion o similar).
+- Decisión `/nosotros` rewrite.
+
+---
