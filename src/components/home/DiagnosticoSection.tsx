@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import MotionSection from "@/components/ui/MotionSection";
 import DiagnosticoWizard from "@/components/ui/DiagnosticoWizard";
 
@@ -19,7 +20,12 @@ export default function DiagnosticoSection() {
         </MotionSection>
 
         <div className="max-w-2xl mx-auto">
-          <DiagnosticoWizard />
+          {/* Suspense obligatorio: DiagnosticoWizard usa useSearchParams para
+              leer ?servicio=<slug> y pre-poblar servicioInteres. Sin el boundary,
+              el build SSG falla. */}
+          <Suspense fallback={null}>
+            <DiagnosticoWizard />
+          </Suspense>
         </div>
 
         <div className="flex items-center justify-center gap-6 mt-8 text-sm text-muted-foreground font-body">

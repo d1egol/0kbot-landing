@@ -157,7 +157,7 @@ export default function ServiciosSection() {
                 </div>
 
                 <TrackedLink
-                  href="/#cta-diagnostico?servicio=radiografia-operacional"
+                  href="/?servicio=radiografia-operacional#cta-diagnostico"
                   ctaName="Quiero la Radiografía"
                   location="servicios_bandera"
                   className="mt-6 inline-flex items-center justify-center px-5 py-3.5 bg-primary text-primary-foreground rounded-md font-semibold font-body text-sm hover:bg-primary/90 transition-colors"
@@ -204,7 +204,7 @@ export default function ServiciosSection() {
                     {s.plazo}
                   </span>
                   <TrackedLink
-                    href={`/#cta-diagnostico?servicio=${s.slug}`}
+                    href={`/?servicio=${s.slug}#cta-diagnostico`}
                     ctaName={`Conocer ${s.nombre}`}
                     location={`servicios_breve_${s.slug}`}
                     className="inline-flex items-center gap-1.5 px-3 py-2 border border-primary text-primary rounded-md font-medium font-body text-xs hover:bg-primary hover:text-primary-foreground transition-colors"
