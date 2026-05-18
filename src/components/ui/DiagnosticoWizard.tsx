@@ -9,6 +9,7 @@ import {
   trackCrossDomainReferral,
   trackDiagnosticoCompleted,
   trackDiagnosticoStep,
+  trackLeadSaveFailed,
   trackRegulatedSectorDetected,
 } from "@/lib/analytics";
 import {
@@ -291,10 +292,14 @@ export default function DiagnosticoWizard() {
     const dolorFinal =
       data.dolor === "Otro" ? data.dolorOtro || "Otro" : data.dolor;
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3000);
+
     try {
       const res = await fetch("/api/diagnostico", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
         body: JSON.stringify({
           nombre: data.nombre,
           email: data.email,
@@ -309,7 +314,8 @@ export default function DiagnosticoWizard() {
           consent: data.consent,
         }),
       });
-      if (!res.ok) throw new Error("Error");
+      clearTimeout(timeoutId);
+      if (!res.ok) throw new Error("server_error");
       trackDiagnosticoCompleted();
       setSuccess(true);
       // Auto-redirect a Calendly si NO es sector regulado.
@@ -320,7 +326,14 @@ export default function DiagnosticoWizard() {
           window.open(calendlyUrl, "_blank", "noopener,noreferrer");
         }, 1800);
       }
-    } catch {
+    } catch (err) {
+      clearTimeout(timeoutId);
+      const isAbort = err instanceof Error && err.name === "AbortError";
+      const isServer = err instanceof Error && err.message === "server_error";
+      trackLeadSaveFailed(
+        "diagnostico",
+        isAbort ? "timeout" : isServer ? "server_error" : "network"
+      );
       setSubmitState("error");
       setApiError(
         `Algo salió mal. Intenta nuevamente o escríbenos a ${CONTACT_EMAIL}`

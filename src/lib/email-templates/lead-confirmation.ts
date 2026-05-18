@@ -1,7 +1,9 @@
 import type { LeadInput } from "@/lib/validations";
 import { EMAIL_COLORS as C } from "./shared";
+import { CONTACT_EMAIL } from "@/lib/constants";
 
 export function leadConfirmationHtml(lead: LeadInput): string {
+  const firstName = lead.nombre.split(" ")[0];
   const empresaLine = lead.empresa?.trim()
     ? `→ Revisamos la información de ${lead.empresa.trim()}<br>`
     : "";
@@ -15,7 +17,7 @@ export function leadConfirmationHtml(lead: LeadInput): string {
       <h1 style="color: ${C.surface}; font-size: 24px; font-weight: 700; margin: 0;">0kbot</h1>
     </div>
     <div style="padding: 32px;">
-      <p style="color: ${C.textDark}; font-size: 16px; margin: 0 0 16px;">Hola ${lead.nombre},</p>
+      <p style="color: ${C.textDark}; font-size: 16px; margin: 0 0 16px;">Hola ${firstName},</p>
       <p style="color: ${C.textMid}; font-size: 15px; line-height: 1.6; margin: 0 0 20px;">
         Recibimos tu solicitud. Te contactamos en <strong>menos de 24 horas</strong> para coordinar el diagnóstico gratuito.
       </p>
@@ -27,7 +29,7 @@ export function leadConfirmationHtml(lead: LeadInput): string {
         </p>
       </div>
       <p style="color: ${C.textMid}; font-size: 14px; line-height: 1.6; margin: 0 0 8px;">
-        Cualquier consulta: <a href="mailto:hola@0kbot.com" style="color: ${C.primary};">hola@0kbot.com</a>
+        Cualquier consulta: <a href="mailto:${CONTACT_EMAIL}" style="color: ${C.primary};">${CONTACT_EMAIL}</a>
       </p>
     </div>
     <div style="border-top: 1px solid ${C.border}; padding: 20px 32px; text-align: center;">

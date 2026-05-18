@@ -1,5 +1,6 @@
 import type { OnboardingInput } from "@/lib/validations";
 import { EMAIL_COLORS as C } from "./shared";
+import { CONTACT_EMAIL } from "@/lib/constants";
 
 export function onboardingConfirmationHtml(d: OnboardingInput): string {
   const firstName = d.nombre.split(" ")[0];
@@ -28,7 +29,7 @@ export function onboardingConfirmationHtml(d: OnboardingInput): string {
       </div>
       <p style="color: ${C.textMid}; font-size: 14px; line-height: 1.6; margin: 0 0 8px;">
         Si necesitas cambiar el horario de la reunión o tienes preguntas previas:<br>
-        <a href="mailto:hola@0kbot.com" style="color: ${C.primary};">hola@0kbot.com</a>
+        <a href="mailto:${CONTACT_EMAIL}" style="color: ${C.primary};">${CONTACT_EMAIL}</a>
       </p>
     </div>
     <div style="border-top: 1px solid ${C.border}; padding: 20px 32px; text-align: center;">

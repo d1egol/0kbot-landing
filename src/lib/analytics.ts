@@ -5,6 +5,7 @@
  * gtag/fbq before calling them, so they degrade silently in dev or when
  * the env vars are not configured.
  */
+import { ANALYTICS_EVENTS } from "@/lib/constants";
 
 export function trackEvent(
   eventName: string,
@@ -25,7 +26,7 @@ export function trackLeadCapture(
   try {
     if (typeof window !== "undefined") {
       if (typeof window.gtag === "function") {
-        window.gtag("event", "generate_lead", {
+        window.gtag("event", ANALYTICS_EVENTS.GENERATE_LEAD, {
           event_category: "conversion",
           source,
         });
@@ -46,7 +47,7 @@ export function trackLeadCapture(
 export function trackDiagnosticoStep(step: number, totalSteps: number): void {
   try {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
-      window.gtag("event", "diagnostico_step", {
+      window.gtag("event", ANALYTICS_EVENTS.DIAGNOSTICO_STEP, {
         event_category: "engagement",
         step,
         total_steps: totalSteps,
@@ -61,7 +62,7 @@ export function trackDiagnosticoCompleted(): void {
   try {
     if (typeof window !== "undefined") {
       if (typeof window.gtag === "function") {
-        window.gtag("event", "diagnostico_completed", {
+        window.gtag("event", ANALYTICS_EVENTS.DIAGNOSTICO_COMPLETED, {
           event_category: "conversion",
         });
       }
@@ -99,7 +100,7 @@ export function trackLeadSaveFailed(
 export function trackCTAClick(ctaName: string, location: string): void {
   try {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
-      window.gtag("event", "cta_click", {
+      window.gtag("event", ANALYTICS_EVENTS.CTA_CLICK, {
         cta_name: ctaName,
         location,
       });
@@ -147,7 +148,7 @@ export function trackROIEstimatorStarted(): void {
 export function trackCentinelaCtaClick(location: string): void {
   try {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
-      window.gtag("event", "centinela_cta_click", { location });
+      window.gtag("event", ANALYTICS_EVENTS.CENTINELA_CTA_CLICK, { location });
     }
   } catch {
     // never block the user flow
@@ -164,7 +165,7 @@ export function trackCrossDomainReferral(
 ): void {
   try {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
-      window.gtag("event", "cross_domain_referral", {
+      window.gtag("event", ANALYTICS_EVENTS.CROSS_DOMAIN_REFERRAL, {
         destination,
         source_section: sourceSection,
       });
@@ -184,7 +185,7 @@ export function trackCrossDomainReferral(
 export function trackRegulatedSectorDetected(sector: string): void {
   try {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
-      window.gtag("event", "regulated_sector_detected", { sector });
+      window.gtag("event", ANALYTICS_EVENTS.REGULATED_SECTOR_DETECTED, { sector });
     }
   } catch {
     // never block the user flow
