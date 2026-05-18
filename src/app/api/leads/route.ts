@@ -16,12 +16,15 @@ export async function POST(request: NextRequest) {
   logInfo("Guardando lead", { ...ctx, email: lead.email });
 
   // 1. Guardar en Supabase (crítico — si falla, retornamos 500)
+  // El insert aplica defaults para columnas con NOT NULL; los emails reciben
+  // el `lead` crudo y cada template decide cómo presentar campos vacíos
+  // (ver lead-notification.ts y lead-confirmation.ts).
   try {
     const supabase = createAdminClient();
     const { error } = await supabase.from("leads").insert({
       nombre: lead.nombre,
       email: lead.email,
-      empresa: lead.empresa ?? "(sin especificar)",
+      empresa: lead.empresa?.trim() || "(sin especificar)",
       cargo: lead.cargo ?? null,
       tamano_empresa: lead.tamano_empresa ?? "<20",
       problema: lead.problema ?? null,

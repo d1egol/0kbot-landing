@@ -28,9 +28,19 @@ function validate(nombre: string, email: string, consent: boolean): FieldErrors 
   return errors;
 }
 
+const TAMANO_OPTIONS: { value: string; label: string }[] = [
+  { value: "<20", label: "Menos de 20 personas" },
+  { value: "20-50", label: "20 a 50 personas" },
+  { value: "50-100", label: "50 a 100 personas" },
+  { value: "100-200", label: "100 a 200 personas" },
+  { value: ">200", label: "Más de 200 personas" },
+];
+
 function ModalContent({ isOpen, onClose }: ContactModalProps) {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
+  const [empresa, setEmpresa] = useState("");
+  const [tamano, setTamano] = useState("");
   const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitting, setSubmitting] = useState(false);
@@ -40,6 +50,8 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- reset form al abrir modal (trigger externo: prop isOpen). Refactor a key= reset es opción futura.
       setNombre("");
       setEmail("");
+      setEmpresa("");
+      setTamano("");
       setConsent(false);
       setErrors({});
       setSubmitting(false);
@@ -79,12 +91,15 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
     try {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 3000);
+      const empresaTrim = empresa.trim();
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           nombre,
           email,
+          ...(empresaTrim ? { empresa: empresaTrim } : {}),
+          ...(tamano ? { tamano_empresa: tamano } : {}),
           fuente: LEAD_SOURCES.CTA_CALENDLY,
           consent,
         }),
@@ -199,6 +214,39 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
                   {errors.email}
                 </p>
               )}
+            </div>
+
+            <div>
+              <label htmlFor="modal-empresa" className="block text-sm font-medium text-foreground mb-1.5 font-sans">
+                Empresa <span className="text-muted-foreground font-normal">(opcional)</span>
+              </label>
+              <input
+                id="modal-empresa"
+                type="text"
+                value={empresa}
+                onChange={(e) => setEmpresa(e.target.value)}
+                placeholder="Nombre de tu empresa"
+                className="w-full px-4 py-3 rounded-md border border-input bg-white text-sm font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                disabled={submitting}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="modal-tamano" className="block text-sm font-medium text-foreground mb-1.5 font-sans">
+                Tamaño de la empresa <span className="text-muted-foreground font-normal">(opcional)</span>
+              </label>
+              <select
+                id="modal-tamano"
+                value={tamano}
+                onChange={(e) => setTamano(e.target.value)}
+                disabled={submitting}
+                className="w-full px-4 py-3 rounded-md border border-input bg-white text-sm font-sans text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+              >
+                <option value="">Selecciona una opción</option>
+                {TAMANO_OPTIONS.map((opt) => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
             </div>
 
             <div>

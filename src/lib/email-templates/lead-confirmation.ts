@@ -2,6 +2,9 @@ import type { LeadInput } from "@/lib/validations";
 import { EMAIL_COLORS as C } from "./shared";
 
 export function leadConfirmationHtml(lead: LeadInput): string {
+  const empresaLine = lead.empresa?.trim()
+    ? `→ Revisamos la información de ${lead.empresa.trim()}<br>`
+    : "";
   return `
 <!DOCTYPE html>
 <html lang="es">
@@ -19,8 +22,7 @@ export function leadConfirmationHtml(lead: LeadInput): string {
       <div style="background: ${C.bg}; border-radius: 6px; padding: 20px; margin: 24px 0; border-left: 4px solid ${C.accent};">
         <p style="color: ${C.textDark}; font-size: 13px; font-weight: 600; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Lo que pasa ahora</p>
         <p style="color: ${C.textMid}; font-size: 14px; line-height: 1.8; margin: 0;">
-          → Revisamos la información de ${lead.empresa}<br>
-          → Te llamamos o escribimos para confirmar horario<br>
+          ${empresaLine}→ Te llamamos o escribimos para confirmar horario<br>
           → En 30 minutos identificamos dónde están tus pérdidas
         </p>
       </div>

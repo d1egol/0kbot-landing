@@ -3,6 +3,7 @@ import { EMAIL_COLORS as C, TAMANO_LABELS, formatSantiagoTimestamp } from "./sha
 
 export function leadNotificationHtml(lead: LeadInput): string {
   const tamanoLabel = TAMANO_LABELS[lead.tamano_empresa ?? "<20"] ?? lead.tamano_empresa;
+  const empresa = lead.empresa?.trim() || "(sin especificar)";
   const problema = lead.problema?.trim() || "(no especificado)";
   const cargo = lead.cargo?.trim() || "(no especificado)";
   const timestamp = formatSantiagoTimestamp();
@@ -27,7 +28,7 @@ export function leadNotificationHtml(lead: LeadInput): string {
         </tr>
         <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid ${C.border}; color: ${C.textMid}; font-size: 13px;">Empresa</td>
-          <td style="padding: 10px 0; border-bottom: 1px solid ${C.border}; color: ${C.textDark}; font-size: 13px; font-weight: 500;">${lead.empresa}</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid ${C.border}; color: ${C.textDark}; font-size: 13px; font-weight: 500;">${empresa}</td>
         </tr>
         <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid ${C.border}; color: ${C.textMid}; font-size: 13px;">Cargo</td>
