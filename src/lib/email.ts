@@ -61,7 +61,10 @@ const VARIANTS: VariantMap = {
     notification: {
       fromLabel: "0kbot Leads",
       to: () => NOTIFICATION_TO(),
-      subject: (l) => `Nuevo lead: ${l.nombre} de ${l.empresa}`,
+      subject: (l) => {
+        const empresa = l.empresa?.trim();
+        return empresa ? `Nuevo lead: ${l.nombre} de ${empresa}` : `Nuevo lead: ${l.nombre}`;
+      },
       html: (l) => leadNotificationHtml(l),
     },
   },
