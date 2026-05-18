@@ -96,7 +96,7 @@ export default async function CasoIndustriaPage({ params }: PageProps) {
       <section className="hero-gradient text-primary-foreground py-20 md:py-28">
         <div className="container-wide">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-1.5 text-sm text-primary-foreground/50 mb-6">
+          <nav className="flex items-center gap-1.5 text-sm text-primary-foreground/70 mb-6">
             <Link href="/" className="hover:text-primary-foreground transition-colors">Inicio</Link>
             <ChevronRight className="w-3.5 h-3.5" />
             <Link href="/casos" className="hover:text-primary-foreground transition-colors">Casos</Link>

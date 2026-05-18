@@ -76,11 +76,11 @@ export default function Footer() {
               Consultora de mejora de procesos para pymes en Chile. Lean, sin
               tecnología innecesaria, con resultados en 12 semanas.
             </p>
-            <div className="flex items-center gap-3 text-primary-foreground/50">
+            <div className="flex items-center gap-3 text-primary-foreground/70">
               <MapPin size={14} />
               <span className="text-xs">Santiago, Chile</span>
             </div>
-            <div className="flex items-center gap-3 text-primary-foreground/50 mt-2">
+            <div className="flex items-center gap-3 text-primary-foreground/70 mt-2">
               <Mail size={14} />
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
@@ -94,7 +94,7 @@ export default function Footer() {
           {/* Link columns */}
           {footerLinks.map((col) => (
             <div key={col.title}>
-              <h4 className="font-heading font-semibold text-sm uppercase tracking-wider mb-4 text-primary-foreground/50">
+              <h4 className="font-heading font-semibold text-sm uppercase tracking-wider mb-4 text-primary-foreground/70">
                 {col.title}
               </h4>
               <ul className="space-y-2.5">
@@ -125,21 +125,21 @@ export default function Footer() {
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 px-5 py-2.5 bg-accent text-[#1A1A1A] text-sm font-bold rounded-lg hover:bg-accent/90 transition-colors whitespace-nowrap"
+            className="shrink-0 px-5 py-2.5 bg-accent-glow text-primary text-sm font-bold rounded-lg hover:bg-accent-glow/90 transition-colors whitespace-nowrap"
           >
             Agendar diagnóstico gratis
           </Link>
         </div>
 
         <div className="mt-8 pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-primary-foreground/50">
+          <p className="text-xs text-primary-foreground/70">
             © {new Date().getFullYear()} 0kbot. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/privacidad" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors">
+            <Link href="/privacidad" className="text-xs text-primary-foreground/70 hover:text-primary-foreground transition-colors">
               Política de Privacidad
             </Link>
-            <Link href="/terminos" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors">
+            <Link href="/terminos" className="text-xs text-primary-foreground/70 hover:text-primary-foreground transition-colors">
               Términos de Servicio
             </Link>
             <a
@@ -148,7 +148,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               aria-label="LinkedIn 0kbot"
               title="LinkedIn 0kbot"
-              className="text-primary-foreground/50 hover:text-primary-foreground transition-colors"
+              className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
             >
               <Linkedin size={18} />
             </a>
