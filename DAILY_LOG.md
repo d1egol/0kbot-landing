@@ -430,3 +430,31 @@ Mi capa (orquestador):
 - Drift CLAUDE.md (2 → 1 iconos LinkedIn footer) — actualización trivial cuando alguien toque la sección.
 
 ---
+
+## 2026-05-18 — @claude (audit deudas P1/P2/P3 — PR #21 mergeado)
+
+**Status:** Audit completo del repo ejecutado vía lectura directa de fuentes (API routes, email templates, validations, analytics, wizard). 9 archivos modificados en 1 commit, mergeado en `fix/audit-deudas-p1-p2-p3`.
+
+**P1 — correctness:**
+- `validations.ts`: `tamano_empresa` ya no tiene `.default("<20")` — el campo llega `undefined` cuando ContactModal no lo envía, en lugar de silenciosamente contaminar Supabase con `"<20"` falso.
+- `api/leads/route.ts`: insert guarda `null` (no `"<20"`) cuando `tamano_empresa` no viene.
+- `DiagnosticoWizard.tsx`: AbortController 3s + `trackLeadSaveFailed("diagnostico", reason)` en el catch, con distinción `timeout` / `server_error` / `network`. Antes el wizard ni reportaba fallos al analytics (ContactModal sí lo hacía — inconsistencia).
+
+**P2 — SSOT / duplicados:**
+- `email.ts`: `DIAGNOSTICO_TIMELINE_LABELS` eliminado (era copia exacta de `TIMELINE_LABELS` en `shared.ts`). Fallbacks `FROM()` y `NOTIFICATION_TO()` usan `CONTACT_EMAIL` desde `constants.ts`.
+- `diagnostico-notification.ts`: nueva fila condicional "Servicio de interés" — cuando el lead llega vía `?servicio=<slug>`, ahora aparece en el email interno.
+- `analytics.ts`: importa `ANALYTICS_EVENTS` y lo usa en los 7 eventos canónicos. El export ya no es dead code.
+
+**P3 — consistencia:**
+- `lead-confirmation.ts`: `Hola ${lead.nombre}` → `Hola ${firstName}` (igual que `diagnostico-confirmation` y `onboarding-confirmation`).
+- 3 templates de confirmación (`lead`, `diagnostico`, `onboarding`): `"hola@0kbot.com"` hardcodeado → `${CONTACT_EMAIL}`.
+
+Gates: lint ✓ typecheck ✓ (0 errores).
+
+**Bloqueos:** ninguno.
+
+**Próximo paso:**
+- Smoke test wizard end-to-end para confirmar (a) email interno trae fila "Servicio de interés" cuando aplica, (b) fallo de red/timeout trackea en GA4, (c) `tamano_empresa` llega `null` en Supabase cuando ContactModal no lo completa.
+- Pendientes anteriores siguen activos: `/nosotros` rewrite, foto `public/diego.jpg`, lista LinkedIn.
+
+---
