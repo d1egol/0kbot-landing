@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
       email: lead.email,
       empresa: lead.empresa?.trim() || "(sin especificar)",
       cargo: lead.cargo ?? null,
-      tamano_empresa: lead.tamano_empresa ?? "<20",
+      tamano_empresa: lead.tamano_empresa ?? null,
       problema: lead.problema ?? null,
       fuente: lead.fuente,
       estado: lead.estado,

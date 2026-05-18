@@ -37,8 +37,7 @@ export const leadSchema = z.object({
 
   tamano_empresa: z
     .enum(["<20", "20-50", "50-100", "100-200", ">200"] as const)
-    .optional()
-    .default("<20"),
+    .optional(),
 
   problema: trimmedString(
     2000,

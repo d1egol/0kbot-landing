@@ -49,6 +49,11 @@ export function diagnosticoNotificationHtml(d: DiagnosticoInput): string {
           <td style="padding: 10px 0; border-bottom: 1px solid ${C.border}; color: ${C.textMid}; font-size: 13px;">Industria</td>
           <td style="padding: 10px 0; border-bottom: 1px solid ${C.border}; color: ${C.textDark}; font-size: 13px;">${d.industria}</td>
         </tr>
+        ${d.servicioInteres ? `
+        <tr>
+          <td style="padding: 10px 0; border-bottom: 1px solid ${C.border}; color: ${C.textMid}; font-size: 13px;">Servicio de interés</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid ${C.border}; color: ${C.textDark}; font-size: 13px; font-weight: 500;">${d.servicioInteres}</td>
+        </tr>` : ""}
         <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid ${C.border}; color: ${C.textMid}; font-size: 13px; vertical-align: top;">Problema</td>
           <td style="padding: 10px 0; border-bottom: 1px solid ${C.border}; color: ${C.textDark}; font-size: 13px; line-height: 1.5;">${d.dolor}</td>

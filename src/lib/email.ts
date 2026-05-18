@@ -1,5 +1,7 @@
 import { Resend } from "resend";
 import type { LeadInput, DiagnosticoInput, OnboardingInput } from "@/lib/validations";
+import { CONTACT_EMAIL } from "@/lib/constants";
+import { TIMELINE_LABELS } from "@/lib/email-templates/shared";
 import { leadConfirmationHtml } from "@/lib/email-templates/lead-confirmation";
 import { leadNotificationHtml } from "@/lib/email-templates/lead-notification";
 import { diagnosticoConfirmationHtml } from "@/lib/email-templates/diagnostico-confirmation";
@@ -20,15 +22,8 @@ function getResend(): Resend {
   return new Resend(key);
 }
 
-const FROM = () => process.env.RESEND_FROM_EMAIL ?? "hola@0kbot.com";
-const NOTIFICATION_TO = () => process.env.NOTIFICATION_EMAIL ?? "hola@0kbot.com";
-
-const DIAGNOSTICO_TIMELINE_LABELS: Record<string, string> = {
-  "Lo antes posible — tengo un problema urgente": "🔴 Urgente",
-  "En los próximos 3 meses": "🟡 3 meses",
-  "En el segundo semestre": "🟢 Segundo semestre",
-  "Estoy explorando opciones": "⚪ Explorando",
-};
+const FROM = () => process.env.RESEND_FROM_EMAIL ?? CONTACT_EMAIL;
+const NOTIFICATION_TO = () => process.env.NOTIFICATION_EMAIL ?? CONTACT_EMAIL;
 
 export type EmailFlow = "lead" | "diagnostico" | "onboarding";
 export type EmailKind = "confirmation" | "notification";
@@ -79,7 +74,7 @@ const VARIANTS: VariantMap = {
       fromLabel: "0kbot Leads",
       to: () => NOTIFICATION_TO(),
       subject: (d) => {
-        const label = DIAGNOSTICO_TIMELINE_LABELS[d.timeline] ?? d.timeline;
+        const label = TIMELINE_LABELS[d.timeline] ?? d.timeline;
         return `[Diagnóstico] ${d.nombre} · ${label}`;
       },
       html: (d) => diagnosticoNotificationHtml(d),
