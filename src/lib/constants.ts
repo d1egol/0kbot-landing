@@ -56,6 +56,39 @@ export const ANALYTICS_EVENTS = {
   REGULATED_SECTOR_DETECTED: "regulated_sector_detected",
 } as const;
 
+// Enum canónico de tamaño de empresa — el valor que se persiste en Supabase
+// (columna tamano_empresa) y se valida en el leadSchema/diagnosticoSchema.
+// Mantener en sincronía con el enum de validations.ts.
+export const TAMANO_VALUES = ["<20", "20-50", "50-100", "100-200", ">200"] as const;
+export type TamanoValue = (typeof TAMANO_VALUES)[number];
+
+// Opciones presentables (value + label en español). Single source of truth
+// para ContactModal, DiagnosticoWizard y email templates (TAMANO_LABELS).
+export const TAMANO_OPTIONS: ReadonlyArray<{ value: TamanoValue; label: string }> = [
+  { value: "<20", label: "Menos de 20 personas" },
+  { value: "20-50", label: "20 a 50 personas" },
+  { value: "50-100", label: "50 a 100 personas" },
+  { value: "100-200", label: "100 a 200 personas" },
+  { value: ">200", label: "Más de 200 personas" },
+] as const;
+
+// Lookup helper para emails (compatibilidad con el shape Record<string,string>
+// que ya consumían los templates).
+export const TAMANO_LABELS: Record<string, string> = Object.fromEntries(
+  TAMANO_OPTIONS.map((o) => [o.value, o.label])
+);
+
+// Catálogo canónico de slugs de servicios. Los hrefs de ServiciosSection
+// (?servicio=<slug>) pasan por aquí para validarse antes de pre-poblar el
+// wizard — un slug desconocido se ignora (no se hidrata el wizard con basura).
+export const SERVICIO_SLUGS: Record<string, string> = {
+  "radiografia-operacional": "Radiografía Operacional",
+  "primer-paso-digital": "Primer Paso Digital",
+  "sop-express": "SOP Express",
+  "diagnostico-costos": "Diagnóstico de Costos Ocultos",
+  "plan-accion-priorizado": "Plan de Acción Priorizado",
+};
+
 // Mapea rangos del onboarding (granulares) al enum canónico tamano_empresa
 // usado por Supabase y el resto del sistema.
 export const ONBOARDING_TAMANO_MAP: Record<string, string> = {

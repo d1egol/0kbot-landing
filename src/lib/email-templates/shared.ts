@@ -14,13 +14,9 @@ export const EMAIL_COLORS = {
   textMid: "#4A4A4A",
 } as const;
 
-export const TAMANO_LABELS: Record<string, string> = {
-  "<20": "Menos de 20 personas",
-  "20-50": "20 a 50 personas",
-  "50-100": "50 a 100 personas",
-  "100-200": "100 a 200 personas",
-  ">200": "Más de 200 personas",
-};
+// Re-export desde constants.ts — single source of truth.
+// Mantiene compatibilidad para los templates que ya hacían `import { TAMANO_LABELS } from "./shared"`.
+export { TAMANO_LABELS } from "@/lib/constants";
 
 export const TIMELINE_LABELS: Record<string, string> = {
   "Lo antes posible — tengo un problema urgente": "🔴 Urgente",

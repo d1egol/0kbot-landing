@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { X } from "lucide-react";
 import { trackLeadCapture, trackLeadSaveFailed } from "@/lib/analytics";
-import { CALENDLY_URL, LEAD_SOURCES } from "@/lib/constants";
+import { CALENDLY_URL, LEAD_SOURCES, TAMANO_OPTIONS } from "@/lib/constants";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -27,14 +27,6 @@ function validate(nombre: string, email: string, consent: boolean): FieldErrors 
   if (!consent) errors.consent = "Debes aceptar la política de privacidad";
   return errors;
 }
-
-const TAMANO_OPTIONS: { value: string; label: string }[] = [
-  { value: "<20", label: "Menos de 20 personas" },
-  { value: "20-50", label: "20 a 50 personas" },
-  { value: "50-100", label: "50 a 100 personas" },
-  { value: "100-200", label: "100 a 200 personas" },
-  { value: ">200", label: "Más de 200 personas" },
-];
 
 function ModalContent({ isOpen, onClose }: ContactModalProps) {
   const [nombre, setNombre] = useState("");
@@ -158,7 +150,7 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
               Agenda tu diagnóstico gratis
             </h2>
             <p className="text-sm text-muted-foreground font-sans mt-1">
-              Tu nombre y email para reservar. En 30 segundos estás agendando.
+              Datos mínimos para reservar. Empresa y tamaño son opcionales — nos ayudan a preparar mejor la llamada.
             </p>
           </div>
           <button

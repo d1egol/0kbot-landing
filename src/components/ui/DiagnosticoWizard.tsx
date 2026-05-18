@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Shield, ArrowUpRight } from "lucide-react";
 import {
   trackCentinelaCtaClick,
@@ -15,9 +16,12 @@ import {
   CONTACT_EMAIL,
   REGULATED_SECTORS,
   SEGURIDAD_URL,
+  SERVICIO_SLUGS,
+  TAMANO_OPTIONS,
+  type TamanoValue,
 } from "@/lib/constants";
 
-type TamanoOption = "<20" | "20-50" | "50-100" | "100-200" | ">200";
+type TamanoOption = TamanoValue;
 
 interface WizardData {
   tamano: TamanoOption | "";
@@ -34,13 +38,7 @@ interface WizardData {
   consent: boolean;
 }
 
-const TAMANOS: { value: TamanoOption; label: string }[] = [
-  { value: "<20", label: "Menos de 20 personas" },
-  { value: "20-50", label: "20 a 50 personas" },
-  { value: "50-100", label: "50 a 100 personas" },
-  { value: "100-200", label: "100 a 200 personas" },
-  { value: ">200", label: "Más de 200 personas" },
-];
+const TAMANOS = TAMANO_OPTIONS;
 
 const INDUSTRIAS = [
   "Distribución y logística",
@@ -117,6 +115,15 @@ function StepWrapper({
 }
 
 export default function DiagnosticoWizard() {
+  // Pre-poblar servicioInteres si el usuario llegó vía CTA de ServiciosSection
+  // (ej: /?servicio=radiografia-operacional#cta-diagnostico). Valida contra
+  // SERVICIO_SLUGS — un slug desconocido se descarta. El componente vive
+  // dentro de un Suspense boundary en DiagnosticoSection (requerido por Next).
+  const searchParams = useSearchParams();
+  const servicioFromUrl = searchParams.get("servicio");
+  const servicioPreseleccionado =
+    servicioFromUrl && servicioFromUrl in SERVICIO_SLUGS ? servicioFromUrl : null;
+
   const [step, setStep] = useState(0);
   const [success, setSuccess] = useState(false);
   const [data, setData] = useState<WizardData>({
@@ -126,7 +133,7 @@ export default function DiagnosticoWizard() {
     dolorOtro: "",
     intentadoAntes: null,
     timeline: "",
-    servicioInteres: "",
+    servicioInteres: servicioPreseleccionado ?? "",
     nombre: "",
     email: "",
     telefono: "",
@@ -368,6 +375,15 @@ export default function DiagnosticoWizard() {
 
   return (
     <div className="max-w-lg mx-auto">
+      {/* Badge servicio pre-seleccionado — visible solo si el usuario llegó
+          desde un CTA de ServiciosSection con ?servicio=<slug> válido. */}
+      {servicioPreseleccionado && !success && (
+        <div className="mb-4 inline-flex items-center gap-2 px-3 py-1.5 bg-primary/8 border border-primary/20 rounded-full text-xs font-medium font-sans text-primary">
+          <span aria-hidden="true">→</span>
+          <span>Te interesó: <strong>{SERVICIO_SLUGS[servicioPreseleccionado]}</strong></span>
+        </div>
+      )}
+
       {/* Barra de progreso */}
       <div className="mb-6">
         <div className="flex justify-between text-xs text-muted-foreground font-sans mb-2">
