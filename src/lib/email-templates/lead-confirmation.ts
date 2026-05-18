@@ -33,7 +33,7 @@ export function leadConfirmationHtml(lead: LeadInput): string {
       </p>
     </div>
     <div style="border-top: 1px solid ${C.border}; padding: 20px 32px; text-align: center;">
-      <p style="color: ${C.textMid}; font-size: 12px; margin: 0;">Diego · 0kbot · Santiago, Chile</p>
+      <p style="color: ${C.textMid}; font-size: 12px; margin: 0;">0kbot · Santiago, Chile</p>
     </div>
   </div>
 </body>
