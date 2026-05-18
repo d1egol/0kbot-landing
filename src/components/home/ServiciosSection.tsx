@@ -17,6 +17,7 @@ type ServicioBreve = {
   plazo: string;
   precio: string;
   para: string;
+  destacado?: boolean;
 };
 
 const SERVICIOS_BREVES: ServicioBreve[] = [
@@ -52,6 +53,7 @@ const SERVICIOS_BREVES: ServicioBreve[] = [
     plazo: "5 días hábiles",
     precio: "Desde 12 UF",
     para: "Pymes con ventas razonables pero márgenes pobres sin entender por qué.",
+    destacado: true,
   },
   {
     slug: "plan-accion-priorizado",
@@ -128,6 +130,23 @@ export default function ServiciosSection() {
                 <div className="space-y-4">
                   <div>
                     <p className="text-xs text-muted-foreground font-body uppercase tracking-wide mb-1">
+                      Para quién
+                    </p>
+                    <p className="text-sm text-foreground font-body leading-snug">
+                      Pymes de servicios, 5–25 empleados, que sienten que
+                      &ldquo;algo funciona mal&rdquo; pero no saben dónde.
+                    </p>
+                  </div>
+                  <div className="bg-primary/5 rounded-lg p-3">
+                    <p className="text-xs font-medium text-foreground font-body">
+                      ROI típico
+                    </p>
+                    <p className="text-sm text-muted-foreground font-body leading-snug mt-0.5">
+                      Una mejora del 10% en eficiencia paga la Radiografía en ≤4 semanas.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground font-body uppercase tracking-wide mb-1">
                       Precio
                     </p>
                     <p className="font-heading text-2xl font-bold text-foreground">
@@ -136,6 +155,17 @@ export default function ServiciosSection() {
                     <p className="text-xs text-muted-foreground font-body mt-1">
                       Final según número de procesos relevados (12 a 18 UF).
                     </p>
+                    <p className="text-xs text-primary font-body mt-1.5">
+                      ¿Empresa con +50 personas? El precio escala.{" "}
+                      <TrackedLink
+                        href="/#cta-diagnostico"
+                        ctaName="Cotizamos directo empresa grande"
+                        location="servicios_bandera_escala"
+                        className="underline underline-offset-2 hover:text-primary/80 transition-colors"
+                      >
+                        Te cotizamos directo.
+                      </TrackedLink>
+                    </p>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground font-body uppercase tracking-wide mb-1">
@@ -143,15 +173,6 @@ export default function ServiciosSection() {
                     </p>
                     <p className="text-sm text-foreground font-body">
                       50% al inicio · 50% al entregar
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground font-body uppercase tracking-wide mb-1">
-                      Para
-                    </p>
-                    <p className="text-sm text-foreground font-body leading-snug">
-                      Pymes de servicios, 5–25 empleados, que sienten que
-                      &ldquo;algo funciona mal&rdquo; pero no saben dónde.
                     </p>
                   </div>
                 </div>
@@ -164,10 +185,6 @@ export default function ServiciosSection() {
                 >
                   Quiero la Radiografía →
                 </TrackedLink>
-                <p className="text-xs text-muted-foreground font-body mt-3 leading-relaxed">
-                  <span className="font-medium text-foreground">ROI típico:</span>{" "}
-                  una mejora del 10% en eficiencia paga la Radiografía en ≤4 semanas.
-                </p>
               </div>
             </div>
           </div>
@@ -176,7 +193,7 @@ export default function ServiciosSection() {
         {/* Grid 2×2 — servicios complementarios */}
         <MotionSection delay={0.1}>
           <p className="text-sm font-medium text-muted-foreground font-body uppercase tracking-wide mb-5">
-            También hacemos
+            Para diagnósticos más específicos
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {SERVICIOS_BREVES.map((s) => (
@@ -185,9 +202,16 @@ export default function ServiciosSection() {
                 className="bg-background rounded-xl border border-muted p-6 space-y-3 hover:border-primary/40 transition-colors flex flex-col"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <h4 className="font-heading text-lg font-bold text-foreground">
-                    {s.nombre}
-                  </h4>
+                  <div className="space-y-1.5">
+                    <h4 className="font-heading text-lg font-bold text-foreground">
+                      {s.nombre}
+                    </h4>
+                    {s.destacado && (
+                      <span className="inline-flex items-center text-xs font-mono font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                        Más solicitado
+                      </span>
+                    )}
+                  </div>
                   <span className="text-sm font-heading font-bold text-primary whitespace-nowrap">
                     {s.precio.replace("Desde ", "")}
                   </span>
