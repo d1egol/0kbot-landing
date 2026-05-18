@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Shield, ArrowUpRight } from "lucide-react";
@@ -83,7 +83,19 @@ const SERVICIOS_OPCIONES: Array<{ value: string; meta?: string }> = [
   { value: "Plan de Acción Priorizado", meta: "5 días · desde 12 UF" },
 ];
 
-const TOTAL_STEPS = 7;
+// Mapping slug del URL (?servicio=X) → label largo que se persiste en
+// data.servicioInteres. Mantiene consistencia con lo que guarda paso 5 cuando
+// el usuario elige a mano. Si un slug no está en el map, no se hidrata.
+const SERVICIO_SLUG_TO_LABEL: Record<string, string> = {
+  "radiografia-operacional": "Radiografía Operacional (mapeo de procesos)",
+  "primer-paso-digital": "Primer Paso Digital (auditoría de herramientas)",
+  "sop-express": "SOP Express (documentar 3 procesos)",
+  "diagnostico-costos": "Diagnóstico de Costos Ocultos",
+  "plan-accion-priorizado": "Plan de Acción Priorizado",
+};
+
+const SERVICIO_STEP_INDEX = 5; // 0-indexed: el paso 5 del wizard es "servicio de interés"
+const TOTAL_STEPS_DEFAULT = 7;
 
 const OPTION_CLASS =
   "w-full text-left px-4 py-3.5 rounded-md border border-muted hover:border-primary hover:bg-primary/5 text-foreground font-sans text-sm transition-colors cursor-pointer";
@@ -123,6 +135,13 @@ export default function DiagnosticoWizard() {
   const servicioFromUrl = searchParams.get("servicio");
   const servicioPreseleccionado =
     servicioFromUrl && servicioFromUrl in SERVICIO_SLUGS ? servicioFromUrl : null;
+  // Label largo que se persiste y se manda al API — consistente con lo que
+  // guarda el paso 5 del wizard cuando el usuario elige a mano.
+  const servicioInteresInicial = servicioPreseleccionado
+    ? SERVICIO_SLUG_TO_LABEL[servicioPreseleccionado] ?? ""
+    : "";
+  const skipServicioStep = !!servicioPreseleccionado;
+  const totalSteps = skipServicioStep ? TOTAL_STEPS_DEFAULT - 1 : TOTAL_STEPS_DEFAULT;
 
   const [step, setStep] = useState(0);
   const [success, setSuccess] = useState(false);
@@ -133,7 +152,7 @@ export default function DiagnosticoWizard() {
     dolorOtro: "",
     intentadoAntes: null,
     timeline: "",
-    servicioInteres: servicioPreseleccionado ?? "",
+    servicioInteres: servicioInteresInicial,
     nombre: "",
     email: "",
     telefono: "",
@@ -146,11 +165,37 @@ export default function DiagnosticoWizard() {
   const [awaitingOtro, setAwaitingOtro] = useState(false);
   const [tempText, setTempText] = useState("");
 
+  // Sincroniza data.servicioInteres con el query param cuando cambia post-mount
+  // (soft navigation, p.ej. usuario carga `/`, scrollea, click en CTA de
+  // ServiciosSection con `?servicio=X#cta-diagnostico`). El useState initializer
+  // sólo corre 1 vez al montar — sin este effect, `skipServicioStep` se activa
+  // pero `data.servicioInteres` queda `""` y el POST manda servicio vacío.
+  useEffect(() => {
+    if (servicioPreseleccionado) {
+      const label = SERVICIO_SLUG_TO_LABEL[servicioPreseleccionado];
+      if (label) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- sync con sistema externo (URL searchParams) tras soft-nav, no triggereable de otra forma.
+        setData((d) => (d.servicioInteres === label ? d : { ...d, servicioInteres: label }));
+      }
+    }
+  }, [servicioPreseleccionado]);
+
+  // Calcula el paso visible al usuario (1-indexed) ignorando el paso interno
+  // saltado. Usado en progress bar Y en analytics — antes el track se calculaba
+  // sobre el índice interno, lo que producía eventos "Paso 7 de 6" cuando se
+  // saltaba el paso 5.
+  function toDisplayStep(internalStep: number): number {
+    if (skipServicioStep && internalStep > SERVICIO_STEP_INDEX) return internalStep;
+    return internalStep + 1;
+  }
+
   function advance() {
     setStep((s) => {
-      const next = s + 1;
-      // Trackea el paso al que avanza el usuario (1-indexed)
-      trackDiagnosticoStep(next + 1, TOTAL_STEPS);
+      let next = s + 1;
+      // Skip paso 5 (servicio) si ya viene pre-seleccionado desde el URL.
+      if (next === SERVICIO_STEP_INDEX && skipServicioStep) next = SERVICIO_STEP_INDEX + 1;
+      // Trackea el paso visible al usuario, no el índice interno.
+      trackDiagnosticoStep(toDisplayStep(next), totalSteps);
       return next;
     });
     setAwaitingOtro(false);
@@ -163,7 +208,12 @@ export default function DiagnosticoWizard() {
       setTempText("");
       return;
     }
-    setStep((s) => Math.max(0, s - 1));
+    setStep((s) => {
+      let prev = s - 1;
+      // Mismo skip al volver atrás — el paso 5 no es visible.
+      if (prev === SERVICIO_STEP_INDEX && skipServicioStep) prev = SERVICIO_STEP_INDEX - 1;
+      return Math.max(0, prev);
+    });
   }
 
   // Paso 1 — Tamaño
@@ -371,7 +421,8 @@ export default function DiagnosticoWizard() {
     );
   }
 
-  const progressPct = ((step + 1) / TOTAL_STEPS) * 100;
+  const displayStep = toDisplayStep(step);
+  const progressPct = (displayStep / totalSteps) * 100;
 
   return (
     <div className="max-w-lg mx-auto">
@@ -388,14 +439,14 @@ export default function DiagnosticoWizard() {
       <div className="mb-6">
         <div className="flex justify-between text-xs text-muted-foreground font-sans mb-2">
           <span>
-            Paso {step + 1} de {TOTAL_STEPS}
+            Paso {displayStep} de {totalSteps}
           </span>
           <span>{Math.round(progressPct)}%</span>
         </div>
         <div
           className="h-1 bg-muted rounded-full overflow-hidden"
           role="progressbar"
-          aria-label={`Progreso del diagnóstico: paso ${step + 1} de ${TOTAL_STEPS}`}
+          aria-label={`Progreso del diagnóstico: paso ${displayStep} de ${totalSteps}`}
           aria-valuenow={Math.round(progressPct)}
           aria-valuemin={0}
           aria-valuemax={100}
