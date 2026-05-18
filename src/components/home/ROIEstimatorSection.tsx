@@ -182,10 +182,10 @@ export default function ROIEstimatorSection() {
                 {!sinDatos && alertaTono !== "baja" && (
                   <div className="rounded-lg bg-primary/5 border border-primary/15 p-3 text-xs font-body text-foreground leading-relaxed">
                     <span className="font-semibold">Radiografía Operacional:</span>{" "}
-                    desde <span className="font-semibold">$490K CLP</span>. Si reduce un 10% el
+                    desde <span className="font-semibold">12 UF</span>. Si reduce un 10% el
                     costo mensual, se paga en{" "}
                     <span className="font-semibold">
-                      ~{Math.max(1, Math.ceil(490000 / (results.costoMensual * 0.1)))} mes(es)
+                      ~{Math.max(1, Math.ceil(480000 / (results.costoMensual * 0.1)))} mes(es)
                     </span>
                     .
                   </div>

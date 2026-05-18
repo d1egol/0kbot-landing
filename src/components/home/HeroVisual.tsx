@@ -7,7 +7,7 @@ type Phase = "ordenado" | "automatizando" | "medido";
 
 const phaseStyles: Record<Phase, { label: string; mark: string; bg: string; fg: string; ring: string }> = {
   ordenado: { label: "Ordenado", mark: "○", bg: "bg-[#E8F0FA]", fg: "text-[#1B5FA6]", ring: "ring-[#1B5FA6]/15" },
-  automatizando: { label: "Automatizando", mark: "⏳", bg: "bg-[#FBF4DC]", fg: "text-[#9C7B0F]", ring: "ring-[#D4AF37]/30" },
+  automatizando: { label: "Automatizando", mark: "⏳", bg: "bg-[#EFF6FF]", fg: "text-[#1D4ED8]", ring: "ring-[#1E40AF]/20" },
   medido: { label: "Medido", mark: "✓", bg: "bg-emerald-50", fg: "text-emerald-700", ring: "ring-emerald-500/20" },
 };
 
@@ -164,7 +164,7 @@ export default function HeroVisual() {
                   {/* Two stacked bars: before (red) vs after (green) */}
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-[8.5px] font-semibold text-[#999] w-10 shrink-0 uppercase tracking-wider">Antes</span>
+                      <span className="text-[8.5px] font-semibold text-muted-foreground w-10 shrink-0 uppercase tracking-wider">Antes</span>
                       <div className="flex-1 h-1.5 rounded-full bg-[#E5E2DB] overflow-hidden">
                         <m.div
                           className="h-full rounded-full bg-[#EF4444]/70"
@@ -173,7 +173,7 @@ export default function HeroVisual() {
                           transition={{ delay: 0.8 + i * 0.15, duration: 0.7, ease: "easeOut" }}
                         />
                       </div>
-                      <span className="text-[9px] text-[#999] tabular-nums w-14 shrink-0 text-right line-through">{row.before}</span>
+                      <span className="text-[9px] text-muted-foreground tabular-nums w-14 shrink-0 text-right line-through">{row.before}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="text-[8.5px] font-semibold text-emerald-700 w-10 shrink-0 uppercase tracking-wider">Hoy</span>
@@ -200,7 +200,7 @@ export default function HeroVisual() {
             transition={{ delay: 1.2 }}
             className="mt-3 pt-3 border-t border-[#F0EDE8] flex items-center justify-between"
           >
-            <span className="text-[10px] text-[#999]">Ahorro estimado</span>
+            <span className="text-[10px] text-muted-foreground">Ahorro estimado</span>
             <span className="text-sm font-bold text-emerald-600 tabular-nums">
               ~<span ref={counterRef}>{hoursSaved}</span> hrs / semana
             </span>
@@ -214,14 +214,14 @@ export default function HeroVisual() {
           transition={{ delay: 1.4, type: "spring" }}
           className="absolute -bottom-5 -left-4 bg-white border border-[#E5E2DB] shadow-lg rounded-xl px-3.5 py-2.5"
         >
-          <div className="text-[9px] font-semibold text-[#999] uppercase tracking-wider mb-1.5">
+          <div className="text-[9px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
             Método 0kbot OS
           </div>
           <div className="flex items-end gap-2.5">
             {[
               { c: "#1B5FA6", t: "Detectar" },
               { c: "#1A74C4", t: "Ordenar" },
-              { c: "#D4AF37", t: "Automatizar" },
+              { c: "#1E40AF", t: "Automatizar" },
               { c: "#10B981", t: "Medir" },
             ].map((step) => (
               <div key={step.t} className="flex flex-col items-center gap-0.5">

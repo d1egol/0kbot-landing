@@ -47,6 +47,7 @@ export default function FloatingCTA() {
         }`}
         style={{ width: "90%" }}
         aria-hidden={!visible}
+        inert={!visible || undefined}
       >
         <button
           onClick={() => { trackCTAClick("floating_cta", "floating"); setIsOpen(true); }}

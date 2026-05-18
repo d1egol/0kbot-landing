@@ -7,7 +7,7 @@ const preguntas = [
   },
   {
     pregunta: "¿Cuánto cuesta un proyecto de mejora de procesos?",
-    respuesta: "El diagnóstico inicial es gratuito y dura 30 minutos. Para servicios acotados con precio fijo, los rangos parten desde $390.000 CLP y suben según alcance — mapeo de procesos, auditoría de herramientas, plan de acción priorizado, entre otros. Cuando el problema es más grande, lo cotizamos al cierre del diagnóstico inicial. Si no vemos retorno claro, te lo decimos directo y no avanzamos.",
+    respuesta: "El diagnóstico inicial es gratuito y dura 30 minutos. Para servicios acotados con precio fijo, los rangos parten desde 10 UF y suben según alcance — mapeo de procesos, auditoría de herramientas, plan de acción priorizado, entre otros. Cuando el problema es más grande, lo cotizamos al cierre del diagnóstico inicial. Si no vemos retorno claro, te lo decimos directo y no avanzamos.",
     cta: { label: "Calcula tu pérdida operativa estimada", href: "/calculadora-roi" },
   },
   {

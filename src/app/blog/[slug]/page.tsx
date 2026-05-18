@@ -78,9 +78,10 @@ export default async function BlogPostPage({ params }: PageProps) {
     keywords: post.tags.join(", "),
     image: `${baseUrl}/opengraph-image`,
     author: {
-      "@type": "Person",
-      name: post.author,
-      url: "https://www.linkedin.com/in/diego-lopez-dinamarca/",
+      "@type": "Organization",
+      name: "0kbot",
+      url: baseUrl,
+      sameAs: "https://www.linkedin.com/company/0kbot",
     },
     publisher: {
       "@type": "Organization",
@@ -125,7 +126,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <header className="bg-white border-b border-[#E5E2DB]">
           <div className="container-content pt-8 pb-12">
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-1.5 text-sm text-[#999] mb-8" aria-label="Breadcrumb">
+            <nav className="flex items-center gap-1.5 text-sm text-muted-foreground mb-8" aria-label="Breadcrumb">
               <Link href="/" className="hover:text-[#1B5FA6] transition-colors">
                 Inicio
               </Link>
@@ -151,7 +152,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               </p>
 
               {/* Meta */}
-              <div className="flex items-center gap-6 text-sm text-[#999] flex-wrap">
+              <div className="flex items-center gap-6 text-sm text-muted-foreground flex-wrap">
                 <span className="flex items-center gap-1.5">
                   <User className="w-4 h-4" />
                   {post.author}
@@ -194,7 +195,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {post.tags.length > 0 && (
                   <div className="mt-10 pt-8 border-t border-[#E5E2DB]">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-sm text-[#999] font-medium">Tags:</span>
+                      <span className="text-sm text-muted-foreground font-medium">Tags:</span>
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
@@ -224,7 +225,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </p>
                 <Link
                   href="/#cta-diagnostico"
-                  className="inline-flex items-center gap-2 bg-[#D4AF37] text-[#1A1A1A] px-6 py-3 rounded-xl font-bold hover:bg-[#c49843] transition-colors text-sm"
+                  className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold hover:bg-accent transition-colors text-sm"
                 >
                   Hacer diagnóstico gratuito →
                 </Link>

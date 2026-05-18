@@ -249,7 +249,7 @@ export default function CalculadoraROI() {
               </p>
               <p
                 className="font-heading text-3xl md:text-4xl font-bold"
-                style={{ color: "#D4AF37" }}
+                style={{ color: "#1E40AF" }}
               >
                 {results.roi12m >= 0 ? "+" : ""}
                 {Math.round(results.roi12m)}%

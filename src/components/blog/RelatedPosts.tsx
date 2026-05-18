@@ -27,7 +27,7 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
               <h3 className="font-semibold text-[#1A1A1A] group-hover:text-[#1B5FA6] transition-colors text-sm leading-snug flex-1 mb-3 line-clamp-3">
                 {post.title}
               </h3>
-              <div className="flex items-center justify-between text-xs text-[#999] mt-auto">
+              <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
                 <span className="flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
                   {formatDate(post.date)}

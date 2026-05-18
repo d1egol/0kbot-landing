@@ -124,7 +124,7 @@ describe("onboardingSchema", () => {
     intentado_antes: "Excel / hojas de cálculo" as const,
     resultado_ideal: "Cerrar el día sin reclamos por pedidos perdidos.",
     plazo: "1-3 meses" as const,
-    presupuesto: "$500.000 – $1.500.000 CLP" as const,
+    presupuesto: "12 a 40 UF" as const,
     consent: true,
   };
 

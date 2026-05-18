@@ -78,11 +78,11 @@ const TIMELINES = [
 
 const SERVICIOS_OPCIONES: Array<{ value: string; meta?: string }> = [
   { value: "No estoy seguro, quiero conversar", meta: "Lo definimos en la llamada" },
-  { value: "Radiografía Operacional (mapeo de procesos)", meta: "5 días · desde $490K" },
-  { value: "Primer Paso Digital (auditoría de herramientas)", meta: "7 días · desde $690K" },
-  { value: "SOP Express (documentar 3 procesos)", meta: "4 días · desde $390K" },
-  { value: "Diagnóstico de Costos Ocultos", meta: "5 días · desde $490K" },
-  { value: "Plan de Acción Priorizado", meta: "5 días · desde $490K" },
+  { value: "Radiografía Operacional (mapeo de procesos)", meta: "5 días · desde 12 UF" },
+  { value: "Primer Paso Digital (auditoría de herramientas)", meta: "7 días · desde 18 UF" },
+  { value: "SOP Express (documentar 3 procesos)", meta: "4 días · desde 10 UF" },
+  { value: "Diagnóstico de Costos Ocultos", meta: "5 días · desde 12 UF" },
+  { value: "Plan de Acción Priorizado", meta: "5 días · desde 12 UF" },
 ];
 
 const TOTAL_STEPS = 7;

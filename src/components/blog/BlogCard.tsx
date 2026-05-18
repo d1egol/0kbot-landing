@@ -81,7 +81,7 @@ export function BlogCard({ post, featured = false, className }: BlogCardProps) {
           </p>
 
           <div className="flex items-center justify-between pt-4 border-t border-[#E5E2DB] mt-auto">
-            <div className="flex items-center gap-3 text-[#999] text-xs">
+            <div className="flex items-center gap-3 text-muted-foreground text-xs">
               <span className="flex items-center gap-1">
                 <Calendar className="w-3 h-3" />
                 {formatDate(post.date)}

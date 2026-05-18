@@ -106,19 +106,17 @@ export default function CredencialesSection() {
               </p>
 
               <div className="pt-6 mt-2 border-t border-muted">
-                <p className="font-heading font-bold text-base text-foreground">
-                  Diego López
-                </p>
                 <p className="text-sm text-muted-foreground font-body mb-3">
-                  Fundador 0kbot · Ing. Civil Industrial · MSc Data Science · Lean Six Sigma
+                  Equipo 0kbot — ingeniería industrial, data science y Lean Six Sigma
+                  aplicados a operaciones de pymes en Chile.
                 </p>
                 <a
-                  href="https://www.linkedin.com/in/diego-lopez-dinamarca"
+                  href="https://www.linkedin.com/company/0kbot"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm text-primary hover:underline font-body font-medium"
                 >
-                  Ver perfil en LinkedIn →
+                  Ver 0kbot en LinkedIn →
                 </a>
               </div>
             </div>

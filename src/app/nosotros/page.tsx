@@ -138,11 +138,11 @@ export default function NosotrosPage() {
                         </p>
                       </div>
                       <Link
-                        href="https://www.linkedin.com/in/diego-lopez-dinamarca/"
+                        href="https://www.linkedin.com/company/0kbot"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="LinkedIn Diego López"
-                        className="text-[#0077b5] hover:text-[#005e8e] transition-colors mt-1"
+                        aria-label="LinkedIn 0kbot"
+                        className="text-primary hover:text-primary/80 transition-colors mt-1"
                       >
                         <Linkedin className="w-5 h-5" />
                       </Link>

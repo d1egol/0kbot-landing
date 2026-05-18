@@ -172,9 +172,9 @@ export default function OgImage() {
                 style={{
                   fontSize: "10px",
                   fontWeight: "600",
-                  color: "#059669",
-                  background: "#ECFDF5",
-                  border: "1px solid #A7F3D0",
+                  color: "#1E40AF",
+                  background: "rgba(30,64,175,0.08)",
+                  border: "1px solid rgba(30,64,175,0.2)",
                   padding: "3px 10px",
                   borderRadius: "20px",
                   fontFamily: "sans-serif",
@@ -216,7 +216,7 @@ export default function OgImage() {
                     <span style={{ fontSize: "11px", color: "#999", textDecoration: "line-through", fontFamily: "sans-serif" }}>
                       {row.before}
                     </span>
-                    <span style={{ fontSize: "11px", fontWeight: "700", color: "#059669", fontFamily: "sans-serif" }}>
+                    <span style={{ fontSize: "11px", fontWeight: "700", color: "#1E40AF", fontFamily: "sans-serif" }}>
                       {row.after}
                     </span>
                   </div>
@@ -254,7 +254,7 @@ export default function OgImage() {
               }}
             >
               <span style={{ fontSize: "11px", color: "#999", fontFamily: "sans-serif" }}>Ahorro estimado</span>
-              <span style={{ fontSize: "18px", fontWeight: "700", color: "#059669", fontFamily: "sans-serif" }}>
+              <span style={{ fontSize: "18px", fontWeight: "700", color: "#1E40AF", fontFamily: "sans-serif" }}>
                 ~14 hrs/sem
               </span>
             </div>

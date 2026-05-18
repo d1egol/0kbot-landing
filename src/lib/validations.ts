@@ -102,9 +102,9 @@ export const onboardingSchema = z.object({
   resultado_ideal: z.string().trim().min(10).max(1000),
   plazo: z.enum(["1-3 meses", "3-6 meses", "Más de 6 meses"] as const),
   presupuesto: z.enum([
-    "Menos de $500.000 CLP",
-    "$500.000 – $1.500.000 CLP",
-    "$1.500.000 – $3.000.000 CLP",
+    "Menos de 12 UF",
+    "12 a 40 UF",
+    "40 a 80 UF",
     "Abierto / a definir",
   ] as const),
   consent: consentLiteral,

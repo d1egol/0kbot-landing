@@ -121,7 +121,7 @@ export default function BlogPage() {
         )}
 
         {allPosts.length === 0 && (
-          <div className="text-center py-24 text-[#999]">
+          <div className="text-center py-24 text-muted-foreground">
             <p className="text-lg">Próximamente nuevos artículos.</p>
           </div>
         )}
@@ -137,7 +137,7 @@ export default function BlogPage() {
           </p>
           <Link
             href="/#cta-diagnostico"
-            className="inline-flex items-center gap-2 bg-[#D4AF37] text-[#1A1A1A] px-8 py-3 rounded-xl font-bold hover:bg-[#c49843] transition-colors"
+            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-accent transition-colors"
           >
             Hacer diagnóstico gratuito →
           </Link>

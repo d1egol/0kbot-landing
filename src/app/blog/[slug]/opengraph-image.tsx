@@ -40,7 +40,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
             width: 200,
             height: 200,
             borderRadius: "50%",
-            background: "linear-gradient(135deg, #1B5FA6, #D4AF37)",
+            background: "linear-gradient(135deg, #1B5FA6, #1E40AF)",
             opacity: 0.04,
           }}
         />
@@ -190,7 +190,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
             left: 0,
             right: 0,
             height: "4px",
-            background: "linear-gradient(to right, #1B5FA6, #D4AF37)",
+            background: "linear-gradient(to right, #1B5FA6, #1E40AF)",
           }}
         />
       </div>

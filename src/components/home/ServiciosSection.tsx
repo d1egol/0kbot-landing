@@ -28,7 +28,7 @@ const SERVICIOS_BREVES: ServicioBreve[] = [
     entregable:
       "Inventario de stack actual, score de madurez digital (5 dimensiones), hoja de ruta 90 días con herramientas concretas y ahorro mensual proyectado.",
     plazo: "7 días hábiles",
-    precio: "Desde $690.000 CLP",
+    precio: "Desde 18 UF",
     para: "Pymes que sienten que pagan mucho software y nadie lo usa.",
   },
   {
@@ -39,7 +39,7 @@ const SERVICIOS_BREVES: ServicioBreve[] = [
     entregable:
       "3 procedimientos paso a paso (Google Doc + PDF), índice maestro de procesos y checklist de validación.",
     plazo: "4 días hábiles",
-    precio: "Desde $390.000 CLP",
+    precio: "Desde 10 UF",
     para: "Pymes que están onboardeando gente nueva o donde una persona clave se va.",
   },
   {
@@ -50,7 +50,7 @@ const SERVICIOS_BREVES: ServicioBreve[] = [
     entregable:
       "Inventario de gastos recurrentes (productivos / duplicados / zombie), mapa de rentabilidad por cliente o línea, top 5 ajustes con ahorro estimado.",
     plazo: "5 días hábiles",
-    precio: "Desde $490.000 CLP",
+    precio: "Desde 12 UF",
     para: "Pymes con ventas razonables pero márgenes pobres sin entender por qué.",
   },
   {
@@ -61,7 +61,7 @@ const SERVICIOS_BREVES: ServicioBreve[] = [
     entregable:
       "Brechas reorganizadas por impacto y esfuerzo, secuencia ejecutable de 90 días, quién hace qué y criterio de éxito por hito.",
     plazo: "5 días hábiles",
-    precio: "Desde $490.000 CLP",
+    precio: "Desde 12 UF",
     para: "Pymes con un informe de consultora anterior junto al PC y nada hecho con él.",
   },
 ];
@@ -131,10 +131,10 @@ export default function ServiciosSection() {
                       Precio
                     </p>
                     <p className="font-heading text-2xl font-bold text-foreground">
-                      Desde $490.000 CLP
+                      Desde 12 UF
                     </p>
                     <p className="text-xs text-muted-foreground font-body mt-1">
-                      Final según número de procesos relevados ($490K–$690K).
+                      Final según número de procesos relevados (12 a 18 UF).
                     </p>
                   </div>
                   <div>

@@ -147,17 +147,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn 0kbot"
-              title="LinkedIn empresa"
-              className="text-primary-foreground/50 hover:text-primary-foreground transition-colors"
-            >
-              <Linkedin size={18} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/diego-lopez-dinamarca/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn Diego López — fundador de 0kbot"
-              title="LinkedIn Diego López"
+              title="LinkedIn 0kbot"
               className="text-primary-foreground/50 hover:text-primary-foreground transition-colors"
             >
               <Linkedin size={18} />
