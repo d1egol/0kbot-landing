@@ -34,6 +34,9 @@ export default function MotionSection({
     // Respect reduced motion preference
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    // If IntersectionObserver is unavailable, leave content visible (no animation).
+    if (typeof IntersectionObserver === "undefined") return;
+
     // Skip animation for elements already visible — avoids flash after SSR hydration
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight + 60) return;
@@ -47,12 +50,19 @@ export default function MotionSection({
         ? "translateX(-20px)"
         : "none";
 
+    let revealed = false;
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      el.style.transition = `opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`;
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.style.transition = `opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`;
-          el.style.opacity = "1";
-          el.style.transform = "none";
+          reveal();
           observer.unobserve(el);
         }
       },
@@ -60,7 +70,16 @@ export default function MotionSection({
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+
+    // Failsafe: if the observer never fires within 2s (headless screenshot tools,
+    // print/PDF capture, programmatic full-page scroll, slow JS), reveal anyway
+    // so content is never permanently hidden.
+    const fallback = window.setTimeout(reveal, 2000);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, [delay, direction]);
 
   return (

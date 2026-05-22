@@ -125,7 +125,7 @@ export default function Footer() {
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 px-5 py-2.5 bg-accent-glow text-primary text-sm font-bold rounded-lg hover:bg-accent-glow/90 transition-colors whitespace-nowrap"
+            className="shrink-0 px-5 py-2.5 bg-accent-glow text-foreground text-sm font-bold rounded-lg hover:bg-accent-glow/90 transition-colors whitespace-nowrap"
           >
             Agendar diagnóstico gratis
           </Link>
