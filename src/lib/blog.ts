@@ -32,19 +32,32 @@ export const CATEGORIES = [
 
 export type Category = (typeof CATEGORIES)[number];
 
+// Defense-in-depth: si un .md del pipeline AI llega a src/content/blog/ sin
+// pipeline_stage="published" (ej. draft copy-pasteado por error, promote script
+// que falló a mitad), no debe aparecer en producción. Posts .mdx tradicionales
+// (sin frontmatter .pipeline) siempre pasan — esta guardia aplica solo al
+// pipeline AI.
+function isPostPublishable(data: { [key: string]: unknown }): boolean {
+  const pipeline = data.pipeline as { pipeline_stage?: string } | undefined;
+  if (!pipeline) return true;
+  return pipeline.pipeline_stage === "published";
+}
+
 export function getAllPosts(): BlogPostMeta[] {
   if (!fs.existsSync(BLOG_DIR)) return [];
 
   // Lee .mdx (posts existentes) y .md (posts del pipeline AI/content-engine)
   const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx") || f.endsWith(".md"));
 
-  const posts = files.map((filename) => {
+  const posts = files.flatMap((filename) => {
     const isMarkdown = filename.endsWith(".md");
     const slug = isMarkdown ? filename.replace(/\.md$/, "") : filename.replace(/\.mdx$/, "");
     const filePath = path.join(BLOG_DIR, filename);
     const fileContent = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(fileContent);
     const rt = readingTime(content);
+
+    if (!isPostPublishable(data)) return [];
 
     // Posts pipeline AI tienen frontmatter distinto: seo.description, hero, reading_time pre-calculado
     // Mapear a BlogPostMeta compatible
@@ -53,7 +66,7 @@ export function getAllPosts(): BlogPostMeta[] {
     // Pipeline posts usan "AI Research" category por default
     const category = data.category || (isMarkdown && data.pipeline ? "AI Research" : "IA para Pymes");
 
-    return {
+    return [{
       slug,
       title: data.title || "",
       excerpt,
@@ -64,7 +77,7 @@ export function getAllPosts(): BlogPostMeta[] {
       readingTime: data.reading_time ? `${data.reading_time} min read` : rt.text,
       featured: data.featured || false,
       coverImage,
-    } as BlogPostMeta;
+    } as BlogPostMeta];
   });
 
   return posts.sort(
@@ -85,6 +98,8 @@ export function getPostBySlug(slug: string): BlogPost | null {
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
   const rt = readingTime(content);
+
+  if (!isPostPublishable(data)) return null;
 
   const excerpt = data.excerpt || (data.seo && data.seo.description) || "";
   const coverImage = data.coverImage || data.hero || undefined;
