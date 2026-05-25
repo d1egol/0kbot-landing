@@ -30,13 +30,13 @@ La taxonomía diagnóstica del paper (11 categorías) descompone los errores ent
 
 En Europa y Norteamérica, la conversación sobre agentes MCP gira alrededor de performance en benchmarks públicos como palanca de decisión de compra. El vendor con mejor score gana el POC. La lógica tiene sentido cuando los equipos tienen capacidad de evaluación interna sofisticada.
 
-En LATAM — y lo digo desde la perspectiva de haber armado arquitecturas de agentes para equipos en Chile y la región — la realidad es distinta. Los equipos técnicos que integran agentes en producción generalmente no tienen presupuesto para hacer evaluaciones propias a escala de 1.000 tareas. Dependen de benchmarks externos para tomar decisiones, y esa dependencia tiene un sesgo grave: los benchmarks públicos evalúan invocación de herramientas, no cognición post-ejecución.
+En LATAM la realidad es distinta. Los equipos técnicos que integran agentes en producción generalmente no tienen presupuesto para hacer evaluaciones propias a escala de 1.000 tareas. Dependen de benchmarks externos para tomar decisiones, y esa dependencia tiene un sesgo grave: los benchmarks públicos evalúan invocación de herramientas, no cognición post-ejecución.
 
 El hallazgo del 63% de fallos cognitivos no es un dato académico. Es un problema operacional directo. Si un equipo elige su modelo LLM mirando solo el tool-calling accuracy, está optimizando para el 37% del problema.
 
 ## Lo que MCP-Atlas revela sobre cómo evaluar
 
-El diseño del benchmark tiene tres decisiones que me parecen correctas y deberían volverse estándar en evaluaciones propias:
+El diseño del benchmark tiene tres decisiones acertadas que deberían volverse estándar en evaluaciones propias:
 
 **Servidores MCP reales, no simulados.** La brecha entre un servidor mockeado y uno de producción en términos de latencia, errores, respuestas parciales y edge cases es enorme. Evaluar contra mocks sobreestima el desempeño sistemáticamente.
 
@@ -44,22 +44,22 @@ El diseño del benchmark tiene tres decisiones que me parecen correctas y deber�
 
 **División pública/privada de tareas.** 500 tareas públicas para desarrollo, 500 privadas para evaluación limpia. Esto evita que los vendors ajusten sus modelos específicamente para el benchmark. En LATAM, donde el riesgo de sobreajuste de vendors a benchmarks públicos es alto (porque tenemos menos capacidad de verificación independiente), este diseño importa.
 
-## Mi lectura del gap
+## Dónde queda el gap
 
-En mi experiencia trabajando con equipos técnicos en la región, el error más común no es elegir el modelo equivocado — es no medir lo que realmente importa. Los equipos hacen demos donde el agente invoca herramientas correctamente, declaran éxito, y después en producción el agente completa el tool-call pero entrega un resumen incorrecto, se detiene antes de completar el flujo, o pierde el hilo entre pasos.
+En la práctica de la región, el error más común no es elegir el modelo equivocado — es no medir lo que realmente importa. Los equipos hacen demos donde el agente invoca herramientas correctamente, declaran éxito, y después en producción el agente completa el tool-call pero entrega un resumen incorrecto, se detiene antes de completar el flujo, o pierde el hilo entre pasos.
 
-Eso es exactamente lo que MCP-Atlas llama fallos cognitivos post-ejecución. Y es lo que ningún benchmark de tool-calling te muestra, porque los benchmarks de tool-calling terminan cuando la herramienta se invocó bien.
+Eso es exactamente lo que MCP-Atlas llama fallos cognitivos post-ejecución. Es lo que ningún benchmark de tool-calling muestra, porque los benchmarks de tool-calling terminan cuando la herramienta se invocó bien.
 
-Lo que no me convence del paper es la ausencia de estratificación por dominio. Los 36 servidores MCP cubren distintas categorías funcionales, pero los resultados se reportan agregados. Para un equipo LATAM que va a desplegar un agente específicamente para consultas regulatorias o integración con sistemas legacy, el comportamiento agregado de 220 herramientas de producción general dice poco sobre el desempeño en su dominio específico.
+El punto débil del paper es la ausencia de estratificación por dominio. Los 36 servidores MCP cubren distintas categorías funcionales, pero los resultados se reportan agregados. Para un equipo LATAM que va a desplegar un agente específicamente para consultas regulatorias o integración con sistemas legacy, el comportamiento agregado de 220 herramientas de producción general dice poco sobre el desempeño en su dominio específico.
 
 ## Qué hacer con esto
 
-Si estás evaluando modelos para un agente MCP en producción, tres ajustes concretos:
+Para un equipo que está evaluando modelos para un agente MCP en producción, tres ajustes concretos:
 
-Primero, incluye tareas de síntesis en tu evaluación. No termines cuando el tool-call fue exitoso. Mide si el modelo sintetiza correctamente el output de la herramienta en el contexto de la tarea completa.
+Primero, incluir tareas de síntesis en la evaluación. No terminar cuando el tool-call fue exitoso. Medir si el modelo sintetiza correctamente el output de la herramienta en el contexto de la tarea completa.
 
-Segundo, usa distractores reales. En tu MCP server de evaluación, incluye herramientas similares a las que buscas pero no exactamente correctas. La capacidad de discriminación semántica es más predictiva del desempeño en producción que el raw tool-calling accuracy.
+Segundo, usar distractores reales. En el MCP server de evaluación, incluir herramientas similares a las que se buscan pero no exactamente correctas. La capacidad de discriminación semántica es más predictiva del desempeño en producción que el raw tool-calling accuracy.
 
-Tercero, mide detención prematura específicamente. Es el fallo más frecuente en modelos de nivel alto según MCP-Atlas, y es el más difícil de detectar porque la invocación fue exitosa — el modelo simplemente no continuó el flujo completo.
+Tercero, medir detención prematura específicamente. Es el fallo más frecuente en modelos de nivel alto según MCP-Atlas, y es el más difícil de detectar porque la invocación fue exitosa — el modelo simplemente no continuó el flujo completo.
 
-La pregunta que me queda abierta: si el 63% de los fallos son cognitivos y los vendors están optimizando sus modelos para tool-calling accuracy, ¿qué tan lejos estamos del punto donde los benchmarks públicos dejan de ser informativos para decisiones de arquitectura real?
+Queda una pregunta abierta: si el 63% de los fallos son cognitivos y los vendors están optimizando sus modelos para tool-calling accuracy, ¿qué tan lejos estamos del punto donde los benchmarks públicos dejan de ser informativos para decisiones de arquitectura real?
