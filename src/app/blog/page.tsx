@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { getAllPosts, getFeaturedPost, CATEGORIES } from "@/lib/blog";
 import { BlogCard } from "@/components/blog/BlogCard";
+import { BlogGrid } from "@/components/blog/BlogGrid";
 import { Rss } from "lucide-react";
 
 export const revalidate = 3600; // regenerar cada hora
@@ -39,110 +41,112 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   const allPosts = getAllPosts();
+  // Exclude AI Research posts from pyme blog index
+  const pymePosts = allPosts.filter((p) => p.category !== "AI Research");
   const featuredPost = getFeaturedPost();
-  const regularPosts = allPosts.filter((p) => p.slug !== featuredPost?.slug);
+  const regularPosts = pymePosts.filter((p) => p.slug !== featuredPost?.slug);
+
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Blog 0kbot",
+    description:
+      "Artículos prácticos sobre automatización de procesos, IA para pymes y transformación digital en Chile.",
+    url: "https://0kbot.com/blog",
+    blogPost: pymePosts.slice(0, 9).map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      url: `https://0kbot.com/blog/${p.slug}`,
+    })),
+  };
 
   return (
-    <main className="min-h-screen bg-[#F7F5F0]">
-      {/* Header */}
-      <section className="bg-white border-b border-[#E5E2DB]">
-        <div className="container-content section-padding pb-12 pt-20">
-          <div className="flex items-start justify-between gap-6 flex-wrap">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <Link
-                  href="/feed.xml"
-                  title="RSS Feed"
-                  className="text-[#1B5FA6] hover:text-[#154d8a] transition-colors"
-                >
-                  <Rss className="w-5 h-5" />
-                </Link>
-                <span className="text-sm font-medium text-[#1B5FA6] uppercase tracking-wider">
-                  Blog
-                </span>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
+      <main className="min-h-screen bg-background">
+        {/* Header */}
+        <section className="bg-white border-b border-border">
+          <div className="container-content section-padding pb-12 pt-20">
+            <div className="flex items-start justify-between gap-6 flex-wrap">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <Link
+                    href="/feed.xml"
+                    title="RSS Feed"
+                    className="text-primary hover:text-accent transition-colors"
+                  >
+                    <Rss className="w-5 h-5" />
+                  </Link>
+                  <span className="text-sm font-medium text-primary uppercase tracking-wider">
+                    Blog
+                  </span>
+                </div>
+                <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
+                  Procesos y<br />
+                  <span className="text-gradient-accent">Automatización</span>
+                </h1>
+                <p className="text-muted-foreground text-lg max-w-xl leading-relaxed">
+                  Casos reales, guías prácticas y análisis sobre mejora de
+                  procesos y automatización para pymes chilenas.
+                </p>
               </div>
-              <h1 className="font-heading text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-4">
-                Procesos y<br />
-                <span className="text-gradient-accent">Automatización</span>
-              </h1>
-              <p className="text-[#666] text-lg max-w-xl leading-relaxed">
-                Casos reales, tutoriales prácticos y guías sobre mejora de
-                procesos y automatización para pymes chilenas.
-              </p>
+
+              <Link
+                href="/contacto"
+                className="shrink-0 inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-accent transition-colors text-sm"
+              >
+                Diagnóstico gratuito
+              </Link>
             </div>
 
+            {/* Category filter — rendered via BlogGrid (Client Component) */}
+          </div>
+        </section>
+
+        {/* Content */}
+        <section className="container-content py-12">
+          {/* Featured post */}
+          {featuredPost && featuredPost.category !== "AI Research" && (
+            <div className="mb-12">
+              <BlogCard post={featuredPost} featured />
+            </div>
+          )}
+
+          {/* Regular posts grid with filter + pagination */}
+          <h2 className="font-heading text-2xl font-bold text-foreground mb-2">
+            Todos los artículos
+          </h2>
+          <Suspense fallback={<div className="h-96 animate-pulse bg-muted rounded-xl" />}>
+            <BlogGrid posts={regularPosts} categories={CATEGORIES} />
+          </Suspense>
+
+          {allPosts.length === 0 && (
+            <div className="text-center py-24 text-muted-foreground">
+              <p className="text-lg">Próximamente nuevos artículos.</p>
+            </div>
+          )}
+
+          {/* Diagnóstico CTA */}
+          <div className="mt-16 rounded-2xl bg-primary p-8 md:p-12 text-white text-center">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3">
+              ¿Tu empresa tiene procesos que podrían mejorar?
+            </h2>
+            <p className="text-white/80 mb-8 max-w-md mx-auto">
+              Haz nuestro diagnóstico gratuito de 30 minutos y descubre exactamente
+              dónde pierde tiempo y dinero tu operación.
+            </p>
             <Link
-              href="/contacto"
-              className="shrink-0 inline-flex items-center gap-2 bg-[#1B5FA6] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#154d8a] transition-colors text-sm"
+              href="/#cta-diagnostico"
+              className="inline-flex items-center gap-2 bg-white text-primary px-8 py-3 rounded-xl font-bold hover:bg-accent-glow transition-colors"
             >
-              Diagnóstico gratuito
+              Hacer diagnóstico gratuito →
             </Link>
           </div>
-
-          {/* Category filter */}
-          <div className="flex items-center gap-2 mt-10 flex-wrap">
-            {CATEGORIES.map((cat) => (
-              <span
-                key={cat}
-                className={`px-4 py-1.5 rounded-full text-sm cursor-pointer transition-colors ${
-                  cat === "Todos"
-                    ? "bg-[#1B5FA6] text-white font-medium"
-                    : "bg-white border border-[#E5E2DB] text-[#666] hover:border-[#1B5FA6] hover:text-[#1B5FA6]"
-                }`}
-              >
-                {cat}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Content */}
-      <section className="container-content py-12">
-        {/* Featured post */}
-        {featuredPost && (
-          <div className="mb-12">
-            <BlogCard post={featuredPost} featured />
-          </div>
-        )}
-
-        {/* Regular posts grid */}
-        {regularPosts.length > 0 && (
-          <>
-            <h2 className="font-heading text-2xl font-bold text-[#1A1A1A] mb-6">
-              Todos los artículos
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {regularPosts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
-              ))}
-            </div>
-          </>
-        )}
-
-        {allPosts.length === 0 && (
-          <div className="text-center py-24 text-muted-foreground">
-            <p className="text-lg">Próximamente nuevos artículos.</p>
-          </div>
-        )}
-
-        {/* Diagnóstico CTA */}
-        <div className="mt-16 rounded-2xl bg-gradient-to-br from-[#1B5FA6] to-[#0d3d6e] p-8 md:p-12 text-white text-center">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3">
-            ¿Tu empresa tiene procesos que podrían mejorar?
-          </h2>
-          <p className="text-white/80 mb-8 max-w-md mx-auto">
-            Haz nuestro diagnóstico gratuito de 30 minutos y descubre exactamente
-            dónde pierde tiempo y dinero tu operación.
-          </p>
-          <Link
-            href="/#cta-diagnostico"
-            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-accent transition-colors"
-          >
-            Hacer diagnóstico gratuito →
-          </Link>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 }

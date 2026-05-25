@@ -3,12 +3,13 @@
 import { cn } from "@/lib/utils";
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Automatización: "bg-blue-100 text-blue-800 border-blue-200",
-  "IA para Pymes": "bg-purple-100 text-purple-800 border-purple-200",
-  "Casos de Uso": "bg-green-100 text-green-800 border-green-200",
-  "Mejora de Procesos": "bg-orange-100 text-orange-800 border-orange-200",
-  Tutoriales: "bg-teal-100 text-teal-800 border-teal-200",
-  Todos: "bg-gray-100 text-gray-800 border-gray-200",
+  Automatización: "bg-primary/10 text-primary border-primary/20",
+  "IA para Pymes": "bg-primary/10 text-primary border-primary/20",
+  "Mejora de Procesos": "bg-primary/10 text-primary border-primary/20",
+  "Casos y Resultados": "bg-primary/10 text-primary border-primary/20",
+  Metodología: "bg-muted text-muted-foreground border-border",
+  "AI Research": "bg-muted text-muted-foreground border-border",
+  Todos: "bg-muted text-muted-foreground border-border",
 };
 
 interface CategoryBadgeProps {

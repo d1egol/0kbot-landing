@@ -26,7 +26,8 @@ export const CATEGORIES = [
   "Automatización",
   "IA para Pymes",
   "Mejora de Procesos",
-  "Tutoriales",
+  "Casos y Resultados",
+  "Metodología",
   "AI Research",
 ] as const;
 
@@ -156,6 +157,10 @@ export function getFeaturedPost(): BlogPostMeta | null {
 
 export function getRecentPosts(limit = 3): BlogPostMeta[] {
   return getAllPosts().slice(0, limit);
+}
+
+export function getResearchPosts(): BlogPostMeta[] {
+  return getAllPosts().filter((p) => p.category === "AI Research");
 }
 
 export function formatDate(dateStr: string): string {
