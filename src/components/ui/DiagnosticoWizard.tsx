@@ -385,9 +385,13 @@ export default function DiagnosticoWizard() {
             Agendar diagnóstico gratuito →
           </Link>
           <p className="text-xs text-muted-foreground font-sans mt-4">
-            O si prefieres, te contactamos en{" "}
-            <strong className="text-foreground">menos de 24 horas</strong> al email{" "}
-            <span className="text-foreground font-medium">{data.email}</span>
+            O si prefieres, escríbenos directo a{" "}
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="text-foreground font-medium underline hover:no-underline"
+            >
+              {CONTACT_EMAIL}
+            </a>
           </p>
         </div>
 
