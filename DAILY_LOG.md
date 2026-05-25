@@ -458,3 +458,41 @@ Gates: lint ✓ typecheck ✓ (0 errores).
 - Pendientes anteriores siguen activos: `/nosotros` rewrite, foto `public/diego.jpg`, lista LinkedIn.
 
 ---
+
+## 2026-05-25 14:45 — @claude (Opus 4.7 1M ctx, sesión ~3.5h continuo)
+
+**[HANDOFF] Blog refresh v2 deployado + harness WIP cerrado**
+
+**Status:** sesión cerrada con 2 repos pushed a origin/main. Trabajo principal en harness `~/.claude/` y commit final del refactor blog en este repo.
+
+**Estado git:**
+- Landing `main` → último commit `c36b977 feat: blog refresh v2 — split /blog pymes + /research/ técnico (Opción C Hybrid)`. Working tree clean. 17 archivos, +778/-202 LoC. Vercel auto-deploy preview en curso.
+- Harness `main` → último commit `566737e feat(sdd): blog-refresh-v2 Done`. Pushed. WIP de otra sesión paralela tuya (8 agentes + docs/next-session-context) NO commiteado, no lo tocamos.
+
+**Trabajo cerrado esta sesión:**
+
+1. Cleanup harness WIP: 9 commits ordenados (housekeeping, code-reviewer envelope fix, content-engine overnight v2.1, SDD multi-session-realtime-sync Done, Telegram bot, HF ecosystem, docs anti-drift, fix T1 -Verbose, blog-refresh-v2 spec).
+2. Digest AM 2026-05-25 corrido en sesión paralela `409983d9` — Gmail draft `r3112098791271455315` en tu bandeja.
+3. Spec SDD `blog-refresh-v2` completa Pending→Done en ~32min. Patrón D review: Codex CHANGES_REQUESTED (scope-creep 4ta ocurrencia, text-only conf 3/5) vs Gemini APPROVED (conf 4/5, 14 tool calls, código real). Asesor: APPROVED tras 2 fixes triviales (parseInt guard BlogGrid.tsx:20 + JSON-LD Article expansion research/page.tsx:46-50).
+4. Whisper STT discovery memo en `C:\tmp\whisper-stt-discovery-memo.md` (~2200 palabras). Stack recomendado: faster-whisper local primary + Groq API fallback $0.04/hr.
+
+**Pendientes inmediatos próxima sesión:**
+
+- ⚠ **T14/T16/T17 blog refresh v2 post-Vercel-preview**: visual dev check (Chrome DevTools MCP screenshot del preview), lighthouse-gate ≥85, Rich Results Test JSON-LD. URL preview pendiente del CI auto-deploy commit `c36b977`.
+- ⏸ **Reboot Windows** desbloquea Ollama GPU bug ([[lesson_ollama_023_cpu_only_load]]) → bge-m3 memory migration (30/186 chunks pending), FLUX local diffusers (24GB cacheados), Whisper STT smoke test (5 pasos ~35-40min), threat-intel-watcher real con qwen14b.
+- Sub-specs hermanas propuestas (defer hasta priorización): `blog-refresh-v2-a11y-polish`, `blog-refresh-v2-ux-empty-states`, `blog-related-share-brand-v1-1`.
+
+**Decisiones tomadas (sin requerir approval Diego adicional):**
+
+- Opción C Hybrid implementada y deployada: `/blog` exclusivo pymes (tono chileno-formal), `/research/` técnico AI/MCP del content engine.
+- spec_hash canónico SDD usa `-join "`n"` NO `Out-String` (lesson aprendida calc inicial blog-refresh-v2).
+- code-reviewer Codex tiene patrón scope-creep confirmado (4ta ocurrencia hoy). Mitigation: cross-model-reviewer (Gemini) obligatorio en Patrón D porque sí lee código real.
+
+**Próximo paso explícito al abrir:**
+1. Read `~/.claude/docs/next-session-context.md` (snapshot operativo auto-generado por Stop hook).
+2. Validar Vercel preview commit `c36b977` con Chrome DevTools MCP para T14/T16/T17.
+3. Si no hiciste reboot Windows todavía → ejecutar antes de cargar cualquier modelo local.
+
+**Tier recomendado para retomar:** Claude Opus si quedan decisiones (T14/T16/T17 evaluation) o subspec hermana scoping. Para implementación pura de sub-specs hermanas: opencode `build` (Sonnet via Zen).
+
+---
