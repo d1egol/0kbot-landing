@@ -27,6 +27,7 @@ export const CATEGORIES = [
   "IA para Pymes",
   "Mejora de Procesos",
   "Tutoriales",
+  "AI Research",
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];
@@ -34,26 +35,35 @@ export type Category = (typeof CATEGORIES)[number];
 export function getAllPosts(): BlogPostMeta[] {
   if (!fs.existsSync(BLOG_DIR)) return [];
 
-  const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx"));
+  // Lee .mdx (posts existentes) y .md (posts del pipeline AI/content-engine)
+  const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx") || f.endsWith(".md"));
 
   const posts = files.map((filename) => {
-    const slug = filename.replace(/\.mdx$/, "");
+    const isMarkdown = filename.endsWith(".md");
+    const slug = isMarkdown ? filename.replace(/\.md$/, "") : filename.replace(/\.mdx$/, "");
     const filePath = path.join(BLOG_DIR, filename);
     const fileContent = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(fileContent);
     const rt = readingTime(content);
 
+    // Posts pipeline AI tienen frontmatter distinto: seo.description, hero, reading_time pre-calculado
+    // Mapear a BlogPostMeta compatible
+    const excerpt = data.excerpt || (data.seo && data.seo.description) || "";
+    const coverImage = data.coverImage || data.hero || undefined;
+    // Pipeline posts usan "AI Research" category por default
+    const category = data.category || (isMarkdown && data.pipeline ? "AI Research" : "IA para Pymes");
+
     return {
       slug,
       title: data.title || "",
-      excerpt: data.excerpt || "",
-      date: data.date || "",
+      excerpt,
+      date: data.date ? String(data.date) : "",
       author: data.author || "Equipo 0kbot",
-      category: data.category || "IA para Pymes",
+      category,
       tags: data.tags || [],
-      readingTime: rt.text,
+      readingTime: data.reading_time ? `${data.reading_time} min read` : rt.text,
       featured: data.featured || false,
-      coverImage: data.coverImage,
+      coverImage,
     } as BlogPostMeta;
   });
 
@@ -63,24 +73,34 @@ export function getAllPosts(): BlogPostMeta[] {
 }
 
 export function getPostBySlug(slug: string): BlogPost | null {
-  const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
+  // Buscar en .mdx primero (posts existentes), luego .md (pipeline AI)
+  let filePath = path.join(BLOG_DIR, `${slug}.mdx`);
+  let isMarkdown = false;
+  if (!fs.existsSync(filePath)) {
+    filePath = path.join(BLOG_DIR, `${slug}.md`);
+    isMarkdown = true;
+  }
   if (!fs.existsSync(filePath)) return null;
 
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
   const rt = readingTime(content);
 
+  const excerpt = data.excerpt || (data.seo && data.seo.description) || "";
+  const coverImage = data.coverImage || data.hero || undefined;
+  const category = data.category || (isMarkdown && data.pipeline ? "AI Research" : "IA para Pymes");
+
   return {
     slug,
     title: data.title || "",
-    excerpt: data.excerpt || "",
-    date: data.date || "",
+    excerpt,
+    date: data.date ? String(data.date) : "",
     author: data.author || "Equipo 0kbot",
-    category: data.category || "IA para Pymes",
+    category,
     tags: data.tags || [],
-    readingTime: rt.text,
+    readingTime: data.reading_time ? `${data.reading_time} min read` : rt.text,
     featured: data.featured || false,
-    coverImage: data.coverImage,
+    coverImage,
     content,
   };
 }
