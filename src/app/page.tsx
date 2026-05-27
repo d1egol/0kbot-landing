@@ -11,6 +11,7 @@ import VerticalesSection from "@/components/home/VerticalesSection";
 import CredencialesSection from "@/components/home/CredencialesSection";
 import FAQSection from "@/components/home/FAQSection";
 import DiagnosticoSection from "@/components/home/DiagnosticoSection";
+import AgentesSection from "@/components/home/AgentesSection";
 import CTAFinalSection from "@/components/home/CTAFinalSection";
 import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import FloatingCTA from "@/components/ui/FloatingCTA";
@@ -111,6 +112,7 @@ export default function HomePage() {
       <ServiciosSection />
       <ROIEstimatorSection />
       <NoSomosSoftwareSection />
+      <AgentesSection />
       <CasosSection />
       <VerticalesSection />
       <CredencialesSection />
