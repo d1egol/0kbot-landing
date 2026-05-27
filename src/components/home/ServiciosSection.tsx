@@ -1,12 +1,11 @@
 import MotionSection from "@/components/ui/MotionSection";
 import TrackedLink from "@/components/ui/TrackedLink";
-import { CheckCircle2, ExternalLink } from "lucide-react";
 
 // Motor compartido — las 3 etapas del spine 0kbot
 const motorPasos = [
-  "Captura ordenada (formularios / lo que ya usas)",
-  "Consolidación automática (agentes + una base única)",
-  "Reportes automáticos (dashboard / WhatsApp / PDF)",
+  "Entender el dolor real (diagnóstico — 30 min, sin costo)",
+  "Ordenar los datos dispersos en una base única",
+  "Automatizar lo repetitivo y medir el resultado",
 ];
 
 type ProductoCard = {
@@ -19,55 +18,53 @@ type ProductoCard = {
   href: string;
   ctaLabel: string;
   destacado?: boolean;
-  externo?: boolean; // true = deriva a seguridad.0kbot.com
 };
 
 const PRODUCTOS: ProductoCard[] = [
   {
-    slug: "reporte-vivo",
+    slug: "automatizacion-reportes",
     orden: "P1",
-    nombre: "Reporte Vivo",
-    tagline: '"Tengo todo en Excels y armo los reportes a mano cada vez."',
+    nombre: "Automatización de Reportes",
+    tagline: '"Armo los mismos reportes a mano cada mes y me toma días."',
     promesa:
-      "Consolida tus Excels dispersos en un dashboard que se actualiza solo. Fin del copiar-pegar entre planillas.",
-    para: "Empresas con datos regados en planillas y reportería manual.",
-    href: "/?servicio=reporte-vivo#cta-diagnostico",
-    ctaLabel: "Quiero mi Reporte Vivo",
+      "Reportes operativos y comerciales que se generan y actualizan solos. Dejas de armarlos a mano cada mes.",
+    para: "Empresas con datos regados en planillas y reportería manual recurrente.",
+    href: "/?servicio=automatizacion-reportes#cta-diagnostico",
+    ctaLabel: "Quiero mis reportes automáticos",
     destacado: true,
   },
   {
-    slug: "captura-ordenada",
+    slug: "gestion-datos",
     orden: "P2",
-    nombre: "Captura Ordenada",
-    tagline: '"Ingreso la misma data muchas veces y nadie sabe dónde está la versión buena."',
+    nombre: "Gestión y Análisis de Datos",
+    tagline: '"Tengo Excels por todos lados y nadie sabe cuál es la versión buena."',
     promesa:
-      "Reemplaza el llenado manual de planillas por formularios que cargan a una base única ordenada.",
-    para: "Empresas donde varias personas ingresan datos a mano en archivos separados.",
-    href: "/?servicio=captura-ordenada#cta-diagnostico",
-    ctaLabel: "Ordenar mi captura",
+      "Ordenamos y consolidamos tus datos dispersos (Excels, formularios) en una base única, con tableros para decidir.",
+    para: "Empresas donde varias personas manejan archivos separados sin una fuente de verdad común.",
+    href: "/?servicio=gestion-datos#cta-diagnostico",
+    ctaLabel: "Ordenar mis datos",
   },
   {
-    slug: "cumplimiento-al-dia",
+    slug: "automatizacion-procesos",
     orden: "P3",
-    nombre: "Cumplimiento al Día",
-    tagline: '"Cumplir con SII / SERNAPESCA / trazabilidad me come horas y un error me cuesta una multa."',
+    nombre: "Automatización de Procesos",
+    tagline: '"Hay tareas que hacemos igual todos los días y nadie ha preguntado por qué."',
     promesa:
-      "Automatiza la preparación de tus obligaciones regulatorias recurrentes. El acto vinculante lo aprietas tú — los agentes preparan, reconcilian y alertan.",
-    para: "Empresas reguladas: SII tributario, SERNAPESCA/SIFA acuícola, trazabilidad export, OIV/ANCI.",
-    href: "https://seguridad.0kbot.com",
-    ctaLabel: "Ver Cumplimiento →",
-    externo: true,
+      "Eliminamos tareas manuales repetitivas: captura de datos, flujos e integraciones entre las herramientas que ya usas.",
+    para: "Empresas con pasos manuales repetitivos que se podrían conectar o eliminar.",
+    href: "/?servicio=automatizacion-procesos#cta-diagnostico",
+    ctaLabel: "Eliminar mis tareas manuales",
   },
   {
-    slug: "cliente-cerca",
+    slug: "herramientas-medida",
     orden: "P4",
-    nombre: "Cliente Cerca",
-    tagline: '"Hago todo yo: ventas, reportes, y encima necesito potenciar la publicidad."',
+    nombre: "Herramientas de Gestión a la Medida",
+    tagline: '"Necesito algo simple para seguir clientes o inventario, pero nada me calza."',
     promesa:
-      "Reportes de venta automáticos + campañas de contenido y WhatsApp para tu comercio.",
-    para: "Comercio y retail chico. Entrada de bajo ticket, con upsell natural.",
-    href: "/?servicio=cliente-cerca#cta-diagnostico",
-    ctaLabel: "Quiero más clientes",
+      "Sistemas livianos a la medida (seguimiento de clientes, inventario, operación) montados sobre lo que ya tienes.",
+    para: "Empresas que necesitan un sistema propio sin pagar por software que les sobra.",
+    href: "/?servicio=herramientas-medida#cta-diagnostico",
+    ctaLabel: "Quiero mi herramienta",
   },
 ];
 
@@ -78,16 +75,17 @@ export default function ServiciosSection() {
         {/* Encabezado de sección */}
         <MotionSection className="mb-12 max-w-3xl">
           <p className="text-xs font-mono font-semibold text-accent uppercase tracking-widest mb-3">
-            1 motor · 4 productos
+            1 motor · 4 puntos de partida
           </p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
             Automatizamos lo que hoy haces a mano en Excel.
           </h2>
           <p className="text-base text-muted-foreground font-body leading-relaxed">
-            Todos los productos comparten el mismo núcleo: tus datos entran
-            ordenados una sola vez, se consolidan solos y el reporte sale
-            automático. Lo que cambia es el adaptador — qué duele, qué entra,
-            qué sale.
+            Todos los proyectos comparten el mismo núcleo: entender el dolor
+            real, ordenar los datos y automatizar lo repetitivo. Los 4 focos de
+            abajo son los puntos de partida más comunes — no un catálogo cerrado.
+            El diagnóstico define qué construimos, y construimos lo justo para
+            tu dolor: ni más, ni menos.
           </p>
         </MotionSection>
 
@@ -120,10 +118,10 @@ export default function ServiciosSection() {
           </div>
         </MotionSection>
 
-        {/* Grid 2×2 — 4 productos */}
+        {/* Grid 2×2 — 4 focos de partida */}
         <MotionSection delay={0.05}>
           <p className="text-sm font-medium text-muted-foreground font-body uppercase tracking-wide mb-5">
-            Los 4 productos — lanzamiento secuencial
+            Los 4 focos más comunes — el tuyo puede ser uno de estos o una combinación
           </p>
           <div className="grid md:grid-cols-2 gap-5">
             {PRODUCTOS.map((p, idx) => (
@@ -145,11 +143,6 @@ export default function ServiciosSection() {
                         {p.destacado && (
                           <span className="text-xs font-mono font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
                             Más solicitado
-                          </span>
-                        )}
-                        {p.externo && (
-                          <span className="text-xs font-mono font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                            Empresa regulada →
                           </span>
                         )}
                       </div>
@@ -177,26 +170,14 @@ export default function ServiciosSection() {
 
                   {/* CTA */}
                   <div className="pt-3 mt-auto border-t border-muted">
-                    {p.externo ? (
-                      <a
-                        href={p.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-2 border border-emerald-600 text-emerald-700 rounded-md font-medium font-body text-xs hover:bg-emerald-50 transition-colors"
-                      >
-                        {p.ctaLabel}
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    ) : (
-                      <TrackedLink
-                        href={p.href}
-                        ctaName={p.ctaLabel}
-                        location={`servicios_${p.slug}`}
-                        className="inline-flex items-center gap-1.5 px-3 py-2 border border-primary text-primary rounded-md font-medium font-body text-xs hover:bg-primary hover:text-primary-foreground transition-colors"
-                      >
-                        {p.ctaLabel} →
-                      </TrackedLink>
-                    )}
+                    <TrackedLink
+                      href={p.href}
+                      ctaName={p.ctaLabel}
+                      location={`servicios_${p.slug}`}
+                      className="inline-flex items-center gap-1.5 px-3 py-2 border border-primary text-primary rounded-md font-medium font-body text-xs hover:bg-primary hover:text-primary-foreground transition-colors"
+                    >
+                      {p.ctaLabel} →
+                    </TrackedLink>
                   </div>
                 </div>
               </MotionSection>
