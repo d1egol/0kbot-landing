@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BlogPostMeta, formatDate } from "@/lib/blog";
+import { type BlogPostMeta, formatDate } from "@/lib/blog-utils";
 import { CategoryBadge } from "./CategoryBadge";
 import { ArrowRight, Calendar } from "lucide-react";
 

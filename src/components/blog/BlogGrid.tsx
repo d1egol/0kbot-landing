@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { BlogPostMeta } from "@/lib/blog";
+import type { BlogPostMeta } from "@/lib/blog-utils";
 import { BlogCard } from "./BlogCard";
 
 const PAGE_SIZE = 9;
