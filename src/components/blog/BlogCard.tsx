@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
-import { BlogPostMeta, formatDate } from "@/lib/blog";
+import { type BlogPostMeta, formatDate } from "@/lib/blog-utils";
 import { CategoryBadge } from "./CategoryBadge";
 import { cn } from "@/lib/utils";
 

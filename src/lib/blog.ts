@@ -2,36 +2,15 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
+import type { BlogPost, BlogPostMeta } from "./blog-utils";
+
+// Re-export de tipos + utilidades fs-free para no romper los importadores
+// server existentes de `@/lib/blog`. Los componentes del grafo cliente deben
+// importar directamente desde `@/lib/blog-utils` (no desde acá, que arrastra `fs`).
+export type { BlogPost, BlogPostMeta, Category } from "./blog-utils";
+export { CATEGORIES, formatDate } from "./blog-utils";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
-
-export interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  author: string;
-  category: string;
-  tags: string[];
-  readingTime: string;
-  featured: boolean;
-  coverImage?: string;
-  content: string;
-}
-
-export interface BlogPostMeta extends Omit<BlogPost, "content"> {}
-
-export const CATEGORIES = [
-  "Todos",
-  "Automatización",
-  "IA para Pymes",
-  "Mejora de Procesos",
-  "Casos y Resultados",
-  "Metodología",
-  "AI Research",
-] as const;
-
-export type Category = (typeof CATEGORIES)[number];
 
 // Defense-in-depth: si un .md del pipeline AI llega a src/content/blog/ sin
 // pipeline_stage="published" (ej. draft copy-pasteado por error, promote script
@@ -161,13 +140,4 @@ export function getRecentPosts(limit = 3): BlogPostMeta[] {
 
 export function getResearchPosts(): BlogPostMeta[] {
   return getAllPosts().filter((p) => p.category === "AI Research");
-}
-
-export function formatDate(dateStr: string): string {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("es-CL", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
 }
