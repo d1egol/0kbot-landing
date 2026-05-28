@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Herramientas de IA para pymes chilenas">
+  <rect width="1200" height="630" fill="#EFF6FF"/>
+  <!-- Subtle dot grid -->
+  <g fill="#1E40AF" opacity="0.06">
+    <circle cx="80" cy="80" r="3"/><circle cx="1120" cy="80" r="3"/>
+    <circle cx="80" cy="550" r="3"/><circle cx="1120" cy="550" r="3"/>
+  </g>
+  <!-- Central lightbulb (idea/AI) with a gear inside (tool/automation) and glow -->
+  <g transform="translate(600 320)">
+    <!-- Outer glow halo -->
+    <circle cx="0" cy="-30" r="220" fill="#93C5FD" opacity="0.35"/>
+    <!-- Bulb body -->
+    <circle cx="0" cy="-50" r="140" fill="#1E40AF"/>
+    <!-- Bulb base/screw -->
+    <rect x="-55" y="80" width="110" height="22" rx="6" fill="#1E3A8A"/>
+    <rect x="-45" y="106" width="90" height="20" rx="6" fill="#1E3A8A"/>
+    <rect x="-30" y="130" width="60" height="22" rx="11" fill="#1E3A8A"/>
+    <!-- Gear inside bulb (AI/tool fusion) -->
+    <g transform="translate(0 -50)">
+      <circle r="62" fill="none" stroke="#93C5FD" stroke-width="12"/>
+      <circle r="22" fill="#FFFFFF"/>
+      <!-- 4 spokes (cog teeth) -->
+      <rect x="-9" y="-78" width="18" height="22" fill="#93C5FD"/>
+      <rect x="-9" y="56" width="18" height="22" fill="#93C5FD"/>
+      <rect x="-78" y="-9" width="22" height="18" fill="#93C5FD"/>
+      <rect x="56" y="-9" width="22" height="18" fill="#93C5FD"/>
+    </g>
+  </g>
+</svg>
