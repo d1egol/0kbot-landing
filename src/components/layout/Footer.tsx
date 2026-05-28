@@ -7,11 +7,10 @@ const footerLinks = [
   {
     title: "Servicios",
     links: [
-      { label: "Diagnóstico de procesos", href: "/servicios#diagnostico" },
-      { label: "Estandarización", href: "/servicios#estandarizacion" },
-      { label: "Automatización", href: "/servicios#automatizacion" },
-      { label: "Tableros de datos", href: "/servicios#tableros" },
-      { label: "Gestión comercial", href: "/servicios#gestion-comercial" },
+      { label: "Automatización de Reportes", href: "/servicios#automatizacion" },
+      { label: "Gestión y Análisis de Datos", href: "/servicios#tableros" },
+      { label: "Automatización de Procesos", href: "/servicios#estandarizacion" },
+      { label: "Herramientas de Gestión a la Medida", href: "/servicios#gestion-comercial" },
     ],
   },
   {
