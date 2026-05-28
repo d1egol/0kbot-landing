@@ -240,7 +240,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <h3 className="font-heading text-xl font-bold mb-2">
                     {ctaHref === "/#cta-diagnostico"
                       ? "¿Tu empresa tiene procesos que podrían mejorar?"
-                      : "¿Querés saber cuánto podés ahorrar?"}
+                      : "¿Quieres saber cuánto puedes ahorrar?"}
                   </h3>
                   <p className="text-white/80 text-sm mb-6">
                     {ctaHref === "/#cta-diagnostico"

@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* Paleta brand 0kbot v1.1 (2026-05-15) — editorial cálido, monocromo + 1 acento */
-    --background: 60 22% 98%;        /* #FAFAF7 off-white tibio */
+    --background: 60 33% 98%;        /* #FBFBF9 off-white neutro — brand v3 */
     --foreground: 0 0% 4%;           /* #0A0A0A casi negro */
 
     --card: 0 0% 100%;
@@ -25,7 +25,7 @@
 
     --accent: 226 67% 47%;           /* #1D4ED8 blue-700 — hover/active del primary */
     --accent-foreground: 0 0% 100%;
-    --accent-glow: 217 91% 75%;      /* #93C5FD blue-300 — para destacar texto/iconos sobre bg-primary navy */
+    --accent-glow: 219 90% 74%;      /* #85B2F9 — brand v3 canónico, acento sobre bg-primary navy */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
@@ -145,8 +145,11 @@
     animation: fade-up 0.6s ease-out forwards;
   }
 
-  .animate-scan {
-    animation: scan 2s ease-in-out infinite;
+  /* animate-scan: infinita decorativa → solo bajo no-preference (brand v3 §Motion) */
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-scan {
+      animation: scan 2s ease-in-out infinite;
+    }
   }
 }
 

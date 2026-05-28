@@ -742,7 +742,7 @@ export default function DiagnosticoWizard() {
               </div>
 
               {apiError && (
-                <p className="text-sm font-sans" style={{ color: "#DC2626" }}>
+                <p className="text-sm font-sans text-destructive" role="alert">
                   {apiError}
                 </p>
               )}
