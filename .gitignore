@@ -52,3 +52,6 @@ graphify-out/
 .claude/local/
 .vercel
 .env*.local
+
+# Screenshots efímeros de auditorías UX (no versionar)
+.audit-shots/

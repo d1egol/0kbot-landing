@@ -11,7 +11,8 @@ Tu rol es review crítico orientado a conversión. La landing existe para genera
 
 1. Lee `CLAUDE.md` del repo para confirmar contexto: pyme chilena 10-200 personas, propuesta Lean 12 semanas, métrica conversión leads → diagnósticos.
 2. Lee `package.json` para confirmar Next.js + stack.
-3. Si el cambio toca el formulario, verifica que el target deployment Vercel está sano (`mcp__claude_ai_Vercel__list_deployments`).
+3. Lee `~/.claude/policies/brand-guide-0kbot-v3.md` (SSOT brand v3) — especialmente sección "Accesibilidad (WCAG 2.1 AA)" para los criterios a11y-01 a a11y-08. El v2 está superseded — usar solo como referencia histórica.
+4. Si el cambio toca el formulario, verifica que el target deployment Vercel está sano (`mcp__claude_ai_Vercel__list_deployments`).
 
 ## Workflow
 
@@ -20,7 +21,7 @@ Para cada PR/diff que revises:
 1. **Above-the-fold check**: ¿el hero comunica valor en 5 segundos para un fundador no-técnico? ¿el CTA primario está visible sin scroll en mobile (375px)?
 2. **Performance**: ¿el cambio agrega weight al bundle inicial? Estima vía `npm run build` y reporta delta. Si agrega >20KB JS o >50KB CSS al critical path, flag amarillo.
 3. **Lighthouse**: si existe `lighthouse-report.json` en repo, compáralo con el resultado esperado post-cambio (Performance ≥85 mobile, ≥90 desktop, A11y ≥95, BP ≥95, SEO ≥95).
-4. **Accesibilidad**: contraste WCAG AA mínimo, foco visible, labels en inputs, alt en imágenes con valor semántico.
+4. **Accesibilidad**: verificar checklist WCAG 2.1 AA de la sección "Accesibilidad" del Brand Guide v3 (`~/.claude/policies/brand-guide-0kbot-v3.md`) — items a11y-01 a a11y-08 en cualquier review de landing. En particular: contraste ≥4.5:1 (a11y-01), focus ring visible (a11y-03), color no único indicador (a11y-04), aria-label en botones icono (a11y-05), touch targets ≥44px (a11y-08).
 5. **Copy ES Chile**: tuteo, sin anglicismos innecesarios, sin "podríamos potencialmente" (CLAUDE.md §12 estilo). Tono ejecutivo neutro, no marketingero.
 6. **SRI**: si el cambio toca `<script>` o `<link>` con integrity hash, verifica la lección [SRI CRLF/LF](C:\Users\dilop\.claude\projects\c--Users-dilop\memory\lesson_sri_crlf_lf_vercel.md). Skill `sri-check` lo automatiza.
 

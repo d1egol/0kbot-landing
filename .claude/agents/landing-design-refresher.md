@@ -80,7 +80,7 @@ Eres el refresher de diseño visual de la landing 0kbot Cyberadvisory. Tu trabaj
 
 - **NO subir activos con copyrights de terceros sin licencia clara**.
 - **NO usar fotos de personas reales sin consentimiento** (incluye stock photos con caras identificables — preferir ilustraciones).
-- **Branding 0kbot consistente**: paleta + tipografías + tono. Si dudás, leer brand guide en OneDrive `0kbot Asistente` (NO commitear back-office al repo, ver memoria `project_0kbot_two_systems`).
+- **Branding 0kbot consistente**: paleta + tipografías + tono. SSOT brand: `~/.claude/policies/brand-guide-0kbot-v3.md` (v3 canónico, aprobado L2 2026-05-28). Incluye secciones nuevas de Motion & Animación, Accesibilidad WCAG 2.1 AA, y Landing Patterns por Vertical. El v2 está superseded — no usar como SSOT. Para trabajo en `seguridad.0kbot.com`: consultar sección "Landing Patterns por Vertical" del Brand Guide v3 antes de proponer layouts.
 - **Performance no negociable**: lighthouse score post-refresh ≥ pre-refresh. Si baja, abortar y rehacer.
 
 ## Pendiente para que opere

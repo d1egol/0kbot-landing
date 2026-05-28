@@ -496,3 +496,48 @@ Gates: lint ✓ typecheck ✓ (0 errores).
 **Tier recomendado para retomar:** Claude Opus si quedan decisiones (T14/T16/T17 evaluation) o subspec hermana scoping. Para implementación pura de sub-specs hermanas: opencode `build` (Sonnet via Zen).
 
 ---
+
+## 2026-05-26 11:00 — @Claude (Opus, sesión harness)
+
+**Status:** Pivot transversal de estrategia comercial confirmado por Diego. Wave 2 sectorial (6 verticales OIV/PYME para 0kbot.com generalista + Centinela seguridad) pospuesta a próxima semana. Esta semana: Diego ofrece diagnósticos gratuitos a su red local (amigos/conocidos) para iterar el flow real con clientes amigables + generar casos/testimonios para RRSS. Sesión actual orienta a construir un flow cliente estándar replicable cross-vertical via SDD spec formal.
+
+**Necesito:** Que sepas que cualquier visitante del flow nuevo que termine clasificado como vertical "consultoría generalista" entra al funnel de este repo (`DiagnosticoWizard` o `ContactModal`). El flow de discovery estándar (transcript reunión → form adaptado → diagnóstico) NO toca este repo por ahora — vive en agentes harness. Solo cuando un cliente diagnosticado quiera materiales/visibles públicos, se cruza con landing copy.
+
+**Bloqueos:** Ninguno para este repo. T14/T16/T17 (Vercel preview commit `c36b977`) siguen pendientes de revisión visual cuando haya energía para Chrome DevTools MCP.
+
+**Próximo paso:** Spec SDD `client-discovery-pipeline` (owner growth-lead, transversal a 0kbot.com + seguridad.0kbot.com) en `~/.claude/specs/client-discovery-pipeline/`. Implementa 3 agentes nuevos (`meeting-discovery-tailor`, `client-diagnosis-builder`, `testimonial-collector`) + extensión `case-coordinator`. Persistencia madre en `~/.claude/BITACORA.md`.
+
+**Cross-ref:** `~/.claude/BITACORA.md` entrada `2026-05-26 · [AJUSTE DE PLAN] Pivot transversal` + memoria `project_red_local_diagnosticos_2026_05_26.md`.
+
+---
+
+## 2026-05-27 — @claude (ux-lead, sesión ADR-012 productos)
+
+**Status:** Alineación landing con ADR-012. Branch `feat/adr-012-productos` creado y pusheado. Commit `af19339`.
+
+**Aplicado:**
+1. `src/components/home/ServiciosSection.tsx` — catálogo viejo (primer-paso-digital, sop-express, diagnostico-costos, plan-accion-priorizado) reemplazado por los 4 productos del motor ADR-012: Reporte Vivo (P1), Captura Ordenada (P2), Cumplimiento al Día (P3 — externa → seguridad.0kbot.com), Cliente Cerca (P4). Motor spine visible en bloque navy arriba del grid. Copy validado contra brand-guide-0kbot-v2 (tuteo chileno, sin voseo, sin claims prohibidos).
+2. `src/components/home/AgentesSection.tsx` — nuevo componente Agents-as-a-Service (sección oscura sobre bg-foreground). Insertado entre NoSomosSoftwareSection y CasosSection. 3 pilares: "El dogfood es la demo", "Operación continua no proyecto puntual", "Sin reinventar la rueda".
+3. `src/app/page.tsx` — import + render de AgentesSection.
+
+**Lint:** 0 errores. **Typecheck:** 0 errores.
+
+**Build Vercel (ERROR — preexistente, NO causado por estos cambios):**
+`src/lib/blog.ts` → `Module not found: Can't resolve 'fs'` en cadena `BlogCard → BlogGrid → blog.ts`. Este error ya existía en main (deploys `dpl_5cy2hqnQ4yHm2roE6jrcgap2XtSQ` y `dpl_6VhcC4snwK5qZJbtNBuu2d3XM3RV` también en ERROR). Es la regresión del blog refresh v2 (commit `c36b977`, task T14/T16/T17 pendiente). Mi branch hereda el bug.
+
+**Necesito (de Diego):**
+- Fix previo al merge: resolver `fs` bug en BlogGrid/blog.ts antes de mergear este branch. El fix mínimo es asegurar que `BlogGrid.tsx` (Client Component) no importe `blog.ts` directamente — necesita ser Server Component o usar un data-fetch separado.
+- Alternativa si el fix tarda: Diego puede hacer Vercel preview manual desde `vercel --prebuilt` con las env vars correctas para ver los cambios visuales sin el error de blog.
+
+**Decisiones que necesitan tu OK:**
+1. La sección AaaS usa `bg-foreground text-background` (misma que NoSomosSoftwareSection) — ¿o preferís un fondo diferente para distinguirlas? Podría ir sobre `bg-card`.
+2. El P3 "Cumplimiento al Día" tiene badge verde "Empresa regulada →" y CTA que abre `seguridad.0kbot.com` en nueva pestaña. ¿Está bien ese comportamiento o querés un modal intermedio?
+3. La sección Servicios ya no tiene "Radiografía Operacional" ni precios en UF — ¿querés mantener pricing relativo (como está) o agregar una referencia a los `$390.000` del FAQ?
+
+**Bloqueos:** Bug `fs` preexistente bloquea preview Vercel automático. No bloquea el código.
+
+**Próximo paso:** Diego mergea cuando resuelva el bug de blog. O me dice y lo resuelvo en este mismo branch antes del merge.
+
+**Cross-ref:** ADR-012 en `~/.claude/DECISIONS.md`, insumos en `C:\tmp\0kbot-catalogo-productos-2026-05-27.html` + `C:\tmp\0kbot-plan-editorial-2026-05-27.html`.
+
+---
