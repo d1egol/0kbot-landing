@@ -10,7 +10,7 @@ export default function OgImage() {
     (
       <div
         style={{
-          background: "#F7F5F0",
+          background: "#FBFBF9",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -27,7 +27,7 @@ export default function OgImage() {
             top: 0,
             bottom: 0,
             width: "6px",
-            background: "#1B5FA6",
+            background: "#1E40AF",
           }}
         />
 
@@ -47,7 +47,7 @@ export default function OgImage() {
             style={{
               fontSize: "24px",
               fontWeight: "700",
-              color: "#1B5FA6",
+              color: "#1E40AF",
               letterSpacing: "-0.5px",
               marginBottom: "28px",
               display: "flex",
@@ -59,7 +59,7 @@ export default function OgImage() {
               style={{
                 width: "36px",
                 height: "36px",
-                background: "#1B5FA6",
+                background: "#1E40AF",
                 borderRadius: "8px",
                 display: "flex",
                 alignItems: "center",
@@ -92,7 +92,7 @@ export default function OgImage() {
           <div
             style={{
               fontSize: "22px",
-              color: "#1B5FA6",
+              color: "#1E40AF",
               fontWeight: "600",
               marginBottom: "32px",
             }}
@@ -110,8 +110,8 @@ export default function OgImage() {
           >
             <div
               style={{
-                background: "#1B5FA6",
-                color: "#F7F5F0",
+                background: "#1E40AF",
+                color: "#FBFBF9",
                 fontSize: "16px",
                 fontWeight: "600",
                 padding: "12px 24px",
@@ -193,7 +193,7 @@ export default function OgImage() {
               <div
                 key={row.label}
                 style={{
-                  background: "#F7F5F0",
+                  background: "#FBFBF9",
                   borderRadius: "10px",
                   padding: "12px 14px",
                   marginBottom: "10px",

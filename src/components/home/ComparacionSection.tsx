@@ -49,7 +49,7 @@ export default function ComparacionSection() {
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">
             Soluciones concretas
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-3">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-foreground mt-3">
             ¿Cuál es tu principal desafío operativo?
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl font-body">

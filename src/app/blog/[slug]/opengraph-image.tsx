@@ -21,7 +21,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
     (
       <div
         style={{
-          background: "#F7F5F0",
+          background: "#FBFBF9",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -40,7 +40,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
             width: 200,
             height: 200,
             borderRadius: "50%",
-            background: "linear-gradient(135deg, #1B5FA6, #1E40AF)",
+            background: "linear-gradient(135deg, #1E40AF, #1E40AF)",
             opacity: 0.04,
           }}
         />
@@ -53,7 +53,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
             top: 0,
             bottom: 0,
             width: "6px",
-            background: "#1B5FA6",
+            background: "#1E40AF",
           }}
         />
 
@@ -85,14 +85,14 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
                 gap: "10px",
                 fontSize: "22px",
                 fontWeight: "700",
-                color: "#1B5FA6",
+                color: "#1E40AF",
               }}
             >
               <div
                 style={{
                   width: "34px",
                   height: "34px",
-                  background: "#1B5FA6",
+                  background: "#1E40AF",
                   borderRadius: "8px",
                   display: "flex",
                   alignItems: "center",
@@ -112,7 +112,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
               style={{
                 fontSize: "14px",
                 fontWeight: "600",
-                color: "#1B5FA6",
+                color: "#1E40AF",
                 background: "rgba(27,95,166,0.08)",
                 border: "1px solid rgba(27,95,166,0.15)",
                 padding: "6px 16px",
@@ -158,7 +158,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
                 style={{
                   width: "36px",
                   height: "36px",
-                  background: "#1B5FA6",
+                  background: "#1E40AF",
                   borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
@@ -190,7 +190,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
             left: 0,
             right: 0,
             height: "4px",
-            background: "linear-gradient(to right, #1B5FA6, #1E40AF)",
+            background: "linear-gradient(to right, #1E40AF, #1E40AF)",
           }}
         />
       </div>

@@ -66,7 +66,7 @@ export default function PainPointsSection() {
     <section id="problemas" className="bg-background py-20 lg:py-32">
       <div className="container-content">
         <MotionSection className="text-center mb-14">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-foreground">
             El síndrome del héroe operativo
           </h2>
           <p className="mt-4 text-lg text-muted-foreground font-body max-w-2xl mx-auto">
@@ -81,11 +81,6 @@ export default function PainPointsSection() {
             return (
               <MotionSection key={card.titulo} delay={i * 0.06}>
                 <div className="relative bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-card-hover hover:border-primary/40 transition-all h-full overflow-hidden">
-                  {/* Number decoration */}
-                  <span className="absolute top-4 right-5 font-heading font-bold text-5xl text-muted/40 select-none leading-none">
-                    {card.number}
-                  </span>
-
                   <div className="flex items-start gap-3 mb-4">
                     <div className="flex items-center justify-center w-11 h-11 rounded-xl shrink-0 bg-primary/8 ring-1 ring-primary/15">
                       <Icon className="w-5 h-5 text-primary" />

@@ -9,18 +9,18 @@ export function BlogPreviewSection() {
   if (posts.length === 0) return null;
 
   return (
-    <section className="section-padding bg-[#F7F5F0]">
+    <section className="section-padding bg-[#FBFBF9]">
       <div className="container-content">
         {/* Header */}
         <div className="flex items-end justify-between gap-4 mb-12 flex-wrap">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <Rss className="w-4 h-4 text-[#1B5FA6]" />
-              <span className="text-sm font-semibold text-[#1B5FA6] uppercase tracking-wider">
+              <Rss className="w-4 h-4 text-[#1E40AF]" />
+              <span className="text-sm font-semibold text-[#1E40AF] uppercase tracking-wider">
                 Blog
               </span>
             </div>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1A1A1A]">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-[#1A1A1A]">
               Artículos recientes
             </h2>
             <p className="text-[#666] mt-2 max-w-lg">
@@ -30,7 +30,7 @@ export function BlogPreviewSection() {
           </div>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-[#1B5FA6] font-semibold hover:gap-3 transition-all text-sm group"
+            className="inline-flex items-center gap-2 text-[#1E40AF] font-semibold hover:gap-3 transition-all text-sm group"
           >
             Ver todos los artículos
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -48,7 +48,7 @@ export function BlogPreviewSection() {
         <div className="mt-10 text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 border-2 border-[#1B5FA6] text-[#1B5FA6] px-8 py-3 rounded-xl font-semibold hover:bg-[#1B5FA6] hover:text-white transition-all"
+            className="inline-flex items-center gap-2 border-2 border-[#1E40AF] text-[#1E40AF] px-8 py-3 rounded-xl font-semibold hover:bg-[#1E40AF] hover:text-white transition-all"
           >
             Ir al blog completo
             <ArrowRight className="w-4 h-4" />

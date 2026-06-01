@@ -157,7 +157,7 @@ export default function TransformacionDigitalPymesPage() {
             {etapas.map((e) => (
               <MotionSection key={e.num}>
                 <div className="flex gap-6 items-start">
-                  <span className="text-5xl font-heading font-bold flex-shrink-0" style={{ color: "#1B5FA6", opacity: 0.2 }}>
+                  <span className="text-5xl font-heading font-bold flex-shrink-0" style={{ color: "#1E40AF", opacity: 0.2 }}>
                     {e.num}
                   </span>
                   <div>

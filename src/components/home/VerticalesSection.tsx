@@ -31,7 +31,7 @@ export default function VerticalesSection() {
           <p className="text-xs font-mono font-semibold uppercase tracking-widest mb-4 text-accent-glow">
             Vertical especializada
           </p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12]">
             ¿Tu empresa enfrenta riesgos de ciberseguridad
             <br />
             <span className="text-background/70">
@@ -64,7 +64,7 @@ export default function VerticalesSection() {
                 rel="noopener noreferrer"
                 onClick={handleSeguridadCtaClick}
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent-glow text-foreground rounded-md font-semibold font-sans text-sm hover:bg-accent-glow/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-glow"
-                aria-label="Ir a seguridad.0kbot.com — abre en nueva pestaña"
+                aria-label="Solicitar diagnóstico de seguridad en seguridad.0kbot.com (abre en nueva pestaña)"
               >
                 Solicitar diagnóstico de seguridad
                 <ArrowUpRight className="w-4 h-4" aria-hidden="true" />

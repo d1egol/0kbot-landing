@@ -77,7 +77,7 @@ export default function ServiciosSection() {
           <p className="text-xs font-mono font-semibold text-accent uppercase tracking-widest mb-3">
             1 motor · 4 puntos de partida
           </p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-foreground mb-4">
             Automatizamos lo que hoy haces a mano en Excel.
           </h2>
           <p className="text-base text-muted-foreground font-body leading-relaxed">
@@ -93,7 +93,7 @@ export default function ServiciosSection() {
         <MotionSection className="mb-12">
           <div className="bg-primary rounded-2xl px-8 py-7 flex flex-col md:flex-row md:items-center gap-6">
             <div className="shrink-0">
-              <p className="text-xs font-mono font-semibold text-accent-glow uppercase tracking-widest mb-1">
+              <p className="text-xs font-mono font-semibold text-white/90 uppercase tracking-widest mb-1">
                 El motor
               </p>
               <p className="text-white font-heading font-bold text-lg leading-tight">
@@ -108,7 +108,7 @@ export default function ServiciosSection() {
                   key={paso}
                   className="flex items-start gap-2.5 flex-1 text-sm text-white/80 font-body leading-relaxed"
                 >
-                  <span className="font-mono font-bold text-accent-glow shrink-0 mt-0.5">
+                  <span className="font-mono font-bold text-white/90 shrink-0 mt-0.5">
                     {i + 1}.
                   </span>
                   {paso}

@@ -21,7 +21,7 @@ interface CasosCarouselProps {
 }
 
 function EscenarioCard({ caso }: { caso: EscenarioData }) {
-  const accent = caso.accentColor ?? "#1B5FA6";
+  const accent = caso.accentColor ?? "#1E40AF";
   const accentBg = caso.accentBg ?? "#EFF6FF";
 
   return (

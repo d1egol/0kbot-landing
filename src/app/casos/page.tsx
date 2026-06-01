@@ -110,7 +110,7 @@ export default function CasosPage() {
                             <li key={a} className="flex items-start gap-3 text-sm text-foreground font-body">
                               <span
                                 className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
-                                style={{ backgroundColor: "#1B5FA6" }}
+                                style={{ backgroundColor: "#1E40AF" }}
                               />
                               {a}
                             </li>

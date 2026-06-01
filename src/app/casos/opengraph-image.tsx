@@ -10,7 +10,7 @@ export default function OgImage() {
     (
       <div
         style={{
-          background: "#F7F5F0",
+          background: "#FBFBF9",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -27,7 +27,7 @@ export default function OgImage() {
             top: 0,
             bottom: 0,
             width: "8px",
-            background: "#1B5FA6",
+            background: "#1E40AF",
           }}
         />
 
@@ -35,7 +35,7 @@ export default function OgImage() {
           style={{
             fontSize: "22px",
             fontWeight: "700",
-            color: "#1B5FA6",
+            color: "#1E40AF",
             letterSpacing: "-0.5px",
             marginBottom: "28px",
           }}
@@ -47,7 +47,7 @@ export default function OgImage() {
           style={{
             fontSize: "18px",
             fontWeight: "600",
-            color: "#1B5FA6",
+            color: "#1E40AF",
             textTransform: "uppercase",
             letterSpacing: "2px",
             marginBottom: "16px",
@@ -82,7 +82,7 @@ export default function OgImage() {
             { metric: "-70%", label: "inasistencias clínica" },
           ].map((item) => (
             <div key={item.label} style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: "36px", fontWeight: "700", color: "#1B5FA6" }}>
+              <span style={{ fontSize: "36px", fontWeight: "700", color: "#1E40AF" }}>
                 {item.metric}
               </span>
               <span style={{ fontSize: "16px", color: "#4A4A4A" }}>{item.label}</span>

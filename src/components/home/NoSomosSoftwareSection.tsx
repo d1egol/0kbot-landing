@@ -18,7 +18,7 @@ export default function NoSomosSoftwareSection() {
           <p className="text-xs font-mono font-semibold uppercase tracking-widest mb-4 text-accent-glow">
             Lo que NO hacemos
           </p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12]">
             No necesitas otro software caro.
             <br />
             <span className="text-background/70">

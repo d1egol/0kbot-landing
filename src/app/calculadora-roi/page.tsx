@@ -116,26 +116,26 @@ export default function CalculadoraROIPage() {
           </p>
           <ul className="space-y-4 font-body text-foreground">
             <li>
-              <strong className="text-[#1B5FA6]">Costo anual por horas manuales</strong> =
+              <strong className="text-[#1E40AF]">Costo anual por horas manuales</strong> =
               personas × horas/semana × 48 semanas × costo hora.
             </li>
             <li>
-              <strong className="text-[#1B5FA6]">Costo anual por errores</strong> =
+              <strong className="text-[#1E40AF]">Costo anual por errores</strong> =
               errores por mes × 12 × costo promedio por error.
             </li>
             <li>
-              <strong className="text-[#1B5FA6]">Ahorro potencial</strong> asume que
+              <strong className="text-[#1E40AF]">Ahorro potencial</strong> asume que
               automatizamos un <em>60% de las horas manuales</em> y reducimos un
               <em> 70% de los errores</em> (rangos típicos en proyectos Lean).
             </li>
             <li>
-              <strong className="text-[#1B5FA6]">Inversión estimada</strong> depende
+              <strong className="text-[#1E40AF]">Inversión estimada</strong> depende
               del tamaño del equipo: menos de 20 personas = 180 UF; 20–50 = 350 UF;
               más de 50 = 600 UF. UF convertida a CLP a tasa referencial de $40.000.
             </li>
             <li>
-              <strong className="text-[#1B5FA6]">Payback</strong> = inversión ÷
-              (ahorro anual ÷ 12). <strong className="text-[#1B5FA6]">ROI 12 meses</strong> =
+              <strong className="text-[#1E40AF]">Payback</strong> = inversión ÷
+              (ahorro anual ÷ 12). <strong className="text-[#1E40AF]">ROI 12 meses</strong> =
               (ahorro − inversión) ÷ inversión × 100.
             </li>
           </ul>

@@ -32,7 +32,7 @@ export default function FAQSection() {
   return (
     <section className="bg-card py-20 lg:py-32 border-y border-muted">
       <div className="container-content max-w-2xl">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
+        <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-foreground mb-12 text-center">
           Preguntas frecuentes
         </h2>
         <FAQAccordion items={preguntas} />

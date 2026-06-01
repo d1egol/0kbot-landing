@@ -21,7 +21,7 @@ export default function GlobalError({
       <body
         style={{
           fontFamily: "system-ui, -apple-system, sans-serif",
-          background: "#F7F5F0",
+          background: "#FBFBF9",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -56,7 +56,7 @@ export default function GlobalError({
           onClick={reset}
           style={{
             padding: "0.75rem 1.5rem",
-            background: "#1B5FA6",
+            background: "#1E40AF",
             color: "#fff",
             border: "none",
             borderRadius: "0.75rem",

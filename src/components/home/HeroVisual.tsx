@@ -6,7 +6,7 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 type Phase = "ordenado" | "automatizando" | "medido";
 
 const phaseStyles: Record<Phase, { label: string; mark: string; bg: string; fg: string; ring: string }> = {
-  ordenado: { label: "Ordenado", mark: "○", bg: "bg-[#E8F0FA]", fg: "text-[#1B5FA6]", ring: "ring-[#1B5FA6]/15" },
+  ordenado: { label: "Ordenado", mark: "○", bg: "bg-[#E8F0FA]", fg: "text-[#1E40AF]", ring: "ring-[#1E40AF]/15" },
   automatizando: { label: "Automatizando", mark: "⏳", bg: "bg-[#EFF6FF]", fg: "text-[#1D4ED8]", ring: "ring-[#1E40AF]/20" },
   medido: { label: "Medido", mark: "✓", bg: "bg-emerald-50", fg: "text-emerald-700", ring: "ring-emerald-500/20" },
 };
@@ -29,9 +29,9 @@ const diagnosisRows: Array<{
     phase: "medido",
     icon: (
       <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 shrink-0">
-        <rect x="1" y="4" width="14" height="9" rx="2" stroke="#1B5FA6" strokeWidth="1.4"/>
-        <path d="M5 4V3a3 3 0 016 0v1" stroke="#1B5FA6" strokeWidth="1.4" strokeLinecap="round"/>
-        <path d="M8 8v2M6 9h4" stroke="#1B5FA6" strokeWidth="1.4" strokeLinecap="round"/>
+        <rect x="1" y="4" width="14" height="9" rx="2" stroke="#1E40AF" strokeWidth="1.4"/>
+        <path d="M5 4V3a3 3 0 016 0v1" stroke="#1E40AF" strokeWidth="1.4" strokeLinecap="round"/>
+        <path d="M8 8v2M6 9h4" stroke="#1E40AF" strokeWidth="1.4" strokeLinecap="round"/>
       </svg>
     ),
   },
@@ -44,8 +44,8 @@ const diagnosisRows: Array<{
     phase: "automatizando",
     icon: (
       <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 shrink-0">
-        <circle cx="8" cy="8" r="6.5" stroke="#1B5FA6" strokeWidth="1.4"/>
-        <path d="M5.5 8.5l2 2 3-3" stroke="#1B5FA6" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="8" cy="8" r="6.5" stroke="#1E40AF" strokeWidth="1.4"/>
+        <path d="M5.5 8.5l2 2 3-3" stroke="#1E40AF" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
   },
@@ -58,8 +58,8 @@ const diagnosisRows: Array<{
     phase: "medido",
     icon: (
       <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 shrink-0">
-        <rect x="2" y="1.5" width="12" height="13" rx="1.5" stroke="#1B5FA6" strokeWidth="1.4"/>
-        <path d="M5 6h6M5 9h4M5 12h3" stroke="#1B5FA6" strokeWidth="1.4" strokeLinecap="round"/>
+        <rect x="2" y="1.5" width="12" height="13" rx="1.5" stroke="#1E40AF" strokeWidth="1.4"/>
+        <path d="M5 6h6M5 9h4M5 12h3" stroke="#1E40AF" strokeWidth="1.4" strokeLinecap="round"/>
       </svg>
     ),
   },
@@ -145,7 +145,7 @@ export default function HeroVisual() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 + i * 0.15 }}
-                  className="rounded-lg bg-[#F7F5F0] px-3 py-2.5 space-y-2"
+                  className="rounded-lg bg-[#FBFBF9] px-3 py-2.5 space-y-2"
                 >
                   {/* Top row: process name + phase chip + before/after labels */}
                   <div className="flex items-center justify-between gap-2">
@@ -219,8 +219,8 @@ export default function HeroVisual() {
           </div>
           <div className="flex items-end gap-2.5">
             {[
-              { c: "#1B5FA6", t: "Detectar" },
-              { c: "#1A74C4", t: "Ordenar" },
+              { c: "#1E40AF", t: "Detectar" },
+              { c: "#1D4ED8", t: "Ordenar" },
               { c: "#1E40AF", t: "Automatizar" },
               { c: "#10B981", t: "Medir" },
             ].map((step) => (
@@ -238,7 +238,7 @@ export default function HeroVisual() {
         </m.div>
 
         <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-10 blur-2xl"
-          style={{ background: "radial-gradient(circle, #1B5FA6, transparent)" }}
+          style={{ background: "radial-gradient(circle, #1E40AF, transparent)" }}
         />
       </m.div>
     </div>

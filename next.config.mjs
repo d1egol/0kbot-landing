@@ -22,8 +22,10 @@ const securityHeaders = [
       // Fonts are self-hosted via next/font — no external Google Fonts requests
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self'",
-      "img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com https://www.facebook.com",
-      "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.facebook.com https://calendly.com",
+      // Google Ads/GA4 remarketing pixels: ga-audiences se sirve desde el dominio Google regional del visitante (google.com/google.cl/…) y doubleclick
+      "img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com https://www.facebook.com https://www.google.com https://www.google.cl https://googleads.g.doubleclick.net https://stats.g.doubleclick.net",
+      // stats.g.doubleclick.net/g/collect: beacon de conversiones/audiencias GA4 con Google Signals activado
+      "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.facebook.com https://calendly.com https://stats.g.doubleclick.net",
       "frame-src https://calendly.com",
       "object-src 'none'",
       "base-uri 'self'",
