@@ -16,7 +16,7 @@ describe("leadSchema", () => {
     const r = leadSchema.safeParse(validBase);
     expect(r.success).toBe(true);
     if (r.success) {
-      expect(r.data.tamano_empresa).toBe("<20"); // default aplicado
+      expect(r.data.tamano_empresa).toBeUndefined(); // tamano_empresa es opcional sin default (tamano no declarado = null)
       expect(r.data.estado).toBe("nuevo"); // default aplicado
     }
   });
