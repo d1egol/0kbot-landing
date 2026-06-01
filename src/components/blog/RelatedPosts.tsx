@@ -22,9 +22,9 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
             href={`/blog/${post.slug}`}
             className="group block"
           >
-            <article className="rounded-xl border border-[#E5E2DB] bg-white p-5 hover:border-[#1B5FA6]/30 hover:shadow-md transition-all duration-200 h-full flex flex-col">
+            <article className="rounded-xl border border-[#E5E2DB] bg-white p-5 hover:border-[#1E40AF]/30 hover:shadow-md transition-all duration-200 h-full flex flex-col">
               <CategoryBadge category={post.category} size="sm" className="mb-3 self-start" />
-              <h3 className="font-semibold text-[#1A1A1A] group-hover:text-[#1B5FA6] transition-colors text-sm leading-snug flex-1 mb-3 line-clamp-3">
+              <h3 className="font-semibold text-[#1A1A1A] group-hover:text-[#1E40AF] transition-colors text-sm leading-snug flex-1 mb-3 line-clamp-3">
                 {post.title}
               </h3>
               <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
@@ -32,7 +32,7 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
                   <Calendar className="w-3 h-3" />
                   {formatDate(post.date)}
                 </span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#1B5FA6] group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#1E40AF] group-hover:translate-x-0.5 transition-transform" />
               </div>
             </article>
           </Link>

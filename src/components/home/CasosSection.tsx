@@ -90,7 +90,7 @@ export default function CasosSection() {
     <section id="casos" className="surface-warm py-20 lg:py-32">
       <div className="container-content">
         <MotionSection className="mb-14">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-foreground">
             Problemas que resolvemos
           </h2>
           <p className="mt-3 text-lg text-muted-foreground font-body">

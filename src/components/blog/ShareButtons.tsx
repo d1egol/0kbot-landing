@@ -63,7 +63,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
 
       <button
         onClick={handleCopy}
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F7F5F0] border border-[#E5E2DB] text-[#666] text-sm hover:bg-[#E5E2DB] transition-colors"
+        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FBFBF9] border border-[#E5E2DB] text-[#666] text-sm hover:bg-[#E5E2DB] transition-colors"
         aria-label="Copiar enlace"
       >
         {copied ? (

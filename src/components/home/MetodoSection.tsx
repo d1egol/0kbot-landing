@@ -46,7 +46,7 @@ export default function MetodoSection() {
           <p className="text-xs font-mono font-semibold text-accent uppercase tracking-widest mb-3">
             Método 0kbot OS
           </p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-foreground">
             Detectar → Ordenar → Automatizar → Medir.
             <br />
             En 12 semanas, tu operación deja de depender de nosotros.

@@ -34,7 +34,7 @@ export default function AgentesSection() {
           <p className="text-xs font-mono font-semibold uppercase tracking-widest mb-4 text-accent-glow">
             Agents-as-a-Service
           </p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12]">
             No te lo contamos.
             <br />
             <span className="text-background/70">Te lo mostramos.</span>

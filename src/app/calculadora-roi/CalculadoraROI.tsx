@@ -206,7 +206,7 @@ export default function CalculadoraROI() {
         </p>
 
         {sinDatos ? (
-          <div className="rounded-xl bg-[#F7F5F0] border border-[#E5E2DB] p-6 text-center">
+          <div className="rounded-xl bg-[#FBFBF9] border border-[#E5E2DB] p-6 text-center">
             <p className="text-sm text-muted-foreground font-body">
               Ingresa valores para ver tu estimación.
             </p>
@@ -243,7 +243,7 @@ export default function CalculadoraROI() {
               />
             </div>
 
-            <div className="mt-4 rounded-xl border border-[#E5E2DB] bg-[#F7F5F0] p-5">
+            <div className="mt-4 rounded-xl border border-[#E5E2DB] bg-[#FBFBF9] p-5">
               <p className="text-xs uppercase tracking-wider text-muted-foreground font-body mb-1">
                 ROI a 12 meses
               </p>
@@ -262,7 +262,7 @@ export default function CalculadoraROI() {
             <Link
               href={ctaHref}
               onClick={handleCTAClick}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 px-6 py-4 bg-[#1B5FA6] text-white rounded-md font-semibold font-body text-sm hover:bg-[#1B5FA6]/90 transition-colors"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 px-6 py-4 bg-[#1E40AF] text-white rounded-md font-semibold font-body text-sm hover:bg-[#1E40AF]/90 transition-colors"
             >
               Quiero un diagnóstico preciso para mi empresa{" "}
               <ArrowRight size={16} />
@@ -327,7 +327,7 @@ function NumericField({
         value={value}
         aria-describedby={helpId}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-3 border border-[#E5E2DB] rounded-md font-body text-sm focus:outline-none focus:border-[#1B5FA6] focus:ring-1 focus:ring-[#1B5FA6] bg-white text-[#1A1A1A]"
+        className="w-full px-4 py-3 border border-[#E5E2DB] rounded-md font-body text-sm focus:outline-none focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] bg-white text-[#1A1A1A]"
       />
       {showSlider && max !== undefined && min !== undefined && (
         <input
@@ -338,7 +338,7 @@ function NumericField({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           aria-label={`${label} (slider)`}
-          className="w-full mt-2 accent-[#1B5FA6]"
+          className="w-full mt-2 accent-[#1E40AF]"
         />
       )}
       <p id={helpId} className="mt-1.5 text-xs text-muted-foreground font-body">
@@ -359,7 +359,7 @@ function ResultCard({
   footnote?: string;
   tone: "primary" | "muted";
 }) {
-  const valueColor = tone === "primary" ? "#1B5FA6" : "#1A1A1A";
+  const valueColor = tone === "primary" ? "#1E40AF" : "#1A1A1A";
   return (
     <div className="rounded-xl border border-[#E5E2DB] bg-white p-5">
       <p className="text-xs uppercase tracking-wider text-muted-foreground font-body mb-1">

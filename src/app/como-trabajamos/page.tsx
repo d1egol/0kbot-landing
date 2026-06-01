@@ -163,7 +163,7 @@ export default function ComoTrabajamosPage() {
                 <div className="flex-shrink-0">
                   <span
                     className="text-5xl md:text-7xl font-heading font-bold"
-                    style={{ color: "#1B5FA6", opacity: 0.2 }}
+                    style={{ color: "#1E40AF", opacity: 0.2 }}
                   >
                     {paso.number}
                   </span>
@@ -185,7 +185,7 @@ export default function ComoTrabajamosPage() {
                   </p>
                   <p
                     className="text-sm text-muted-foreground/80 font-body leading-relaxed border-l-2 pl-4"
-                    style={{ borderLeftColor: "#1B5FA6" }}
+                    style={{ borderLeftColor: "#1E40AF" }}
                   >
                     {paso.detail}
                   </p>

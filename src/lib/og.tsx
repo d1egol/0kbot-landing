@@ -19,7 +19,7 @@ export function renderOgImage({ eyebrow, headline, badge, tagline }: OgVariant) 
     (
       <div
         style={{
-          background: "#F7F5F0",
+          background: "#FBFBF9",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -37,7 +37,7 @@ export function renderOgImage({ eyebrow, headline, badge, tagline }: OgVariant) 
             top: 0,
             bottom: 0,
             width: "8px",
-            background: "#1B5FA6",
+            background: "#1E40AF",
           }}
         />
 
@@ -45,7 +45,7 @@ export function renderOgImage({ eyebrow, headline, badge, tagline }: OgVariant) 
           style={{
             fontSize: "22px",
             fontWeight: 700,
-            color: "#1B5FA6",
+            color: "#1E40AF",
             letterSpacing: "-0.5px",
             marginBottom: "28px",
           }}
@@ -57,7 +57,7 @@ export function renderOgImage({ eyebrow, headline, badge, tagline }: OgVariant) 
           style={{
             fontSize: "18px",
             fontWeight: 600,
-            color: "#1B5FA6",
+            color: "#1E40AF",
             textTransform: "uppercase",
             letterSpacing: "2px",
             marginBottom: "16px",
@@ -84,8 +84,8 @@ export function renderOgImage({ eyebrow, headline, badge, tagline }: OgVariant) 
             {badge && (
               <div
                 style={{
-                  background: "#1B5FA6",
-                  color: "#F7F5F0",
+                  background: "#1E40AF",
+                  color: "#FBFBF9",
                   fontSize: "18px",
                   fontWeight: 600,
                   padding: "12px 28px",
@@ -99,7 +99,7 @@ export function renderOgImage({ eyebrow, headline, badge, tagline }: OgVariant) 
               <div
                 style={{
                   fontSize: "18px",
-                  color: "#1B5FA6",
+                  color: "#1E40AF",
                   fontWeight: 600,
                 }}
               >

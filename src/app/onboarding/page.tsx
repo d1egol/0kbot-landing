@@ -97,7 +97,7 @@ export default function OnboardingPage() {
 
   if (status === "success") {
     return (
-      <main className="min-h-screen bg-[#F7F5F0] flex items-center justify-center px-4">
+      <main className="min-h-screen bg-[#FBFBF9] flex items-center justify-center px-4">
         <div className="max-w-md w-full text-center">
           <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-8 h-8 text-green-600" />
@@ -112,7 +112,7 @@ export default function OnboardingPage() {
           </p>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[#1B5FA6] font-medium hover:underline text-sm"
+            className="inline-flex items-center gap-2 text-[#1E40AF] font-medium hover:underline text-sm"
           >
             ← Volver al inicio
           </Link>
@@ -122,11 +122,11 @@ export default function OnboardingPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F7F5F0]">
+    <main className="min-h-screen bg-[#FBFBF9]">
       {/* Header */}
       <div className="bg-white border-b border-[#E5E2DB]">
         <div className="container-content py-6">
-          <Link href="/" className="text-[#1B5FA6] font-bold text-lg">
+          <Link href="/" className="text-[#1E40AF] font-bold text-lg">
             0kbot
           </Link>
         </div>
@@ -135,7 +135,7 @@ export default function OnboardingPage() {
       <div className="container-content py-12 max-w-2xl">
         {/* Intro */}
         <div className="mb-10">
-          <span className="inline-block bg-[#1B5FA6]/10 text-[#1B5FA6] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
+          <span className="inline-block bg-[#1E40AF]/10 text-[#1E40AF] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
             Pre-reunión
           </span>
           <h1 className="font-heading text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3">
@@ -164,7 +164,7 @@ export default function OnboardingPage() {
                   value={form.nombre}
                   onChange={set("nombre")}
                   placeholder="Tu nombre"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1B5FA6] focus:ring-1 focus:ring-[#1B5FA6] bg-white"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] bg-white"
                 />
               </div>
               <div>
@@ -177,7 +177,7 @@ export default function OnboardingPage() {
                   value={form.email}
                   onChange={set("email")}
                   placeholder="tu@empresa.com"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1B5FA6] focus:ring-1 focus:ring-[#1B5FA6] bg-white"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] bg-white"
                 />
               </div>
               <div>
@@ -190,7 +190,7 @@ export default function OnboardingPage() {
                   value={form.empresa}
                   onChange={set("empresa")}
                   placeholder="Nombre de tu empresa"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1B5FA6] focus:ring-1 focus:ring-[#1B5FA6] bg-white"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] bg-white"
                 />
               </div>
               <div>
@@ -202,7 +202,7 @@ export default function OnboardingPage() {
                   value={form.telefono}
                   onChange={set("telefono")}
                   placeholder="+56 9 1234 5678"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1B5FA6] focus:ring-1 focus:ring-[#1B5FA6] bg-white"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] bg-white"
                 />
               </div>
             </div>
@@ -223,7 +223,7 @@ export default function OnboardingPage() {
                     required
                     value={form.rubro}
                     onChange={set("rubro")}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1B5FA6] focus:ring-1 focus:ring-[#1B5FA6] bg-white appearance-none pr-10"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] bg-white appearance-none pr-10"
                   >
                     <option value="">Seleccionar...</option>
                     {RUBROS.map((r) => (
@@ -242,7 +242,7 @@ export default function OnboardingPage() {
                     required
                     value={form.tamano}
                     onChange={set("tamano")}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1B5FA6] focus:ring-1 focus:ring-[#1B5FA6] bg-white appearance-none pr-10"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] bg-white appearance-none pr-10"
                   >
                     <option value="">Seleccionar...</option>
                     {TAMANOS.map((t) => (
@@ -271,7 +271,7 @@ export default function OnboardingPage() {
                 onChange={set("proceso_principal")}
                 rows={4}
                 placeholder="Ej: Responder consultas de clientes por WhatsApp, coordinar pedidos, generar informes semanales..."
-                className="w-full px-4 py-3 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1B5FA6] focus:ring-1 focus:ring-[#1B5FA6] bg-white resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] bg-white resize-none"
               />
             </div>
             <div>
@@ -284,7 +284,7 @@ export default function OnboardingPage() {
                   required
                   value={form.intentado_antes}
                   onChange={set("intentado_antes")}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1B5FA6] focus:ring-1 focus:ring-[#1B5FA6] bg-white appearance-none pr-10"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] bg-white appearance-none pr-10"
                 >
                   <option value="">Seleccionar...</option>
                   {INTENTADOS.map((i) => (
@@ -305,7 +305,7 @@ export default function OnboardingPage() {
                 onChange={set("resultado_ideal")}
                 rows={3}
                 placeholder="Ej: Que el equipo no tenga que estar respondiendo WhatsApp todo el día, que los informes se generen solos..."
-                className="w-full px-4 py-3 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1B5FA6] focus:ring-1 focus:ring-[#1B5FA6] bg-white resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-[#E5E2DB] text-sm focus:outline-none focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] bg-white resize-none"
               />
             </div>
           </div>
@@ -331,7 +331,7 @@ export default function OnboardingPage() {
                         required
                         checked={form.plazo === p}
                         onChange={set("plazo")}
-                        className="w-4 h-4 accent-[#1B5FA6]"
+                        className="w-4 h-4 accent-[#1E40AF]"
                       />
                       <span className="text-sm text-[#444] group-hover:text-[#1A1A1A]">{p}</span>
                     </label>
@@ -353,7 +353,7 @@ export default function OnboardingPage() {
                         required
                         checked={form.presupuesto === p}
                         onChange={set("presupuesto")}
-                        className="w-4 h-4 accent-[#1B5FA6]"
+                        className="w-4 h-4 accent-[#1E40AF]"
                       />
                       <span className="text-sm text-[#444] group-hover:text-[#1A1A1A]">{p}</span>
                     </label>
@@ -372,7 +372,7 @@ export default function OnboardingPage() {
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
                 disabled={status === "loading"}
-                className="mt-0.5 w-4 h-4 accent-[#1B5FA6] shrink-0 cursor-pointer"
+                className="mt-0.5 w-4 h-4 accent-[#1E40AF] shrink-0 cursor-pointer"
                 aria-describedby="onboarding-consent-help"
               />
               <span className="text-sm text-[#444] leading-relaxed">
@@ -381,7 +381,7 @@ export default function OnboardingPage() {
                   href="/privacidad"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#1B5FA6] underline hover:no-underline font-medium"
+                  className="text-[#1E40AF] underline hover:no-underline font-medium"
                 >
                   política de privacidad
                 </Link>
@@ -404,7 +404,7 @@ export default function OnboardingPage() {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="w-full flex items-center justify-center gap-2 bg-[#1B5FA6] text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-[#154d8a] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-center gap-2 bg-[#1E40AF] text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-[#154d8a] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === "loading" ? (
               "Enviando..."

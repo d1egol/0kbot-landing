@@ -11,7 +11,7 @@ const stats = [
     suffix: "+",
     label: "empresas transformadas",
     description: "Pymes en Chile y Latinoamérica",
-    color: "text-[#1B5FA6]",
+    color: "text-[#1E40AF]",
     bg: "bg-blue-50",
     border: "border-blue-100",
   },
@@ -31,7 +31,7 @@ const stats = [
     suffix: "%",
     label: "reducción de errores",
     description: "En procesos operativos clave",
-    color: "text-[#1B5FA6]",
+    color: "text-[#1E40AF]",
     bg: "bg-amber-50",
     border: "border-amber-100",
   },
@@ -98,10 +98,10 @@ export default function StatsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <span className="text-sm font-semibold text-[#1B5FA6] uppercase tracking-wider">
+          <span className="text-sm font-semibold text-[#1E40AF] uppercase tracking-wider">
             Resultados reales
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1A1A1A] mt-3">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-[#1A1A1A] mt-3">
             Números que hablan solos
           </h2>
           <p className="text-[#666] mt-3 max-w-lg mx-auto">
@@ -124,7 +124,7 @@ export default function StatsSection() {
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 bg-white shadow-sm`}>
                   <Icon className={`w-5 h-5 ${stat.color}`} />
                 </div>
-                <div className={`font-heading text-3xl md:text-4xl font-bold mb-1 ${stat.color}`}>
+                <div className={`font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] mb-1 ${stat.color}`}>
                   <Counter
                     target={stat.value}
                     suffix={stat.suffix}

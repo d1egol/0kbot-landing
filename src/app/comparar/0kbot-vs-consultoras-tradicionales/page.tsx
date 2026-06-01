@@ -138,7 +138,7 @@ export default function Page() {
                 <div
                   key={d.criterio}
                   className={`grid grid-cols-1 md:grid-cols-3 ${
-                    i % 2 === 0 ? "bg-[#F7F5F0]" : "bg-white"
+                    i % 2 === 0 ? "bg-[#FBFBF9]" : "bg-white"
                   }`}
                 >
                   <div className="p-5 font-heading font-semibold text-sm text-[#1A1A1A] border-b md:border-b-0 md:border-r border-[#E5E2DB]">
@@ -158,7 +158,7 @@ export default function Page() {
       </section>
 
       {/* Cuándo elegir cada uno */}
-      <section className="section-padding bg-[#F7F5F0]">
+      <section className="section-padding bg-[#FBFBF9]">
         <div className="container-wide grid grid-cols-1 md:grid-cols-2 gap-8">
           <MotionSection>
             <div className="bg-white border border-[#E5E2DB] rounded-xl p-6 h-full">

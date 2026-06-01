@@ -98,7 +98,7 @@ export default function ROIEstimatorSection() {
           <p className="text-xs font-mono font-semibold text-accent uppercase tracking-widest mb-3">
             Estimador de pérdida operativa
           </p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-foreground">
             Antes de pedir reunión, mira cuánto te está costando hoy.
           </h2>
           <p className="mt-4 text-base text-muted-foreground font-body leading-relaxed">

@@ -59,7 +59,7 @@ export default function CredencialesSection() {
           {/* Text — derecha */}
           <MotionSection delay={0.1}>
             <div className="space-y-6">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-foreground">
                 Hemos estado del otro lado
               </h2>
               <div className="space-y-4 text-muted-foreground font-body text-base leading-relaxed">

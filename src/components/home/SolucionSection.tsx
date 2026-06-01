@@ -23,7 +23,7 @@ export default function SolucionSection() {
     <section className="bg-primary py-20 lg:py-32">
       <div className="container-content">
         <MotionSection className="text-center mb-14">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-white">
             Análisis, estandarización y<br />automatización de procesos
           </h2>
         </MotionSection>
@@ -35,7 +35,7 @@ export default function SolucionSection() {
               <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
                 <ScanSearch size={22} className="text-white" />
               </div>
-              <h3 className="font-heading font-semibold text-lg text-accent-glow">
+              <h3 className="font-heading font-semibold text-lg text-white">
                 Qué hacemos
               </h3>
               <p className="text-white/80 font-body text-sm leading-relaxed">
@@ -51,13 +51,13 @@ export default function SolucionSection() {
               <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
                 <Settings2 size={22} className="text-white" />
               </div>
-              <h3 className="font-heading font-semibold text-lg text-accent-glow">
+              <h3 className="font-heading font-semibold text-lg text-white">
                 Cómo lo hacemos
               </h3>
               <ol className="space-y-2">
                 {pasos.map((paso, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-white/80 font-body text-sm leading-relaxed">
-                    <span className="text-accent-glow font-mono text-xs font-bold mt-0.5 shrink-0">
+                    <span className="text-white/90 font-mono text-xs font-bold mt-0.5 shrink-0">
                       {i + 1}.
                     </span>
                     {paso}
@@ -73,7 +73,7 @@ export default function SolucionSection() {
               <div className="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10">
                 <Award size={22} className="text-white" />
               </div>
-              <h3 className="font-heading font-semibold text-lg text-accent-glow">
+              <h3 className="font-heading font-semibold text-lg text-white">
                 Qué obtienes
               </h3>
               <ul className="space-y-2">
@@ -92,7 +92,7 @@ export default function SolucionSection() {
           <OpenModalButton location="solucion" className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-md font-semibold font-body text-sm hover:bg-accent-glow transition-colors">
             Agendar diagnóstico gratis →
           </OpenModalButton>
-          <p className="mt-3 text-white/50 text-xs font-body">
+          <p className="mt-3 text-white/70 text-xs font-body">
             Diagnóstico gratuito · Sin compromiso
           </p>
         </MotionSection>

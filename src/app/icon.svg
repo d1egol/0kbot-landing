@@ -1,7 +1,7 @@
 <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="0kbot">
   <defs>
     <linearGradient id="markBg" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1A74C4"/>
+      <stop stop-color="#1D4ED8"/>
       <stop offset="1" stop-color="#1E40AF"/>
     </linearGradient>
   </defs>

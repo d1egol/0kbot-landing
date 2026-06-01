@@ -3,8 +3,6 @@ import Script from "next/script";
 import {
   Roboto_Slab,
   Inter,
-  Space_Grotesk,
-  DM_Sans,
   Playfair_Display,
   JetBrains_Mono,
 } from "next/font/google";
@@ -24,21 +22,6 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
-  display: "swap",
-});
-
-// Brand v1 Fase 2 (deprecado, conservado como fallback durante migración)
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-space-grotesk",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -224,8 +207,6 @@ export default function RootLayout({
   const fontVars = [
     robotoSlab.variable,
     inter.variable,
-    spaceGrotesk.variable,
-    dmSans.variable,
     playfairDisplay.variable,
     jetbrainsMono.variable,
   ].join(" ");

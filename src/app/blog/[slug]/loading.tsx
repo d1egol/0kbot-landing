@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function BlogPostLoading() {
   return (
-    <main className="min-h-screen bg-[#F7F5F0]">
+    <main className="min-h-screen bg-[#FBFBF9]">
       {/* Header skeleton */}
       <header className="bg-white border-b border-[#E5E2DB]">
         <div className="container-content pt-8 pb-12">

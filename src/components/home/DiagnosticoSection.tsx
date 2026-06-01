@@ -10,7 +10,7 @@ export default function DiagnosticoSection() {
           <span className="inline-block text-xs font-medium uppercase tracking-wider text-accent mb-4">
             Diagnóstico gratuito
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-foreground mb-4">
             ¿Cuánto le está costando a tu empresa?
           </h2>
           <p className="text-muted-foreground font-body max-w-xl mx-auto mb-8">

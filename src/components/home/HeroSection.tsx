@@ -25,10 +25,10 @@ export default function HeroSection() {
               Mejora de procesos para pymes en Chile
             </p>
 
-            <h1 className="hero-fade hero-fade-1 font-heading text-4xl md:text-5xl lg:text-[3.4rem] font-bold text-foreground leading-[1.1]">
+            <h1 className="hero-fade hero-fade-1 font-heading text-[2.75rem] md:text-6xl lg:text-[4.25rem] font-bold text-foreground leading-[1.04] tracking-[-0.03em]">
               No vendemos IA.
               <br />
-              <span className="text-gradient-accent">Vendemos lunes tranquilos.</span>
+              <span className="text-primary">Vendemos lunes tranquilos.</span>
             </h1>
 
             <p className="hero-fade hero-fade-2 text-lg text-muted-foreground font-body leading-relaxed max-w-xl">

@@ -5,9 +5,9 @@
 
 // Brand color tokens — reusados por los 6 templates
 export const EMAIL_COLORS = {
-  primary: "#1B5FA6",
+  primary: "#1E40AF",
   accent: "#1E40AF",
-  bg: "#F7F5F0",
+  bg: "#FBFBF9",
   surface: "#FFFFFF",
   border: "#E5E2DB",
   textDark: "#1A1A1A",
