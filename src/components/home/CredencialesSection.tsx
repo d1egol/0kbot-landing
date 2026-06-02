@@ -1,3 +1,4 @@
+import Image from "next/image";
 import MotionSection from "@/components/ui/MotionSection";
 import { Shield, BarChart3, Briefcase, Users, CheckCircle } from "lucide-react";
 
@@ -17,11 +18,15 @@ export default function CredencialesSection() {
           <MotionSection>
             <div className="relative max-w-sm mx-auto">
               <div className="rounded-2xl bg-white border border-[#E5E2DB] shadow-card overflow-hidden">
-                {/* Card top banner — founder monogram (placeholder hasta foto real) */}
+                {/* Card top banner — foto del fundador (pequeña, foco en 0kbot) */}
                 <div className="h-24 bg-gradient-to-r from-primary to-primary/80 relative flex items-center justify-center">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white/15 border border-white/40">
-                    <span className="font-heading font-bold text-2xl text-white tracking-tight">DL</span>
-                  </div>
+                  <Image
+                    src="/brand/diego-lopez.jpg"
+                    alt="Diego López, fundador de 0kbot"
+                    width={72}
+                    height={72}
+                    className="w-[72px] h-[72px] rounded-full object-cover border-2 border-white/70 shadow-sm"
+                  />
                 </div>
 
                 <div className="pt-6 pb-6 px-6">
@@ -109,8 +114,9 @@ export default function CredencialesSection() {
 
               <div className="pt-6 mt-2 border-t border-muted">
                 <p className="text-sm text-muted-foreground font-body mb-3">
-                  Diego López — Ingeniero Civil Industrial (UDD), MSc en Data Science
-                  (PUC) y Lean Six Sigma, aplicados a operaciones de pymes en Chile.
+                  Diego López lidera 0kbot — Ingeniero Civil Industrial (UDD), MSc en
+                  Data Science (PUC) y Lean Six Sigma — con un equipo de agentes que
+                  opera cada proceso. El foco siempre es tu operación.
                 </p>
                 <a
                   href="https://www.linkedin.com/in/diego-lopez-dinamarca/"
