@@ -4,10 +4,8 @@ import { X } from "lucide-react";
 const items = [
   "No partimos comprando herramientas.",
   "No automatizamos procesos rotos.",
-  "No llenamos a tu equipo de dashboards que nadie usa.",
   "No prometemos IA mágica.",
   "No desaparecemos después del diagnóstico.",
-  "No medimos vanidad, medimos operación.",
 ];
 
 export default function NoSomosSoftwareSection() {
@@ -28,7 +26,7 @@ export default function NoSomosSoftwareSection() {
           </h2>
         </MotionSection>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {items.map((text, i) => (
             <MotionSection key={text} delay={i * 0.05}>
               <div className="flex items-start gap-3 bg-background/5 border border-background/10 rounded-xl px-5 py-4 hover:border-background/25 transition-colors h-full">

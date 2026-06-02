@@ -1,13 +1,6 @@
 import MotionSection from "@/components/ui/MotionSection";
 import TrackedLink from "@/components/ui/TrackedLink";
 
-// Motor compartido — las 3 etapas del spine 0kbot
-const motorPasos = [
-  "Entender el dolor real (diagnóstico — 30 min, sin costo)",
-  "Ordenar los datos dispersos en una base única",
-  "Automatizar lo repetitivo y medir el resultado",
-];
-
 type ProductoCard = {
   slug: string;
   orden: string;
@@ -87,35 +80,6 @@ export default function ServiciosSection() {
             El diagnóstico define qué construimos, y construimos lo justo para
             tu dolor: ni más, ni menos.
           </p>
-        </MotionSection>
-
-        {/* El motor — 3 pasos */}
-        <MotionSection className="mb-12">
-          <div className="bg-primary rounded-2xl px-8 py-7 flex flex-col md:flex-row md:items-center gap-6">
-            <div className="shrink-0">
-              <p className="text-xs font-mono font-semibold text-white/90 uppercase tracking-widest mb-1">
-                El motor
-              </p>
-              <p className="text-white font-heading font-bold text-lg leading-tight">
-                La misma maquinaria
-                <br />abajo de todo
-              </p>
-            </div>
-            <div className="hidden md:block w-px bg-white/20 self-stretch" />
-            <ol className="flex flex-col sm:flex-row gap-4 flex-1">
-              {motorPasos.map((paso, i) => (
-                <li
-                  key={paso}
-                  className="flex items-start gap-2.5 flex-1 text-sm text-white/80 font-body leading-relaxed"
-                >
-                  <span className="font-mono font-bold text-white/90 shrink-0 mt-0.5">
-                    {i + 1}.
-                  </span>
-                  {paso}
-                </li>
-              ))}
-            </ol>
-          </div>
         </MotionSection>
 
         {/* Grid 2×2 — 4 focos de partida */}

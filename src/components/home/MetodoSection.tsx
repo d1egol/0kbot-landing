@@ -1,5 +1,5 @@
 import MotionSection from "@/components/ui/MotionSection";
-import { Search, ListChecks, Cog, Activity } from "lucide-react";
+import { Search, ListChecks, Cog, Activity, Check } from "lucide-react";
 
 // Brand v1.1: monocromo + 1 acento. Los 4 pasos comparten color primary;
 // la distinción visual viene del número + ícono, no del hue.
@@ -36,6 +36,14 @@ const etapas = [
       "Mismo indicador, mismo período. La diferencia es tu ROI. Si no se ve, no cobramos el último tramo. La mejora deja de depender de memoria.",
     icono: Activity,
   },
+];
+
+const resultados = [
+  "Menos errores",
+  "Menos dependencia de personas clave",
+  "Más velocidad operativa",
+  "Más control",
+  "Decisiones con datos reales",
 ];
 
 export default function MetodoSection() {
@@ -114,6 +122,24 @@ export default function MetodoSection() {
             );
           })}
         </div>
+
+        {/* Qué obtienes — resultados (fusionado desde la antigua SolucionSection) */}
+        <MotionSection className="mt-14">
+          <p className="text-xs font-mono font-semibold text-primary uppercase tracking-widest mb-5 text-center">
+            Qué obtienes
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {resultados.map((r) => (
+              <span
+                key={r}
+                className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-body text-foreground"
+              >
+                <Check size={15} className="text-primary shrink-0" />
+                {r}
+              </span>
+            ))}
+          </div>
+        </MotionSection>
 
         <MotionSection className="mt-12 pt-8 border-t border-muted">
           <p className="text-sm text-muted-foreground font-body text-center italic max-w-lg mx-auto">

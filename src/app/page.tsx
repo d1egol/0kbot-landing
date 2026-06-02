@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import PainPointsSection from "@/components/home/PainPointsSection";
-import SolucionSection from "@/components/home/SolucionSection";
 import MetodoSection from "@/components/home/MetodoSection";
 import ServiciosSection from "@/components/home/ServiciosSection";
 import ROIEstimatorSection from "@/components/home/ROIEstimatorSection";
@@ -107,7 +106,6 @@ export default function HomePage() {
       />
       <HeroSection />
       <PainPointsSection />
-      <SolucionSection />
       <MetodoSection />
       <ServiciosSection />
       <ROIEstimatorSection />
@@ -118,8 +116,8 @@ export default function HomePage() {
       <CredencialesSection />
       <FAQSection />
       <DiagnosticoSection />
-      <CTAFinalSection />
       <BlogPreviewSection />
+      <CTAFinalSection />
       <FloatingCTA />
     </>
   );
