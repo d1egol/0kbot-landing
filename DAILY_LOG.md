@@ -576,3 +576,25 @@ Gates: lint ✓ typecheck ✓ (0 errores).
 **Próximo paso:** Diego decide si avanzamos con recorte de secciones / navbar; o ajuste de crop de la foto si lo quiere más cerrado.
 
 ---
+
+## 2026-06-01 19:30 — @claude (recorte home EN PROD + cierre de sesión)
+
+**Status:** Recorte de la home aprobado (nivel equilibrado) **mergeado a main y en producción** (PR #27, `c07b64c`):
+- Fusión Solución+Método: `MetodoSection` absorbe "Qué obtienes" (5 resultados, chips); `SolucionSection` desmontada de `page.tsx` (archivo conservado para rescate).
+- `ServiciosSection`: quitado el panel navy "El motor" (3-step duplicado); el concepto queda en el header; se mantienen los 4 productos.
+- `NoSomosSoftwareSection`: 6 → 4 cards (las más fuertes), grid 4-col.
+- `page.tsx`: BlogPreview reordenado antes de CTAFinal (el CTA cierra la home).
+- Resultado: home 15 → 14 secciones, más corta y directa, 2 zonas oscuras. Verificado en prod: Lighthouse a11y **100**, estructura confirmada (Solución/El-motor fuera, chips "Qué obtienes" presentes).
+
+**Resumen de la sesión** (auditoría landing → 4 PRs, todas en prod sin incidentes):
+- PR #24 (`320a15d`) Ola 1 — logo limpio + tokens v3 + CSP Ads + tipografía + a11y 96→100.
+- PR #25 (`6a17904`) Ola 2 — founder visible + oscuras 5→2 + precio 10 UF + bridge IA + SEO.
+- PR #26 (`f385082`) — foto del founder (chica) + copy team-forward.
+- PR #27 (`c07b64c`) — recorte home.
+- Reporte completo de auditoría: `C:\tmp\auditoria-landing-0kbot-2026-06-01.html`.
+
+**Necesito (de Diego, próxima sesión — su call):** navbar dropdown para ~20 páginas SEO huérfanas; CTA primario (wizard /onboarding vs Calendly); rutas `ia-para-pymes` + keywords deprecadas (mirar Search Console); crop de foto más cerrado o recorte agresivo (fusionar NoSomos+Agentes) si quiere home aún más corta.
+
+**Bloqueos:** ninguno. **Próximo paso:** retomar con los 4 pendientes de arriba cuando Diego decida.
+
+---
