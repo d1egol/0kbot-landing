@@ -79,10 +79,13 @@ function ModalContent({ isOpen, onClose }: ContactModalProps) {
 
     setSubmitting(true);
 
-    // Intentar guardar el lead antes de redirigir (timeout 3s para no bloquear al usuario)
+    // Intentar guardar el lead antes de redirigir (timeout 10s para no bloquear
+    // al usuario). Con los emails movidos a after() en el server, la respuesta
+    // llega apenas se guarda en Supabase; el margen extra cubre cold-starts y
+    // reduce falsos lead_save_failed por timeout.
     try {
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 3000);
+      const timeout = setTimeout(() => controller.abort(), 10000);
       const empresaTrim = empresa.trim();
       const res = await fetch("/api/leads", {
         method: "POST",
