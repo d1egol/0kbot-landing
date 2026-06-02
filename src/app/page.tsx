@@ -19,7 +19,7 @@ import FloatingCTA from "@/components/ui/FloatingCTA";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "0kbot — Consultoría en Mejora de Procesos y Automatización para Pymes Chile",
+      "0kbot — Mejora de Procesos y Automatización para Pymes Chile",
   },
   description:
     "Mejora de procesos y automatización para pymes chilenas con metodología Lean. También vertical especializada en ciberseguridad y cumplimiento normativo. Diagnóstico gratuito.",
@@ -60,7 +60,7 @@ const faqJsonLd = {
       name: "¿Cuánto cuesta un proyecto de mejora de procesos?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "El diagnóstico inicial es gratuito y dura 30 minutos. Para servicios acotados con precio fijo, los rangos parten desde $390.000 CLP y suben según alcance — mapeo de procesos, auditoría de herramientas, plan de acción priorizado, entre otros. Cuando el problema es más grande, lo cotizamos al cierre del diagnóstico inicial. Si no vemos retorno claro, te lo decimos directo y no avanzamos.",
+        text: "El diagnóstico inicial es gratuito y dura 30 minutos. Para servicios acotados con precio fijo, los rangos parten desde 10 UF y suben según alcance — mapeo de procesos, auditoría de herramientas, plan de acción priorizado, entre otros. Cuando el problema es más grande, lo cotizamos al cierre del diagnóstico inicial. Si no vemos retorno claro, te lo decimos directo y no avanzamos.",
       },
     },
     {

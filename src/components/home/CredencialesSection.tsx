@@ -17,16 +17,18 @@ export default function CredencialesSection() {
           <MotionSection>
             <div className="relative max-w-sm mx-auto">
               <div className="rounded-2xl bg-white border border-[#E5E2DB] shadow-card overflow-hidden">
-                {/* Card top banner */}
-                <div className="h-20 bg-gradient-to-r from-primary to-primary/80 relative flex items-center justify-center">
-                  <Shield className="w-10 h-10 text-white/90" />
+                {/* Card top banner — founder monogram (placeholder hasta foto real) */}
+                <div className="h-24 bg-gradient-to-r from-primary to-primary/80 relative flex items-center justify-center">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white/15 border border-white/40">
+                    <span className="font-heading font-bold text-2xl text-white tracking-tight">DL</span>
+                  </div>
                 </div>
 
                 <div className="pt-6 pb-6 px-6">
                   <div className="mb-4">
-                    <p className="font-heading font-bold text-xl text-foreground">Nuestra metodología</p>
+                    <p className="font-heading font-bold text-xl text-foreground">Diego López</p>
                     <p className="text-sm text-muted-foreground mt-0.5">
-                      Ingeniería industrial + datos + sentido común
+                      Fundador · Ing. Civil Industrial + MSc Data Science
                     </p>
                   </div>
 
@@ -107,16 +109,16 @@ export default function CredencialesSection() {
 
               <div className="pt-6 mt-2 border-t border-muted">
                 <p className="text-sm text-muted-foreground font-body mb-3">
-                  Equipo 0kbot — ingeniería industrial, data science y Lean Six Sigma
-                  aplicados a operaciones de pymes en Chile.
+                  Diego López — Ingeniero Civil Industrial (UDD), MSc en Data Science
+                  (PUC) y Lean Six Sigma, aplicados a operaciones de pymes en Chile.
                 </p>
                 <a
-                  href="https://www.linkedin.com/company/0kbot"
+                  href="https://www.linkedin.com/in/diego-lopez-dinamarca/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm text-primary hover:underline font-body font-medium"
                 >
-                  Ver 0kbot en LinkedIn →
+                  Ver el perfil de Diego en LinkedIn →
                 </a>
               </div>
             </div>

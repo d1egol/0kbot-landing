@@ -22,19 +22,16 @@ function handleSeguridadCtaClick() {
 
 export default function VerticalesSection() {
   return (
-    <section
-      id="verticales"
-      className="bg-foreground text-background py-20 lg:py-28"
-    >
+    <section id="verticales" className="bg-background py-20 lg:py-28">
       <div className="container-content">
         <MotionSection className="mb-10 max-w-3xl">
-          <p className="text-xs font-mono font-semibold uppercase tracking-widest mb-4 text-accent-glow">
+          <p className="text-xs font-mono font-semibold uppercase tracking-widest mb-4 text-primary">
             Vertical especializada
           </p>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12]">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.12] text-foreground">
             ¿Tu empresa enfrenta riesgos de ciberseguridad
             <br />
-            <span className="text-background/70">
+            <span className="text-muted-foreground">
               o exigencias de cumplimiento?
             </span>
           </h2>
@@ -42,17 +39,17 @@ export default function VerticalesSection() {
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
           <MotionSection className="lg:col-span-3" delay={0.1}>
-            <div className="bg-background/5 border border-background/10 rounded-2xl p-8 lg:p-10 hover:border-accent-glow/30 transition-colors">
+            <div className="bg-card border border-border shadow-card rounded-2xl p-8 lg:p-10 hover:border-primary/40 transition-colors">
               <div className="flex items-center gap-3 mb-5">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent-glow/15 border border-accent-glow/30">
-                  <Shield className="w-5 h-5 text-accent-glow" aria-hidden="true" />
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 border border-primary/20">
+                  <Shield className="w-5 h-5 text-primary" aria-hidden="true" />
                 </div>
-                <p className="font-heading text-lg font-semibold">
+                <p className="font-heading text-lg font-semibold text-foreground">
                   Diagnósticos de seguridad
                 </p>
               </div>
 
-              <p className="text-base font-body leading-relaxed text-background/85 mb-6">
+              <p className="text-base font-body leading-relaxed text-muted-foreground mb-6">
                 Hacemos diagnósticos de seguridad accionables, con entregable
                 concreto y precio fijo. Para empresas que necesitan saber dónde
                 están paradas — no un informe que junte polvo.
@@ -63,15 +60,15 @@ export default function VerticalesSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleSeguridadCtaClick}
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent-glow text-foreground rounded-md font-semibold font-sans text-sm hover:bg-accent-glow/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-glow"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-md font-semibold font-sans text-sm hover:bg-primary/90 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 aria-label="Solicitar diagnóstico de seguridad en seguridad.0kbot.com (abre en nueva pestaña)"
               >
                 Solicitar diagnóstico de seguridad
                 <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
               </a>
 
-              <p className="text-xs font-body text-background/60 mt-4 leading-relaxed">
-                Te lleva a <span className="text-background/80">seguridad.0kbot.com</span>{" "}
+              <p className="text-xs font-body text-muted-foreground mt-4 leading-relaxed">
+                Te lleva a <span className="text-foreground font-medium">seguridad.0kbot.com</span>{" "}
                 — la vertical especializada del equipo en ciberseguridad y
                 cumplimiento normativo.
               </p>
@@ -79,24 +76,24 @@ export default function VerticalesSection() {
           </MotionSection>
 
           <MotionSection className="lg:col-span-2" delay={0.2}>
-            <p className="text-xs font-mono font-semibold uppercase tracking-widest mb-4 text-background/50">
+            <p className="text-xs font-mono font-semibold uppercase tracking-widest mb-4 text-muted-foreground">
               Para quién aplica
             </p>
             <ul className="space-y-3">
               {sectoresAplicables.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-3 text-sm font-body leading-relaxed text-background/85"
+                  className="flex items-start gap-3 text-sm font-body leading-relaxed text-muted-foreground"
                 >
                   <span
                     aria-hidden="true"
-                    className="mt-2 w-1.5 h-1.5 rounded-full bg-accent-glow shrink-0"
+                    className="mt-2 w-1.5 h-1.5 rounded-full bg-primary shrink-0"
                   />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            <p className="text-xs font-body text-background/55 mt-6 leading-relaxed">
+            <p className="text-xs font-body text-muted-foreground mt-6 leading-relaxed">
               Si no estás seguro si aplica a tu empresa, el autodiagnóstico
               inicial es gratuito y lo aclara en pocos minutos.
             </p>

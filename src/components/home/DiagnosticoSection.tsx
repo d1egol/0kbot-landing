@@ -14,8 +14,9 @@ export default function DiagnosticoSection() {
             ¿Cuánto le está costando a tu empresa?
           </h2>
           <p className="text-muted-foreground font-body max-w-xl mx-auto mb-8">
-            Responde 5 preguntas rápidas y agenda tu llamada de diagnóstico.
-            Sin compromiso, sin teoría. Solo números reales sobre tu operación.
+            Responde unas preguntas rápidas (menos de 2 minutos) y agenda tu
+            llamada de diagnóstico. Sin compromiso, sin teoría. Solo números
+            reales sobre tu operación.
           </p>
         </MotionSection>
 

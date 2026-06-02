@@ -30,9 +30,9 @@ const footerLinks = [
     title: "Guías",
     links: [
       { label: "Mejora de procesos pymes", href: "/mejora-de-procesos" },
-      { label: "IA para pymes Chile", href: "/ia-para-pymes" },
+      { label: "Cuándo conviene IA en tu pyme", href: "/ia-para-pymes" },
       { label: "Automatización de procesos", href: "/automatizacion-procesos-chile" },
-      { label: "Transformación digital pymes", href: "/transformacion-digital-pymes" },
+      { label: "Digitalizar tu operación paso a paso", href: "/transformacion-digital-pymes" },
     ],
   },
   {
@@ -145,8 +145,18 @@ export default function Footer() {
               href="https://www.linkedin.com/company/0kbot"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn 0kbot"
+              aria-label="LinkedIn 0kbot (empresa)"
               title="LinkedIn 0kbot"
+              className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/diego-lopez-dinamarca/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn de Diego López (fundador)"
+              title="LinkedIn Diego López"
               className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
             >
               <Linkedin size={18} />
