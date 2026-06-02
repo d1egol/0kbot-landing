@@ -598,3 +598,24 @@ Gates: lint ✓ typecheck ✓ (0 errores).
 **Bloqueos:** ninguno. **Próximo paso:** retomar con los 4 pendientes de arriba cuando Diego decida.
 
 ---
+
+## 2026-06-01 21:00 — @claude (hero visual EN PROD + cierre + pendientes)
+
+**Status:** Hero visual mergeado a prod (PR #28, `5178ec3`): `HeroVisual` suma una fila "Conecta [chat·Sheets·email·Drive] · lo que ya usás" bajo el header de la tarjeta — refuerza sistema/equipo real que ingiere lo que la pyme ya usa. Brand-v3 monocromo, sin mascota, sin PNG plano; mantiene la tarjeta animada. Contexto: Diego había pasado propuestas estilo robot-mascota (off-brand) + se habían hecho cards sobrias (`C:\tmp\sample-hero-transform\card-v3.png` + carrusel `0kbot-carrusel-*`); se tomó la idea de integraciones, no la mascota.
+
+**Nota cross-sesión:** una sesión PARALELA mergeó PR #29 ("emails transaccionales fuera del camino crítico + abort cliente 3s→10s") a main durante esta sesión — toca las 3 API routes + ContactModal + DiagnosticoWizard. Ya en prod. No es trabajo de esta sesión (detectado al sincronizar; mi commit usó paths explícitos y no lo pisó).
+
+**Resumen auditoría landing — 5 PRs en prod esta sesión:** #24 brand/logo+CSP+a11y, #25 Ola2 (founder/oscuras/precio/SEO), #26 foto founder, #27 recorte home, #28 hero visual. Reporte: `C:\tmp\auditoria-landing-0kbot-2026-06-01.html`.
+
+**PENDIENTES próxima sesión (call editorial Diego):**
+1. Navbar dropdown para ~20 páginas SEO huérfanas (descubribilidad + link equity interno).
+2. CTA primario: definir UNO (wizard /onboarding vs Calendly modal).
+3. Rutas `ia-para-pymes` + keywords deprecadas: mirar Search Console → conservar+limpiar keywords o 301.
+4. Crop foto founder más cerrado (opcional) · o recorte agresivo (fusionar NoSomos+Agentes) si quiere home aún más corta.
+5. (Opcional) card-v3 como imagen en otra sección, o mock de dashboard más grande, si el hero no alcanza.
+
+**Otros pendientes del ecosistema (no-landing):** triggers en cola (morning-digest 2026-06-01 + 2 growth-lead commercial-pipeline, TTL 5d auto-limpia); del /dream de hoy: cyber-def-lead P0 30.8% FAILED W23 → atender.
+
+**Bloqueos:** ninguno. **Próximo paso:** Diego retoma por los pendientes de landing cuando decida.
+
+---
