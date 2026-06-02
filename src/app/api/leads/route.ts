@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse, after } from "next/server";
 import { createAdminClient } from "@/lib/supabase";
 import { leadSchema } from "@/lib/validations";
 import { sendTransactionalEmail } from "@/lib/email";
@@ -43,30 +43,31 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Error interno al guardar el lead" }, { status: 500 });
   }
 
-  // 2. Enviar emails (no crítico — si falla, igual retornamos 200)
-  let emailSent = false;
-  const [confirmResult, notifResult] = await Promise.allSettled([
-    sendTransactionalEmail("lead", "confirmation", lead),
-    sendTransactionalEmail("lead", "notification", lead),
-  ]);
+  // 2. Enviar emails (no crítico) — DESPUÉS de responder vía after(), fuera del
+  // camino crítico del round-trip. El cliente recibe success apenas el lead
+  // queda en Supabase; los envíos de Resend ya no suman latencia a la respuesta.
+  // (Se quitó `emailSent` de la respuesta: ningún cliente lo consumía y ahora
+  // el resultado del email no se conoce al momento de responder.)
+  after(async () => {
+    const [confirmResult, notifResult] = await Promise.allSettled([
+      sendTransactionalEmail("lead", "confirmation", lead),
+      sendTransactionalEmail("lead", "notification", lead),
+    ]);
+    if (confirmResult.status === "rejected") {
+      logError("Error email confirmación", {
+        ...ctx,
+        errorCode: "email_confirmation_failed",
+        reason: String(confirmResult.reason),
+      });
+    }
+    if (notifResult.status === "rejected") {
+      logError("Error email notificación", {
+        ...ctx,
+        errorCode: "email_notification_failed",
+        reason: String(notifResult.reason),
+      });
+    }
+  });
 
-  if (confirmResult.status === "rejected") {
-    logError("Error email confirmación", {
-      ...ctx,
-      errorCode: "email_confirmation_failed",
-      reason: String(confirmResult.reason),
-    });
-  }
-  if (notifResult.status === "rejected") {
-    logError("Error email notificación", {
-      ...ctx,
-      errorCode: "email_notification_failed",
-      reason: String(notifResult.reason),
-    });
-  }
-  if (confirmResult.status === "fulfilled" && notifResult.status === "fulfilled") {
-    emailSent = true;
-  }
-
-  return NextResponse.json({ success: true, leadSaved: true, emailSent }, { status: 200 });
+  return NextResponse.json({ success: true, leadSaved: true }, { status: 200 });
 }

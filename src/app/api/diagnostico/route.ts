@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse, after } from "next/server";
 import { createAdminClient } from "@/lib/supabase";
 import { diagnosticoSchema } from "@/lib/validations";
 import { LEAD_SOURCES, LEAD_ESTADOS, REGULATED_SECTORS } from "@/lib/constants";
@@ -52,25 +52,30 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Error interno al guardar el diagnóstico" }, { status: 500 });
   }
 
-  // 2. Emails (no crítico) — loguear cada reject individualmente
-  const [confirmResult, notifResult] = await Promise.allSettled([
-    sendTransactionalEmail("diagnostico", "confirmation", d),
-    sendTransactionalEmail("diagnostico", "notification", d),
-  ]);
-  if (confirmResult.status === "rejected") {
-    logError("Error email confirmación", {
-      ...ctx,
-      errorCode: "email_confirmation_failed",
-      reason: String(confirmResult.reason),
-    });
-  }
-  if (notifResult.status === "rejected") {
-    logError("Error email notificación", {
-      ...ctx,
-      errorCode: "email_notification_failed",
-      reason: String(notifResult.reason),
-    });
-  }
+  // 2. Emails (no crítico) — se envían DESPUÉS de responder vía after(), para
+  // sacarlos del camino crítico del round-trip. El cliente recibe success
+  // apenas el lead queda en Supabase; los 2 envíos de Resend ya no suman
+  // latencia a la respuesta (evita AbortError del cliente en cold-starts).
+  after(async () => {
+    const [confirmResult, notifResult] = await Promise.allSettled([
+      sendTransactionalEmail("diagnostico", "confirmation", d),
+      sendTransactionalEmail("diagnostico", "notification", d),
+    ]);
+    if (confirmResult.status === "rejected") {
+      logError("Error email confirmación", {
+        ...ctx,
+        errorCode: "email_confirmation_failed",
+        reason: String(confirmResult.reason),
+      });
+    }
+    if (notifResult.status === "rejected") {
+      logError("Error email notificación", {
+        ...ctx,
+        errorCode: "email_notification_failed",
+        reason: String(notifResult.reason),
+      });
+    }
+  });
 
   return NextResponse.json({ success: true }, { status: 200 });
 }

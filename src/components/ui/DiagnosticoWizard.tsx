@@ -292,8 +292,12 @@ export default function DiagnosticoWizard() {
     const dolorFinal =
       data.dolor === "Otro" ? data.dolorOtro || "Otro" : data.dolor;
 
+    // Abort a 10s: con los emails movidos a after() en el server, la respuesta
+    // llega apenas se guarda en Supabase, pero damos margen para cold-starts de
+    // Vercel. Antes era 3s y arriesgaba AbortError (= error visible + no avanza
+    // a Calendly) cuando el server tardaba por enviar los 2 emails inline.
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3000);
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
 
     try {
       const res = await fetch("/api/diagnostico", {
