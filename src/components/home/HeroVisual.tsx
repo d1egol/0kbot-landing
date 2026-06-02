@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { LazyMotion, domAnimation, m } from "framer-motion";
+import { MessageCircle, Table, Mail, Cloud } from "lucide-react";
 
 type Phase = "ordenado" | "automatizando" | "medido";
 
@@ -134,6 +135,32 @@ export default function HeroVisual() {
               12 semanas
             </span>
           </div>
+
+          {/* Fuentes conectadas — refuerza "sistema real que ingiere lo que ya usás" */}
+          <m.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.45 }}
+            className="flex items-center gap-2 mb-3 pb-3 border-b border-[#F0EDE8]"
+          >
+            <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-wider shrink-0">
+              Conecta
+            </span>
+            <div className="flex items-center gap-1.5">
+              {[MessageCircle, Table, Mail, Cloud].map((Icon, idx) => (
+                <span
+                  key={idx}
+                  aria-hidden="true"
+                  className="flex items-center justify-center w-6 h-6 rounded-md bg-[#E8F0FA] ring-1 ring-[#1E40AF]/10"
+                >
+                  <Icon className="w-3 h-3 text-[#1E40AF]" />
+                </span>
+              ))}
+            </div>
+            <span className="text-[8.5px] text-muted-foreground ml-auto shrink-0 text-right leading-tight">
+              lo que ya usás
+            </span>
+          </m.div>
 
           {/* Rows with phase chip + before/after bars */}
           <div className="space-y-3">
