@@ -541,3 +541,38 @@ Gates: lint ✓ typecheck ✓ (0 errores).
 **Cross-ref:** ADR-012 en `~/.claude/DECISIONS.md`, insumos en `C:\tmp\0kbot-catalogo-productos-2026-05-27.html` + `C:\tmp\0kbot-plan-editorial-2026-05-27.html`.
 
 ---
+
+## 2026-06-01 16:00 — @claude (auditoría landing + Ola 1 mejoras)
+
+**Status:** Auditoría completa del landing (7 ejes, 78 hallazgos; reporte HTML en `C:\tmp\auditoria-landing-0kbot-2026-06-01.html`). Implementada **Ola 1** en branch `refresh/audit-mejoras-2026-06-01` (commit `6ad944e`), SIN tocar copy visible:
+- Logo limpio: fuera gold `#D4AF37` + azul norte `#1B5FA6` + Space Grotesk/DM Sans → navy `#1E40AF` + accent-glow `#85B2F9` + Roboto Slab (3 SVG).
+- Sweep `#1B5FA6`/`#1A74C4`/`#F7F5F0` → tokens v3 en 34 archivos (HeroVisual, OG images, emails, páginas internas).
+- `layout.tsx`: fuera webfonts deprecadas. `next.config.mjs`: CSP habilita remarketing/conversiones Google Ads (estaba bloqueado por el propio CSP).
+- a11y: contraste AA en secciones navy + aria-label puente seguridad + quita números decorativos invisibles → Lighthouse a11y **96→100**.
+- Tipografía editorial: H1 hero más grande sin gradiente (navy sólido), H2 de sección `text-4xl→5xl` + tracking ceñido.
+- Verificado: `typecheck` OK, `lint` OK, Lighthouse dev A11y/BP/SEO/Agentic **100**. Build local omitido (regla repo @vercel/og Windows; CI valida).
+
+**Necesito (de Diego):** (1) revisar la branch (¿la pusheo para preview Vercel?) y mergear si OK; (2) aprobar ítems de COPY que dejé intactos: precio en 3 cifras (10/12 UF vs $390k), puente "contradicción IA" en AgentesSection, "Responde 5 preguntas" (son 6), "Casos reales" en BlogPreview; (3) decidir CTA primario (onboarding vs Calendly) y rutas SEO deprecadas (¿captan tráfico en Search Console?).
+
+**Bloqueos:** ninguno técnico. Ola 2 estructural (reducir secciones oscuras a 2, recortar home a ~10 bloques, founder visible con nombre/foto, rediseño de cards) requiere tus decisiones + tu foto/bio.
+
+**Próximo paso:** Diego revisa branch + aprueba copy/decisiones → mergeo Ola 1 y arranco Ola 2/3 según sus calls.
+
+---
+
+## 2026-06-01 18:30 — @claude (cierre: Olas 1+2 + foto founder EN PROD)
+
+**Status:** Las 3 tandas de la auditoría están **mergeadas a main y en producción** en 0kbot.com:
+- **Ola 1** (PR #24, `320a15d`): logo sin gold/azul-norte/Space Grotesk/DM Sans → navy + Roboto Slab; sweep tokens v3 en 34 archivos; CSP Google Ads desbloqueado; tipografía editorial (H1 sin gradiente, H2 +grandes); a11y 96→100.
+- **Ola 2** (PR #25, `6a17904`): founder visible (Diego López, era "Equipo 0kbot"); secciones oscuras 5→2 (Solucion+Verticales → claro); precio unificado 10 UF (FAQ+JSON-LD+ROI); bridge "contradicción IA" en AgentesSection; SEO (title <60, anchors footer reescritos, LinkedIn personal).
+- **Foto founder** (PR #26, `f385082`): `public/brand/diego-lopez.jpg` (avatar 72px) vía next/image + copy "Diego López lidera 0kbot … con un equipo de agentes que opera cada proceso. El foco siempre es tu operación."
+- Verificado en prod: Lighthouse a11y **100**, SEO 100; foto/precio/Solucion confirmados en vivo.
+- Reporte auditoría completo: `C:\tmp\auditoria-landing-0kbot-2026-06-01.html` (7 ejes, 78 hallazgos).
+
+**Necesito (de Diego):** decisiones para los ítems que dejé fuera de scope (su call editorial): recorte/fusión de secciones (home 15→~10), navbar dropdown para ~20 páginas SEO huérfanas, `/research` en sitemap (tensiona con "no vendemos IA"), CTA primario (wizard /onboarding vs Calendly), rutas `/transformacion-digital-pymes` + `/ia-para-pymes` (mirar Search Console).
+
+**Bloqueos:** ninguno. (Near-miss resuelto: `git add -A` marcó `icon.png` como borrado por dehidratación OneDrive en Documents/ — corregido antes de merge; en este repo usar paths explícitos, nunca `git add -A`.)
+
+**Próximo paso:** Diego decide si avanzamos con recorte de secciones / navbar; o ajuste de crop de la foto si lo quiere más cerrado.
+
+---
