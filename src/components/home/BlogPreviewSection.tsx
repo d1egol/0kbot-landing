@@ -24,7 +24,7 @@ export function BlogPreviewSection() {
               Artículos recientes
             </h2>
             <p className="text-[#666] mt-2 max-w-lg">
-              Casos reales, tutoriales y guías sobre mejora de procesos y
+              Tutoriales, guías y análisis sobre mejora de procesos y
               automatización para pymes chilenas.
             </p>
           </div>

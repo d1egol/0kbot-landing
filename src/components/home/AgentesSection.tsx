@@ -40,11 +40,11 @@ export default function AgentesSection() {
             <span className="text-background/70">Te lo mostramos.</span>
           </h2>
           <p className="mt-5 text-base text-background/70 font-body leading-relaxed max-w-2xl">
-            Un proyecto one-time te da la base. El retainer mensual te deja un
-            equipo de agentes operando dentro de tu empresa — replicando la
-            arquitectura que 0kbot corre sobre sí mismo. Sin promesas de
-            &ldquo;transformación digital&rdquo;. Con procesos reales que funcionan el
-            lunes siguiente.
+            No vendemos IA como promesa de moda — la usamos como herramienta, y
+            la mejor prueba es que corremos 0kbot con ella. Un proyecto puntual
+            te da la base; el plan mensual te deja un equipo de agentes operando
+            dentro de tu empresa, replicando la arquitectura que usamos con
+            nosotros mismos. Procesos reales que funcionan el lunes siguiente.
           </p>
         </MotionSection>
 
