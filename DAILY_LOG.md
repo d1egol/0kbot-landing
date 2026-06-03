@@ -619,3 +619,25 @@ Gates: lint ✓ typecheck ✓ (0 errores).
 **Bloqueos:** ninguno. **Próximo paso:** Diego retoma por los pendientes de landing cuando decida.
 
 ---
+
+## 2026-06-03 11:15 — @claude (Vercel Web Analytics + Speed Insights EN PROD)
+
+**Status:** PR #30 (`994783b`) mergeado a `main` y EN PROD (`0kbot.com`, deploy `dpl_5mFQ…` READY, build 86s, región iad1). Origen: corrí `/vercel:status` → doctor detectó que el sitio tenía GA4/GTM/Meta Pixel (analytics de producto) pero **no Core Web Vitals reales por ruta**. Diego pidió agregar Analytics + Speed Insights.
+
+**Cambios (4 archivos):**
+- `package.json` + `package-lock.json`: `@vercel/analytics@^2.0.1` + `@vercel/speed-insights@^2.0.0`.
+- `src/app/layout.tsx`: `<Analytics/>` + `<SpeedInsights/>` dentro del `<body>` (imports `@vercel/analytics/next` + `@vercel/speed-insights/next`, entrypoints App Router).
+- `next.config.mjs`: CSP — agregado `https://va.vercel-scripts.com` a `script-src` + `connect-src`. En prod el script es **same-origin** (`/_vercel/insights/script.js`, cubierto por `'self'`), pero dev/preview cargan `script.debug.js` desde ese CDN → sin el dominio = error CSP en consola (mismo patrón que el fix CSP de Google Ads del PR #24).
+
+**Verificación en prod (empírica, Playwright + curl):**
+- `/_vercel/insights/script.js` → **HTTP 200** · `/_vercel/speed-insights/script.js` → **HTTP 200** (Vercel sirve = features activos, no 404).
+- `window.va` + `window.si` presentes (componentes montados) · **0 errores CSP en consola** · header CSP en prod incluye `va.vercel-scripts.com`.
+- Gotcha registrado: el `<script src>` no aparece en el DOM porque el script de Vercel se auto-remueve tras ejecutarse — la prueba real son los 200 + las colas `window.va`/`window.si`, no el tag.
+
+Gates: lint OK, typecheck OK, CI Linux (Lint & Build + Secret Scan) verde, Vercel preview verde. Build local Windows omitido (bug conocido `@vercel/og`/fonts).
+
+**Necesito (de Diego):** nada bloqueante. La data de pageviews + Web Vitals p75 por ruta puebla con tráfico real (24-48h para números estables).
+
+**Bloqueos:** ninguno. **Próximo paso:** en ~2 días revisar el dashboard Vercel Analytics/Speed Insights y tirar los primeros números p75 por ruta (Hero, DiagnosticoWizard) junto al pulse de GA4. Pendientes de landing de la sesión anterior (navbar dropdown, CTA primario único, rutas deprecadas, crop foto) siguen abiertos.
+
+---
