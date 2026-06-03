@@ -18,14 +18,16 @@ const securityHeaders = [
     value: [
       "default-src 'self'",
       // Next.js hydration + GTM/GA/Meta Pixel require unsafe-inline/eval
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://calendly.com",
+      // va.vercel-scripts.com: Vercel Analytics/Speed Insights cargan first-party en prod
+      // (/_vercel/insights/script.js) pero usan este CDN en dev/preview (script.debug.js)
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://calendly.com https://va.vercel-scripts.com",
       // Fonts are self-hosted via next/font — no external Google Fonts requests
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self'",
       // Google Ads/GA4 remarketing pixels: ga-audiences se sirve desde el dominio Google regional del visitante (google.com/google.cl/…) y doubleclick
       "img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com https://www.facebook.com https://www.google.com https://www.google.cl https://googleads.g.doubleclick.net https://stats.g.doubleclick.net",
       // stats.g.doubleclick.net/g/collect: beacon de conversiones/audiencias GA4 con Google Signals activado
-      "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.facebook.com https://calendly.com https://stats.g.doubleclick.net",
+      "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.facebook.com https://calendly.com https://stats.g.doubleclick.net https://va.vercel-scripts.com",
       "frame-src https://calendly.com",
       "object-src 'none'",
       "base-uri 'self'",
